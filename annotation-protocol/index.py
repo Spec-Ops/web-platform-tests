@@ -14,13 +14,14 @@ def load_headers_from_file(path):
 
 def populate_headers(requested_file, response):
     headers = []
-    headers_file = requested_file + '.headers'
+    headers_file = requested_file[:-7] + '.headers'
 
     response.headers.update(default_headers)
 
     if os.path.isfile(headers_file):
         headers = load_headers_from_file(headers_file)
-        response.headers.update(headers)
+        for header, value in headers:
+            response.headers.append(header, value)
 
 
 default_headers = load_headers_from_file(doc_root
