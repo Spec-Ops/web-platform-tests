@@ -2,6 +2,7 @@ import os
 
 import wptserve
 
+port = 8080
 doc_root = './files/'
 
 def load_headers_from_file(path):
@@ -47,7 +48,10 @@ def single(request, response):
         data = data_file.read()
     return data;
 
-httpd = wptserve.server.WebTestHttpd(port=8080, doc_root=doc_root,
+
+print 'http://localhost:{0}/'.format(port)
+
+httpd = wptserve.server.WebTestHttpd(port=port, doc_root=doc_root,
                             routes=[("GET", "annotations/", collection),
                                     ("GET", "annotations/*", single)])
 httpd.start(block=True)
