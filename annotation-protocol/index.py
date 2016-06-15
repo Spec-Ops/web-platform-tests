@@ -32,30 +32,30 @@ default_headers = load_headers_from_file(doc_root
 def collection(request, response):
     """Annotation Collection"""
 
-    prefer_header = request.headers.get('Prefer');
-
     # Prefer header variants
     prefer_minimal = 'return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
     prefer_contained_uris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
     prefer_contained_descriptions = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
 
     # Default Container format SHOULD be PreferContainedDescriptions
-    requested_file = doc_root + \
-        'annotations/index-PreferContainedDescriptions.jsonld'
+    prefer_header = request.headers.get('Prefer', prefer_contained_descriptions)
 
-    if prefer_header:
-        if prefer_header == prefer_minimal:
-            requested_file = doc_root + \
-                'annotations/index-PreferMinimalContainer.jsonld'
-        elif prefer_header == prefer_contained_uris:
-            requested_file = doc_root + \
-                'annotations/index-PreferContainedIRIs.jsonld'
+    rv = False
+    if prefer_header == prefer_minimal:
+        requested_file = doc_root + \
+            'annotations/index-PreferMinimalContainer.jsonld'
+    elif prefer_header == prefer_contained_uris:
+        requested_file = doc_root + \
+            'annotations/index-PreferContainedIRIs.jsonld'
+    else:
+        requested_file = doc_root + \
+            'annotations/index-PreferContainedDescriptions.jsonld'
 
     populate_headers(requested_file, response)
 
     with open(requested_file) as data_file:
         data = data_file.read()
-    return data;
+    return data
 
 @wptserve.handlers.handler
 def single(request, response):
