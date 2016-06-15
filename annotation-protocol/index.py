@@ -36,7 +36,7 @@ def collection(request, response):
 
     # Prefer header variants
     prefer_minimal = 'return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
-    prefer_contained_uris = 'return=representation;include="http://www.w3.org/ns/ldp#PreferContainedIRIs"'
+    prefer_contained_uris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
     prefer_contained_descriptions = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
 
     # Default Container format SHOULD be PreferContainedDescriptions
