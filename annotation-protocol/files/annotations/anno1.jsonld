@@ -1,11 +1,11 @@
 {
   "@context": "http://www.w3.org/ns/anno.jsonld",
-  "id": "http://example.org/annotations/anno1",
+  "id": "/annotations/anno1.jsonld",
   "type": "Annotation",
   "created": "2015-01-31T12:03:45Z",
   "body": {
     "type": "TextualBody",
-    "text": "I like this page!"
+    "value": "I like this page!"
   },
-  "target": "http://www.example.com/index.html"
+  "target": "/index.html"
 }

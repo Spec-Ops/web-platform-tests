@@ -3,18 +3,12 @@
     "http://www.w3.org/ns/anno.jsonld",
     "http://www.w3.org/ns/ldp.jsonld"
   ],
-  "id": "http://example.org/annotations/?uris=1",
+  "id": "/annotations/?uris=1",
   "type": ["BasicContainer", "AnnotationCollection"],
   "total": 42023,
   "items": [
-    {
-      "@context": "http://www.w3.org/ns/anno.jsonld",
-      "target": "http://w3c.org/",
-      "body": "https://en.wikipedia.org/wiki/World_Wide_Web_Consortium",
-      "movivation": "describing"
-    }
   ],
   "label": "A Container for Web Annotations",
-  "first": "http://example.org/annotations/?uris=1&page=0",
-  "last": "http://example.org/annotations/?uris=1&page=42"
+  "first": "/annotations/?uris=1&page=0",
+  "last": "/annotations/?uris=1&page=42"
 }
