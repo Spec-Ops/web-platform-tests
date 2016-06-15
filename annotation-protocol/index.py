@@ -70,7 +70,13 @@ def single(request, response):
 
 print 'http://localhost:{0}/'.format(port)
 
+routes = [
+    ("GET", "", wptserve.handlers.file_handler),
+    ("GET", "index.html", wptserve.handlers.file_handler),
+    ("GET", "annotations/", collection),
+    ("GET", "annotations/*", single)
+]
+
 httpd = wptserve.server.WebTestHttpd(port=port, doc_root=doc_root,
-                            routes=[("GET", "annotations/", collection),
-                                    ("GET", "annotations/*", single)])
+                            routes=routes)
 httpd.start(block=True)
