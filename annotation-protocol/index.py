@@ -1,9 +1,30 @@
+import json
 import os
+import urlparse
 
 import wptserve
 
 port = 8080
 doc_root = './files/'
+container_path = doc_root + 'annotations/'
+
+# Prefer header variants
+prefer_minimal = 'return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
+prefer_contained_uris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
+prefer_contained_descriptions = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
+
+collection_json = {
+  "@context": [
+    "http://www.w3.org/ns/anno.jsonld",
+    "http://www.w3.org/ns/ldp.jsonld"
+  ],
+  "id": "/annotations/",
+  "type": ["BasicContainer", "AnnotationCollection"],
+  "total": 0,
+  "label": "A Container for Web Annotations",
+  "first": "/annotations/?page=0",
+  "last": "/annotations/?page="
+}
 
 def load_headers_from_file(path):
     headers = []
@@ -25,6 +46,27 @@ def populate_headers(requested_file, response):
             response.headers.append(header, value)
 
 
+def annotation_files():
+    files = []
+    for file in os.listdir(container_path):
+        if file.endswith('.jsonld') and not file.startswith('index-') \
+            and not file.startswith('page'):
+                files.append(file);
+    return files
+
+
+def annotations():
+    files = annotation_files()
+    for file in files:
+        with open(container_path + file) as annotation:
+            annotations.append(json.load(file))
+    return annotations
+
+
+def total_annotations():
+    return len(annotation_files())
+
+
 default_headers = load_headers_from_file(doc_root
     + 'annotations/__dir__.headers')
 
@@ -32,30 +74,24 @@ default_headers = load_headers_from_file(doc_root
 def collection(request, response):
     """Annotation Collection"""
 
-    # Prefer header variants
-    prefer_minimal = 'return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
-    prefer_contained_uris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
-    prefer_contained_descriptions = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
 
     # Default Container format SHOULD be PreferContainedDescriptions
     prefer_header = request.headers.get('Prefer', prefer_contained_descriptions)
 
-    rv = False
-    if prefer_header == prefer_minimal:
-        requested_file = doc_root + \
-            'annotations/index-PreferMinimalContainer.jsonld'
-    elif prefer_header == prefer_contained_uris:
-        requested_file = doc_root + \
-            'annotations/index-PreferContainedIRIs.jsonld'
-    else:
-        requested_file = doc_root + \
-            'annotations/index-PreferContainedDescriptions.jsonld'
+    collection_json['total'] = total_annotations()
+    # TODO: calculate last page and add it's page number
 
-    populate_headers(requested_file, response)
+    # only PreferContainedIRIs has unqiue content
+    if prefer_header == prefer_contained_uris:
+        collection_json['id'] += '?iris=1'
+        collection_json['first'] += '&iris=1'
 
-    with open(requested_file) as data_file:
-        data = data_file.read()
-    return data
+    collection_headers_file = doc_root + 'annotations/collection.headers'
+    response.headers.update(load_headers_from_file(collection_headers_file))
+    # this one's unique per request
+    response.headers.set('Content-Location', collection_json['id'])
+    return json.dumps(collection_json, indent=4, sort_keys=True)
+
 
 @wptserve.handlers.handler
 def single(request, response):
