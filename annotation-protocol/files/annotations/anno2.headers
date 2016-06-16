@@ -1,2 +1,0 @@
-Link: <http://www.w3.org/ns/ldp#Resource>; rel="type"
-Allow: PUT,GET,OPTIONS,HEAD,DELETE,PATCH
