@@ -1,6 +1,7 @@
 import json
 import os
 import urlparse
+import uuid
 
 import wptserve
 
@@ -149,6 +150,20 @@ def single(request, response):
         data = data_file.read()
     return data;
 
+@wptserve.handlers.handler
+def create_annotation(request, response):
+    # TODO: verify media type is JSON of some kind (at least)
+    incoming = json.loads(request.body)
+    id = str(uuid.uuid4())
+    if 'id' in incoming:
+        incoming['canonical'] = incoming['id']
+    incoming['id'] = '/annotations/' + id
+
+    with open(container_path + id + '.jsonld', 'w') as outfile:
+        json.dump(incoming, outfile)
+
+    return json.dumps(incoming, indent=4, sort_keys=True)
+
 
 print 'http://localhost:{0}/'.format(port)
 
@@ -156,6 +171,7 @@ routes = [
     ("GET", "", wptserve.handlers.file_handler),
     ("GET", "index.html", wptserve.handlers.file_handler),
     ("GET", "annotations/", collection),
+    ("POST", "annotations/", create_annotation),
     ("GET", "annotations/*", single)
 ]
 
