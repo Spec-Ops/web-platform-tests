@@ -41,12 +41,18 @@ def annotation_files():
                 files.append(file);
     return files
 
+def annotation_iris():
+    iris = []
+    for filename in annotation_files():
+        iris.append('/annotations/' + filename)
+    return iris
 
 def annotations():
+    annotations = []
     files = annotation_files()
     for file in files:
         with open(container_path + file) as annotation:
-            annotations.append(json.load(file))
+            annotations.append(json.load(annotation))
     return annotations
 
 
@@ -114,6 +120,11 @@ def page(request, response):
 
     qs = urlparse.parse_qs(request.url_parts.query)
     page_num = int(qs.get('page')[0])
+    if qs.get('iris') and qs.get('iris')[0] is '1':
+        page_json['items'] = annotation_iris()
+    else:
+        page_json['items'] = annotations()
+
     # TODO: actually calculate pages ^_^
     page_json['id'] += '?page={0}'.format(page_num)
     if page_num != 0:
