@@ -21,17 +21,6 @@ def load_headers_from_file(path):
             for line in data.splitlines() if line]
     return headers
 
-def populate_headers(requested_file, response):
-    headers = []
-    headers_file = requested_file[:-7] + '.headers'
-
-    response.headers.update(default_headers)
-
-    if os.path.isfile(headers_file):
-        headers = load_headers_from_file(headers_file)
-        for header, value in headers:
-            response.headers.append(header, value)
-
 
 def annotation_files():
     files = []
