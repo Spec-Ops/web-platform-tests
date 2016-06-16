@@ -26,6 +26,19 @@ collection_json = {
   "last": "/annotations/?page="
 }
 
+page_json = {
+  "@context": "http://www.w3.org/ns/anno.jsonld",
+  "id": "/annotations/",
+  "type": "AnnotationPage",
+  "partOf": {
+    "id": "/annotations/",
+    "total": 42023
+  },
+  "next": "/annotations/",
+  "items": [
+  ]
+}
+
 def load_headers_from_file(path):
     headers = []
     with open(path) as header_file:
@@ -67,12 +80,14 @@ def total_annotations():
     return len(annotation_files())
 
 
-default_headers = load_headers_from_file(doc_root
-    + 'annotations/__dir__.headers')
-
 @wptserve.handlers.handler
 def collection(request, response):
     """Annotation Collection"""
+
+    # Paginate if requested
+    qs = urlparse.parse_qs(request.url_parts.query)
+    if 'page' in qs:
+        return page(request, response)
 
 
     # Default Container format SHOULD be PreferContainedDescriptions
@@ -93,11 +108,22 @@ def collection(request, response):
     return json.dumps(collection_json, indent=4, sort_keys=True)
 
 
+def page(request, response):
+    headers_file = doc_root + 'annotations/collection.headers'
+    response.headers.update(load_headers_from_file(headers_file))
+
+    qs = urlparse.parse_qs(request.url_parts.query)
+    page_json['id'] += '?page={0}'.format(qs.get('page')[0])
+    return json.dumps(page_json, indent=4, sort_keys=True)
+
+
 @wptserve.handlers.handler
 def single(request, response):
     """Inidividual Annotations"""
     requested_file = doc_root + request.request_path[1:] + '.jsonld';
-    populate_headers(requested_file, response)
+
+    headers_file = doc_root + 'annotations/annotation.headers'
+    response.headers.update(load_headers_from_file(headers_file))
 
     with open(requested_file) as data_file:
         data = data_file.read()
