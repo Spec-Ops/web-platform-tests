@@ -26,19 +26,6 @@ collection_json = {
   "last": "/annotations/?page="
 }
 
-page_json = {
-  "@context": "http://www.w3.org/ns/anno.jsonld",
-  "id": "/annotations/",
-  "type": "AnnotationPage",
-  "partOf": {
-    "id": "/annotations/",
-    "total": 42023
-  },
-  "next": "/annotations/",
-  "items": [
-  ]
-}
-
 def load_headers_from_file(path):
     headers = []
     with open(path) as header_file:
@@ -109,11 +96,30 @@ def collection(request, response):
 
 
 def page(request, response):
+    page_json = {
+      "@context": "http://www.w3.org/ns/anno.jsonld",
+      "id": "/annotations/",
+      "type": "AnnotationPage",
+      "partOf": {
+        "id": "/annotations/",
+        "total": 42023
+      },
+      "next": "/annotations/",
+      "items": [
+      ]
+    }
+
     headers_file = doc_root + 'annotations/collection.headers'
     response.headers.update(load_headers_from_file(headers_file))
 
     qs = urlparse.parse_qs(request.url_parts.query)
-    page_json['id'] += '?page={0}'.format(qs.get('page')[0])
+    page_num = int(qs.get('page')[0])
+    # TODO: actually calculate pages ^_^
+    page_json['id'] += '?page={0}'.format(page_num)
+    if page_num != 0:
+        page_json['prev'] = '/annotations/?page={0}'.format(page_num-1)
+    page_json['next'] += '?page={0}'.format(page_num+1)
+
     return json.dumps(page_json, indent=4, sort_keys=True)
 
 
