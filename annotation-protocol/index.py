@@ -8,6 +8,8 @@ port = 8080
 doc_root = './files/'
 container_path = doc_root + 'annotations/'
 
+per_page = 10
+
 # Prefer header variants
 prefer_minimal = 'return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
 prefer_contained_uris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
@@ -25,20 +27,19 @@ def load_headers_from_file(path):
 def annotation_files():
     files = []
     for file in os.listdir(container_path):
-        if file.endswith('.jsonld') and not file.startswith('index-') \
-            and not file.startswith('page'):
-                files.append(file);
+        if file.endswith('.jsonld') or file.endswith('.json'):
+            files.append(file);
     return files
 
-def annotation_iris():
+def annotation_iris(skip):
     iris = []
     for filename in annotation_files():
         iris.append('/annotations/' + filename)
-    return iris
+    return iris[skip:][:per_page]
 
-def annotations():
+def annotations(skip):
     annotations = []
-    files = annotation_files()
+    files = annotation_files(skip)
     for file in files:
         with open(container_path + file) as annotation:
             annotations.append(json.load(annotation))
@@ -109,16 +110,29 @@ def page(request, response):
 
     qs = urlparse.parse_qs(request.url_parts.query)
     page_num = int(qs.get('page')[0])
-    if qs.get('iris') and qs.get('iris')[0] is '1':
-        page_json['items'] = annotation_iris()
-    else:
-        page_json['items'] = annotations()
-
-    # TODO: actually calculate pages ^_^
     page_json['id'] += '?page={0}'.format(page_num)
+
+    total = total_annotations()
+    so_far = (per_page * (page_num+1))
+    remaining = total - so_far
+
     if page_num != 0:
         page_json['prev'] = '/annotations/?page={0}'.format(page_num-1)
-    page_json['next'] += '?page={0}'.format(page_num+1)
+
+    page_json['partOf']['total'] = total
+
+    if remaining > per_page:
+        page_json['next'] += '?page={0}'.format(page_num+1)
+    else:
+        del page_json['next']
+
+    if qs.get('iris') and qs.get('iris')[0] is '1':
+        page_json['items'] = annotation_iris(so_far)
+        page_json['id'] += '&iris=1'
+        if 'prev' in page_json: page_json['prev'] += '&iris=1'
+        if 'next' in page_json: page_json['next'] += '&iris=1'
+    else:
+        page_json['items'] = annotations(so_far)
 
     return json.dumps(page_json, indent=4, sort_keys=True)
 
