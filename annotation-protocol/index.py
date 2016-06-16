@@ -13,19 +13,6 @@ prefer_minimal = 'return=representation;include="http://www.w3.org/ns/ldp#Prefer
 prefer_contained_uris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
 prefer_contained_descriptions = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
 
-collection_json = {
-  "@context": [
-    "http://www.w3.org/ns/anno.jsonld",
-    "http://www.w3.org/ns/ldp.jsonld"
-  ],
-  "id": "/annotations/",
-  "type": ["BasicContainer", "AnnotationCollection"],
-  "total": 0,
-  "label": "A Container for Web Annotations",
-  "first": "/annotations/?page=0",
-  "last": "/annotations/?page="
-}
-
 def load_headers_from_file(path):
     headers = []
     with open(path) as header_file:
@@ -70,6 +57,19 @@ def total_annotations():
 @wptserve.handlers.handler
 def collection(request, response):
     """Annotation Collection"""
+
+    collection_json = {
+      "@context": [
+        "http://www.w3.org/ns/anno.jsonld",
+        "http://www.w3.org/ns/ldp.jsonld"
+      ],
+      "id": "/annotations/",
+      "type": ["BasicContainer", "AnnotationCollection"],
+      "total": 0,
+      "label": "A Container for Web Annotations",
+      "first": "/annotations/?page=0",
+      "last": "/annotations/?page="
+    }
 
     # Paginate if requested
     qs = urlparse.parse_qs(request.url_parts.query)
