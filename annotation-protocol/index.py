@@ -64,9 +64,11 @@ def collection(request, response):
       "type": ["BasicContainer", "AnnotationCollection"],
       "total": 0,
       "label": "A Container for Web Annotations",
-      "first": "/annotations/?page=0",
-      "last": "/annotations/?page="
+      "first": "/annotations/?page=0"
     }
+
+    last_page = (total_annotations() / per_page) - 1
+    collection_json['last'] = "/annotations/?page={0}".format(last_page)
 
     # Paginate if requested
     qs = urlparse.parse_qs(request.url_parts.query)
