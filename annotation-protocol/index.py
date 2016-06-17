@@ -40,7 +40,7 @@ def annotation_iris(skip):
 
 def annotations(skip):
     annotations = []
-    files = annotation_files(skip)
+    files = annotation_files()
     for file in files:
         with open(container_path + file) as annotation:
             annotations.append(json.load(annotation))
