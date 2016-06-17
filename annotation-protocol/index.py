@@ -11,6 +11,7 @@ container_path = doc_root + 'annotations/'
 
 per_page = 10
 
+MEDIA_TYPE = 'application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"'
 # Prefer header variants
 prefer_minimal = 'return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
 prefer_contained_uris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
@@ -164,7 +165,9 @@ def create_annotation(request, response):
     with open(container_path + id + '.jsonld', 'w') as outfile:
         json.dump(incoming, outfile)
 
-    return json.dumps(incoming, indent=4, sort_keys=True)
+    # TODO: rashly assuming the above worked...of course
+    return (201, [('Content-Type', MEDIA_TYPE)],
+            json.dumps(incoming, indent=4, sort_keys=True))
 
 
 print 'http://localhost:{0}/'.format(port)
