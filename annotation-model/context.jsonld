@@ -4,7 +4,8 @@
     "test": "http://www.w3.org/2006/03/test-description#",
 
     "name": "dc:title",
-    "description": "dc:description",
+    "title": "dc:title",
+    "description": "test:purpose",
     "ref": {"@id": "test:specificationReference", "@type": "@id"},
     "assertions": {"@id": "test:expectedResults", "@container": "@list", "@type": "@id"}
   }
