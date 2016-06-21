@@ -14,7 +14,7 @@ per_page = 10
 MEDIA_TYPE = 'application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"'
 # Prefer header variants
 prefer_minimal = 'return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
-prefer_contained_uris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
+prefer_contained_iris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
 prefer_contained_descriptions = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
 
 def load_headers_from_file(path):
@@ -84,7 +84,7 @@ def collection(request, response):
     # TODO: calculate last page and add it's page number
 
     # only PreferContainedIRIs has unqiue content
-    if prefer_header == prefer_contained_uris:
+    if prefer_header == prefer_contained_iris:
         collection_json['id'] += '?iris=1'
         collection_json['first'] += '&iris=1'
 
