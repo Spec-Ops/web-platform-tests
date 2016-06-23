@@ -166,7 +166,7 @@ def create_annotation(request, response):
         json.dump(incoming, outfile)
 
     # TODO: rashly assuming the above worked...of course
-    return (201, [('Content-Type', MEDIA_TYPE)],
+    return (201, [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
             json.dumps(incoming, indent=4, sort_keys=True))
 
 
