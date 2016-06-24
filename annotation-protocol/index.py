@@ -172,6 +172,12 @@ def create_annotation(request, response):
     return (201, [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
             json.dumps(incoming, indent=4, sort_keys=True))
 
+@wptserve.handlers.handler
+def delete_annotation(request, response):
+    requested_file = doc_root + request.request_path[1:];
+    if os.remove(requested_file):
+        return (204, [], '')
+
 
 print 'http://localhost:{0}/'.format(port)
 
@@ -180,7 +186,8 @@ routes = [
     ("GET", "index.html", wptserve.handlers.file_handler),
     ("GET", "annotations/", collection),
     ("POST", "annotations/", create_annotation),
-    ("GET", "annotations/*", single)
+    ("GET", "annotations/*", single),
+    ("DELETE", "annotations/*", delete_annotation)
 ]
 
 httpd = wptserve.server.WebTestHttpd(port=port, doc_root=doc_root,
