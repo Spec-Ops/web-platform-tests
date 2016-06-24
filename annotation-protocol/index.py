@@ -144,14 +144,17 @@ def page(request, response):
 @wptserve.handlers.handler
 def single(request, response):
     """Inidividual Annotations"""
-    requested_file = doc_root + request.request_path[1:] + '.jsonld';
+    requested_file = doc_root + request.request_path[1:];
 
     headers_file = doc_root + 'annotations/annotation.headers'
     response.headers.update(load_headers_from_file(headers_file))
 
-    with open(requested_file) as data_file:
-        data = data_file.read()
-    return data;
+    if os.path.isfile(requested_file):
+        with open(requested_file) as data_file:
+            data = data_file.read()
+        return data;
+    else:
+        return (404, [], 'Not Found')
 
 @wptserve.handlers.handler
 def create_annotation(request, response):
@@ -162,7 +165,7 @@ def create_annotation(request, response):
         incoming['canonical'] = incoming['id']
     incoming['id'] = '/annotations/' + id
 
-    with open(container_path + id + '.jsonld', 'w') as outfile:
+    with open(container_path + id, 'w') as outfile:
         json.dump(incoming, outfile)
 
     # TODO: rashly assuming the above worked...of course
