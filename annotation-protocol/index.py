@@ -180,7 +180,8 @@ def create_annotation(request, response):
     # TODO: rashly assuming the above worked...of course
     return (201,
             [('Content-Type', MEDIA_TYPE), ('Location', incoming['id']),
-                ('Link', '<http://www.w3.org/ns/ldp#Resource>; rel="type"')],
+                ('Link', '<http://www.w3.org/ns/ldp#Resource>; rel="type"'),
+                ('Link', '<http://www.w3.org/ns/oa#Annotation>; rel="type"')],
             json.dumps(incoming, indent=4, sort_keys=True))
 
 
