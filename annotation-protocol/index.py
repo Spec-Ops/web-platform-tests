@@ -13,16 +13,20 @@ per_page = 10
 
 MEDIA_TYPE = 'application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"'
 # Prefer header variants
-prefer_minimal = 'return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
-prefer_contained_iris = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
-prefer_contained_descriptions = 'return=representation;include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
+prefer_minimal = 'return=representation;' \
+        + 'include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
+prefer_contained_iris = 'return=representation;' \
+        + 'include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
+prefer_contained_descriptions = 'return=representation;' \
+        + 'include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
+
 
 def load_headers_from_file(path):
     headers = []
     with open(path) as header_file:
         data = header_file.read()
         headers = [tuple(item.strip() for item in line.split(":", 1))
-            for line in data.splitlines() if line]
+                   for line in data.splitlines() if line]
     return headers
 
 
@@ -30,14 +34,16 @@ def annotation_files():
     files = []
     for file in os.listdir(container_path):
         if file.endswith('.jsonld') or file.endswith('.json'):
-            files.append(file);
+            files.append(file)
     return files
+
 
 def annotation_iris(skip):
     iris = []
     for filename in annotation_files():
         iris.append('/annotations/' + filename)
     return iris[skip:][:per_page]
+
 
 def annotations(skip):
     annotations = []
@@ -76,9 +82,9 @@ def collection(request, response):
     if 'page' in qs:
         return page(request, response)
 
-
     # Default Container format SHOULD be PreferContainedDescriptions
-    prefer_header = request.headers.get('Prefer', prefer_contained_descriptions)
+    prefer_header = request.headers.get('Prefer',
+                                        prefer_contained_descriptions)
 
     collection_json['total'] = total_annotations()
     # TODO: calculate last page and add it's page number
@@ -133,8 +139,10 @@ def page(request, response):
     if qs.get('iris') and qs.get('iris')[0] is '1':
         page_json['items'] = annotation_iris(so_far)
         page_json['id'] += '&iris=1'
-        if 'prev' in page_json: page_json['prev'] += '&iris=1'
-        if 'next' in page_json: page_json['next'] += '&iris=1'
+        if 'prev' in page_json:
+            page_json['prev'] += '&iris=1'
+        if 'next' in page_json:
+            page_json['next'] += '&iris=1'
     else:
         page_json['items'] = annotations(so_far)
 
@@ -144,7 +152,7 @@ def page(request, response):
 @wptserve.handlers.handler
 def single(request, response):
     """Inidividual Annotations"""
-    requested_file = doc_root + request.request_path[1:];
+    requested_file = doc_root + request.request_path[1:]
 
     headers_file = doc_root + 'annotations/annotation.headers'
     response.headers.update(load_headers_from_file(headers_file))
@@ -152,9 +160,10 @@ def single(request, response):
     if os.path.isfile(requested_file):
         with open(requested_file) as data_file:
             data = data_file.read()
-        return data;
+        return data
     else:
         return (404, [], 'Not Found')
+
 
 @wptserve.handlers.handler
 def create_annotation(request, response):
@@ -172,9 +181,10 @@ def create_annotation(request, response):
     return (201, [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
             json.dumps(incoming, indent=4, sort_keys=True))
 
+
 @wptserve.handlers.handler
 def delete_annotation(request, response):
-    requested_file = doc_root + request.request_path[1:];
+    requested_file = doc_root + request.request_path[1:]
     if os.remove(requested_file):
         return (204, [], '')
 
@@ -191,5 +201,5 @@ routes = [
 ]
 
 httpd = wptserve.server.WebTestHttpd(port=port, doc_root=doc_root,
-                            routes=routes)
+                                     routes=routes)
 httpd.start(block=True)
