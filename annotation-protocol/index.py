@@ -178,7 +178,9 @@ def create_annotation(request, response):
         json.dump(incoming, outfile)
 
     # TODO: rashly assuming the above worked...of course
-    return (201, [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
+    return (201,
+            [('Content-Type', MEDIA_TYPE), ('Location', incoming['id']),
+                ('Link', '<http://www.w3.org/ns/ldp#Resource>; rel="type"')],
             json.dumps(incoming, indent=4, sort_keys=True))
 
 
