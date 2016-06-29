@@ -21,6 +21,10 @@ prefer_contained_descriptions = 'return=representation;' \
         + 'include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
 
 
+def dump_json(obj):
+    return json.dumps(obj, indent=4, sort_keys=True)
+
+
 def load_headers_from_file(path):
     headers = []
     with open(path) as header_file:
@@ -98,7 +102,7 @@ def collection(request, response):
     response.headers.update(load_headers_from_file(collection_headers_file))
     # this one's unique per request
     response.headers.set('Content-Location', collection_json['id'])
-    return json.dumps(collection_json, indent=4, sort_keys=True)
+    return dump_json(collection_json)
 
 
 def page(request, response):
@@ -146,7 +150,7 @@ def page(request, response):
     else:
         page_json['items'] = annotations(so_far)
 
-    return json.dumps(page_json, indent=4, sort_keys=True)
+    return dump_json(page_json)
 
 
 @wptserve.handlers.handler
@@ -179,10 +183,8 @@ def create_annotation(request, response):
 
     # TODO: rashly assuming the above worked...of course
     return (201,
-            [('Content-Type', MEDIA_TYPE), ('Location', incoming['id']),
-                ('Link', '<http://www.w3.org/ns/ldp#Resource>; rel="type"'),
-                ('Link', '<http://www.w3.org/ns/oa#Annotation>; rel="type"')],
-            json.dumps(incoming, indent=4, sort_keys=True))
+            [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
+            dump_json(incoming))
 
 
 @wptserve.handlers.handler
