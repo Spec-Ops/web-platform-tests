@@ -1,4 +1,4 @@
 Content-Type: application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"
 Link: <http://www.w3.org/ns/ldp#Resource>; rel="type"
-Allow: PUT,GET,OPTIONS,HEAD,DELETE,PATCH
+Allow: GET,HEAD,OPTIONS
 Vary: Accept

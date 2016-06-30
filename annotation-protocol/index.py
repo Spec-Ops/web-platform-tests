@@ -170,6 +170,23 @@ def single(request, response):
 
 
 @wptserve.handlers.handler
+def single_head(request, response):
+    requested_file = doc_root + request.request_path[1:]
+    headers_file = doc_root + 'annotations/annotation.headers'
+    if os.path.isfile(requested_file):
+        response.writer.write_status(200)
+    else:
+        response.writer.write_status(404)
+
+    headers = load_headers_from_file(headers_file)
+    #response.headers.update(headers)
+    for header, value in headers:
+        response.writer.write_header(header, value)
+    response.writer.end_headers()
+    response.writer.close_connection = True
+
+
+@wptserve.handlers.handler
 def create_annotation(request, response):
     # TODO: verify media type is JSON of some kind (at least)
     incoming = json.loads(request.body)
@@ -201,6 +218,7 @@ routes = [
     ("GET", "index.html", wptserve.handlers.file_handler),
     ("GET", "annotations/", collection),
     ("POST", "annotations/", create_annotation),
+    ("HEAD", "annotations/*", single_head),
     ("GET", "annotations/*", single),
     ("DELETE", "annotations/*", delete_annotation)
 ]
