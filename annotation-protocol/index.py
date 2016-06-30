@@ -185,6 +185,18 @@ def single_head(request, response):
     response.writer.end_headers()
     response.writer.close_connection = True
 
+@wptserve.handlers.handler
+def single_options(request, response):
+    requested_file = doc_root + request.request_path[1:]
+    headers_file = doc_root + 'annotations/annotation.headers'
+    if os.path.isfile(requested_file):
+        response.writer.write_status(200)
+    else:
+        response.writer.write_status(404)
+
+    response.writer.write_header('Access-Control-Allow-Origin', '*')
+    response.writer.end_headers()
+    response.writer.close_connection = True
 
 @wptserve.handlers.handler
 def create_annotation(request, response):
@@ -219,6 +231,7 @@ routes = [
     ("GET", "annotations/", collection),
     ("POST", "annotations/", create_annotation),
     ("HEAD", "annotations/*", single_head),
+    ("OPTIONS", "annotations/*", single_options),
     ("GET", "annotations/*", single),
     ("DELETE", "annotations/*", delete_annotation)
 ]
