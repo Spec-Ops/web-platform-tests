@@ -105,6 +105,23 @@ def collection(request, response):
     return dump_json(collection_json)
 
 
+@wptserve.handlers.handler
+def collection_head(request, response):
+    container_path = doc_root + request.request_path
+    if os.path.isdir(container_path):
+        response.writer.write_status(200)
+    else:
+        response.writer.write_status(404)
+
+    headers_file = doc_root + 'annotations/collection.headers'
+    headers = load_headers_from_file(headers_file)
+
+    for header, value in headers:
+        response.writer.write_header(header, value)
+    response.writer.end_headers()
+    response.writer.close_connection = True
+
+
 def page(request, response):
     page_json = {
       "@context": "http://www.w3.org/ns/anno.jsonld",
@@ -228,8 +245,13 @@ print 'http://localhost:{0}/'.format(port)
 routes = [
     ("GET", "", wptserve.handlers.file_handler),
     ("GET", "index.html", wptserve.handlers.file_handler),
+
+    # container responses
+    ("HEAD", "annotations/", collection_head),
     ("GET", "annotations/", collection),
     ("POST", "annotations/", create_annotation),
+
+    # single annotation responses
     ("HEAD", "annotations/*", single_head),
     ("OPTIONS", "annotations/*", single_options),
     ("GET", "annotations/*", single),
