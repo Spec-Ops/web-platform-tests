@@ -122,6 +122,19 @@ def collection_head(request, response):
     response.writer.close_connection = True
 
 
+@wptserve.handlers.handler
+def collection_options(request, response):
+    container_path = doc_root + request.request_path
+    if os.path.isdir(container_path):
+        response.writer.write_status(200)
+    else:
+        response.writer.write_status(404)
+
+    response.writer.write_header('Access-Control-Allow-Origin', '*')
+    response.writer.end_headers()
+    response.writer.close_connection = True
+
+
 def page(request, response):
     page_json = {
       "@context": "http://www.w3.org/ns/anno.jsonld",
@@ -248,6 +261,7 @@ routes = [
 
     # container responses
     ("HEAD", "annotations/", collection_head),
+    ("OPTIONS", "annotations/", collection_options),
     ("GET", "annotations/", collection),
     ("POST", "annotations/", create_annotation),
 
