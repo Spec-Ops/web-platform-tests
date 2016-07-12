@@ -109,31 +109,27 @@ def collection(request, response):
 def collection_head(request, response):
     container_path = doc_root + request.request_path
     if os.path.isdir(container_path):
-        response.writer.write_status(200)
+        response.status = 200
     else:
-        response.writer.write_status(404)
+        response.status = 404
 
     headers_file = doc_root + 'annotations/collection.headers'
-    headers = load_headers_from_file(headers_file)
+    for header, value in load_headers_from_file(headers_file):
+        response.headers.append(header, value)
 
-    for header, value in headers:
-        response.writer.write_header(header, value)
-    response.writer.end_headers()
-    response.writer.close_connection = True
+    response.content = None
 
 
 @wptserve.handlers.handler
 def collection_options(request, response):
     container_path = doc_root + request.request_path
     if os.path.isdir(container_path):
-        response.writer.write_status(200)
+        response.status = 200
     else:
-        response.writer.write_status(404)
+        response.status = 404
 
-    response.writer.write_header('Access-Control-Allow-Origin', '*')
-    response.writer.end_headers()
-    response.writer.close_connection = True
-
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.content = None
 
 def page(request, response):
     page_json = {
@@ -204,28 +200,26 @@ def single_head(request, response):
     requested_file = doc_root + request.request_path[1:]
     headers_file = doc_root + 'annotations/annotation.headers'
     if os.path.isfile(requested_file):
-        response.writer.write_status(200)
+        response.status = 200
     else:
-        response.writer.write_status(404)
+        response.status = 404
 
     headers = load_headers_from_file(headers_file)
     for header, value in headers:
-        response.writer.write_header(header, value)
-    response.writer.end_headers()
-    response.writer.close_connection = True
+        response.headers.append(header, value)
+    response.content = None
 
 
 @wptserve.handlers.handler
 def single_options(request, response):
     requested_file = doc_root + request.request_path[1:]
     if os.path.isfile(requested_file):
-        response.writer.write_status(200)
+        response.status = 200
     else:
-        response.writer.write_status(404)
+        response.status = 404
 
-    response.writer.write_header('Access-Control-Allow-Origin', '*')
-    response.writer.end_headers()
-    response.writer.close_connection = True
+    response.header.set('Access-Control-Allow-Origin', '*')
+    response.content = None
 
 
 @wptserve.handlers.handler
