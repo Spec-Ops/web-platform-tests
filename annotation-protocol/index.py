@@ -218,7 +218,7 @@ def single_options(request, response):
     else:
         response.status = 404
 
-    response.header.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Origin', '*')
     response.content = None
 
 
