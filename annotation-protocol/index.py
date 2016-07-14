@@ -168,7 +168,7 @@ def page(request, response):
     else:
         del page_json['next']
 
-    if qs.get('iris') and qs.get('iris')[0] is '1':
+    if qs.get('iris') and qs.get('iris')[0] is 1:
         page_json['items'] = annotation_iris(so_far)
         page_json['id'] += '&iris=1'
         if 'prev' in page_json:
