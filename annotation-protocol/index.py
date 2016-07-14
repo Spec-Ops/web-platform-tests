@@ -258,8 +258,11 @@ def annotation_put(request, response):
 @wptserve.handlers.handler
 def annotation_delete(request, response):
     requested_file = doc_root + request.request_path[1:]
-    if os.remove(requested_file):
+    try:
+        os.remove(requested_file)
         return (204, [], '')
+    except OSError:
+        return (404, [], 'Not Found')
 
 
 print 'http://localhost:{0}/'.format(port)
