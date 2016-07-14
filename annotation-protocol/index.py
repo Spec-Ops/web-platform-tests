@@ -63,9 +63,15 @@ def total_annotations():
 
 
 @wptserve.handlers.handler
-def collection(request, response):
-    """Annotation Collection"""
+def collection_get(request, response):
+    """Annotation Collection handler. NOTE: This also routes paging requests"""
 
+    # Paginate if requested
+    qs = urlparse.parse_qs(request.url_parts.query)
+    if 'page' in qs:
+        return page(request, response)
+
+    # stub collection
     collection_json = {
       "@context": [
         "http://www.w3.org/ns/anno.jsonld",
@@ -80,11 +86,6 @@ def collection(request, response):
 
     last_page = (total_annotations() / per_page) - 1
     collection_json['last'] = "/annotations/?page={0}".format(last_page)
-
-    # Paginate if requested
-    qs = urlparse.parse_qs(request.url_parts.query)
-    if 'page' in qs:
-        return page(request, response)
 
     # Default Container format SHOULD be PreferContainedDescriptions
     prefer_header = request.headers.get('Prefer',
@@ -130,6 +131,7 @@ def collection_options(request, response):
 
     response.headers.set('Access-Control-Allow-Origin', '*')
     response.content = None
+
 
 def page(request, response):
     page_json = {
@@ -266,10 +268,12 @@ routes = [
     ("GET", "", wptserve.handlers.file_handler),
     ("GET", "index.html", wptserve.handlers.file_handler),
 
-    # container responses
+    # container/collection responses
     ("HEAD", "annotations/", collection_head),
     ("OPTIONS", "annotations/", collection_options),
-    ("GET", "annotations/", collection),
+    ("GET", "annotations/", collection_get),
+
+    # create annotations in the collection
     ("POST", "annotations/", annotation_post),
 
     # single annotation responses
