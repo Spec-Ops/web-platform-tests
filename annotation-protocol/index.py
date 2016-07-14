@@ -222,10 +222,9 @@ def single_options(request, response):
     response.content = None
 
 
-@wptserve.handlers.handler
-def create_annotation(request, response):
+def create_annotation(body):
     # TODO: verify media type is JSON of some kind (at least)
-    incoming = json.loads(request.body)
+    incoming = json.loads(body)
     id = str(uuid.uuid4())
     if 'id' in incoming:
         incoming['canonical'] = incoming['id']
@@ -234,8 +233,22 @@ def create_annotation(request, response):
     with open(container_path + id, 'w') as outfile:
         json.dump(incoming, outfile)
 
+    return incoming
+
+
+@wptserve.handlers.handler
+def annotation_create(request, response):
+    incoming = create_annotation(request.body);
     # TODO: rashly assuming the above worked...of course
     return (201,
+            [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
+            dump_json(incoming))
+
+
+@wptserve.handlers.handler
+def annotation_update(request, response):
+    incoming = create_annotation(request.body);
+    return (200,
             [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
             dump_json(incoming))
 
@@ -257,12 +270,13 @@ routes = [
     ("HEAD", "annotations/", collection_head),
     ("OPTIONS", "annotations/", collection_options),
     ("GET", "annotations/", collection),
-    ("POST", "annotations/", create_annotation),
+    ("POST", "annotations/", annotation_create),
 
     # single annotation responses
     ("HEAD", "annotations/*", single_head),
     ("OPTIONS", "annotations/*", single_options),
     ("GET", "annotations/*", single),
+    ("PUT", "annotations/*", annotation_update),
     ("DELETE", "annotations/*", delete_annotation)
 ]
 
