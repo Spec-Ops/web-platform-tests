@@ -180,7 +180,7 @@ def page(request, response):
 
 
 @wptserve.handlers.handler
-def single(request, response):
+def annotation_get(request, response):
     """Inidividual Annotations"""
     requested_file = doc_root + request.request_path[1:]
 
@@ -196,7 +196,7 @@ def single(request, response):
 
 
 @wptserve.handlers.handler
-def single_head(request, response):
+def annotation_head(request, response):
     requested_file = doc_root + request.request_path[1:]
     headers_file = doc_root + 'annotations/annotation.headers'
     if os.path.isfile(requested_file):
@@ -211,7 +211,7 @@ def single_head(request, response):
 
 
 @wptserve.handlers.handler
-def single_options(request, response):
+def annotation_options(request, response):
     requested_file = doc_root + request.request_path[1:]
     if os.path.isfile(requested_file):
         response.status = 200
@@ -237,7 +237,7 @@ def create_annotation(body):
 
 
 @wptserve.handlers.handler
-def annotation_create(request, response):
+def annotation_post(request, response):
     incoming = create_annotation(request.body);
     # TODO: rashly assuming the above worked...of course
     return (201,
@@ -246,7 +246,7 @@ def annotation_create(request, response):
 
 
 @wptserve.handlers.handler
-def annotation_update(request, response):
+def annotation_put(request, response):
     incoming = create_annotation(request.body);
     return (200,
             [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
@@ -254,7 +254,7 @@ def annotation_update(request, response):
 
 
 @wptserve.handlers.handler
-def delete_annotation(request, response):
+def annotation_delete(request, response):
     requested_file = doc_root + request.request_path[1:]
     if os.remove(requested_file):
         return (204, [], '')
@@ -270,14 +270,14 @@ routes = [
     ("HEAD", "annotations/", collection_head),
     ("OPTIONS", "annotations/", collection_options),
     ("GET", "annotations/", collection),
-    ("POST", "annotations/", annotation_create),
+    ("POST", "annotations/", annotation_post),
 
     # single annotation responses
-    ("HEAD", "annotations/*", single_head),
-    ("OPTIONS", "annotations/*", single_options),
-    ("GET", "annotations/*", single),
-    ("PUT", "annotations/*", annotation_update),
-    ("DELETE", "annotations/*", delete_annotation)
+    ("HEAD", "annotations/*", annotation_head),
+    ("OPTIONS", "annotations/*", annotation_options),
+    ("GET", "annotations/*", annotation_get),
+    ("PUT", "annotations/*", annotation_put),
+    ("DELETE", "annotations/*", annotation_delete)
 ]
 
 httpd = wptserve.server.WebTestHttpd(port=port, doc_root=doc_root,
