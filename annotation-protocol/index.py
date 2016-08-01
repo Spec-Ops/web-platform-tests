@@ -1,3 +1,4 @@
+import hashlib
 import json
 import os
 import urlparse
@@ -199,6 +200,14 @@ def annotation_get(request, response):
 
     headers_file = doc_root + 'annotations/annotation.headers'
     response.headers.update(load_headers_from_file(headers_file))
+
+    # Calculate ETag using Apache httpd's default method (more or less)
+    # http://www.askapache.info//2.3/mod/core.html#fileetag
+    statinfo = os.stat(requested_file)
+    etag = "{0}{1}{2}".format(statinfo.st_ino, statinfo.st_mtime,
+                              statinfo.st_size)
+    # obfuscate so we don't leak info; hexdigest for string compatibility
+    response.headers.set('Etag', hashlib.sha1(etag).hexdigest())
 
     if os.path.isfile(requested_file):
         with open(requested_file) as data_file:
