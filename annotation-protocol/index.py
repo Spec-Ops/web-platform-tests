@@ -98,6 +98,7 @@ def collection_get(request, response):
     if prefer_header == prefer_contained_iris:
         collection_json['id'] += '?iris=1'
         collection_json['first'] += '&iris=1'
+        collection_json['last'] += '&iris=1'
 
     collection_headers_file = doc_root + 'annotations/collection.headers'
     response.headers.update(load_headers_from_file(collection_headers_file))
