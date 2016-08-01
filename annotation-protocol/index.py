@@ -13,12 +13,9 @@ per_page = 10
 
 MEDIA_TYPE = 'application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"'
 # Prefer header variants
-prefer_minimal = 'return=representation;' \
-        + 'include="http://www.w3.org/ns/ldp#PreferMinimalContainer"'
-prefer_contained_iris = 'return=representation;' \
-        + 'include="http://www.w3.org/ns/oa#PreferContainedIRIs"'
-prefer_contained_descriptions = 'return=representation;' \
-        + 'include="http://www.w3.org/ns/oa#PreferContainedDescriptions"'
+prefer_minimal_container = "http://www.w3.org/ns/ldp#PreferMinimalContainer"
+prefer_contained_iris = "http://www.w3.org/ns/oa#PreferContainedIRIs"
+prefer_contained_descriptions = "http://www.w3.org/ns/oa#PreferContainedDescriptions"
 
 
 def dump_json(obj):
@@ -42,14 +39,14 @@ def annotation_files():
     return files
 
 
-def annotation_iris(skip):
+def annotation_iris(skip=0):
     iris = []
     for filename in annotation_files():
         iris.append('/annotations/' + filename)
     return iris[skip:][:per_page]
 
 
-def annotations(skip):
+def annotations(skip=0):
     annotations = []
     files = annotation_files()
     for file in files:
@@ -94,11 +91,24 @@ def collection_get(request, response):
     collection_json['total'] = total_annotations()
     # TODO: calculate last page and add it's page number
 
+    if (qs.get('iris') and qs.get('iris')[0] is '1') \
+            or prefer_contained_iris in prefer_header:
+        return_iris = True
+    else:
+        return_iris = False
+
+
     # only PreferContainedIRIs has unqiue content
-    if prefer_header == prefer_contained_iris:
+    if return_iris:
         collection_json['id'] += '?iris=1'
         collection_json['first'] += '&iris=1'
         collection_json['last'] += '&iris=1'
+
+    if prefer_minimal_container not in prefer_header:
+        if return_iris:
+            collection_json['first'] = annotation_iris()
+        else:
+            collection_json['first'] = annotations()
 
     collection_headers_file = doc_root + 'annotations/collection.headers'
     response.headers.update(load_headers_from_file(collection_headers_file))
@@ -169,7 +179,7 @@ def page(request, response):
     else:
         del page_json['next']
 
-    if qs.get('iris') and qs.get('iris')[0] is 1:
+    if qs.get('iris') and qs.get('iris')[0] is '1':
         page_json['items'] = annotation_iris(so_far)
         page_json['id'] += '&iris=1'
         if 'prev' in page_json:
