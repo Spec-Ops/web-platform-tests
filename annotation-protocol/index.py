@@ -16,7 +16,8 @@ MEDIA_TYPE = 'application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"'
 # Prefer header variants
 PREFER_MINIMAL_CONTAINER = "http://www.w3.org/ns/ldp#PreferMinimalContainer"
 PREFER_CONTAINED_IRIS = "http://www.w3.org/ns/oa#PreferContainedIRIs"
-PREFER_CONTAINED_DESCRIPTIONS = "http://www.w3.org/ns/oa#PreferContainedDescriptions"
+PREFER_CONTAINED_DESCRIPTIONS = \
+        "http://www.w3.org/ns/oa#PreferContainedDescriptions"
 
 
 def extract_preference(prefer):
@@ -211,7 +212,7 @@ def page(request, response):
 
 @wptserve.handlers.handler
 def annotation_get(request, response):
-    """Inidividual Annotations"""
+    """Individual Annotations"""
     requested_file = doc_root + request.request_path[1:]
 
     headers_file = doc_root + 'annotations/annotation.headers'
@@ -276,7 +277,7 @@ def create_annotation(body):
 
 @wptserve.handlers.handler
 def annotation_post(request, response):
-    incoming = create_annotation(request.body);
+    incoming = create_annotation(request.body)
     # TODO: rashly assuming the above worked...of course
     return (201,
             [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
@@ -285,7 +286,7 @@ def annotation_post(request, response):
 
 @wptserve.handlers.handler
 def annotation_put(request, response):
-    incoming = create_annotation(request.body);
+    incoming = create_annotation(request.body)
     return (200,
             [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
             dump_json(incoming))
