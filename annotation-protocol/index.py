@@ -14,9 +14,23 @@ per_page = 10
 
 MEDIA_TYPE = 'application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"'
 # Prefer header variants
-prefer_minimal_container = "http://www.w3.org/ns/ldp#PreferMinimalContainer"
-prefer_contained_iris = "http://www.w3.org/ns/oa#PreferContainedIRIs"
-prefer_contained_descriptions = "http://www.w3.org/ns/oa#PreferContainedDescriptions"
+PREFER_MINIMAL_CONTAINER = "http://www.w3.org/ns/ldp#PreferMinimalContainer"
+PREFER_CONTAINED_IRIS = "http://www.w3.org/ns/oa#PreferContainedIRIs"
+PREFER_CONTAINED_DESCRIPTIONS = "http://www.w3.org/ns/oa#PreferContainedDescriptions"
+
+
+def extract_preference(prefer):
+    """Extracts the parameters from a Prefer header's value
+    >>> extract_preferences('return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer http://www.w3.org/ns/oa#PreferContainedIRIs"')
+    {"return": "representation", "include": ["http://www.w3.org/ns/ldp#PreferMinimalContainer", "http://www.w3.org/ns/oa#PreferContainedIRIs"]}
+    """
+    obj = {}
+    if prefer:
+        params = prefer.split(';')
+        for p in params:
+            key, value = p.split('=')
+            obj[key] = value.strip('"').split(' ')
+    return obj
 
 
 def dump_json(obj):
@@ -86,18 +100,20 @@ def collection_get(request, response):
     collection_json['last'] = "/annotations/?page={0}".format(last_page)
 
     # Default Container format SHOULD be PreferContainedDescriptions
-    prefer_header = request.headers.get('Prefer',
-                                        prefer_contained_descriptions)
+    preference = extract_preference(request.headers.get('Prefer'))
+    if 'include' in preference:
+        preference = preference['include']
+    else:
+        preference = None
 
     collection_json['total'] = total_annotations()
     # TODO: calculate last page and add it's page number
 
     if (qs.get('iris') and qs.get('iris')[0] is '1') \
-            or prefer_contained_iris in prefer_header:
+            or (preference and PREFER_CONTAINED_IRIS in preference):
         return_iris = True
     else:
         return_iris = False
-
 
     # only PreferContainedIRIs has unqiue content
     if return_iris:
@@ -105,7 +121,7 @@ def collection_get(request, response):
         collection_json['first'] += '&iris=1'
         collection_json['last'] += '&iris=1'
 
-    if prefer_minimal_container not in prefer_header:
+    if preference and PREFER_MINIMAL_CONTAINER not in preference:
         if return_iris:
             collection_json['first'] = annotation_iris()
         else:
