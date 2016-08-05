@@ -301,28 +301,29 @@ def annotation_delete(request, response):
         return (404, [], 'Not Found')
 
 
-print 'http://localhost:{0}/'.format(port)
+if __name__ == '__main__':
+    print 'http://localhost:{0}/'.format(port)
 
-routes = [
-    ("GET", "", wptserve.handlers.file_handler),
-    ("GET", "index.html", wptserve.handlers.file_handler),
+    routes = [
+        ("GET", "", wptserve.handlers.file_handler),
+        ("GET", "index.html", wptserve.handlers.file_handler),
 
-    # container/collection responses
-    ("HEAD", "annotations/", collection_head),
-    ("OPTIONS", "annotations/", collection_options),
-    ("GET", "annotations/", collection_get),
+        # container/collection responses
+        ("HEAD", "annotations/", collection_head),
+        ("OPTIONS", "annotations/", collection_options),
+        ("GET", "annotations/", collection_get),
 
-    # create annotations in the collection
-    ("POST", "annotations/", annotation_post),
+        # create annotations in the collection
+        ("POST", "annotations/", annotation_post),
 
-    # single annotation responses
-    ("HEAD", "annotations/*", annotation_head),
-    ("OPTIONS", "annotations/*", annotation_options),
-    ("GET", "annotations/*", annotation_get),
-    ("PUT", "annotations/*", annotation_put),
-    ("DELETE", "annotations/*", annotation_delete)
-]
+        # single annotation responses
+        ("HEAD", "annotations/*", annotation_head),
+        ("OPTIONS", "annotations/*", annotation_options),
+        ("GET", "annotations/*", annotation_get),
+        ("PUT", "annotations/*", annotation_put),
+        ("DELETE", "annotations/*", annotation_delete)
+    ]
 
-httpd = wptserve.server.WebTestHttpd(port=port, doc_root=doc_root,
-                                     routes=routes)
-httpd.start(block=True)
+    httpd = wptserve.server.WebTestHttpd(port=port, doc_root=doc_root,
+                                         routes=routes)
+    httpd.start(block=True)
