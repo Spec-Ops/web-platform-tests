@@ -38,6 +38,9 @@ PREFER_CONTAINED_DESCRIPTIONS = \
         "http://www.w3.org/ns/oa#PreferContainedDescriptions"
 
 
+# dictionary for annotations that we create on the fly
+tempAnnotations = {}
+
 def extract_preference(prefer):
     """Extracts the parameters from a Prefer header's value
     >>> extract_preferences('return=representation;include="http://www.w3.org/ns/ldp#PreferMinimalContainer http://www.w3.org/ns/oa#PreferContainedIRIs"')
@@ -64,12 +67,13 @@ def load_headers_from_file(path):
                    for line in data.splitlines() if line]
     return headers
 
-
 def annotation_files():
     files = []
     for file in os.listdir(container_path):
         if file.endswith('.jsonld') or file.endswith('.json'):
             files.append(file)
+    for item in list(tempAnnotations.keys()):
+        files.append(item)
     return files
 
 
@@ -84,8 +88,11 @@ def annotations(skip=0):
     annotations = []
     files = annotation_files()
     for file in files:
-        with open(container_path + file) as annotation:
-            annotations.append(json.load(annotation))
+        if file.startswith("temp-"):
+            annotations.append(json.loads(tempAnnotations[file]))
+        else:
+            with open(container_path + file) as annotation:
+                annotations.append(json.load(annotation))
     return annotations
 
 
@@ -235,19 +242,29 @@ def page(request, response):
 def annotation_get(request, response):
     """Individual Annotations"""
     requested_file = doc_root + request.request_path[1:]
+    base = os.path.basename( requested_file )
 
     headers_file = doc_root + 'annotations/annotation.headers'
     response.headers.update(load_headers_from_file(headers_file))
 
-    # Calculate ETag using Apache httpd's default method (more or less)
-    # http://www.askapache.info//2.3/mod/core.html#fileetag
-    statinfo = os.stat(requested_file)
-    etag = "{0}{1}{2}".format(statinfo.st_ino, statinfo.st_mtime,
-                              statinfo.st_size)
-    # obfuscate so we don't leak info; hexdigest for string compatibility
-    response.headers.set('Etag', hashlib.sha1(etag).hexdigest())
+    if base.startswith("temp-") and tempAnnotations[base]:
+        response.headers.set('Etag', hashlib.sha1(base).hexdigest())
+        data = dump_json(tempAnnotations[base])
+        if data != "" :
+            response.content = data
+            response.status = 200
+        else:
+            response.content = ""
+            response.status = 404
+    elif os.path.isfile(requested_file):
+        # Calculate ETag using Apache httpd's default method (more or less)
+        # http://www.askapache.info//2.3/mod/core.html#fileetag
+        statinfo = os.stat(requested_file)
+        etag = "{0}{1}{2}".format(statinfo.st_ino, statinfo.st_mtime,
+                                  statinfo.st_size)
+        # obfuscate so we don't leak info; hexdigest for string compatibility
+        response.headers.set('Etag', hashlib.sha1(etag).hexdigest())
 
-    if os.path.isfile(requested_file):
         with open(requested_file) as data_file:
             data = data_file.read()
         return data
@@ -258,8 +275,30 @@ def annotation_get(request, response):
 @wptserve.handlers.handler
 def annotation_head(request, response):
     requested_file = doc_root + request.request_path[1:]
+    base = os.path.basename(requested_file)
+
+    if base.startswith("temp-") and tempAnnotations[base]:
+        response.status = 200
+    elif os.path.isfile(requested_file):
+        response.status = 200
+    else:
+        response.status = 404
+
+    headers_file = doc_root + 'annotations/annotation.options.headers'
+    headers = load_headers_from_file(headers_file)
+    for header, value in headers:
+        response.headers.append(header, value)
+
+    response.content = "Annotation Options\n"
+
+def create_annotation(body):
+    # TODO: verify media type is JSON of some kind (at least)
+    incoming = json.loads(body)
+    id = "temp-"+str(uuid.uuid4())
     headers_file = doc_root + 'annotations/annotation.headers'
-    if os.path.isfile(requested_file):
+    if base.startswith("temp-") and tempAnnotations[base]:
+        response.status = 200
+    elif os.path.isfile(requested_file):
         response.status = 200
     else:
         response.status = 404
@@ -273,7 +312,11 @@ def annotation_head(request, response):
 @wptserve.handlers.handler
 def annotation_options(request, response):
     requested_file = doc_root + request.request_path[1:]
-    if os.path.isfile(requested_file):
+    base = os.path.basename(requested_file)
+
+    if base.startswith("temp-") and tempAnnotations[base]:
+        response.status = 200
+    elif os.path.isfile(requested_file):
         response.status = 200
     else:
         response.status = 404
@@ -289,13 +332,10 @@ def annotation_options(request, response):
 def create_annotation(body):
     # TODO: verify media type is JSON of some kind (at least)
     incoming = json.loads(body)
-    id = str(uuid.uuid4())
+    id = "temp-"+str(uuid.uuid4())
     if 'id' in incoming:
         incoming['canonical'] = incoming['id']
     incoming['id'] = URIroot + '/annotations/' + id
-
-    with open(container_path + id, 'w') as outfile:
-        json.dump(incoming, outfile)
 
     return incoming
 
@@ -303,15 +343,34 @@ def create_annotation(body):
 @wptserve.handlers.handler
 def annotation_post(request, response):
     incoming = create_annotation(request.body)
+    newID = incoming['id']
+    key = os.path.basename(newID)
+
+    print "post:" + newID
+    print "post:" + key
+
+    tempAnnotations[key] = dump_json(incoming)
+
     headers_file = doc_root + 'annotations/annotation.headers'
     response.headers.update(load_headers_from_file(headers_file))
-    response.headers.append('Location', incoming['id'])
+    response.headers.append('Location', newID)
     response.content = dump_json(incoming)
     response.status = 201
 
 @wptserve.handlers.handler
 def annotation_put(request, response):
     incoming = create_annotation(request.body)
+
+    # remember it in our local cache too
+    # tempAnnotations[request.request_path[1:]] = dump_jason(incoming)
+    newID = incoming['id']
+    key = os.path.basename(newID)
+
+    print "put:" + newID
+    print "put:" + key
+
+    tempAnnotations[key] = dump_json(incoming)
+
     headers_file = doc_root + 'annotations/annotation.headers'
     response.headers.update(load_headers_from_file(headers_file))
     response.headers.append('Location', incoming['id'])
@@ -321,11 +380,16 @@ def annotation_put(request, response):
 
 @wptserve.handlers.handler
 def annotation_delete(request, response):
+    base = os.path.basename(request.request_path[1:])
     requested_file = doc_root + request.request_path[1:]
     headers_file = doc_root + 'annotations/annotation.headers'
     response.headers.update(load_headers_from_file(headers_file))
     try:
-        os.remove(requested_file)
+        if base.startswith("temp-"):
+            if tempAnnotations[base]:
+                del tempAnnotations[base]
+        else:
+            os.remove(requested_file)
         response.status = 204
         response.content = ''
     except OSError:
