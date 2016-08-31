@@ -303,29 +303,34 @@ def create_annotation(body):
 @wptserve.handlers.handler
 def annotation_post(request, response):
     incoming = create_annotation(request.body)
-    # TODO: rashly assuming the above worked...of course
-    return (201,
-            [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
-            dump_json(incoming))
-
+    headers_file = doc_root + 'annotations/annotation.headers'
+    response.headers.update(load_headers_from_file(headers_file))
+    response.headers.append('Location', incoming['id'])
+    response.content = dump_json(incoming)
+    response.status = 201
 
 @wptserve.handlers.handler
 def annotation_put(request, response):
     incoming = create_annotation(request.body)
-    return (200,
-            [('Content-Type', MEDIA_TYPE), ('Location', incoming['id'])],
-            dump_json(incoming))
+    headers_file = doc_root + 'annotations/annotation.headers'
+    response.headers.update(load_headers_from_file(headers_file))
+    response.headers.append('Location', incoming['id'])
+    response.content = dump_json(incoming)
+    response.status = 200
 
 
 @wptserve.handlers.handler
 def annotation_delete(request, response):
     requested_file = doc_root + request.request_path[1:]
+    headers_file = doc_root + 'annotations/annotation.headers'
+    response.headers.update(load_headers_from_file(headers_file))
     try:
         os.remove(requested_file)
-        return (204, [], '')
+        response.status = 204
+        response.content = ''
     except OSError:
-        return (404, [], 'Not Found')
-
+        response.status = 404
+        response.content = 'Not Found'
 
 if __name__ == '__main__':
     print 'http://' + myhost + ':{0}/'.format(port)
