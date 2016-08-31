@@ -4,4 +4,4 @@ Link: <http://www.w3.org/TR/annotation-protocol/>; rel="http://www.w3.org/ns/ldp
 Allow: POST,GET,OPTIONS,HEAD
 Vary: Accept, Prefer
 Access-Control-Allow-Origin: *
-Access-Control-Expose-Headers: ETag, Allow, Vary, Link, Content-Location
+Access-Control-Expose-Headers: Location, ETag, Allow, Vary, Link, Content-Location
