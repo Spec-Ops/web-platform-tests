@@ -1,0 +1,5 @@
+Content-Type: text/plain
+Allow: POST,GET,OPTIONS,HEAD
+Vary: Accept, Prefer
+Access-Control-Allow-Origin: *
+Access-Control-Expose-Headers: ETag, Allow, Vary, Link, Content-Location

@@ -3,3 +3,5 @@ Link: <http://www.w3.org/ns/ldp#BasicContainer>; rel="type"
 Link: <http://www.w3.org/TR/annotation-protocol/>; rel="http://www.w3.org/ns/ldp#constrainedBy"
 Allow: POST,GET,OPTIONS,HEAD
 Vary: Accept, Prefer
+Access-Control-Allow-Origin: *
+Access-Control-Expose-Headers: ETag, Allow, Vary, Link, Content-Location
