@@ -58,6 +58,9 @@ def extract_preference(prefer):
 def dump_json(obj):
     return json.dumps(obj, indent=4, sort_keys=True)
 
+def add_cors_headers(resp):
+    headers_file = doc_root + 'annotations/cors.headers'
+    resp.headers.update(load_headers_from_file(headers_file))
 
 def load_headers_from_file(path):
     headers = []
@@ -154,6 +157,7 @@ def collection_get(request, response):
             collection_json['first'] = annotations()
 
     collection_headers_file = doc_root + 'annotations/collection.headers'
+    add_cors_headers(response)
     response.headers.update(load_headers_from_file(collection_headers_file))
     # this one's unique per request
     response.headers.set('Content-Location', collection_json['id'])
@@ -168,6 +172,7 @@ def collection_head(request, response):
     else:
         response.status = 404
 
+    add_cors_headers(response)
     headers_file = doc_root + 'annotations/collection.headers'
     for header, value in load_headers_from_file(headers_file):
         response.headers.append(header, value)
@@ -183,6 +188,7 @@ def collection_options(request, response):
     else:
         response.status = 404
 
+    add_cors_headers(response)
     headers_file = doc_root + 'annotations/collection.options.headers'
     for header, value in load_headers_from_file(headers_file):
         response.headers.append(header, value)
@@ -204,6 +210,7 @@ def page(request, response):
       ]
     }
 
+    add_cors_headers(response)
     headers_file = doc_root + 'annotations/collection.headers'
     response.headers.update(load_headers_from_file(headers_file))
 
@@ -245,9 +252,9 @@ def annotation_get(request, response):
     base = os.path.basename( requested_file )
 
     headers_file = doc_root + 'annotations/annotation.headers'
-    response.headers.update(load_headers_from_file(headers_file))
 
     if base.startswith("temp-") and tempAnnotations[base]:
+        response.headers.update(load_headers_from_file(headers_file))
         response.headers.set('Etag', hashlib.sha1(base).hexdigest())
         data = dump_json(tempAnnotations[base])
         if data != "" :
@@ -257,6 +264,7 @@ def annotation_get(request, response):
             response.content = ""
             response.status = 404
     elif os.path.isfile(requested_file):
+        response.headers.update(load_headers_from_file(headers_file))
         # Calculate ETag using Apache httpd's default method (more or less)
         # http://www.askapache.info//2.3/mod/core.html#fileetag
         statinfo = os.stat(requested_file)
@@ -267,9 +275,13 @@ def annotation_get(request, response):
 
         with open(requested_file) as data_file:
             data = data_file.read()
-        return data
+        response.content = data
+        response.status = 200
     else:
-        return (404, [], 'Not Found')
+        response.content = 'Not Found'
+        response.status = 404
+
+    add_cors_headers(response)
 
 
 @wptserve.handlers.handler
@@ -277,55 +289,37 @@ def annotation_head(request, response):
     requested_file = doc_root + request.request_path[1:]
     base = os.path.basename(requested_file)
 
-    if base.startswith("temp-") and tempAnnotations[base]:
-        response.status = 200
-    elif os.path.isfile(requested_file):
-        response.status = 200
-    else:
-        response.status = 404
-
     headers_file = doc_root + 'annotations/annotation.options.headers'
-    headers = load_headers_from_file(headers_file)
-    for header, value in headers:
-        response.headers.append(header, value)
 
-    response.content = "Annotation Options\n"
-
-def create_annotation(body):
-    # TODO: verify media type is JSON of some kind (at least)
-    incoming = json.loads(body)
-    id = "temp-"+str(uuid.uuid4())
-    headers_file = doc_root + 'annotations/annotation.headers'
     if base.startswith("temp-") and tempAnnotations[base]:
         response.status = 200
+        response.headers.update(load_headers_from_file(headers_file))
     elif os.path.isfile(requested_file):
         response.status = 200
+        response.headers.update(load_headers_from_file(headers_file))
     else:
         response.status = 404
 
-    headers = load_headers_from_file(headers_file)
-    for header, value in headers:
-        response.headers.append(header, value)
-    response.content = None
-
+    add_cors_headers(response)
+    response.content = "Annotation Options\n"
 
 @wptserve.handlers.handler
 def annotation_options(request, response):
     requested_file = doc_root + request.request_path[1:]
     base = os.path.basename(requested_file)
 
+    headers_file = doc_root + 'annotations/annotation.options.headers'
+
     if base.startswith("temp-") and tempAnnotations[base]:
         response.status = 200
+        response.headers.update(load_headers_from_file(headers_file))
     elif os.path.isfile(requested_file):
         response.status = 200
+        response.headers.update(load_headers_from_file(headers_file))
     else:
         response.status = 404
 
-    headers_file = doc_root + 'annotations/annotation.options.headers'
-    headers = load_headers_from_file(headers_file)
-    for header, value in headers:
-        response.headers.append(header, value)
-
+    add_cors_headers(response)
     response.content = "Annotation Options\n"
 
 
@@ -354,6 +348,7 @@ def annotation_post(request, response):
     headers_file = doc_root + 'annotations/annotation.headers'
     response.headers.update(load_headers_from_file(headers_file))
     response.headers.append('Location', newID)
+    add_cors_headers(response)
     response.content = dump_json(incoming)
     response.status = 201
 
@@ -374,6 +369,7 @@ def annotation_put(request, response):
     headers_file = doc_root + 'annotations/annotation.headers'
     response.headers.update(load_headers_from_file(headers_file))
     response.headers.append('Location', incoming['id'])
+    add_cors_headers(response)
     response.content = dump_json(incoming)
     response.status = 200
 
@@ -382,14 +378,18 @@ def annotation_put(request, response):
 def annotation_delete(request, response):
     base = os.path.basename(request.request_path[1:])
     requested_file = doc_root + request.request_path[1:]
+
+    add_cors_headers(response)
+
     headers_file = doc_root + 'annotations/annotation.headers'
-    response.headers.update(load_headers_from_file(headers_file))
+
     try:
         if base.startswith("temp-"):
             if tempAnnotations[base]:
                 del tempAnnotations[base]
         else:
             os.remove(requested_file)
+        response.headers.update(load_headers_from_file(headers_file))
         response.status = 204
         response.content = ''
     except OSError:

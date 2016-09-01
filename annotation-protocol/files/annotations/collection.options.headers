@@ -1,7 +1,3 @@
 Content-Type: text/plain
 Allow: POST,GET,OPTIONS,HEAD,DELETE,PUT
 Vary: Accept, Prefer
-Access-Control-Allow-Headers: Content-Type, Prefer
-Access-Control-Allow-Methods: OPTIONS, POST
-Access-Control-Allow-Origin: *
-Access-Control-Expose-Headers: Location, ETag, Allow, Vary, Link, Content-Location, Prefer

@@ -2,7 +2,3 @@ Content-Type: application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"
 Link: <http://www.w3.org/ns/ldp#Resource>; rel="type"
 Allow: GET,HEAD,OPTIONS,DELETE,PUT
 Vary: Accept
-Access-Control-Allow-Headers: Content-Type
-Access-Control-Allow-Methods: GET,HEAD,OPTIONS,DELETE,PUT
-Access-Control-Allow-Origin: *
-Access-Control-Expose-Headers: ETag, Allow, Vary, Link, Content-Type, Location
