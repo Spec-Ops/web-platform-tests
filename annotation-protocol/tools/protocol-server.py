@@ -1,3 +1,14 @@
+# protocol-server
+#
+# a reference implementation of the Web Annotation Protocol
+#
+# Developed by Benjamin Young (@bigbulehat) and Shane McCarron (@halindrome).
+# Sponsored by Spec-Ops (https://spec-ops.io)
+#
+# Copyright (c) 2016 Spec-Ops
+#
+# for license information, see http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright.html
+
 import os
 import sys
 
