@@ -67,18 +67,17 @@ def get_params(request, params):
     # 
     # if there is an error, return it in the error member of the response
 
-    for item in params:
-        try:
-            if (request.method == "GET"):
-                val = request.GET.first(item)
-            elif (request.method == "POST"):
-                val = request.POST.first(item)
-            else:
-                resp['error'] += "Incorrect request method " + request.method + "; "
-                break
-            resp[item] = val
-        except:
-            resp['error'] += "No such parameter: " + item + "; "
+    submission = {}
+
+    try:
+        submission = json.loads(request.body)
+        for item in params:
+            try:
+                resp[item] = submission[item]
+            except:
+                resp['error'] += "No such parameter: " + item + "; "
+    except:
+        resp['error'] = "Cannot decode submitted body as JSON; "
 
     return resp
 
@@ -141,7 +140,7 @@ def runTests(request, response):
 
     else:
         runResp['status'] = "ERROR"
-        runResp['statusTest'] = params[error]
+        runResp['statusText'] = params[error]
 
     add_cors_headers(response)
     response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
@@ -184,7 +183,7 @@ def startTest(request, response):
 
     else:
         testResp['status'] = "ERROR"
-        testResp['statusTest'] = params['error']
+        testResp['statusText'] = params['error']
 
     add_cors_headers(response)
     response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
