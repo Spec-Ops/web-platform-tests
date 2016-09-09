@@ -1,10 +1,10 @@
-/* globals Promise, done, assert_true, on_event */
+/* globals Promise, done, assert_true, on_event, promise_test */
 
 /**
- * Creates an ATTAconn object.  If the parameters are supplied
+ * Creates an ATTAcomm object.  If the parameters are supplied
  * it sets up event listeners to send the test data to an ATTA if one
- * is available.  If the ATTA does not respond, it will assume the test 
- * is being done manually and the results are being entered in the 
+ * is available.  If the ATTA does not respond, it will assume the test
+ * is being done manually and the results are being entered in the
  * parent test window.
  *
  * @constructor
@@ -17,13 +17,14 @@
  *
  */
 
-function ATTAconn(params) {
+function ATTAcomm(params) {
   'use strict';
 
   this.Params = null;       // parameters passed in
   this.Promise = null;      // master Promise that resolves when intialization is complete
   this.Properties = null;   // testharness_properties from the opening window
-  this.Test = null;         // test being run
+  this.Tests = null;        // test object being processed
+  this.testName = "";       // name of test being run
 
   this.loading = true;
 
@@ -51,27 +52,25 @@ function ATTAconn(params) {
   if (this.Params.hasOwnProperty("ATTAuri")) {
     this.ATTAuri = this.Params.ATTAuri;
   } else {
-    this.ATTAuri = "http://localhost:12345/ATTA";
+    this.ATTAuri = "http://localhost:4119";
+  }
+
+  if (this.Params.hasOwnProperty("title")) {
+    this.testName = this.Params.title;
   }
 
   // start by loading the test (it might be inline, but
   // loadTest deals with that
   pending.push(this.loadTest(params)
-    .then(function(test) {
+    .then(function(tests) {
       // if the test is NOT an object, turn it into one
-      if (typeof test === 'string') {
-        test = JSON.parse(test) ;
+      if (typeof tests === 'string') {
+        tests = JSON.parse(tests) ;
       }
 
-      this.Test = test;
+      this.Tests = tests;
 
-      // Test should have information that we can put in the template
-
-      if (test.description) {
-        this.DescriptionText = test.description;
-      }
-
-    }));
+    }.bind(this)));
 
   this.Promise = new Promise(function(resolve, reject) {
     // once the DOM and the test is loaded... set us up
@@ -79,8 +78,8 @@ function ATTAconn(params) {
     .then(function() {
       // Everything is loaded
       this.loading = false ;
-      // initialize the various listeners
-      this.init();
+      // run the automated tests (or setup for manual testing)
+      this.go();
       resolve(this);
     }.bind(this))
     .catch(function(err) {
@@ -97,108 +96,136 @@ function ATTAconn(params) {
   return this;
 }
 
-ATTAconn.prototype = {
+ATTAcomm.prototype = {
 
   /**
-   * @listens click
+   * go sets up the connection to the ATTA
+   *
+   * If that succeeds and the tests in this test file have methods for
+   * the API supported by the ATTA, then it automatically runs those tests.
+   *
+   * Otherwise it sets up for manualt testing.
    */
-  init: function() {
+  go: function() {
     'use strict';
-    if (!this.loading) {
-      // everything is ready.  Let's talk to the message
-      this.startTest().then(function(res) {
-        // automation environment connection worked
-        if (res.body.hasOwnProperty("status")) {
-          if (res.body.status === "READY") {
-            // the system is ready for us - let's do a test!
-            if (res.body.hasOwnProperty("API")) {
-              var API = res.body.API;
-              if (this.Test.hasOwnProperty(API)) {
-                // we actually have a test for this API
-                test(function() {
-                  this.runTests(res.Test[API]);
-                }.bind(this), this.Test.title);
-                this.endTest().then(function() {
-                  done();
-                }.bind(this));
-              } else {
-                // we don't know this API for this test
-                this.setupManualTest("Unknown AT API: " + API);
-              }
-            } else {
-              this.setupManualTest("No API in response from ATTA");
-            }
-          } else {
-            // the system reported soemthing else - fail out with the statusText as a result
-            this.setupManualTest("ATTA reported an error: " + res.body.statusText);
-          }
-        } else {
-          this.setupManualTest("ATTA did not report a status");
+    // everything is ready.  Let's talk to the message
+    this.startTest().then(function(res) {
+
+      // start was successful - iterate over steps
+      var API = res.body.API;
+
+      var subtestsForAPI = true;
+
+      this.Tests.forEach(function(subtest) {
+        if (!subtest.test.hasOwnProperty(API)) {
+          // this API does not have automated criteria for at least one test, so
+          // set up manual testing
+          subtestsForAPI = false;
         }
-      }.bind(this))
-      .catch(function(res) {
-        // start failed so just sit and wait for a manual test to occur
-        if (res.timeout) {
-          this.setupManualTest("No response from ATTA at " + this.ATTAuri);
-        } else {
-          this.setupManualTest("Error from ATTA: " + res.status + ": " + res.statusText);
-        }
-      }.bind(this));
-    } else {
-      window.alert("Loading did not finish before init handler was called!");
-    }
+      });
+
+      if (subtestsForAPI) {
+        // accumulate promises; complete when done
+        var pending = [];
+
+        this.Tests.forEach(function(subtest) {
+          // we actually have one or more subtests for this API
+          pending.push(this.runTest(API, subtest));
+        }.bind(this));
+
+        // wait for all the subtests to execute
+        Promise.all(pending)
+        .then(function(res) {
+          // the tests all ran; close it out
+          console.log(res);
+          this.endTest().then(function() {
+            done();
+          }.bind(this));
+        }.bind(this))
+        .catch(function(err) {
+          console.log(err);
+          this.endTest().then(function() {
+            done();
+          }.bind(this));
+        }.bind(this));
+      } else {
+        // we don't know this API for this test
+        this.setupManualTest("Unknown AT API: " + API);
+      }
+    }.bind(this))
+    .catch(function(res) {
+      // startTest failed so just sit and wait for a manual test to occur
+      if (res.timeout) {
+        this.setupManualTest("No response from ATTA at " + this.ATTAuri);
+      } else if (res.status === 200 ) {
+        this.setupManualTest(res.message);
+      } else {
+        this.setupManualTest("Error from ATTA: " + res.status + ": " + res.statusText);
+      }
+    }.bind(this));
   },
 
   setupManualTest: function(message) {
     // if we determine the test should run manually, then expose all of the conditions that are
     // in the TEST data structure so that a human can to the inspection and calculate the result
     'use strict';
-    window.alert(message);
+    console.log(message);
   },
 
-  // runTests - process subtests
+  // runTest - process subtest
   /**
-   * @param {object} assertions - List of assertions to process
-   * @param {string} content - JSON(-LD) to be evaluated
-   * @param {string} [testAction='continue'] - state of test processing (in parent when recursing)
-   * @param {integer} [level=0] - depth of recursion since assertion lists can nest
-   * @param {string} [compareWith='and'] - the way the results of the referenced assertions should be compared
-   * @returns {string} - the testAction resulting from evaluating all of the assertions
+   * @param {string} API - name of the API being tested
+   * @param {object} subtest - a subtest to run; contains 'title', 'element', and
+   * 'test array'
+   * @returns {Promise} - a Promise that resolves when the test completes
    */
-  runTests: function(API) {
+  runTest: function(API, subtest) {
     'use strict';
 
+    var data = {
+      "title" : subtest.title,
+      "id" : subtest.element,
+      "data": subtest.test[API]
+    };
+
     return new Promise(function(resolve, reject) {
-      var theTests = [] ;
-      if (this.Test && API !== undefined && API !== "") {
-        // we have assertions for this API
-        var testNum = 0;
-        this.Test[API].forEach( function(assertion) {
-          // send that test to the server
-          testNum++;
-          theTests.push(this.sendTest(assertion).then(function(res) {
-            if (res.result === "ERROR") {
-              // special condition that means something BAD happened
-              window.alert("Something bad happened: " + res.message);
-            } else if (res.result === "PASS") {
-              assert_true(true);
-            } else if (res.result === "FAIL") {
-              assert_true(false, "" + testNum + ": " + res.message);
+      promise_test(function() {
+        return this.sendTest(data)
+          .then(function(res) {
+            if (typeof res.body === "object" && res.body.hasOwnProperty("status")) {
+              // we got some sort of response
+              if (res.body.status === "OK") {
+                // the test ran - yay!
+                res.body.results.forEach( function (a) {
+                  if (typeof a === "object") {
+                    // we have a result for this assertion
+                    if (a.result === "ERROR") {
+                      console.log("Assertion " + a + " had an error: " + a.message);
+                    } else if (a.result === "PASS") {
+                      assert_true(true);
+                    } else if (a.result === "FAIL") {
+                      assert_true(false, a.message);
+                    }
+                  }
+                });
+              } else if (res.body.status === "ERROR") {
+                assert_true(false, "ATTA returned ERROR with message: " + res.body.statusText);
+              } else {
+                assert_true(false, "ATTA returned unknown status " + res.body.status + " with message: " + res.body.statusText);
+              }
+            } else {
+              // the return wasn't an object!
+              assert_true(false, "ATTA failed to return a result object: returned: "+JSON.stringify(res));
             }
+            resolve(true);
           }.bind(this))
-          .catch(function(res) {
-            assert_true(false, "" + testNum + ": " + res.statusText);
-          }.bind(this))
-          );
-        }.bind(this));
-      }
-      Promise.all(theTests)
-      .then(function(res) {
-        resolve(res);
-      }.bind(this))
-      .catch(function(res) {
-        reject(res);
-      }.bind(this));
+          .catch(function(err) {
+            // sendTest errored off
+            assert_true(false, "sendTest failed: status was " + err.status + "; statusText was " + err.statusText);
+            // resolve THIS promise - we FAILED but we are still done
+            reject(false);
+          });
+      }.bind(this), subtest.name );
     }.bind(this));
   },
 
@@ -215,25 +242,52 @@ ATTAconn.prototype = {
       return this._fetch("GET", params.testFile);
     } // else
     return new Promise(function(resolve, reject) {
-      if (params.hasOwnProperty('test')) {
-        resolve(params.test);
+      if (params.hasOwnProperty('tests')) {
+        resolve(params.tests);
       } else {
-        reject("Must supply a 'test' or 'testFile' parameter");
+        reject("Must supply a 'tests' or 'testFile' parameter");
       }
     });
   },
 
   // startTest - send the test start message
   //
-  // Returns a promise that resolves when when the ATTA replies with READY
+  // @returns {Promise} resolves if the start is successful, or rejects with
 
   startTest: function() {
     'use strict';
 
-    return this._fetch("POST", this.ATTAuri + "/start", null, { 
-      test: this.testName,
-      title: window.title
-    });
+    return new Promise(function(resolve, reject) {
+      var params = {
+        test: this.testName || window.title,
+        url: document.location.href
+      };
+
+      this._fetch("POST", this.ATTAuri + "/start", null, params)
+      .then(function(res) {
+        if (res.body.hasOwnProperty("status")) {
+          if (res.body.status === "READY") {
+            // the system is ready for us - is it really?
+            if (res.body.hasOwnProperty("API")) {
+              resolve(res);
+            } else {
+              res.message = "No API in response from ATTA";
+              reject(res);
+            }
+          } else {
+            // the system reported something else - fail out with the statusText as a result
+            res.message = "ATTA reported an error: " + res.body.statusText;
+            reject(res);
+          }
+        } else {
+          res.message = "ATTA did not report a status";
+          reject(res);
+        }
+      }.bind(this))
+      .catch(function(res) {
+        reject(res);
+      });
+    }.bind(this));
   },
 
   // sendTest - send test data to an ATTA and wait for a response
@@ -265,21 +319,25 @@ ATTAconn.prototype = {
   // status - the status code
   // statusText - the text of the return status
   // text - raw returned data
-  // body - an object parsed from the returned content 
+  // body - an object parsed from the returned content
   //
 
   _fetch: function (method, url, headers, content, parse) {
     'use strict';
-    if (method === undefined) {
+    if (method === null || method === undefined) {
       method = "GET";
     }
-    if (parse === undefined) {
+    if (parse === null || parse === undefined) {
       parse = true;
     }
+    if (headers === null || headers === undefined) {
+      headers = [];
+    }
+
 
     // note that this Promise always resolves - there is no reject
     // condition
-    
+
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
 
@@ -296,15 +354,14 @@ ATTAconn.prototype = {
       xhr.open(method, url);
 
       // headers?
-      if (headers !== undefined) {
-        headers.forEach(function(ref) {
-          xhr.setRequestHeader(ref[0], ref[1]);
-        });
-      }
+      headers.forEach(function(ref) {
+        xhr.setRequestHeader(ref[0], ref[1]);
+      });
 
-      if (this.timeout) {
+      /* if (this.timeout) {
         xhr.timeout = this.timeout;
       }
+      */
 
       xhr.ontimeout = function() {
         resp.timeout = this.timeout;
@@ -340,7 +397,7 @@ ATTAconn.prototype = {
         }
       };
 
-      if (content !== undefined) {
+      if (content !== null && content !== undefined) {
         if ("object" === typeof(content)) {
           xhr.send(JSON.stringify(content));
         } else if ("function" === typeof(content)) {
