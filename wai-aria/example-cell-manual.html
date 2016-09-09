@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Sample A11Y Test</title>
+<title>Sample A11Y Test for cell role</title>
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -14,17 +14,6 @@ var theTest = new ATTAcomm(
         {
           "title": "cell role tests",
           "element": "test",
-          "test" : {
-              "MSAA": [ [ "role", "ROLE_SYSTEM_CELL" ] ],
-              "UIA": [ [ "Control Type", "TableItem" ], [ "Selection Pattern",  "" ], [ "Invoke Pattern", "", "<undefined>" ] ],
-              "ATK": [ [ "role", "ROLE_TABLE_CELL" ], [ "interface", "TableCell" ] ],
-              "AXAPI": [ [ "AXRole", "AXCell" ], ["AXSubrole", "<nil>" ], ["AXRoleDescription", "cell"] ],
-              "WAIFAKE": [ [ "role", "ROLE_TABLE_CELL" ], [ "interface", "TableCell" ] ]
-          }
-        },
-        {
-          "title": "more cell role tests",
-          "element" : "test",
           "test" : {
               "MSAA": [ [ "role", "ROLE_SYSTEM_CELL" ] ],
               "UIA": [ [ "Control Type", "TableItem" ], [ "Selection Pattern",  "" ], [ "Invoke Pattern", "", "<undefined>" ] ],
