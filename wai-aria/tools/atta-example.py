@@ -64,7 +64,7 @@ def get_params(request, params):
 
     # loop over params and attempt to retrieve values
     # return the values in a response dictionary
-    # 
+    #
     # if there is an error, return it in the error member of the response
 
     submission = {}
@@ -107,7 +107,7 @@ def options(request, response):
 
 @wptserve.handlers.handler
 def runTests(request, response):
-    
+
     runResp = {
             "status":     "OK",
             "statusText": "",
@@ -122,7 +122,7 @@ def runTests(request, response):
         # element to be examined is in the id parameter
         # data to check is in the data parameter
 
-        theTests = {} 
+        theTests = {}
 
         try:
             theTests = json.loads(params[data])
@@ -171,7 +171,7 @@ def startTest(request, response):
             # do nothing
             testResp['status'] = "READY"
             testName = params['test']
-            # this would be a REAL A11Y reference 
+            # this would be a REAL A11Y reference
             testWindow = params['url']
 
             print "Starting test '" + testName + "' at url '" + testWindow + "'"
@@ -227,8 +227,8 @@ if __name__ == '__main__':
         ("HEAD", "start", startTest),
 
         # perform an individual test
-        ("POST", "test/", runTests),
-        ("GET", "test/", runTests),
+        ("POST", "test", runTests),
+        ("GET", "test", runTests),
 
         # end testing
         ("GET", "end", endTest),
