@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<title>Sample A11Y Test for main</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "main properties",
+      tests: [
+        {
+          "title": "main role tests",
+          "element": "test",
+          "test" : {
+              "ATK": [ [ "role", "ROLE_LANDMARK" ], [ "object", "xml-roles", "main" ] ],
+              "WAIFAKE": [ [ "role", "ROLE_LANDMARK" ], [ "object", "xml-roles", "main" ] ]
+          }
+        }
+    ]
+  }
+) ;
+
+</script>
+</head>
+<body>
+<p>This test exercises the ARIA properties for the main role.</p>
+<div id='test' role='main'>Hello world</div>
+</body>
+</html>
