@@ -29,7 +29,9 @@ import json
 import urlparse
 
 import wptserve
+from wptserve.logger import set_logger, get_logger
 
+debug = True
 myAPI = 'WAIFAKE'
 myAPIversion = 0.1
 myprotocol = 'http'
@@ -62,6 +64,8 @@ def load_headers_from_file(path):
 def get_params(request, params):
     resp = { "error": "" }
 
+    logger = get_logger()
+
     # loop over params and attempt to retrieve values
     # return the values in a response dictionary
     #
@@ -75,6 +79,8 @@ def get_params(request, params):
             try:
                 resp[item] = submission[item]
             except:
+                if debug:
+                    print "\tParameter " + item + " missing"
                 resp['error'] += "No such parameter: " + item + "; "
     except:
         resp['error'] = "Cannot decode submitted body as JSON; "
@@ -107,40 +113,44 @@ def options(request, response):
 
 @wptserve.handlers.handler
 def runTests(request, response):
-
+    logger = get_logger()
     runResp = {
             "status":     "OK",
             "statusText": "",
             "results":    []
             }
 
-    params = get_params(request, [ 'id', 'data' ])
+    params = get_params(request, [ 'title', 'id', 'data' ])
 
-    if (params[error] == ""):
+    if (params['error'] == ""):
         # we got the input we wanted
 
         # element to be examined is in the id parameter
         # data to check is in the data parameter
+        if debug:
+            print "Running test " + params['title']
 
         theTests = {}
 
         try:
-            theTests = json.loads(params[data])
+            theTests = params['data']
 
             # loop over each item and update the results
 
             for assertion in theTests:
                 # evaluate the assertion
-                runResp['results'].append({ result: "PASS", message: ""})
+                runResp['results'].append({ "result": "PASS", "message": ""})
 
-        except:
-            # there is an error
+        except Exception as ex:
+            template = "An exception of type {0} occured. Arguments:\n{1!r}"
+            message = template.format(type(ex).__name__, ex.args)
+            logger.error(message)
             runResp['status'] = "ERROR"
-            runResp['statusText'] += "Failed to decode " + params[data] + " as JSON"
+            runResp['statusText'] += message
 
     else:
         runResp['status'] = "ERROR"
-        runResp['statusText'] = params[error]
+        runResp['statusText'] = params['error']
 
     add_cors_headers(response)
     response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
@@ -174,7 +184,8 @@ def startTest(request, response):
             # this would be a REAL A11Y reference
             testWindow = params['url']
 
-            print "Starting test '" + testName + "' at url '" + testWindow + "'"
+            if debug:
+                print "Starting test '" + testName + "' at url '" + testWindow + "'"
 
         except:
             # there is an error
@@ -198,23 +209,44 @@ def startTest(request, response):
 @wptserve.handlers.handler
 def endTest(request, response):
     method = request.method
-    base = os.path.basename(request.request_path[1:])
-    requested_file = doc_root + request.request_path[1:]
 
     resp  = {
             "status": "DONE",
             "statusText": "",
             }
+
     testName = ""
     testWindow = None
 
     add_cors_headers(response)
     response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
     response.status = 200
-    response.content = dump_json(testResp)
+    response.content = dump_json(resp)
+
+class myLogger(object):
+    def critical(self, msg):
+        print "CRITICAL: " + msg
+        pass
+
+    def error(self, msg):
+        print "ERROR: " + msg
+        pass
+
+    def info(self, msg):
+        print "INFO: " + msg
+        pass
+
+    def warning(self, msg):
+        print "WARN: " + msg
+        pass
+
+    def debug(self, msg):
+        print "DEBUG: " + msg
+        pass
 
 if __name__ == '__main__':
     print 'http://' + myhost + ':{0}/'.format(port)
+    set_logger(myLogger())
 
     routes = [
         ("HEAD", "", head),
