@@ -10,8 +10,9 @@ setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
     { title: "main properties",
-      tests: [
+      steps: [
         {
+          "type": "test",
           "title": "main role tests",
           "element": "test",
           "test" : {

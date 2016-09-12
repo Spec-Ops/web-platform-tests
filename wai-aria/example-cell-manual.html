@@ -10,8 +10,9 @@ setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
     { title: "cell properties",
-      tests: [
+      steps: [
         {
+          "type":  "test",
           "title": "cell role tests",
           "element": "test",
           "test" : {

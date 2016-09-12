@@ -1,4 +1,4 @@
-/* globals Promise, done, assert_true, on_event, promise_test */
+/* globals Promise, window, done, assert_true, on_event, promise_test */
 
 /**
  * Creates an ATTAcomm object.  If the parameters are supplied
@@ -108,7 +108,7 @@ ATTAcomm.prototype = {
    */
   go: function() {
     'use strict';
-    // everything is ready.  Let's talk to the message
+    // everything is ready.  Let's talk to the ATTA
     this.startTest().then(function(res) {
 
       // start was successful - iterate over steps
@@ -127,10 +127,45 @@ ATTAcomm.prototype = {
       if (subtestsForAPI) {
         // accumulate promises; complete when done
         var pending = [];
+        var testCount = 0;
 
+        /* Loop strategy...
+         *
+         * If the the step is a 'test' then push it into the pending queue as a promise
+         *
+         * If the step is anything else, then if there is anything in pending, wait on it
+         * Once it resolves, clear the queue and then execite the other step.
+         *
+         */
         this.Tests.forEach(function(subtest) {
-          // we actually have one or more subtests for this API
-          pending.push(this.runTest(API, subtest));
+          //  what "type" of step in the sequence is this?
+          var theType = "test" ;
+          if (subtest.hasOwnProperty("type")) {
+            theType = subtest.type;
+          }
+          testCount++;
+          if (theType === "test") {
+            // this is a set of assertions that should be evaluated
+            pending.push(this.runTest(testCount, API, subtest));
+          } else if (theType === "script") {
+            // @@@TODO@@@ this is some javascript...  run it
+            console.log("Got a script test step");
+            Promise.all(pending).then(function() {
+              pending = [];
+              // execute the script
+              this.runScript(testCount, subtest);
+            }.bind(this));
+          } else if (theType === "event") {
+            // @@@TODO@@@ act on the event
+            console.log("Got an event test step");
+            Promise.all(pending).then(function() {
+              pending = [];
+              // raise the event
+              this.raiseEvent(testCount, subtest);
+            }.bind(this));
+          } else {
+            console.log("Unknown subtest type: " + theType);
+          }
         }.bind(this));
 
         // wait for all the subtests to execute
@@ -172,14 +207,80 @@ ATTAcomm.prototype = {
     console.log(message);
   },
 
+  // raiseEvent - throw an event at an item
+  /**
+   * @param {integer} testNum - The subtest number
+   * @param {object} subtest - event information to throw
+   */
+  raiseEvent: function(testNum, subtest) {
+    "use strict";
+    if (subtest) {
+      if (subtest.hasOwnProperty("event") && subtest.hasOwnProperty("element")) {
+        // execute the script
+        try {
+          var node = window.getElementById(subtest.element);
+          if (node) {
+            node.dispatchEvent(subtest.event);
+          }
+        }
+        catch (e) {
+          console.log(e);
+          test(function() {
+            assert_true(false, "Subtest event failed to dispatch: " +e);
+          }, "Event subtest " + testNum);
+        }
+      } else {
+        test(function() {
+          var err = "";
+          if (!subtest.hasOwnProperty("event")) {
+            err += "Event subtest has no event property; ";
+          } else if (!subtest.hasOwnProperty("element")) {
+            err += "Event subtest has no element property; ";
+          }
+          assert_true(false, err);
+        }, "Event subtest " + testNum );
+      }
+    }
+    return;
+  },
+
+  // runScript - run a script in the context of the window
+  /**
+   * @param {integer} testNum - The subtest number
+   * @param {object} subtest - script and related information
+   */
+  runScript: function(testNum, subtest) {
+    "use strict";
+    if (subtest) {
+      if (subtest.hasOwnProperty("script") && typeof subtest.script === "string") {
+        try {
+          /* jshint evil:true */
+          eval(subtest.script);
+        }
+        catch (e) {
+          console.log(e);
+          test(function() {
+            assert_true(false, "Subtest script " + subtest.script + " failed to evaluate: " +e);
+          }, "Event subtest " + testNum);
+        }
+      } else {
+        test(function() {
+          assert_true(false, "Event subtest has no script property");
+        }, "Event subtest " + testNum );
+      }
+    }
+    return;
+  },
+
   // runTest - process subtest
   /**
+   * @param {integer} testNum - The subtest number
    * @param {string} API - name of the API being tested
    * @param {object} subtest - a subtest to run; contains 'title', 'element', and
    * 'test array'
    * @returns {Promise} - a Promise that resolves when the test completes
    */
-  runTest: function(API, subtest) {
+  runTest: function(testNum, API, subtest) {
     'use strict';
 
     var data = {
@@ -237,15 +338,15 @@ ATTAcomm.prototype = {
   loadTest: function(params) {
     'use strict';
 
-    if (params.hasOwnProperty('testFile')) {
+    if (params.hasOwnProperty('stepFile')) {
       // the test is referred to by a file name
-      return this._fetch("GET", params.testFile);
+      return this._fetch("GET", params.stepFile);
     } // else
     return new Promise(function(resolve, reject) {
-      if (params.hasOwnProperty('tests')) {
-        resolve(params.tests);
+      if (params.hasOwnProperty('steps')) {
+        resolve(params.steps);
       } else {
-        reject("Must supply a 'tests' or 'testFile' parameter");
+        reject("Must supply a 'steps' or 'stepFile' parameter");
       }
     });
   },
