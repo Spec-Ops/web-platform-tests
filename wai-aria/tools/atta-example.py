@@ -63,7 +63,11 @@ def get_params(request, params):
     submission = {}
 
     try:
-        submission = json.load(request.rfile)
+        len = request.headers.__getitem__('content-length')
+        print ("Length is " + len )
+        content = request.rfile.read(int(len))
+        dec = content.decode("utf-8")
+        submission = json.loads(dec)
         for item in params:
             try:
                 resp[item] = submission[item]
@@ -71,12 +75,15 @@ def get_params(request, params):
                 if debug:
                     print ("\tParameter " + item + " missing")
                 resp['error'] += "No such parameter: " + item + "; "
-    except:
+    except Exception as ex:
+        template = "An exception of type {0} occured. Arguments:\n{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        print (message)
         resp['error'] = "Cannot decode submitted body as JSON; "
 
     return resp
 
-def runTests(request, response):
+def runTests(request):
     runResp = {
             "status":     "OK",
             "statusText": "",
@@ -114,10 +121,9 @@ def runTests(request, response):
         runResp['status'] = "ERROR"
         runResp['statusText'] = params['error']
 
-    add_cors_headers(response)
-    response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
-    response.status = 200
-    response.content = dump_json(runResp)
+    request.send_response(200)
+    add_aria_headers(request)
+    request.wfile.write(bytes(dump_json(runResp), "utf-8"))
 
 def startTest(request):
     testResp = {
@@ -176,14 +182,13 @@ def endTest(request):
 def sendError(request):
 
     request.send_response(404)
-    request.send_header("Content-type", "text/plain")
+    request.send_header("Content-Type", "text/plain")
     add_headers(request)
     request.wfile.write(bytes("Error: bad request\n", "utf-8"))
 
 class theServer(BaseHTTPRequestHandler):
     def do_GET(self):
-        # pull in arguments
-        sendError(self)
+        self.dispatch()
 
     def do_POST(self):
         # pull in arguments
