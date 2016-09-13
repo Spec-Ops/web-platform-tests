@@ -11,26 +11,35 @@
 
 import os
 import sys
-from http.server import BaseHTTPRequestHandler, HTTPServer
 
 here = os.path.abspath(os.path.split(__file__)[0])
 repo_root = os.path.abspath(os.path.join(here, os.pardir, os.pardir))
 
 sys.path.insert(0, os.path.join(repo_root, "tools"))
 sys.path.insert(0, os.path.join(repo_root, "tools", "six"))
+sys.path.insert(0, os.path.join(repo_root, "tools", "html5lib"))
+sys.path.insert(0, os.path.join(repo_root, "tools", "wptserve"))
+sys.path.insert(0, os.path.join(repo_root, "tools", "pywebsocket", "src"))
+sys.path.insert(0, os.path.join(repo_root, "tools", "py"))
+sys.path.insert(0, os.path.join(repo_root, "tools", "pytest"))
+sys.path.insert(0, os.path.join(repo_root, "tools", "webdriver"))
 
 import hashlib
 import json
+import urlparse
+
+import wptserve
+from wptserve.logger import set_logger, get_logger
 
 debug = True
 myAPI = 'WAIFAKE'
 myAPIversion = 0.1
 myprotocol = 'http'
 myhost = 'localhost'
-myport = 4119
+port = 4119
 doc_root = os.path.join(repo_root, "wai-aria", "tools", "files")
 
-URIroot = myprotocol + '://' + myhost + ':{0}'.format(myport)
+URIroot = myprotocol + '://' + myhost + ':{0}'.format(port)
 
 # testName is a test designation from the testcase
 testName = ""
@@ -40,20 +49,22 @@ testWindow = None
 def dump_json(obj):
     return json.dumps(obj, indent=4, sort_keys=True)
 
-def add_aria_headers(resp):
-    resp.send_header('Content-Type', "application/json")
-    add_headers(resp)
+def add_cors_headers(resp):
+    headers_file = doc_root + '/cors.headers'
+    resp.headers.update(load_headers_from_file(headers_file))
 
-def add_headers(resp):
-    resp.send_header('Access-Control-Allow-Headers', "Content-Type")
-    resp.send_header('Access-Control-Allow-Methods', "POST")
-    resp.send_header('Access-Control-Allow-Origin', "*")
-    resp.send_header('Access-Control-Expose-Headers', "Allow, Content-Type")
-    resp.send_header('Allow', "POST")
-    resp.end_headers()
+def load_headers_from_file(path):
+    headers = []
+    with open(path, 'r') as header_file:
+        data = header_file.read()
+        headers = [tuple(item.strip() for item in line.split(":", 1))
+                   for line in data.splitlines() if line]
+    return headers
 
 def get_params(request, params):
     resp = { "error": "" }
+
+    logger = get_logger()
 
     # loop over params and attempt to retrieve values
     # return the values in a response dictionary
@@ -63,20 +74,46 @@ def get_params(request, params):
     submission = {}
 
     try:
-        submission = json.load(request.rfile)
+        submission = json.loads(request.body)
         for item in params:
             try:
                 resp[item] = submission[item]
             except:
                 if debug:
-                    print ("\tParameter " + item + " missing")
+                    print "\tParameter " + item + " missing"
                 resp['error'] += "No such parameter: " + item + "; "
     except:
         resp['error'] = "Cannot decode submitted body as JSON; "
 
     return resp
 
+@wptserve.handlers.handler
+def head(request, response):
+    response.status = 200
+
+    add_cors_headers(response)
+    response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
+
+    response.content = None
+
+
+@wptserve.handlers.handler
+def options(request, response):
+    add_cors_headers(response)
+    response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
+
+    response.status = 200
+
+    add_cors_headers(response)
+    response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
+    response.headers.update("Content-Type", "text/plain")
+
+    response.content = "ATTA Options\n";
+
+
+@wptserve.handlers.handler
 def runTests(request, response):
+    logger = get_logger()
     runResp = {
             "status":     "OK",
             "statusText": "",
@@ -91,7 +128,7 @@ def runTests(request, response):
         # element to be examined is in the id parameter
         # data to check is in the data parameter
         if debug:
-            print ("Running test " + params['title'])
+            print "Running test " + params['title']
 
         theTests = {}
 
@@ -107,6 +144,7 @@ def runTests(request, response):
         except Exception as ex:
             template = "An exception of type {0} occured. Arguments:\n{1!r}"
             message = template.format(type(ex).__name__, ex.args)
+            logger.error(message)
             runResp['status'] = "ERROR"
             runResp['statusText'] += message
 
@@ -119,7 +157,10 @@ def runTests(request, response):
     response.status = 200
     response.content = dump_json(runResp)
 
-def startTest(request):
+@wptserve.handlers.handler
+def startTest(request, response):
+    method = request.method
+
     testResp = {
             "status": "READY",
             "statusText": "",
@@ -144,7 +185,7 @@ def startTest(request):
             testWindow = params['url']
 
             if debug:
-                print ("Starting test '" + testName + "' at url '" + testWindow + "'")
+                print "Starting test '" + testName + "' at url '" + testWindow + "'"
 
         except:
             # there is an error
@@ -155,11 +196,19 @@ def startTest(request):
         testResp['status'] = "ERROR"
         testResp['statusText'] = params['error']
 
-    request.send_response(200)
-    add_aria_headers(request)
-    request.wfile.write( bytes(dump_json(testResp), "utf-8"))
+    add_cors_headers(response)
+    response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
+    response.status = 200
 
-def endTest(request):
+    if (method != "HEAD"):
+        response.content = dump_json(testResp)
+    else:
+        response.content = "ATTA Head\n"
+        response.headers.update("Content-Type", "text/plain")
+
+@wptserve.handlers.handler
+def endTest(request, response):
+    method = request.method
 
     resp  = {
             "status": "DONE",
@@ -169,45 +218,55 @@ def endTest(request):
     testName = ""
     testWindow = None
 
-    request.send_response(200)
-    add_aria_headers(request)
-    request.wfile.write(bytes(dump_json(resp), "utf-8"))
+    add_cors_headers(response)
+    response.headers.update(load_headers_from_file(doc_root + '/aria.headers'))
+    response.status = 200
+    response.content = dump_json(resp)
 
-def sendError(request):
+class myLogger(object):
+    def critical(self, msg):
+        print "CRITICAL: " + msg
+        pass
 
-    request.send_response(404)
-    request.send_header("Content-type", "text/plain")
-    add_headers(request)
-    request.wfile.write(bytes("Error: bad request\n", "utf-8"))
+    def error(self, msg):
+        print "ERROR: " + msg
+        pass
 
-class theServer(BaseHTTPRequestHandler):
-    def do_GET(self):
-        # pull in arguments
-        sendError(self)
+    def info(self, msg):
+        print "INFO: " + msg
+        pass
 
-    def do_POST(self):
-        # pull in arguments
-        self.dispatch()
+    def warning(self, msg):
+        print "WARN: " + msg
+        pass
 
-    def dispatch(self):
-        myPath = self.path
-        if (myPath.endswith('start')):
-            startTest(self)
-        elif (myPath.endswith('end')):
-            endTest(self)
-        elif (myPath.endswith('test')):
-            runTests(self)
-        else:
-            sendError(self)
-
+    def debug(self, msg):
+        print "DEBUG: " + msg
+        pass
 
 if __name__ == '__main__':
-    print ('Starting on http://' + myhost + ':{0}/'.format(myport))
+    print 'http://' + myhost + ':{0}/'.format(port)
+    set_logger(myLogger())
 
-    try:
-        server = HTTPServer((myhost, myport), theServer)
-        server.serve_forever()
+    routes = [
+        ("HEAD", "", head),
+        ("GET", "", wptserve.handlers.file_handler),
+        ("GET", "index.html", wptserve.handlers.file_handler),
 
-    except KeyboardInterrupt:
-        print ("Shutting down")
-        server.socket.close
+        # start a test
+        ("POST", "start", startTest),
+        ("GET", "start", startTest),
+        ("HEAD", "start", startTest),
+
+        # perform an individual test
+        ("POST", "test", runTests),
+        ("GET", "test", runTests),
+
+        # end testing
+        ("GET", "end", endTest),
+        ("POST", "end", endTest),
+    ]
+
+    httpd = wptserve.server.WebTestHttpd(host=myhost, bind_hostname=myhost, port=port, doc_root=doc_root,
+                                         routes=routes)
+    httpd.start(block=True)
