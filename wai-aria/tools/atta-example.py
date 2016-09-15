@@ -108,12 +108,20 @@ def runTests(request):
             # loop over each item and update the results
 
             for assertion in theTests:
+                print("Looking at assertion")
+                print(assertion[0] + ", " + assertion[1])
                 # evaluate the assertion
-                runResp['results'].append({ "result": "PASS", "message": ""})
+                myRes = "PASS"
+                myMessage = ""
+                if assertion[0] == "shouldFail":
+                  myRes = "FAIL"
+                  myMessage = "Intentional failure"
+                runResp['results'].append({ "result": myRes, "message": myMessage})
 
         except Exception as ex:
             template = "An exception of type {0} occured. Arguments:\n{1!r}"
             message = template.format(type(ex).__name__, ex.args)
+            print("ERROR: " + message)
             runResp['status'] = "ERROR"
             runResp['statusText'] += message
 
