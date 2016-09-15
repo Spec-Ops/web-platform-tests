@@ -134,7 +134,7 @@ ATTAcomm.prototype = {
          * If the the step is a 'test' then push it into the pending queue as a promise
          *
          * If the step is anything else, then if there is anything in pending, wait on it
-         * Once it resolves, clear the queue and then execite the other step.
+         * Once it resolves, clear the queue and then execute the other step.
          *
          */
         this.Tests.forEach(function(subtest) {
@@ -170,9 +170,8 @@ ATTAcomm.prototype = {
 
         // wait for all the subtests to execute
         Promise.all(pending)
-        .then(function(res) {
+        .then(function() {
           // the tests all ran; close it out
-          console.log(res);
           this.endTest().then(function() {
             done();
           }.bind(this));
@@ -289,26 +288,39 @@ ATTAcomm.prototype = {
       "data": subtest.test[API]
     };
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
+      var ANNO = this;
       promise_test(function() {
-        return this.sendTest(data)
+        // force a resolve of the promise regardless
+        this.add_cleanup(function() { resolve(true); });
+        return ANNO.sendTest(data)
           .then(function(res) {
             if (typeof res.body === "object" && res.body.hasOwnProperty("status")) {
               // we got some sort of response
               if (res.body.status === "OK") {
                 // the test ran - yay!
+                var messages = "";
+                var thisResult = null;
                 res.body.results.forEach( function (a) {
                   if (typeof a === "object") {
                     // we have a result for this assertion
                     if (a.result === "ERROR") {
-                      console.log("Assertion " + a + " had an error: " + a.message);
-                    } else if (a.result === "PASS") {
-                      assert_true(true);
+                      messages += "ATTA reported ERROR with message: " + a.message + "; ";
                     } else if (a.result === "FAIL") {
-                      assert_true(false, a.message);
+                      thisResult = false;
+                      messages += a.message + "; ";
+                    } else if (a.result === "PASS" && thisResult === null) {
+                      // if we got a pass and there was no other result thus far
+                      // then we are passing
+                      thisResult = true;
                     }
                   }
                 });
+                if (thisResult !== null) {
+                  assert_true(thisResult, messages);
+                } else {
+                  assert_true(false, "ERROR: No results reported from ATTA; " + messages);
+                }
               } else if (res.body.status === "ERROR") {
                 assert_true(false, "ATTA returned ERROR with message: " + res.body.statusText);
               } else {
@@ -318,15 +330,8 @@ ATTAcomm.prototype = {
               // the return wasn't an object!
               assert_true(false, "ATTA failed to return a result object: returned: "+JSON.stringify(res));
             }
-            resolve(true);
-          }.bind(this))
-          .catch(function(err) {
-            // sendTest errored off
-            assert_true(false, "sendTest failed: status was " + err.status + "; statusText was " + err.statusText);
-            // resolve THIS promise - we FAILED but we are still done
-            reject(false);
           });
-      }.bind(this), subtest.name );
+      }, subtest.name );
     }.bind(this));
   },
 
