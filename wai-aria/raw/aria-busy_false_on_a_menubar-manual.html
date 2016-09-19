@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>aria-busy="true" on a menubar </title>
+<title>aria-busy="false" on a menubar </title>
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -9,7 +9,7 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'aria-busy="true" on a menubar ',
+    { title: 'aria-busy="false" on a menubar ',
       steps: [
         {
           "type":  "test",
@@ -20,6 +20,43 @@ var theTest = new ATTAcomm(
       [
          "object attribute xml-roles",
          "\"menubar\""
+      ]
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_MENU_BAR",
+         "true"
+      ],
+      [
+         "attribute",
+         "xml-roles:\"menubar\"",
+         "true"
+      ],
+      [
+         "interface",
+         "Selection",
+         "false"
+      ],
+      [
+         "interface",
+         "Selection",
+         "false"
+      ],
+      []
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         " MenuBar"
+      ],
+      [
+         "Selection Pattern",
+         "<shown>"
+      ],
+      [
+         "AriaProperties.busy",
+         "false"
       ]
    ],
    "AXAPI" : [
@@ -37,32 +74,7 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXElementBusy",
-         "YES  "
-      ]
-   ],
-   "ATK" : [
-      [],
-      [
-         "object",
-         "xml-roles",
-         "\"menubar\""
-      ],
-      [],
-      [],
-      []
-   ],
-   "UIA" : [
-      [
-         "Control Type",
-         " MenuBar"
-      ],
-      [
-         "Selection Pattern",
-         "<shown>"
-      ],
-      [
-         "AriaProperties.busy",
-         "true"
+         "NO  "
       ]
    ],
    "WAIFAKE" : [
@@ -85,7 +97,7 @@ var theTest = new ATTAcomm(
          "ROLE_SYSTEM_MENUBAR"
       ],
       [
-         "STATE_SYSTEM_BUSY",
+         "STATE_SYSTEM_BUSY cleared",
          "<shown>"
       ]
    ]
@@ -98,8 +110,8 @@ var theTest = new ATTAcomm(
 </script>
 </head>
 <body>
-<p>This test examines the ARIA properties for aria-busy="true" on a menubar .</p>
-  <div role="menubar" aria-busy="true" id="test">
+<p>This test examines the ARIA properties for aria-busy="false" on a menubar .</p>
+  <div role="menubar" aria-busy="false" id="test">
     <div role="menuitem">File</div>
     <div role="menuitem">Edit</div>
     <div role="menuitem>View</div>

@@ -16,38 +16,25 @@ var theTest = new ATTAcomm(
           "title": "step 1",
           "element": "test",
           "test" : {
-   "object" : [
+   "IAccessible2" : [
       [
+         "object",
          "xml-roles",
          "log"
       ],
       [
+         "object",
          "container-live",
          "polite"
       ],
       [
+         "object",
          "live",
          "polite"
       ],
       [
+         "object",
          "container-live-role",
-         "log"
-      ]
-   ],
-   "IAccessible2" : [
-      []
-   ],
-   "AXAPI" : [
-      [
-         "AXRole",
-         "AXGroup"
-      ],
-      [
-         "AXSubrole",
-         "AXApplicationLog"
-      ],
-      [
-         "AXRoleDescription",
          "log"
       ]
    ],
@@ -55,6 +42,26 @@ var theTest = new ATTAcomm(
       [
          "role",
          "ROLE_LOG",
+         "true"
+      ],
+      [
+         "attribute",
+         "xml-roles:log",
+         "true"
+      ],
+      [
+         "attribute",
+         "container-live:polite",
+         "true"
+      ],
+      [
+         "attribute",
+         "live:polite",
+         "true"
+      ],
+      [
+         "attribute",
+         "container-live-role:log",
          "true"
       ]
    ],
@@ -70,6 +77,20 @@ var theTest = new ATTAcomm(
       [
          "LiveSettingProperty",
          "Polite"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXGroup"
+      ],
+      [
+         "AXSubrole",
+         "AXApplicationLog"
+      ],
+      [
+         "AXRoleDescription",
+         "log"
       ]
    ],
    "WAIFAKE" : [

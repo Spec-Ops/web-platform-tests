@@ -16,38 +16,12 @@ var theTest = new ATTAcomm(
           "title": "step 1",
           "element": "test",
           "test" : {
-   "object" : [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      [
-         "MSAA",
-         "role",
-         "ROLE_SYSTEM_CELL"
-      ]
-   ],
-   "AXAPI" : [
-      [
-         "AXRole",
-         "AXCell"
-      ],
-      [
-         "AXSubrole",
-         "<nil>"
-      ],
-      [
-         "AXRoleDescription",
-         "'cell'"
-      ]
-   ],
    "ATK" : [
-      [],
+      [
+         "role",
+         "ROLE_TABLE_CELL",
+         "true"
+      ],
       []
    ],
    "UIA" : [
@@ -62,6 +36,20 @@ var theTest = new ATTAcomm(
       [
          "NOT ",
          "invoke pattern TODO"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXCell"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXRoleDescription",
+         "'cell'"
       ]
    ],
    "WAIFAKE" : [

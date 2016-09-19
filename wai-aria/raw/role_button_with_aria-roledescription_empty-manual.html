@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>role button with aria-roledescription=""</title>
+<title>role button with aria-roledescription empty</title>
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -9,13 +9,35 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'role button with aria-roledescription=""',
+    { title: 'role button with aria-roledescription empty',
       steps: [
         {
           "type":  "test",
           "title": "step 1",
           "element": "test",
           "test" : {
+   "ATK" : [
+      [
+         "role",
+         "ROLE_PUSH_BUTTON",
+         "true"
+      ],
+      [
+         "attribute",
+         "roledescription",
+         "false"
+      ]
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         "Button"
+      ],
+      [
+         "Localized Control Type",
+         "\"Button\""
+      ]
+   ],
    "AXAPI" : [
       [
          "AXRole",
@@ -53,7 +75,7 @@ var theTest = new ATTAcomm(
 </script>
 </head>
 <body>
-<p>This test examines the ARIA properties for role button with aria-roledescription="".</p>
+<p>This test examines the ARIA properties for role button with aria-roledescription empty.</p>
   <div role="button" aria-roledescription="" id="test">
   Go Fish
   </div>

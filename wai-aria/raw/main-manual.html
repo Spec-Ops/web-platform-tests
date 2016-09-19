@@ -16,27 +16,17 @@ var theTest = new ATTAcomm(
           "title": "step 1",
           "element": "test",
           "test" : {
-   "AXAPI" : [
-      [
-         "AXRole",
-         "AXGroup"
-      ],
-      [
-         "AXSubrole",
-         "AXLandmarkMain"
-      ],
-      [
-         "AXRoleDescription",
-         "main"
-      ]
-   ],
    "ATK" : [
       [
          "role",
          "ROLE_LANDMARK",
          "true"
       ],
-      []
+      [
+         "attribute",
+         "xml-roles:main",
+         "true"
+      ]
    ],
    "UIA" : [
       [
@@ -56,6 +46,20 @@ var theTest = new ATTAcomm(
          "main"
       ]
    ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXGroup"
+      ],
+      [
+         "AXSubrole",
+         "AXLandmarkMain"
+      ],
+      [
+         "AXRoleDescription",
+         "main"
+      ]
+   ],
    "WAIFAKE" : [
       [
          "role",
@@ -68,16 +72,6 @@ var theTest = new ATTAcomm(
       [
          "interface",
          "TableCell"
-      ]
-   ],
-   "Iaccessible2" : [
-      [
-         "IA2_ROLE_LANDMARK"
-      ],
-      [
-         "object",
-         "xml-roles",
-         "main"
       ]
    ]
 }

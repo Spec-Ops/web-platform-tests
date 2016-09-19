@@ -16,18 +16,27 @@ var theTest = new ATTAcomm(
           "title": "step 1",
           "element": "test",
           "test" : {
-   "object" : [
+   "IAccessible2" : [
       [
+         "object",
          "posinset",
          "3"
       ],
       [
+         "object",
          "setsize",
          "7"
+      ],
+      [
+         "groupPosition()",
+         "similarItemsInGroup",
+         "7"
+      ],
+      [
+         "groupPosition()",
+         "positionInGroup",
+         "3"
       ]
-   ],
-   "IAccessible2" : [
-      []
    ],
    "ATK" : [
       [
@@ -44,36 +53,36 @@ var theTest = new ATTAcomm(
          "state",
          "STATE_SELECTABLE",
          "true"
-      ]
-   ],
-   "AriaProperties" : [
-      [
-         "posinset",
-         "3"
       ],
       [
-         "setsize",
-         "7"
+         "attribute",
+         "posinset:3",
+         "true"
       ],
       [
-         "SelectionItem",
-         "IsSelected"
-      ]
-   ],
-   "groupPosition()" : [
-      [
-         "similarItemsInGroup",
-         "7"
-      ],
-      [
-         "positionInGroup",
-         "3"
+         "attribute",
+         "setsize:7",
+         "true"
       ]
    ],
    "UIA" : [
       [
          "Control Type ",
          "TabItem"
+      ],
+      [
+         "AriaProperties",
+         "posinset",
+         "3"
+      ],
+      [
+         "AriaProperties",
+         "setsize",
+         "7"
+      ],
+      [
+         "SelectionItem",
+         "IsSelected"
       ]
    ],
    "AXAPI" : [

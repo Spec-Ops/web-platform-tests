@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>aria-busy="true" on a listbox  Rich Start</title>
+<title>aria-busy="false" on a listbox </title>
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -9,13 +9,32 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'aria-busy="true" on a listbox  Rich Start',
+    { title: 'aria-busy="false" on a listbox ',
       steps: [
         {
           "type":  "test",
           "title": "step 1",
           "element": "test",
           "test" : {
+   "ATK" : [
+      [
+         "role",
+         "ROLE_LIST_BOX",
+         "true"
+      ],
+      [],
+      []
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         " List"
+      ],
+      [
+         "AriaProperties.busy",
+         "false"
+      ]
+   ],
    "AXAPI" : [
       [
          "AXRole",
@@ -31,22 +50,7 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXElementBusy",
-         "YES  "
-      ]
-   ],
-   "ATK" : [
-      [],
-      [],
-      []
-   ],
-   "UIA" : [
-      [
-         "Control Type",
-         " List"
-      ],
-      [
-         "AriaProperties.busy",
-         "true"
+         "NO  "
       ]
    ],
    "WAIFAKE" : [
@@ -69,7 +73,7 @@ var theTest = new ATTAcomm(
          "ROLE_SYSTEM_LISTBOX"
       ],
       [
-         "STATE_SYSTEM_BUSY",
+         "STATE_SYSTEM_BUSY cleared",
          "<shown>"
       ]
    ]
@@ -82,7 +86,7 @@ var theTest = new ATTAcomm(
 </script>
 </head>
 <body>
-<p>This test examines the ARIA properties for aria-busy="true" on a listbox  Rich Start.</p>
+<p>This test examines the ARIA properties for aria-busy="false" on a listbox .</p>
   <ul role="listbox" aria-busy="true" id="test">
        <li role="option">option 1</li>
        <li role="option">option 2</li>

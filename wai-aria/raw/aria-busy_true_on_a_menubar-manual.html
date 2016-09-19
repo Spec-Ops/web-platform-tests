@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>aria-busy="false" on a grid </title>
+<title>aria-busy="true" on a menubar </title>
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -9,7 +9,7 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'aria-busy="false" on a grid ',
+    { title: 'aria-busy="true" on a menubar ',
       steps: [
         {
           "type":  "test",
@@ -19,46 +19,36 @@ var theTest = new ATTAcomm(
    "IAccessible2" : [
       [
          "object attribute xml-roles",
-         "\"grid\""
-      ],
-      [
-         "IAcccessibleTable2",
-         "<shown>"
-      ]
-   ],
-   "AXAPI" : [
-      [
-         "AXRole",
-         "AXTable"
-      ],
-      [
-         "AXSubrole",
-         "<nil>"
-      ],
-      [
-         "AXRoleDescription",
-         "'grid'"
-      ],
-      [
-         "AXElementBusy",
-         "NO  "
+         "\"menubar\""
       ]
    ],
    "ATK" : [
-      [],
       [
-         "object",
-         "xml-roles",
-         "\"grid\""
+         "role",
+         "ROLE_MENU_BAR",
+         "true"
       ],
-      [],
-      [],
+      [
+         "attribute",
+         "xml-roles:\"menubar\"",
+         "true"
+      ],
+      [
+         "interface",
+         "Selection",
+         "false"
+      ],
+      [
+         "interface",
+         "Selection",
+         "false"
+      ],
       []
    ],
    "UIA" : [
       [
          "Control Type",
-         " DataGrid"
+         " MenuBar"
       ],
       [
          "Selection Pattern",
@@ -66,7 +56,25 @@ var theTest = new ATTAcomm(
       ],
       [
          "AriaProperties.busy",
-         "false"
+         "true"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXMenuBar"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXRoleDescription",
+         "'menu bar'"
+      ],
+      [
+         "AXElementBusy",
+         "YES  "
       ]
    ],
    "WAIFAKE" : [
@@ -86,10 +94,10 @@ var theTest = new ATTAcomm(
    "MSAA" : [
       [
          "role",
-         "ROLE_SYSTEM_TABLE"
+         "ROLE_SYSTEM_MENUBAR"
       ],
       [
-         "STATE_SYSTEM_BUSY cleared",
+         "STATE_SYSTEM_BUSY",
          "<shown>"
       ]
    ]
@@ -102,20 +110,11 @@ var theTest = new ATTAcomm(
 </script>
 </head>
 <body>
-<p>This test examines the ARIA properties for aria-busy="false" on a grid .</p>
-  <div role="grid" aria-busy="false" id="test">
-    <div role="row">
-       <div role="columnheader">shoes</div>
-       <div role="columnheader">shirts</div>
-    </div>
-    <div role="row">
-       <div role="gridcell">loafers</div>
-       <div role="gridcell">polo</div>
-    </div>
-    <div role="row">
-       <div role="gridcell">laced</div>
-       <div role="gridcell">rugby</div>
-    </div>
+<p>This test examines the ARIA properties for aria-busy="true" on a menubar .</p>
+  <div role="menubar" aria-busy="true" id="test">
+    <div role="menuitem">File</div>
+    <div role="menuitem">Edit</div>
+    <div role="menuitem>View</div>
   </div>
 
 </body>

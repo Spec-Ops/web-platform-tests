@@ -16,19 +16,34 @@ var theTest = new ATTAcomm(
           "title": "step 1",
           "element": "test",
           "test" : {
-   "object" : [
+   "IAccessible2" : [
       [
+         "IA2_ROLE_CHECK_MENU_ITEM"
+      ],
+      [
+         "object",
+         "checkable",
+         "true"
+      ],
+      [
+         "object",
          "posinset",
          "4"
       ],
       [
+         "object",
          "setsize",
          "8"
-      ]
-   ],
-   "IAccessible2" : [
+      ],
       [
-         "IA2_ROLE_CHECK_MENU_ITEM"
+         "groupPosition()",
+         "similarItemsInGroup",
+         "8"
+      ],
+      [
+         "groupPosition()",
+         "positionInGroup",
+         "4"
       ]
    ],
    "ATK" : [
@@ -46,6 +61,16 @@ var theTest = new ATTAcomm(
          "state",
          "STATE_CHECKED",
          "true"
+      ],
+      [
+         "attribute",
+         "posinset:4",
+         "true"
+      ],
+      [
+         "attribute",
+         "setsize:8",
+         "true"
       ]
    ],
    "UIA" : [
@@ -57,6 +82,16 @@ var theTest = new ATTAcomm(
          "Toggle",
          "ToggleState",
          "On"
+      ],
+      [
+         "AriaProperties",
+         "posinset",
+         "4"
+      ],
+      [
+         "AriaProperties",
+         "setsize",
+         "8"
       ]
    ],
    "AXAPI" : [
@@ -97,26 +132,6 @@ var theTest = new ATTAcomm(
       [
          "interface",
          "TableCell"
-      ]
-   ],
-   "AriaProperties" : [
-      [
-         "posinset",
-         "4"
-      ],
-      [
-         "setsize",
-         "8"
-      ]
-   ],
-   "groupPosition()" : [
-      [
-         "similarItemsInGroup",
-         "8"
-      ],
-      [
-         "positionInGroup",
-         "4"
       ]
    ]
 }

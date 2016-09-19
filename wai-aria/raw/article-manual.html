@@ -16,21 +16,77 @@ var theTest = new ATTAcomm(
           "title": "step 1",
           "element": "test",
           "test" : {
-   "object" : [
+   "IAccessible2" : [
       [
+         "object",
          "xml-roles",
          "article"
       ],
       [
+         "object",
          "posinset",
          "4"
       ],
       [
+         "object",
          "setsize",
          "8"
       ],
       [
-         "rowspan=\"5\"|AXAPI",
+         "groupPosition()",
+         "similarItemsInGroup",
+         "8"
+      ],
+      [
+         "groupPosition()",
+         "positionInGroup",
+         "4"
+      ]
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_ARTICLE ",
+         "true"
+      ],
+      [
+         "attribute",
+         "xml-roles:article",
+         "true"
+      ],
+      [
+         "attribute",
+         "posinset:4",
+         "true"
+      ],
+      [
+         "attribute",
+         "setsize:8",
+         "true"
+      ]
+   ],
+   "UIA" : [
+      [
+         "control type",
+         "Group"
+      ],
+      [
+         "localize control type",
+         "article"
+      ],
+      [
+         "AriaProperties",
+         "posinset",
+         "4"
+      ],
+      [
+         "AriaProperties",
+         "setsize",
+         "8"
+      ]
+   ],
+   "AXAPI" : [
+      [
          "AXRole",
          "AXGroup"
       ],
@@ -51,22 +107,6 @@ var theTest = new ATTAcomm(
          "8"
       ]
    ],
-   "IAccessible2" : [
-      []
-   ],
-   "ATK" : [
-      []
-   ],
-   "UIA" : [
-      [
-         "control type",
-         "Group"
-      ],
-      [
-         "localize control type",
-         "article"
-      ]
-   ],
    "WAIFAKE" : [
       [
          "role",
@@ -81,16 +121,6 @@ var theTest = new ATTAcomm(
          "TableCell"
       ]
    ],
-   "AriaProperties" : [
-      [
-         "posinset",
-         "4"
-      ],
-      [
-         "setsize",
-         "8"
-      ]
-   ],
    "MSAA" : [
       [
          "role",
@@ -99,16 +129,6 @@ var theTest = new ATTAcomm(
       [
          "STATE_SYSTEM_READONLY",
          "<shown>"
-      ]
-   ],
-   "groupPosition()" : [
-      [
-         "similarItemsInGroup",
-         "8"
-      ],
-      [
-         "positionInGroup",
-         "4"
       ]
    ]
 }

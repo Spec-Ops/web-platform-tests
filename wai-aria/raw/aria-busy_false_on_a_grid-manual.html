@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>status</title>
+<title>aria-busy="false" on a grid </title>
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -9,7 +9,7 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'status',
+    { title: 'aria-busy="false" on a grid ',
       steps: [
         {
           "type":  "test",
@@ -18,88 +18,67 @@ var theTest = new ATTAcomm(
           "test" : {
    "IAccessible2" : [
       [
-         "object",
-         "container-live",
-         "polite"
+         "object attribute xml-roles",
+         "\"grid\""
       ],
       [
-         "object",
-         "live",
-         "polite"
-      ],
-      [
-         "object",
-         "container-live-role",
-         "status"
+         "IAcccessibleTable2",
+         "<shown>"
       ]
    ],
    "ATK" : [
       [
          "role",
-         "ROLE_STATUSBAR",
+         "ROLE_TABLE",
          "true"
       ],
       [
          "attribute",
-         "container-live:polite",
+         "xml-roles:\"grid\"",
          "true"
       ],
       [
-         "attribute",
-         "live:polite",
-         "true"
+         "interface",
+         "Table",
+         "false"
       ],
       [
-         "attribute",
-         "container-live-role:status",
-         "true"
+         "interface",
+         "Selection",
+         "false"
       ],
-      [
-         "state",
-         "STATE_EXPANDABLE",
-         "true"
-      ],
-      [
-         "state",
-         "STATE_EXPANDED",
-         "true"
-      ]
+      []
    ],
    "UIA" : [
       [
          "Control Type",
-         "Group"
+         " DataGrid"
       ],
       [
-         "Localized Control Type",
-         "status"
+         "Selection Pattern",
+         "<shown>"
       ],
       [
-         "LiveSettingProperty",
-         "1"
-      ],
-      [
-         "ExpandCollapse",
-         "ExpandCollapseState",
-         "expanded"
+         "AriaProperties.busy",
+         "false"
       ]
    ],
    "AXAPI" : [
       [
          "AXRole",
-         "AXGroup"
+         "AXTable"
       ],
       [
          "AXSubrole",
-         "AXApplicationStatus"
+         "<nil>"
       ],
       [
          "AXRoleDescription",
-         "status"
+         "'grid'"
       ],
       [
-         "AXExpanded",
-         "YES"
+         "AXElementBusy",
+         "NO  "
       ]
    ],
    "WAIFAKE" : [
@@ -118,10 +97,12 @@ var theTest = new ATTAcomm(
    ],
    "MSAA" : [
       [
-         "ROLE_SYSTEM_STATUSBAR"
+         "role",
+         "ROLE_SYSTEM_TABLE"
       ],
       [
-         "STATE_SYSTEM_EXPANDED"
+         "STATE_SYSTEM_BUSY cleared",
+         "<shown>"
       ]
    ]
 }
@@ -133,8 +114,21 @@ var theTest = new ATTAcomm(
 </script>
 </head>
 <body>
-<p>This test examines the ARIA properties for status.</p>
-  <div role='status' id='test' aria-expanded='false'> </div>
+<p>This test examines the ARIA properties for aria-busy="false" on a grid .</p>
+  <div role="grid" aria-busy="false" id="test">
+    <div role="row">
+       <div role="columnheader">shoes</div>
+       <div role="columnheader">shirts</div>
+    </div>
+    <div role="row">
+       <div role="gridcell">loafers</div>
+       <div role="gridcell">polo</div>
+    </div>
+    <div role="row">
+       <div role="gridcell">laced</div>
+       <div role="gridcell">rugby</div>
+    </div>
+  </div>
 
 </body>
 </html>

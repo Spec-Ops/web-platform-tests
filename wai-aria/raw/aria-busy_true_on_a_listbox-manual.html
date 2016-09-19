@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>aria-busy="false" on a menubar </title>
+<title>aria-busy="true" on a listbox</title>
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -9,23 +9,17 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'aria-busy="false" on a menubar ',
+    { title: 'aria-busy="true" on a listbox',
       steps: [
         {
           "type":  "test",
           "title": "step 1",
           "element": "test",
           "test" : {
-   "IAccessible2" : [
-      [
-         "object attribute xml-roles",
-         "\"menubar\""
-      ]
-   ],
    "AXAPI" : [
       [
          "AXRole",
-         "AXMenuBar"
+         "AXList"
       ],
       [
          "AXSubrole",
@@ -33,36 +27,30 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXRoleDescription",
-         "'menu bar'"
+         "'list'"
       ],
       [
          "AXElementBusy",
-         "NO  "
+         "YES  "
       ]
    ],
    "ATK" : [
-      [],
       [
-         "object",
-         "xml-roles",
-         "\"menubar\""
+         "role",
+         "ROLE_LIST_BOX",
+         "true"
       ],
-      [],
       [],
       []
    ],
    "UIA" : [
       [
          "Control Type",
-         " MenuBar"
-      ],
-      [
-         "Selection Pattern",
-         "<shown>"
+         " List"
       ],
       [
          "AriaProperties.busy",
-         "false"
+         "true"
       ]
    ],
    "WAIFAKE" : [
@@ -82,10 +70,10 @@ var theTest = new ATTAcomm(
    "MSAA" : [
       [
          "role",
-         "ROLE_SYSTEM_MENUBAR"
+         "ROLE_SYSTEM_LISTBOX"
       ],
       [
-         "STATE_SYSTEM_BUSY cleared",
+         "STATE_SYSTEM_BUSY",
          "<shown>"
       ]
    ]
@@ -98,12 +86,11 @@ var theTest = new ATTAcomm(
 </script>
 </head>
 <body>
-<p>This test examines the ARIA properties for aria-busy="false" on a menubar .</p>
-  <div role="menubar" aria-busy="false" id="test">
-    <div role="menuitem">File</div>
-    <div role="menuitem">Edit</div>
-    <div role="menuitem>View</div>
-  </div>
+<p>This test examines the ARIA properties for aria-busy="true" on a listbox.</p>
+  <ul role="listbox" aria-busy="true" id="test">
+       <li role="option">option 1</li>
+       <li role="option">option 2</li>
+  </ul>
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>application</title>
+<title>role button and aria-roledescription spaces</title>
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -9,7 +9,7 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'application',
+    { title: 'role button and aria-roledescription spaces',
       steps: [
         {
           "type":  "test",
@@ -19,38 +19,37 @@ var theTest = new ATTAcomm(
    "ATK" : [
       [
          "role",
-         "ROLE_EMBEDDED",
+         "ROLE_PUSH_BUTTON",
+         "true"
+      ],
+      [
+         "attribute",
+         "roledescription:not mapped",
          "true"
       ]
    ],
    "UIA" : [
       [
          "Control Type",
-         " Pane"
+         "Edit"
       ],
       [
          "Localized Control Type",
-         "application"
+         "\"button\""
       ]
    ],
    "AXAPI" : [
       [
          "AXRole",
-         "AXGroup"
+         "AXButton"
       ],
       [
          "AXSubrole",
-         "AXWebApplication"
+         "<nil>"
       ],
       [
          "AXRoleDescription",
-         "web application"
-      ],
-      [
-         "array",
-         "AXSelectedRows  ",
-         " pointer",
-         " id='bob'"
+         "'button'"
       ]
    ],
    "WAIFAKE" : [
@@ -76,12 +75,10 @@ var theTest = new ATTAcomm(
 </script>
 </head>
 <body>
-<p>This test examines the ARIA properties for application.</p>
-  if given
-   <div id='test' role='application' aria-activedescendant='bob'>
-     <div id='bob' tabindex='0' class='bobber'>Hello world</div>
+<p>This test examines the ARIA properties for role button and aria-roledescription spaces.</p>
+  <div role="button" aria-roledescription="    " id="test">
+  Go Fish
   </div>
- then role:application, aria-activedescendant: bob
 
 </body>
 </html>

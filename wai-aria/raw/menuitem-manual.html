@@ -16,23 +16,42 @@ var theTest = new ATTAcomm(
           "title": "step 1",
           "element": "test",
           "test" : {
-   "object" : [
+   "IAccessible2" : [
       [
+         "object",
          "posinset",
          "4"
       ],
       [
+         "object",
          "setsize",
          "8"
+      ],
+      [
+         "groupPosition()",
+         "similarItemsInGroup",
+         "8"
+      ],
+      [
+         "groupPosition()",
+         "positionInGroup",
+         "4"
       ]
-   ],
-   "IAccessible2" : [
-      []
    ],
    "ATK" : [
       [
          "role",
          "ROLE_MENU_ITEM",
+         "true"
+      ],
+      [
+         "attribute",
+         "posinset:4",
+         "true"
+      ],
+      [
+         "attribute",
+         "setsize:8",
          "true"
       ]
    ],
@@ -40,6 +59,16 @@ var theTest = new ATTAcomm(
       [
          "Control Type",
          "MenuItem"
+      ],
+      [
+         "AriaProperties",
+         "posinset",
+         "4"
+      ],
+      [
+         "AriaProperties",
+         "setsize",
+         "8"
       ]
    ],
    "AXAPI" : [
@@ -76,26 +105,6 @@ var theTest = new ATTAcomm(
       [
          "interface",
          "TableCell"
-      ]
-   ],
-   "AriaProperties" : [
-      [
-         "posinset",
-         "4"
-      ],
-      [
-         "setsize",
-         "8"
-      ]
-   ],
-   "groupPosition()" : [
-      [
-         "similarItemsInGroup",
-         "8"
-      ],
-      [
-         "positionInGroup",
-         "4"
       ]
    ]
 }

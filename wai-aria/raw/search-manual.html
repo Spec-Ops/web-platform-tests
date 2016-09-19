@@ -26,27 +26,17 @@ var theTest = new ATTAcomm(
          "search"
       ]
    ],
-   "AXAPI" : [
-      [
-         "AXRole",
-         "AXGroup"
-      ],
-      [
-         "AXSubrole",
-         "AXLandmarkSearch"
-      ],
-      [
-         "AXRoleDescription",
-         "search"
-      ]
-   ],
    "ATK" : [
       [
          "role",
          "ROLE_LANDMARK",
          "true"
       ],
-      []
+      [
+         "attribute",
+         "xml-roles:search",
+         "true"
+      ]
    ],
    "UIA" : [
       [
@@ -63,6 +53,20 @@ var theTest = new ATTAcomm(
       ],
       [
          "Localized Landmark Type",
+         "search"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXGroup"
+      ],
+      [
+         "AXSubrole",
+         "AXLandmarkSearch"
+      ],
+      [
+         "AXRoleDescription",
          "search"
       ]
    ],
