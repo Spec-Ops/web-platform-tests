@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<title>menuitemradio</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "menuitemradio",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "ATK" : [
+      [
+         "role",
+         "ROLE_RADIO_MENU_ITEM",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_CHECKABLE",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_CHECKED",
+         "false"
+      ]
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         "MenuItem"
+      ],
+      [
+         "Toggle",
+         "ToggleState",
+         "Off"
+      ],
+      [
+         "SelectItem Pattern"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXMenuItem"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXDescription",
+         "menu item"
+      ],
+      [
+         " AXMenuItemMarkChar",
+         " <nil>"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "IAccessibile2" : [
+      [
+         "IA2_ROLE_RADIO_MENU_ITEM"
+      ],
+      [
+         "object",
+         "checkable",
+         "true"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for menuitemradio.</p>
+  <ul role='menu'>Menu
+    <li role='menuitemradio'> option 1</li>
+    <li role='menuitemradio'> option 2</li>
+    <li role='menuitemradio'  id='test' > option 3</li>
+  </ul>
+
+</body>
+</html>

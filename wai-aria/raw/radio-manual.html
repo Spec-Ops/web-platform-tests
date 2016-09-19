@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<title>radio</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "radio",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "object" : [
+      [
+         "posinset",
+         "4"
+      ],
+      [
+         "setsize",
+         "8"
+      ]
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_RADIO_BUTTON",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_CHECKABLE",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_CHECKED",
+         "false"
+      ]
+   ],
+   "AriaProperties" : [
+      [
+         "posinset",
+         "4"
+      ],
+      [
+         "setsize",
+         "8"
+      ]
+   ],
+   "groupPosition()" : [
+      [
+         "similarItemsInGroup",
+         "8"
+      ],
+      [
+         "positionInGroup",
+         "4"
+      ]
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         "RadioButton"
+      ],
+      [
+         "Toggle",
+         "ToggleState",
+         "Off"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXRadioButton"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXDescription",
+         "radio button"
+      ],
+      [
+         " AXValue",
+         " 0"
+      ],
+      [
+         "AXARIAPosInSet",
+         "4"
+      ],
+      [
+         "AXARIASetSize",
+         "8"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "MSAA" : [
+      [
+         "ROLE_SYSTEM_RADIOBUTTON"
+      ],
+      [
+         "NOT ",
+         "STATE_SYSTEM_CHECKED"
+      ]
+   ],
+   "IAccessibile2" : [
+      []
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for radio.</p>
+  <div id='test' role='radio' aria-checked='false' class='radio' aria-posinset='4' aria-setsize='8'>Car</div>
+
+</body>
+</html>

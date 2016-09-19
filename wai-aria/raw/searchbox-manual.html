@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<title>searchbox</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "searchbox",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "IAccessible2" : [
+      [
+         "IA2_MULTI_LINE"
+      ],
+      [
+         "NOT",
+         "IA2_SINGLE_LINE"
+      ],
+      [
+         "object",
+         "xml-roles",
+         "search"
+      ]
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_ENTRY",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_SINGLE_LINE",
+         "false"
+      ],
+      [
+         "start",
+         "STATE_MULTI_LINE",
+         "true"
+      ],
+      []
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         "Edit"
+      ],
+      [
+         "Localized Control Type",
+         "search box"
+      ],
+      [
+         "AriaProperties",
+         "multiline",
+         "true"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXTextField"
+      ],
+      [
+         "AXSubrole",
+         "AXSearchField"
+      ],
+      [
+         "AXRoleDescription",
+         "search text field"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for searchbox.</p>
+  <div id='test' role='searchbox' contenteditable='true' aria-multiline='true'></div>
+
+</body>
+</html>

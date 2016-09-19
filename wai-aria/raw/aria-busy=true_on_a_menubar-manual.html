@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<title>aria-busy="true" on a menubar </title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "aria-busy="true" on a menubar ",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "IAccessible2" : [
+      [
+         "object attribute xml-roles",
+         "\"menubar\""
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXMenuBar"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXRoleDescription",
+         "'menu bar'"
+      ],
+      [
+         "AXElementBusy",
+         "YES  "
+      ]
+   ],
+   "ATK" : [
+      [],
+      [
+         "object",
+         "xml-roles",
+         "\"menubar\""
+      ],
+      [],
+      [],
+      []
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         " MenuBar"
+      ],
+      [
+         "Selection Pattern",
+         "<shown>"
+      ],
+      [
+         "AriaProperties.busy",
+         "true"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "MSAA" : [
+      [
+         "role",
+         "ROLE_SYSTEM_MENUBAR"
+      ],
+      [
+         "STATE_SYSTEM_BUSY",
+         "<shown>"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for aria-busy="true" on a menubar .</p>
+  <div role="menubar" aria-busy="true" id="test">
+    <div role="menuitem">File</div>
+    <div role="menuitem">Edit</div>
+    <div role="menuitem>View</div>
+  </div>
+
+</body>
+</html>

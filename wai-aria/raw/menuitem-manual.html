@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<title>menuitem</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "menuitem",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "object" : [
+      [
+         "posinset",
+         "4"
+      ],
+      [
+         "setsize",
+         "8"
+      ]
+   ],
+   "IAccessible2" : [
+      []
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_MENU_ITEM",
+         "true"
+      ]
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         "MenuItem"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXMenuItem"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXRoleDescription",
+         "menu item"
+      ],
+      [
+         "AXARIAPosInSet",
+         "4"
+      ],
+      [
+         "AXARIASetSize",
+         "8"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "AriaProperties" : [
+      [
+         "posinset",
+         "4"
+      ],
+      [
+         "setsize",
+         "8"
+      ]
+   ],
+   "groupPosition()" : [
+      [
+         "similarItemsInGroup",
+         "8"
+      ],
+      [
+         "positionInGroup",
+         "4"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for menuitem.</p>
+  <ul role='menu'>Menu
+    <li role='menuitem'> option 1</li>
+    <li role='menuitem' id='test' aria-posinset='4' aria-setsize='8'> option 2</li>
+    <li role='menuitem'> option 3</li>
+  </ul>
+
+</body>
+</html>

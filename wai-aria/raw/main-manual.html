@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<title>main</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "main",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXGroup"
+      ],
+      [
+         "AXSubrole",
+         "AXLandmarkMain"
+      ],
+      [
+         "AXRoleDescription",
+         "main"
+      ]
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_LANDMARK",
+         "true"
+      ],
+      []
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         "Group"
+      ],
+      [
+         "Localized Control Type",
+         "main"
+      ],
+      [
+         "Landmark Type",
+         "Main"
+      ],
+      [
+         "Localized Landmark Type",
+         "main"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "Iaccessible2" : [
+      [
+         "IA2_ROLE_LANDMARK"
+      ],
+      [
+         "object",
+         "xml-roles",
+         "main"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for main.</p>
+  <div id='test' role='main'>Hellp world</div>
+
+</body>
+</html>

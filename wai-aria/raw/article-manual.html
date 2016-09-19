@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<title>article</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "article",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "object" : [
+      [
+         "xml-roles",
+         "article"
+      ],
+      [
+         "posinset",
+         "4"
+      ],
+      [
+         "setsize",
+         "8"
+      ],
+      [
+         "rowspan=\"5\"|AXAPI",
+         "AXRole",
+         "AXGroup"
+      ],
+      [
+         "AXSubrole",
+         "AXDocumentArticle"
+      ],
+      [
+         "AXDescription",
+         "article"
+      ],
+      [
+         "AXARIAPosInSet",
+         "4"
+      ],
+      [
+         "AXARIASetSize",
+         "8"
+      ]
+   ],
+   "IAccessible2" : [
+      []
+   ],
+   "ATK" : [
+      []
+   ],
+   "UIA" : [
+      [
+         "control type",
+         "Group"
+      ],
+      [
+         "localize control type",
+         "article"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "AriaProperties" : [
+      [
+         "posinset",
+         "4"
+      ],
+      [
+         "setsize",
+         "8"
+      ]
+   ],
+   "MSAA" : [
+      [
+         "role",
+         "ROLE_SYSTEM_DOCUMENT "
+      ],
+      [
+         "STATE_SYSTEM_READONLY",
+         "<shown>"
+      ]
+   ],
+   "groupPosition()" : [
+      [
+         "similarItemsInGroup",
+         "8"
+      ],
+      [
+         "positionInGroup",
+         "4"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for article.</p>
+  <div id="test" role="article" aria-posinset="4" aria-setsize="8">test cell</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<title>log</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "log",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "object" : [
+      [
+         "xml-roles",
+         "log"
+      ],
+      [
+         "container-live",
+         "polite"
+      ],
+      [
+         "live",
+         "polite"
+      ],
+      [
+         "container-live-role",
+         "log"
+      ]
+   ],
+   "IAccessible2" : [
+      []
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXGroup"
+      ],
+      [
+         "AXSubrole",
+         "AXApplicationLog"
+      ],
+      [
+         "AXRoleDescription",
+         "log"
+      ]
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_LOG",
+         "true"
+      ]
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         "Group"
+      ],
+      [
+         "Localized Control Type",
+         "log"
+      ],
+      [
+         "LiveSettingProperty",
+         "Polite"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for log.</p>
+  <div id='test' role='log' > </div>
+
+</body>
+</html>

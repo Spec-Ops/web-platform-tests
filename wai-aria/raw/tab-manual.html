@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<title>tab</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "tab",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "object" : [
+      [
+         "posinset",
+         "3"
+      ],
+      [
+         "setsize",
+         "7"
+      ]
+   ],
+   "IAccessible2" : [
+      []
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_PAGE_TAB",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_SELECTED",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_SELECTABLE",
+         "true"
+      ]
+   ],
+   "AriaProperties" : [
+      [
+         "posinset",
+         "3"
+      ],
+      [
+         "setsize",
+         "7"
+      ],
+      [
+         "SelectionItem",
+         "IsSelected"
+      ]
+   ],
+   "groupPosition()" : [
+      [
+         "similarItemsInGroup",
+         "7"
+      ],
+      [
+         "positionInGroup",
+         "3"
+      ]
+   ],
+   "UIA" : [
+      [
+         "Control Type ",
+         "TabItem"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXRadioButton"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXRoleDescription",
+         "tab"
+      ],
+      [
+         "AXARIAPosInSet",
+         "3"
+      ],
+      [
+         "AXARIASetSize",
+         "7"
+      ],
+      [
+         "AXSelected",
+         "YES"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "MSAA" : [
+      [
+         "ROLE_SYSTEM_PAGETAB"
+      ],
+      [
+         "STATE_SYSTEM_SELECTED"
+      ],
+      [
+         "STATE_SYSTEM_SELECTABLE"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for tab.</p>
+  <div role='tabpanel'>
+    <div role='tab' aria-selected='false'>Hello Mary</div>
+    <div role='tab' id='test' aria-selected='true' aria-posinset='3' aria-setsize='7'>Hello Bob</div>
+  </div>
+
+</body>
+</html>

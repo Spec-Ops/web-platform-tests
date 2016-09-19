@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<title>aria-keyshortcuts</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "aria-keyshortcuts",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXGroup"
+      ],
+      [
+         "AXSubrole",
+         "AXApplicationDialog"
+      ],
+      [
+         "AXRoleDescription",
+         "'dialog'"
+      ],
+      [
+         "The element with role=\"dialog\" and id=\"test\", has a parent with childcount=1, exposes aria-modal=\"true\", and has a childcount=1",
+         "<shown> "
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for aria-keyshortcuts.</p>
+  <body>
+     <h1 id="Test2">Modal Dialog Box Test</h1>
+     <div role="dialog" aria-modal="true" id="test">
+       <input type="button" value="ok"/>
+     </div>
+  </body>
+
+</body>
+</html>

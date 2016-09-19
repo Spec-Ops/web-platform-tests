@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<title>checkbox</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "checkbox",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXCheckbox"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXDescription",
+         "check box"
+      ],
+      [
+         "AXValue",
+         "1"
+      ]
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_CHECK_BOX",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_CHECKABLE",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_CHECKED",
+         "true"
+      ]
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         "Checkbox"
+      ],
+      [
+         "Toggle",
+         "ToggleState",
+         "On"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "MSAA" : [
+      [
+         "ROLE_SYSTEM_CHECKBUTTON"
+      ],
+      [
+         "STATE_SYSTEM_CHECKED"
+      ],
+      [
+         "IAccessibile2",
+         "object",
+         "checkable",
+         "true"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for checkbox.</p>
+  <div id='test' role='checkbox' aria-checked='true' class='chkbox'>I like cars</div>
+
+</body>
+</html>

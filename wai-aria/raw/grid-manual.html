@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<title>grid</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "grid",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "ATK" : [
+      [
+         "role",
+         "ROLE_TABLE",
+         "true"
+      ],
+      [],
+      [],
+      []
+   ],
+   "UIA" : [
+      [
+         "DataGrid"
+      ],
+      [
+         "Selection pattern TODO"
+      ]
+   ],
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXTable"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXDescription",
+         "grid"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for grid.</p>
+  <div role='grid' id='test' aria-rowcount='3' aria-colcount='2'>
+   <div role='row'>
+      <span role='gridcell'> 
+        <button>hello</button>
+     </span>
+   </div>
+  </div>
+
+</body>
+</html>

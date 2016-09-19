@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<title>switch</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "switch",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXCheckbox"
+      ],
+      [
+         "AXSubrole",
+         "AXSwitch"
+      ],
+      [
+         "AXDescription",
+         "switch"
+      ],
+      [
+         " AXValue",
+         " 0"
+      ]
+   ],
+   "ATK" : [
+      [
+         "role",
+         "ROLE_CHECK_BOX",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_CHECKABLE",
+         "true"
+      ],
+      [
+         "start",
+         "STATE_CHECKED",
+         "false"
+      ]
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         "Button"
+      ],
+      [
+         "Localized Control Type",
+         "toggleswitch"
+      ],
+      [
+         "Toggle",
+         "ToggleState",
+         "Off"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "IAccessibile2" : [
+      [
+         "IA2_ROLE_TOGGLE_BUTTON"
+      ],
+      [
+         "object",
+         "xml-roles",
+         "switch"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for switch.</p>
+  <div id='test' role='switch' aria-checked='false' class='switch'>power</div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<title>aria-busy="true" on a listbox  Rich Start</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/wai-aria/scripts/ATTAcomm.js"></script>
+<script>
+setup({explicit_timeout: true, explicit_done: true });
+
+var theTest = new ATTAcomm(
+    { title: "aria-busy="true" on a listbox  Rich Start",
+      steps: [
+        {
+          "type":  "test",
+          "title": "step 1",
+          "element": "test",
+          "test" : {
+   "AXAPI" : [
+      [
+         "AXRole",
+         "AXList"
+      ],
+      [
+         "AXSubrole",
+         "<nil>"
+      ],
+      [
+         "AXRoleDescription",
+         "'list'"
+      ],
+      [
+         "AXElementBusy",
+         "YES  "
+      ]
+   ],
+   "ATK" : [
+      [],
+      [],
+      []
+   ],
+   "UIA" : [
+      [
+         "Control Type",
+         " List"
+      ],
+      [
+         "AriaProperties.busy",
+         "true"
+      ]
+   ],
+   "WAIFAKE" : [
+      [
+         "role",
+         "ROLE_TABLE_CELL"
+      ],
+      [
+         "shouldFail",
+         "nothing"
+      ],
+      [
+         "interface",
+         "TableCell"
+      ]
+   ],
+   "MSAA" : [
+      [
+         "role",
+         "ROLE_SYSTEM_LISTBOX"
+      ],
+      [
+         "STATE_SYSTEM_BUSY",
+         "<shown>"
+      ]
+   ]
+}
+
+        }
+    ]
+  }
+) ;
+</script>
+</head>
+<body>
+<p>This test examines the ARIA properties for aria-busy="true" on a listbox  Rich Start.</p>
+  <ul role="listbox" aria-busy="true" id="test">
+       <li role="option">option 1</li>
+       <li role="option">option 2</li>
+  </ul>
+
+</body>
+</html>
