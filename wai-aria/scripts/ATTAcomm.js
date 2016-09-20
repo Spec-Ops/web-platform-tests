@@ -464,10 +464,9 @@ ATTAcomm.prototype = {
         xhr.setRequestHeader(ref[0], ref[1]);
       });
 
-      /* if (this.timeout) {
+      if (this.timeout) {
         xhr.timeout = this.timeout;
       }
-      */
 
       xhr.ontimeout = function() {
         resp.timeout = this.timeout;
