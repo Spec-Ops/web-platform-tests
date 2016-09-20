@@ -37,7 +37,7 @@ my $theContent = $page->{'*'};
 # iterate over the content
 
 my $io = IO::String->new($theContent);
-
+# my $io ;
 # open($io, "<", "raw") ;
 
 my $state = 0;   # between items
@@ -188,10 +188,12 @@ sub build_test() {
         $new[0] = "role";
         $new[1] = $conditions[$i]->[$start];
         $new[2] = $assert;
-      } elsif ($conditions[$i]->[$start] =~ m/(.*) interface/) {
+      } elsif ($conditions[$i]->[$start] =~ m/(.*) interface/i) {
         $new[0] = "interface";
-        $new[1] = $conditions[$i]->[1] = $1;
-        if ($conditions[$i]->[2] ne '<shown>') {
+        $new[1] = $1;
+        print "$1 condition is " . $conditions[$i]->[1] . "\n";
+        if ($conditions[$i]->[1] ne '<shown>'
+          && $conditions[$i]->[1] !~ m/true/i ) {
           $assert = "false";
         }
         $new[2] = $assert;
@@ -212,12 +214,15 @@ sub build_test() {
         $new[1] = $conditions[$i]->[$start];
         $new[2] = $assert;
       } elsif ($conditions[$i]->[$start] =~ m/^object attribute (.*)/) {
+        my $name = $1;
         $new[0] = "attribute";
-        if ($conditions[$i]->[1] eq "not exposed") {
-          $new[1] = $1;
+        my $val = $conditions[$i]->[1];
+        $val =~ s/"//g;
+        if ($val eq "not exposed" || $val eq "not mapped") {
+          $new[1] = $name;
           $new[2] = "false";
         } else {
-          $new[1] = $1 . ":" . $conditions[$i]->[1];
+          $new[1] = $name . ":" . $val;
           $new[2] = "true";
         }
       }
