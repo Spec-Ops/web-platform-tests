@@ -197,14 +197,13 @@ sub build_test() {
           $assert = "false";
         }
         $new[2] = $assert;
-      } elsif ($conditions[$i]->[$start] eq "role" ) {
-        $new[0] = $conditions[$i]->[0];
-        $new[1] = $conditions[$i]->[1];
-        $new[2] = $assert;
-      } elsif ($conditions[$i]->[$start] eq "object" ) {
+      } elsif ($conditions[$i]->[$start] eq "object" || $conditions[$i]->[$start] eq "attribute" ) {
         $new[0] = "attribute";
-        $new[1] = $conditions[$i]->[1] . ":" . $conditions[$i]->[2];
-        if ($conditions[$i]->[3] eq "not exposed") {
+        my $val = $conditions[$i]->[2];
+        $val =~ s/"//g;
+        $new[1] = $conditions[$i]->[1] . ":" . $val;
+        if ($conditions[$i]->[3] eq "not exposed"
+            || $conditions[$i]->[3] eq "false") {
           $new[2] = "false";
         } else {
           $new[2] = "true";
@@ -225,6 +224,8 @@ sub build_test() {
           $new[1] = $name . ":" . $val;
           $new[2] = "true";
         }
+      } else {
+        @new = @{$conditions[$i]};
       }
       $conditions[$i] = \@new;
     }
@@ -253,8 +254,8 @@ sub build_test() {
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: '$title',
-      steps: [
+    { "title": '$title',
+      "steps": [
         {
           "type":  "test",
           "title": "step 1",

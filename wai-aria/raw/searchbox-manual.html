@@ -9,8 +9,8 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'searchbox',
-      steps: [
+    { "title": 'searchbox',
+      "steps": [
         {
           "type":  "test",
           "title": "step 1",
@@ -46,7 +46,9 @@ var theTest = new ATTAcomm(
          "STATE_MULTI_LINE",
          "true"
       ],
-      []
+      [
+         "EditibleText"
+      ]
    ],
    "UIA" : [
       [

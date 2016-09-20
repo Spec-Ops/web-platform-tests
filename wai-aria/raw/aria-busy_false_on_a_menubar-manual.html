@@ -9,8 +9,8 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'aria-busy="false" on a menubar ',
-      steps: [
+    { "title": 'aria-busy="false" on a menubar ',
+      "steps": [
         {
           "type":  "test",
           "title": "step 1",
@@ -25,8 +25,7 @@ var theTest = new ATTAcomm(
    "ATK" : [
       [
          "role",
-         "ROLE_MENU_BAR",
-         "true"
+         "ROLE_MENU_BAR"
       ],
       [
          "attribute",
@@ -43,7 +42,10 @@ var theTest = new ATTAcomm(
          "Selection",
          "false"
       ],
-      []
+      [
+         "STATE-BUSY",
+         "\"false\""
+      ]
    ],
    "UIA" : [
       [

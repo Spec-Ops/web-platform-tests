@@ -9,8 +9,8 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'aria-busy="false" on a grid ',
-      steps: [
+    { "title": 'aria-busy="false" on a grid ',
+      "steps": [
         {
           "type":  "test",
           "title": "step 1",
@@ -45,9 +45,18 @@ var theTest = new ATTAcomm(
       [
          "interface",
          "Selection",
+         "true"
+      ],
+      [
+         "Selection",
+         "clear_selection()",
          "false"
       ],
-      []
+      [
+         "state",
+         "STATE-BUSY",
+         "false"
+      ]
    ],
    "UIA" : [
       [

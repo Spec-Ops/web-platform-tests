@@ -9,8 +9,8 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'aria-busy="false" on a listbox ',
-      steps: [
+    { "title": 'aria-busy="false" on a listbox ',
+      "steps": [
         {
           "type":  "test",
           "title": "step 1",
@@ -19,11 +19,16 @@ var theTest = new ATTAcomm(
    "ATK" : [
       [
          "role",
-         "ROLE_LIST_BOX",
-         "true"
+         "ROLE_LIST_BOX"
       ],
-      [],
-      []
+      [
+         "Selection pattern",
+         "return false for all Selection methods that provide a means to modify the selection"
+      ],
+      [
+         "STATE-BUSY cleared",
+         "<shown>"
+      ]
    ],
    "UIA" : [
       [

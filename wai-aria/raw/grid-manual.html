@@ -9,8 +9,8 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { title: 'grid',
-      steps: [
+    { "title": 'grid',
+      "steps": [
         {
           "type":  "test",
           "title": "step 1",
@@ -27,8 +27,16 @@ var theTest = new ATTAcomm(
          "xml-roles:grid",
          "true"
       ],
-      [],
-      []
+      [
+         "interface",
+         "Table",
+         "<shown>"
+      ],
+      [
+         "interface",
+         "Selection",
+         "<shown>"
+      ]
    ],
    "UIA" : [
       [
