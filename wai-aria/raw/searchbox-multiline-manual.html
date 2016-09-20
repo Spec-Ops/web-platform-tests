@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>aria-keyshortcuts</title>
+<title>searchbox-multiline</title>
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -9,56 +9,74 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { "title": 'aria-keyshortcuts',
+    { "title": 'searchbox-multiline',
       "steps": [
         {
           "type":  "test",
           "title": "step 1",
           "element": "test",
           "test" : {
+   "IAccessible2" : [
+      [
+         "IA2_MULTI_LINE"
+      ],
+      [
+         "NOT",
+         "IA2_SINGLE_LINE"
+      ],
+      [
+         "object",
+         "xml-roles",
+         "search"
+      ]
+   ],
    "ATK" : [
       [
          "role",
-         "ROLE_DIALOG",
-         "true"
-      ],
-      [
-         "interface",
-         "Window",
+         "ROLE_ENTRY",
          "true"
       ],
       [
          "state",
-         "STATE_MODAL",
+         "STATE_SINGLE_LINE",
+         "false"
+      ],
+      [
+         "state",
+         "STATE_MULTI_LINE",
+         "true",
+         "interface",
+         "EditibleText",
          "true"
       ]
    ],
    "UIA" : [
       [
          "Control Type",
-         "Pane"
+         "Edit"
       ],
       [
-         "Window.isModal",
-         "\"true\""
+         "Localized Control Type",
+         "search box"
+      ],
+      [
+         "AriaProperties",
+         "multiline",
+         "true"
       ]
    ],
    "AXAPI" : [
       [
          "AXRole",
-         "AXGroup"
+         "AXTextField"
       ],
       [
          "AXSubrole",
-         "AXApplicationDialog"
+         "AXSearchField"
       ],
       [
          "AXRoleDescription",
-         "'dialog'"
-      ],
-      [
-         "The element with role=\"dialog\" and id=\"test\", has a parent with childcount=1, exposes aria-modal=\"true\", and has a childcount=1",
-         "<shown> "
+         "search text field"
       ]
    ],
    "WAIFAKE" : [
@@ -84,13 +102,8 @@ var theTest = new ATTAcomm(
 </script>
 </head>
 <body>
-<p>This test examines the ARIA properties for aria-keyshortcuts.</p>
-  <body>
-     <h1 id="Test2">Modal Dialog Box Test</h1>
-     <div role="dialog" aria-modal="true" id="test">
-       <input type="button" value="ok"/>
-     </div>
-  </body>
+<p>This test examines the ARIA properties for searchbox-multiline.</p>
+  <div id='test' role='searchbox' contenteditable='true' aria-multiline='true'></div>
 
 </body>
 </html>

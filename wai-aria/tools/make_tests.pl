@@ -226,6 +226,9 @@ sub build_test() {
         }
       } else {
         @new = @{$conditions[$i]};
+        if ($conditions[$i]->[2] eq '<shown>') {
+          $new[2] = "true";
+        }
       }
       $conditions[$i] = \@new;
     }

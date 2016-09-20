@@ -16,20 +16,6 @@ var theTest = new ATTAcomm(
           "title": "step 1",
           "element": "test",
           "test" : {
-   "IAccessible2" : [
-      [
-         "IA2_MULTI_LINE"
-      ],
-      [
-         "NOT",
-         "IA2_SINGLE_LINE"
-      ],
-      [
-         "object",
-         "xml-roles",
-         "search"
-      ]
-   ],
    "ATK" : [
       [
          "role",
@@ -39,15 +25,12 @@ var theTest = new ATTAcomm(
       [
          "state",
          "STATE_SINGLE_LINE",
-         "false"
-      ],
-      [
-         "state",
-         "STATE_MULTI_LINE",
          "true"
       ],
       [
-         "EditibleText"
+         "interface",
+         "EditibleText",
+         "true"
       ]
    ],
    "UIA" : [
@@ -58,11 +41,6 @@ var theTest = new ATTAcomm(
       [
          "Localized Control Type",
          "search box"
-      ],
-      [
-         "AriaProperties",
-         "multiline",
-         "true"
       ]
    ],
    "AXAPI" : [
@@ -103,7 +81,7 @@ var theTest = new ATTAcomm(
 </head>
 <body>
 <p>This test examines the ARIA properties for searchbox.</p>
-  <div id='test' role='searchbox' contenteditable='true' aria-multiline='true'></div>
+  <div id='test' role='searchbox' contenteditable='true'></div>
 
 </body>
 </html>

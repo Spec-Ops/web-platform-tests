@@ -19,15 +19,23 @@ var theTest = new ATTAcomm(
    "ATK" : [
       [
          "role",
-         "ROLE_LIST_BOX"
+         "ROLE_LIST_BOX",
+         "true"
       ],
       [
-         "Selection pattern",
-         "return false for all Selection methods that provide a means to modify the selection"
+         "interface",
+         "Selection",
+         "true"
       ],
       [
-         "STATE-BUSY cleared",
-         "<shown>"
+         "Selection",
+         "clear_selection()",
+         "false"
+      ],
+      [
+         "state",
+         "STATE-BUSY",
+         "false"
       ]
    ],
    "UIA" : [
