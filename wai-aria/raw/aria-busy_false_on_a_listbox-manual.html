@@ -18,30 +18,34 @@ var theTest = new ATTAcomm(
           "test" : {
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_LIST_BOX",
-         "true"
+         "is",
+         "ROLE_LIST_BOX"
       ],
       [
+         "property",
          "interface",
-         "Selection",
-         "true"
+         "contains",
+         "Selection"
       ],
       [
-         "Selection",
-         "clear_selection()",
+         "result",
+         "Selection.clear_selection()",
+         "is",
          "false"
       ],
       [
-         "state",
-         "STATE-BUSY",
-         "false"
+         "property",
+         "stateSet",
+         "contains",
+         "STATE_BUSY"
       ]
    ],
    "UIA" : [
       [
          "Control Type",
-         " List"
+         "List"
       ],
       [
          "AriaProperties.busy",
@@ -59,11 +63,11 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXRoleDescription",
-         "'list'"
+         "list"
       ],
       [
          "AXElementBusy",
-         "NO  "
+         "NO"
       ]
    ],
    "WAIFAKE" : [

@@ -130,6 +130,10 @@ while (<$io>) {
       }
     } elsif (m/^\|(.*)$/) {
       my $item = $1;
+      $item =~ s/^ *//;
+      $item =~ s/ *$//;
+      $item =~ s/^['"]//;
+      $item =~ s/['"]$//;
       # add into the data structure for the API
       if (!exists $theAsserts->{$theAPI}->[$theAssertCount]) {
         $theAsserts->{$theAPI}->[$theAssertCount] = [ $item ] ;

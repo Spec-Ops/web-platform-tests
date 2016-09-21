@@ -18,19 +18,22 @@ var theTest = new ATTAcomm(
           "test" : {
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_DIALOG",
-         "true"
+         "is",
+         "ROLE_DIALOG"
       ],
       [
+         "property",
          "interface",
-         "Window",
-         "true"
+         "contains",
+         "Window"
       ],
       [
-         "state",
-         "STATE_MODAL",
-         "true"
+         "property",
+         "stateSet",
+         "contains",
+         "STATE_MODAL"
       ]
    ],
    "UIA" : [
@@ -40,7 +43,7 @@ var theTest = new ATTAcomm(
       ],
       [
          "Window.isModal",
-         "\"true\""
+         "true"
       ]
    ],
    "AXAPI" : [
@@ -54,11 +57,11 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXRoleDescription",
-         "'dialog'"
+         "dialog"
       ],
       [
          "The element with role=\"dialog\" and id=\"test\", has a parent with childcount=1, exposes aria-modal=\"true\", and has a childcount=1",
-         "<shown> "
+         "<shown>"
       ]
    ],
    "WAIFAKE" : [

@@ -18,24 +18,28 @@ var theTest = new ATTAcomm(
           "test" : {
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_ENTRY",
-         "true"
+         "is",
+         "ROLE_ENTRY"
       ],
       [
+         "property",
          "interface",
-         "EditableText",
-         "true"
+         "contains",
+         "EditableText"
       ],
       [
-         "state",
-         "STATE_SINGLE_LINE",
-         "true"
+         "property",
+         "stateSet",
+         "contains",
+         "STATE_SINGLE_LINE"
       ],
       [
-         "attribute",
-         "placeholder-text:DD/MM/YYYY",
-         "true"
+         "property",
+         "placeholder-text",
+         "is",
+         "DD/MM/YYYY"
       ]
    ],
    "UIA" : [
@@ -45,7 +49,7 @@ var theTest = new ATTAcomm(
       ],
       [
          "AriaProperties.placeholder",
-         "\"DD/MM/YYYY\""
+         "DD/MM/YYYY"
       ]
    ],
    "AXAPI" : [
@@ -59,7 +63,7 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXRoleDescription",
-         "'text field'"
+         "text field"
       ],
       [
          "AXOrientation",

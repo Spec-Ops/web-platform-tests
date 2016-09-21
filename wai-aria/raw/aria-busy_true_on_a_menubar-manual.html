@@ -19,40 +19,45 @@ var theTest = new ATTAcomm(
    "IAccessible2" : [
       [
          "object attribute xml-roles",
-         "\"menubar\""
+         "menubar"
       ]
    ],
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_MENU_BAR",
-         "true"
+         "is",
+         "ROLE_MENU_BAR"
       ],
       [
-         "attribute",
-         "xml-roles:menubar",
-         "true"
+         "property",
+         "objectAttributes",
+         "contains",
+         "xml-roles:menubar"
       ],
       [
+         "property",
          "interface",
-         "Selection",
-         "true"
+         "contains",
+         "Selection"
       ],
       [
-         "Selection",
-         "clear_selection()",
+         "result",
+         "Selection.clear_selection()",
+         "is",
          "false"
       ],
       [
-         "state",
-         "STATE-BUSY",
-         "true"
+         "property",
+         "stateSet",
+         "contains",
+         "STATE_BUSY"
       ]
    ],
    "UIA" : [
       [
          "Control Type",
-         " MenuBar"
+         "MenuBar"
       ],
       [
          "Selection Pattern",
@@ -74,11 +79,11 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXRoleDescription",
-         "'menu bar'"
+         "menu bar"
       ],
       [
          "AXElementBusy",
-         "YES  "
+         "YES"
       ]
    ],
    "WAIFAKE" : [

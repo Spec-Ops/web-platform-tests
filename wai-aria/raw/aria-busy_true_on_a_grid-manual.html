@@ -19,7 +19,7 @@ var theTest = new ATTAcomm(
    "IAccessible2" : [
       [
          "object attribute xml-roles",
-         "\"grid\""
+         "grid"
       ],
       [
          "IAcccessibleTable2",
@@ -28,35 +28,40 @@ var theTest = new ATTAcomm(
    ],
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_TABLE",
-         "true"
+         "is",
+         "ROLE_TABLE"
       ],
       [
-         "attribute",
-         "xml-roles:grid",
-         "true"
+         "property",
+         "objectAttributes",
+         "contains",
+         "xml-roles:grid"
       ],
       [
+         "property",
          "interface",
-         "Table",
-         "true"
+         "contains",
+         "Table"
       ],
       [
-         "Selection",
-         "clear_selection()",
+         "result",
+         "Selection.clear_selection()",
+         "is",
          "false"
       ],
       [
-         "state",
-         "STATE-BUSY",
-         "true"
+         "property",
+         "stateSet",
+         "contains",
+         "STATE_BUSY"
       ]
    ],
    "UIA" : [
       [
          "Control Type",
-         " DataGrid"
+         "DataGrid"
       ],
       [
          "Selection Pattern",
@@ -78,11 +83,11 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXRoleDescription",
-         "'grid'"
+         "grid"
       ],
       [
          "AXElementBusy",
-         "YES  "
+         "YES"
       ]
    ],
    "WAIFAKE" : [

@@ -18,14 +18,16 @@ var theTest = new ATTAcomm(
           "test" : {
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_PUSH_BUTTON",
-         "role"
+         "is",
+         "ROLE_PUSH_BUTTON"
       ],
       [
-         "attribute",
-         "roledescription:false",
-         "true"
+         "property",
+         "roledescription",
+         "is",
+         "undefined"
       ]
    ],
    "UIA" : [
@@ -35,7 +37,7 @@ var theTest = new ATTAcomm(
       ],
       [
          "Localized Control Type",
-         "\"Button\""
+         "Button"
       ]
    ],
    "AXAPI" : [
@@ -49,7 +51,7 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXRoleDescription",
-         "'button'"
+         "button"
       ]
    ],
    "WAIFAKE" : [
