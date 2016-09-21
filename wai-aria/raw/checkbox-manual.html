@@ -18,19 +18,22 @@ var theTest = new ATTAcomm(
           "test" : {
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_CHECK_BOX",
-         "true"
+         "is",
+         "ROLE_CHECK_BOX"
       ],
       [
-         "state",
-         "STATE_CHECKABLE",
-         "true"
+         "property",
+         "states",
+         "contains",
+         "STATE_CHECKABLE"
       ],
       [
-         "state",
-         "STATE_CHECKED",
-         "true"
+         "property",
+         "states",
+         "contains",
+         "STATE_CHECKED"
       ]
    ],
    "UIA" : [

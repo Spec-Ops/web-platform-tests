@@ -18,14 +18,16 @@ var theTest = new ATTAcomm(
           "test" : {
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_LANDMARK",
-         "true"
+         "is",
+         "ROLE_LANDMARK"
       ],
       [
-         "attribute",
-         "xml-roles:main",
-         "true"
+         "property",
+         "objectAttributes",
+         "contains",
+         "xml-roles:main"
       ]
    ],
    "UIA" : [

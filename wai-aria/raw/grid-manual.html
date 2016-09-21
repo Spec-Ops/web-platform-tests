@@ -18,24 +18,28 @@ var theTest = new ATTAcomm(
           "test" : {
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_TABLE",
-         "true"
+         "is",
+         "ROLE_TABLE"
       ],
       [
-         "attribute",
-         "xml-roles:grid",
-         "true"
+         "property",
+         "objectAttributes",
+         "contains",
+         "xml-roles:grid"
       ],
       [
-         "interface",
-         "Table",
-         "true"
+         "property",
+         "interfaces",
+         "contains",
+         "Table"
       ],
       [
-         "interface",
-         "Selection",
-         "true"
+         "property",
+         "interfaces",
+         "contains",
+         "Selection"
       ]
    ],
    "UIA" : [
