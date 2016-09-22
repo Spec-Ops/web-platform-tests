@@ -117,9 +117,10 @@ ATTAcomm.prototype = {
       var subtestsForAPI = true;
 
       this.Tests.forEach(function(subtest) {
-        if (!subtest.test.hasOwnProperty(API)) {
-          // this API does not have automated criteria for at least one test, so
-          // set up manual testing
+        if (subtest.hasOwnProperty("test") &&
+            !subtest.test.hasOwnProperty(API)) {
+          // this item doesn't have anything for this API
+          // and this is a test that needs to be looked at by an atta
           subtestsForAPI = false;
         }
       });
