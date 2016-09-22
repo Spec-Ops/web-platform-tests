@@ -42,6 +42,32 @@ var theTest = new ATTAcomm(
                    "doesNotContain",
                    "STATE_BUSY"
                 ]
+             ],
+             "ATK" : [
+                [
+                   "property",
+                   "role",
+                   "is",
+                   "ROLE_LIST_BOX"
+                ],
+                [
+                   "property",
+                   "interfaces",
+                   "contains",
+                   "Selection"
+                ],
+                [
+                   "result",
+                   "Selection.clear_selection()",
+                   "is",
+                   "false"
+                ],
+                [
+                   "property",
+                   "states",
+                   "doesNotContain",
+                   "STATE_BUSY"
+                ]
              ]
           }
         },
@@ -56,6 +82,20 @@ var theTest = new ATTAcomm(
           "element": "test",
           "test" : {
              "WAIFAKE" : [
+                [
+                   "property",
+                   "interfaces",
+                   "doesNotContain",
+                   "Selection"
+                ],
+                [
+                   "property",
+                   "states",
+                   "contains",
+                   "STATE_BUSY"
+                ]
+             ],
+             "ATK" : [
                 [
                    "property",
                    "interfaces",
