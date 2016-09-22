@@ -254,6 +254,7 @@ sub build_test() {
 <html>
 <head>
 <title>$title</title>
+<link rel="stylesheet" href="/resources/testharness.css">
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
