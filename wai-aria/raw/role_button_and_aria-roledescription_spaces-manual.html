@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>role button and aria-roledescription spaces</title>
+<link rel="stylesheet" href="/resources/testharness.css">
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -18,14 +19,16 @@ var theTest = new ATTAcomm(
           "test" : {
    "ATK" : [
       [
+         "property",
          "role",
-         "ROLE_PUSH_BUTTON",
-         "true"
+         "is",
+         "ROLE_PUSH_BUTTON"
       ],
       [
-         "attribute",
-         "roledescription:false",
-         "true"
+         "property",
+         "objectAttributes",
+         "doesNotContain",
+         "roledescription"
       ]
    ],
    "UIA" : [
@@ -35,7 +38,7 @@ var theTest = new ATTAcomm(
       ],
       [
          "Localized Control Type",
-         "\"button\""
+         "button"
       ]
    ],
    "AXAPI" : [
@@ -49,17 +52,13 @@ var theTest = new ATTAcomm(
       ],
       [
          "AXRoleDescription",
-         "'button'"
+         "button"
       ]
    ],
    "WAIFAKE" : [
       [
          "role",
          "ROLE_TABLE_CELL"
-      ],
-      [
-         "shouldFail",
-         "nothing"
       ],
       [
          "interface",
