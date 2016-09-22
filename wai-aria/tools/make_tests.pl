@@ -172,7 +172,7 @@ sub build_test() {
     return;
   }
 
-  $asserts->{WAIFAKE} = [ [ "role", "ROLE_TABLE_CELL" ], [ "shouldFail", "nothing" ] , [ "interface", "TableCell" ] ];
+  $asserts->{WAIFAKE} = [ [ "role", "ROLE_TABLE_CELL" ], [ "interface", "TableCell" ] ];
 
   # massage the data to make it more sensible
   if (exists $asserts->{"ATK"}) {
