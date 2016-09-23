@@ -278,6 +278,8 @@ var theTest = new ATTAcomm(
 <body>
 <p>This test examines the ARIA properties for $title.</p>
 $code
+<div id="ATTAmessages"></div>
+<div id="manualMode"></div>
 </body>
 </html>
 );

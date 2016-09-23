@@ -203,8 +203,48 @@ ATTAcomm.prototype = {
   setupManualTest: function(message) {
     // if we determine the test should run manually, then expose all of the conditions that are
     // in the TEST data structure so that a human can to the inspection and calculate the result
+    // 
     'use strict';
     console.log(message);
+
+    var ref = document.getElementById("manualMode");
+    if (ref) {
+      // we have a manualMode block.  Populate it
+      var content = "<h2>Manual Mode Enabled</h2><p>"+message+"</p>";
+      var theTable = "<table id='steps'><tr><th>Step</th><th>Type</th><th>Element ID</th><th>Assertions</th></tr>";
+      this.Tests.forEach(function(subtest) {
+        var type = "test";
+        if (subtest.hasOwnProperty("type")) {
+          type = subtest.type;
+        }
+        var id = "" ;
+        if (subtest.hasOwnProperty("element")) {
+          id = subtest.element;
+        }
+        theTable += "<tr><td>" + subtest.title +"</td>";
+        theTable += "<td>" + type + "</td>";
+        theTable += "<td>" + id +"</td>";
+
+        // now what do we put over here? depends on the type
+        if (type === "test") {
+          // it is a test; dump the assertions
+          theTable += "<td>Assertions go here</td>";
+        } else if (type === "event" ) {
+          // it is some events
+        } else if (type === "script" ) {
+          // it is a script fragment
+          theTable += "<td>Script: " + subtest.script + "</td>";
+        } else {
+          theTable += "<td>Unknown type: " + type + "</td>";
+        }
+        theTable += "</tr>";
+
+
+      });
+
+      theTable += "</table>";
+      ref.innerHTML = content + theTable ;
+    }
   },
 
   // raiseEvent - throw an event at an item
@@ -518,3 +558,5 @@ ATTAcomm.prototype = {
   },
 
 };
+
+// vim: set ts=2 sw=2:

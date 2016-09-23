@@ -1,0 +1,86 @@
+html {
+    font-family:DejaVu Sans, Bitstream Vera Sans, Arial, Sans;
+}
+
+table#steps {
+    border-collapse:collapse;
+    table-layout:fixed;
+    width:100%;
+}
+
+table#steps th:first-child,
+table#steps td:first-child {
+    width:4em;
+}
+
+table#steps th:last-child,
+table#steps td:last-child {
+    width:50%;
+}
+
+table#steps.assertions th:last-child,
+table#steps.assertions td:last-child {
+    width:35%;
+}
+
+table#steps th {
+    padding:0;
+    padding-bottom:0.5em;
+    border-bottom:medium solid black;
+}
+
+table#steps td {
+    padding:1em;
+    padding-bottom:0.5em;
+    border-bottom:thin solid black;
+}
+
+tr.pass > td:first-child {
+    color:green;
+}
+
+tr.fail > td:first-child {
+    color:red;
+}
+
+tr.timeout > td:first-child {
+    color:red;
+}
+
+tr.notrun > td:first-child {
+    color:blue;
+}
+
+.pass > td:first-child, .fail > td:first-child, .timeout > td:first-child, .notrun > td:first-child {
+    font-variant:small-caps;
+}
+
+table#steps span {
+    display:block;
+}
+
+table#steps span.expected {
+    font-family:DejaVu Sans Mono, Bitstream Vera Sans Mono, Monospace;
+    white-space:pre;
+}
+
+table#steps span.actual {
+    font-family:DejaVu Sans Mono, Bitstream Vera Sans Mono, Monospace;
+    white-space:pre;
+}
+
+span.ok {
+    color:green;
+}
+
+tr.error {
+    color:red;
+}
+
+span.timeout {
+    color:red;
+}
+
+span.ok, span.timeout, span.error {
+    font-variant:small-caps;
+}
