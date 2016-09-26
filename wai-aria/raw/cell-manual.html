@@ -3,6 +3,7 @@
 <head>
 <title>cell</title>
 <link rel="stylesheet" href="/resources/testharness.css">
+<link rel="stylesheet" href="/wai-aria/scripts/manual.css">
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script src="/wai-aria/scripts/ATTAcomm.js"></script>
@@ -10,70 +11,71 @@
 setup({explicit_timeout: true, explicit_done: true });
 
 var theTest = new ATTAcomm(
-    { "title": 'cell',
-      "steps": [
-        {
-          "type":  "test",
-          "title": "step 1",
-          "element": "test",
-          "test" : {
-   "ATK" : [
-      [
-         "property",
-         "role",
-         "is",
-         "ROLE_TABLE_CELL"
-      ],
-      [
-         "property",
-         "interfaces",
-         "contains",
-         "TableCell"
-      ]
+{
+   "steps" : [
+      {
+         "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "Control Type",
+                  "TableItem"
+               ],
+               [
+                  "Selection pattern TODO",
+                  ""
+               ],
+               [
+                  "NOT",
+                  "invoke pattern TODO"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "AXRole",
+                  "AXCell"
+               ],
+               [
+                  "AXSubrole",
+                  "<nil>"
+               ],
+               [
+                  "AXRoleDescription",
+                  "cell"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "role",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "interface",
+                  "TableCell"
+               ]
+            ]
+         },
+         "title" : "step 1",
+         "type" : "test",
+         "element" : "test"
+      }
    ],
-   "UIA" : [
-      [
-         "Control Type",
-         "TableItem"
-      ],
-      [
-         "Selection pattern TODO",
-         ""
-      ],
-      [
-         "NOT",
-         "invoke pattern TODO"
-      ]
-   ],
-   "AXAPI" : [
-      [
-         "AXRole",
-         "AXCell"
-      ],
-      [
-         "AXSubrole",
-         "<nil>"
-      ],
-      [
-         "AXRoleDescription",
-         "cell"
-      ]
-   ],
-   "WAIFAKE" : [
-      [
-         "role",
-         "ROLE_TABLE_CELL"
-      ],
-      [
-         "interface",
-         "TableCell"
-      ]
-   ]
+   "title" : "cell"
 }
 
-        }
-    ]
-  }
 ) ;
 </script>
 </head>
@@ -87,5 +89,7 @@ var theTest = new ATTAcomm(
   </div>
  then role: cell, aria-colindex: 4, aria-colcount:8
 
+<div id="ATTAmessages"></div>
+<div id="manualMode"></div>
 </body>
 </html>
