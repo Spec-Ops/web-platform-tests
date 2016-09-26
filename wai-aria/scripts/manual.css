@@ -8,79 +8,63 @@ table#steps {
     width:100%;
 }
 
-table#steps th:first-child,
-table#steps td:first-child {
-    width:4em;
-}
-
 table#steps th:last-child,
 table#steps td:last-child {
-    width:50%;
+    width:70%;
 }
 
-table#steps.assertions th:last-child,
-table#steps.assertions td:last-child {
-    width:35%;
-}
+// table#steps.assertions th:last-child,
+// table#steps.assertions td:last-child {
+//    width:35%;
+// }
 
 table#steps th {
     padding:0;
-    padding-bottom:0.5em;
+    padding-bottom:0.25;
     border-bottom:medium solid black;
 }
 
 table#steps td {
-    padding:1em;
-    padding-bottom:0.5em;
+    padding-top:0.25em;
+    padding-bottom:0.25em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    border-right:thin solid black;
+    border-top:thin solid black;
     border-bottom:thin solid black;
 }
 
-tr.pass > td:first-child {
-    color:green;
+table#steps td.step, table#steps td.type, table#steps td.element {
+    vertical-align:top;
+}
+table#api {
+    border-collapse:collapse;
+    table-layout:fixed;
+    width:100%;
 }
 
-tr.fail > td:first-child {
-    color:red;
+// table#steps.assertions th:last-child,
+// table#steps.assertions td:last-child {
+//    width:35%;
+// }
+
+table#api th {
+    padding:0;
+    padding-bottom:0.25;
+    border-bottom:medium solid black;
 }
 
-tr.timeout > td:first-child {
-    color:red;
+table#api td {
+    padding-top:0.25em;
+    padding-bottom:0.25em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    border-right:thin solid black;
+    border-top:thin solid black;
+    border-bottom:thin solid black;
 }
 
-tr.notrun > td:first-child {
-    color:blue;
+table#api td.step, table#api td.type, table#api td.element {
+    vertical-align:top;
 }
-
-.pass > td:first-child, .fail > td:first-child, .timeout > td:first-child, .notrun > td:first-child {
-    font-variant:small-caps;
-}
-
-table#steps span {
-    display:block;
-}
-
-table#steps span.expected {
-    font-family:DejaVu Sans Mono, Bitstream Vera Sans Mono, Monospace;
-    white-space:pre;
-}
-
-table#steps span.actual {
-    font-family:DejaVu Sans Mono, Bitstream Vera Sans Mono, Monospace;
-    white-space:pre;
-}
-
-span.ok {
-    color:green;
-}
-
-tr.error {
-    color:red;
-}
-
-span.timeout {
-    color:red;
-}
-
-span.ok, span.timeout, span.error {
-    font-variant:small-caps;
 }

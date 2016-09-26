@@ -190,7 +190,7 @@ ATTAcomm.prototype = {
     }.bind(this))
     .catch(function(res) {
       // startTest failed so just sit and wait for a manual test to occur
-      if (res.timeout) {
+      if (res.timeout || res.status === 102) {
         this.setupManualTest("No response from ATTA at " + this.ATTAuri);
       } else if (res.status === 200 ) {
         this.setupManualTest(res.message);
@@ -211,6 +211,9 @@ ATTAcomm.prototype = {
     if (ref) {
       // we have a manualMode block.  Populate it
       var content = "<h2>Manual Mode Enabled</h2><p>"+message+"</p>";
+      if (this.Tests.hasOwnProperty("description")) {
+        content += "<p>" + this.Tests.description + "</p>";
+      }
       var theTable = "<table id='steps'><tr><th>Step</th><th>Type</th><th>Element ID</th><th>Assertions</th></tr>";
       this.Tests.forEach(function(subtest) {
         var type = "test";
@@ -221,14 +224,14 @@ ATTAcomm.prototype = {
         if (subtest.hasOwnProperty("element")) {
           id = subtest.element;
         }
-        theTable += "<tr><td>" + subtest.title +"</td>";
-        theTable += "<td>" + type + "</td>";
-        theTable += "<td>" + id +"</td>";
+        theTable += "<tr><td class='step'>" + subtest.title +"</td>";
+        theTable += "<td class='type'>" + type + "</td>";
+        theTable += "<td class='element'>" + id +"</td>";
 
         // now what do we put over here? depends on the type
         if (type === "test") {
           // it is a test; dump the assertions
-          theTable += "<td>Assertions go here</td>";
+          theTable += "<td>" + this.buildAssertionTable(subtest.test) + "</td>"; 
         } else if (type === "event" ) {
           // it is some events
         } else if (type === "script" ) {
@@ -240,11 +243,41 @@ ATTAcomm.prototype = {
         theTable += "</tr>";
 
 
-      });
+      }.bind(this));
 
       theTable += "</table>";
       ref.innerHTML = content + theTable ;
     }
+  },
+
+  buildAssertionTable:  function(asserts) {
+    var output = "<table class='api'><tr><th>API Name</th><th colspan='4'>Assertions</th></tr>";
+    var APIs = [] ;
+    for (var k in asserts) {
+      if (asserts.hasOwnProperty(k)) {
+        APIs.push(k);
+      }
+    }
+    
+    APIs.sort().forEach(function(theAPI) {
+      var rows = asserts[theAPI] ;
+      var height = rows.length;
+      output += "<tr><td rowspan='" + height + "' class='apiName'>"+theAPI+"</td>";
+      var lastRow = rows.length - 1;
+      rows.forEach(function(theRow, index) {
+        var span = 4 - theRow.length;
+        theRow.forEach(function(item) {
+          output += "<td>" + item + "</td>";
+        });
+        output += "</tr>";
+        if (index < lastRow) {
+          output += "<tr>";
+        }
+      });
+    });
+
+    output += "</table>";
+    return output;
   },
 
   // raiseEvent - throw an event at an item
@@ -515,7 +548,14 @@ ATTAcomm.prototype = {
       };
 
       xhr.onerror = function() {
-        resolve(resp);
+        if (this.status) {
+          resp.status = this.status;
+          resp.statusText = xhr.statusText;
+        } else if (this.status === 0) {
+          resp.status = 0;
+          resp.statusText = "No response from ATTA";
+        }
+        reject(resp);
       };
 
       xhr.onload = function () {
