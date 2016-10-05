@@ -21,7 +21,7 @@ my %specs = (
       specURL => "https://www.w3.org/TR/wai-aria11/"
     },
     "svg" => {
-      title => "SVG_Accessibility/Testing/Test_Assertions_with_Tables",
+      title => "SVG_Accessibility/Testing/Test_Assertions_with_Tables_for_ATTA",
       specURL => "https://www.w3.org/TR/svg-aam-1.0/"
     }
 );
