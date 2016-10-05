@@ -3,8 +3,8 @@
 #  convert_wiki.pl - Transform an old-style wiki into the new format
 #
 #  This script assumes that a wiki has testable statement entries
-#  with varying lemgth lines. Those lines will be converted into 
-#  the format described by the specification at 
+#  with varying lemgth lines. Those lines will be converted into
+#  the format described by the specification at
 #  https://spec-ops.github.io/atta-api/index.html
 #
 #  usage: convert_wiki.pl -f file | -w wiki_title -o outFile
@@ -16,7 +16,7 @@ use JSON ;
 use MediaWiki::API ;
 use Getopt::Long;
 
-my @apiNames = qw(UIA MSAA ATK IAccessible2 IA2 AXAPI);
+my @apiNames = qw(UIA MSAA ATK IAccessible2 AXAPI);
 
 # dir is determined based upon the short name of the spec and is defined
 # by the input or on the command line
@@ -37,8 +37,20 @@ my $wiki_config = {
   "api_url" => "https://www.w3.org/wiki/api.php"
 };
 
+my %specs = (
+    "aria11" => {
+      title => "ARIA_1.1_Testable_Statements",
+      specURL => "https://www.w3.org/TR/wai-aria11"
+    }
+);
+
 my $io ;
 our $theSpecURL = "";
+
+if ($spec) {
+  $wiki_title = $specs{$spec}->{title};
+  $theSpecURL = $specs{$spec}->{specURL};
+}
 
 if ($wiki_title) {
   my $MW = MediaWiki::API->new( $wiki_config );
@@ -106,7 +118,7 @@ while (<$io>) {
     if (m/<\/pre>/) {
       # we are done with the code block
       $state = 3;
-    } 
+    }
   } elsif ($state == 3) {
     # look for a table
     if (m/^\{\|/) {
@@ -138,6 +150,7 @@ while (<$io>) {
       my $theString = $2;
       $theString =~ s/ +$//;
       $theString =~ s/^ +//;
+      $theString = "IAccessible2" if ($theString eq "IA2") ;
       if (grep { $_ eq $theString } @apiNames) {
         $theAssertCount = 0;
         # this is a new API section
@@ -157,12 +170,13 @@ while (<$io>) {
         }
         $theAsserts->{$theAPI}->[$theAssertCount] = [ $theType ] ;
       }
-    } elsif (m/^\|(MSAA|UIA|IA2|IAccessible2|ATK|AXAPI)/) {
+    } elsif (m/^\|(MSAA|UIA|IA2|IAccessible2|ATK|AXAPI) *$/) {
       # they FORGOT a rowspan on an API.  That means there is only 1
       # row
       my $theString = $1;
       $theString =~ s/ +$//;
       $theString =~ s/^ +//;
+      $theString = "IAccessible2" if ($theString eq "IA2") ;
       if (grep { $_ eq $theString } @apiNames) {
         $theAssertCount = 0;
         # this is a new API section
@@ -221,7 +235,7 @@ sub dump_table() {
   my $output = "" ;
 
   my @keywords = qw(property result event);
-  
+
   foreach my $API (sort(keys(%$asserts))) {
     # looking at each API in turn
     my $ref = $asserts->{$API};
@@ -301,8 +315,116 @@ sub dump_table() {
         $conditions[$i] = \@new;
       } elsif ($API eq "UIA") {
         $output .= "|$conditions[$i]\n";
-      } elsif ($API eq "IAccessible2" || $API eq "IA2") {
-        $output .= "|$conditions[$i]\n";
+      } elsif ($API eq "IAccessible2") {
+        my $start = 0;
+        my $assert = "is";
+        if ($conditions[$i]->[0] =~ m/^NOT/) {
+          $start = 1;
+          $assert = "isNot";
+        }
+        if ($conditions[$i]->[$start] =~ m/^IA2_ROLE_/) {
+          $new[0] = "property";
+          $new[1] = "role";
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start];
+        } elsif ($conditions[$i]->[$start] =~ m/^IA2_STATE_/) {
+          $new[0] = "property";
+          $new[1] = "states";
+          $new[3] = $conditions[$i]->[$start];
+          if ($assert eq "true") {
+            $new[2] = "contains";
+          } else {
+            $new[2] = "doesNotContain";
+          }
+        } elsif ($conditions[$i]->[$start] =~ m/^IA2_/) {
+          $new[0] = "property";
+          $new[1] = "states";
+          $new[3] = $conditions[$i]->[$start];
+          if ($assert eq "true") {
+            $new[2] = "contains";
+          } else {
+            $new[2] = "doesNotContain";
+          }
+        } elsif ($conditions[$i]->[$start] =~ m/(IAccessibleTable2)/i) {
+          $new[0] = "property";
+          $new[1] = "interfaces";
+          $new[3] = $1;
+          if ($conditions[$i]->[$start+1] ne '<shown>'
+            && $conditions[$i]->[$start+1] !~ m/true/i ) {
+            $assert = "doesNotContain";
+          } else {
+            $assert = "contains";
+          }
+          $new[2] = $assert;
+        } elsif ($conditions[$i]->[$start] =~ m/(.*) interface/i) {
+          $new[0] = "property";
+          $new[1] = "interfaces";
+          $new[3] = $1;
+          if ($conditions[$i]->[$start+1] ne '<shown>'
+            && $conditions[$i]->[$start+1] !~ m/true/i ) {
+            $assert = "doesNotContain";
+          } else {
+            $assert = "contains";
+          }
+          $new[2] = $assert;
+        } elsif ($conditions[$i]->[$start] =~ m/(.*)\(\)/) {
+          $new[0] = "result";
+          $new[1] = $conditions[$i]->[$start];
+          my $val = $conditions[$i]->[2];
+          $val =~ s/"//g;
+          $new[3] = $conditions[$i]->[1] . ":" . $val;
+          if ($conditions[$i]->[1] eq "not exposed"
+              || $conditions[$i]->[2] eq "false") {
+            $new[2] = "doesNotContain";
+          } else {
+            $new[2] = "contains";
+          }
+        } elsif ($conditions[$i]->[$start] =~ m/(.*localizedExtendedRole)/) {
+          $new[0] = "result";
+          $new[1] = $conditions[$i]->[$start];
+          my $val = $conditions[$i]->[2];
+          $val =~ s/"//g;
+          $new[3] = $conditions[$i]->[1] . ":" . $val;
+          if ($conditions[$i]->[1] eq "not exposed"
+              || $conditions[$i]->[2] eq "false") {
+            $new[2] = "doesNotContain";
+          } else {
+            $new[2] = "contains";
+          }
+        } elsif ($conditions[$i]->[$start] eq "object" || $conditions[$i]->[$start] eq "attribute" ) {
+        } elsif ($conditions[$i]->[$start] eq "object" || $conditions[$i]->[$start] eq "attribute" ) {
+          $new[0] = "property";
+          $new[1] = "objectAttributes";
+          my $val = $conditions[$i]->[2];
+          $val =~ s/"//g;
+          $new[3] = $conditions[$i]->[1] . ":" . $val;
+          if ($conditions[$i]->[1] eq "not exposed"
+              || $conditions[$i]->[2] eq "false") {
+            $new[2] = "doesNotContain";
+          } else {
+            $new[2] = "contains";
+          }
+        } elsif ($conditions[$i]->[$start] =~ m/^object attribute (.*)/) {
+          my $name = $1;
+          $new[0] = "property";
+          $new[1] = "objectAttributes";
+          my $val = $conditions[$i]->[1];
+          $val =~ s/"//g;
+          if ($val eq "not exposed" || $val eq "not mapped") {
+            $new[3] = $name;
+            $new[2] = "doesNotContain";
+          } else {
+            $new[3] = $name . ":" . $val;
+            $new[2] = "contains";
+          }
+        } else {
+          @new = @{$conditions[$i]};
+          if ($conditions[$i]->[2] eq '<shown>') {
+            $new[2] = "contains";
+          }
+          print STDERR "SHANE - fell through " . join(", ", @new) . "\n";
+        }
+        $conditions[$i] = \@new;
       } elsif ($API eq "AXAPI") {
         $output .= "|$conditions[$i]\n";
       } elsif ($API eq "MSAA") {
@@ -328,6 +450,9 @@ sub dump_table() {
           } else {
             $new[2] = "contains";
           }
+        } elsif ($conditions[$i]->[$start] =~ m/^TBD/) {
+          $new[0] = "TBD";
+          $new[1] = $new[2] = $new[3] = "";
         }
       }
       foreach my $row (@new) {
