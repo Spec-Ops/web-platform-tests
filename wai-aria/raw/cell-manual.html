@@ -15,6 +15,26 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXCell"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "cell"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -31,40 +51,44 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "TableItem"
                ],
                [
+                  "property",
                   "Selection pattern TODO",
+                  "isNot",
                   ""
                ],
                [
+                  "property",
                   "NOT",
+                  "isNot",
                   "invoke pattern TODO"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXCell"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXRoleDescription",
-                  "cell"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_CELL"
                ]
             ]
          },
@@ -89,7 +113,8 @@ var theTest = new ATTAcomm(
   </div>
  then role: cell, aria-colindex: 4, aria-colcount:8
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

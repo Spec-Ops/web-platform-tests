@@ -17,11 +17,29 @@ var theTest = new ATTAcomm(
          "test" : {
             "IAccessible2" : [
                [
+                  "property",
+                  "role",
+                  "is",
                   "IA2_ROLE_LANDMARK"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
                ],
                [
-                  "object",
-                  "xml-roles",
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXLandmarkSearch"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
                   "search"
                ]
             ],
@@ -41,43 +59,41 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Group"
                ],
                [
+                  "property",
                   "Localized Control Type",
+                  "isNot",
                   "search"
                ],
                [
+                  "property",
                   "Landmark Type",
+                  "isNot",
                   "Search"
                ],
                [
+                  "property",
                   "Localized Landmark Type",
-                  "search"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXGroup"
-               ],
-               [
-                  "AXSubrole",
-                  "AXLandmarkSearch"
-               ],
-               [
-                  "AXRoleDescription",
+                  "isNot",
                   "search"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ]
@@ -97,7 +113,8 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for search.</p>
   <div id='test' role='search' contenteditable='true'></div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

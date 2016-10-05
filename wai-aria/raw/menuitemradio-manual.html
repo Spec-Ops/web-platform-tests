@@ -15,6 +15,32 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXMenuItem"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "menu item"
+               ],
+               [
+                  "property",
+                  "AXMenuItemMarkChar",
+                  "is",
+                  "<nil>"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -37,45 +63,40 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "MenuItem"
                ],
                [
+                  "property",
                   "Toggle",
-                  "ToggleState",
-                  "Off"
+                  "contains",
+                  "ToggleState:Off"
                ],
                [
-                  "SelectItem Pattern"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXMenuItem"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXDescription",
-                  "menu item"
-               ],
-               [
-                  "AXMenuItemMarkChar",
-                  "<nil>"
+                  "property",
+                  "SelectItem Pattern",
+                  "isNot",
+                  ""
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               []
             ]
          },
          "title" : "step 1",
@@ -97,7 +118,8 @@ var theTest = new ATTAcomm(
     <li role='menuitemradio'  id='test' > option 3</li>
   </ul>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

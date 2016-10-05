@@ -15,6 +15,46 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "IAccessible2" : [
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "IA2_STATE_SINGLE_LINE"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "placeholder:DD/MM/YYYY"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTextField"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "text field"
+               ],
+               [
+                  "property",
+                  "AXOrientation",
+                  "is",
+                  "AXHorizontalOrientation"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -43,40 +83,38 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Edit"
                ],
                [
+                  "result",
                   "AriaProperties.placeholder",
+                  "is",
                   "DD/MM/YYYY"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXTextField"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXRoleDescription",
-                  "text field"
-               ],
-               [
-                  "AXOrientation",
-                  "AXHorizontalOrientation"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TEXT"
                ]
             ]
          },
@@ -97,7 +135,8 @@ var theTest = new ATTAcomm(
   "DD/MM/YYYY"
   </div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

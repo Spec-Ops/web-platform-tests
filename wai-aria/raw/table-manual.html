@@ -17,12 +17,30 @@ var theTest = new ATTAcomm(
          "test" : {
             "IAccessible2" : [
                [
-                  "object",
-                  "xml-roles",
-                  "table"
+                  "property",
+                  "interfaces",
+                  "doesNotContain",
+                  "IAccessibleTable2"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTable"
                ],
                [
-                  "IAccessibleTable2"
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "grid"
                ]
             ],
             "ATK" : [
@@ -47,39 +65,40 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Table"
                ],
                [
-                  "grid pattern TODO"
+                  "property",
+                  "grid pattern TODO",
+                  "isNot",
+                  ""
                ],
                [
-                  "table pattern TODO"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXTable"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXRoleDescription",
-                  "grid"
+                  "property",
+                  "table pattern TODO",
+                  "isNot",
+                  ""
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               []
             ]
          },
          "title" : "step 1",
@@ -96,12 +115,13 @@ var theTest = new ATTAcomm(
 <body>
 <p>This test examines the ARIA properties for table.</p>
   <div role='table' id='test' aria-rowcount='3' aria-colcount='2'>
-    <div role='row'> 
+    <div role='row'>
       <span role='cell'>cheese</span>
     </div>
   </div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

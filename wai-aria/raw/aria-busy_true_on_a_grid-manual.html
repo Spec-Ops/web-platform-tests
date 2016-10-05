@@ -17,12 +17,42 @@ var theTest = new ATTAcomm(
          "test" : {
             "IAccessible2" : [
                [
-                  "object attribute xml-roles",
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:grid"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "IAccessibleTable2"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTable"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
                   "grid"
                ],
                [
-                  "IAcccessibleTable2",
-                  "<shown>"
+                  "property",
+                  "AXElementBusy",
+                  "is",
+                  "true"
                ]
             ],
             "ATK" : [
@@ -59,54 +89,50 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "DataGrid"
                ],
                [
+                  "property",
                   "Selection Pattern",
+                  "is",
                   "<shown>"
                ],
                [
+                  "result",
                   "AriaProperties.busy",
+                  "is",
                   "true"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXTable"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXRoleDescription",
-                  "grid"
-               ],
-               [
-                  "AXElementBusy",
-                  "YES"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ],
             "MSAA" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_SYSTEM_TABLE"
                ],
                [
-                  "STATE_SYSTEM_BUSY",
-                  "<shown>"
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY"
                ]
             ]
          },
@@ -138,7 +164,8 @@ var theTest = new ATTAcomm(
     </div>
   </div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

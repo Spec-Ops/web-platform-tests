@@ -12,7 +12,7 @@
  * @param {string} [params.test] - object containing JSON test definition
  * @param {string} [params.testFile] - URI of a file with JSON test definition
  * @param {string} params.ATTAuri - URI to use to exercise the window
- * @event DOMContentLoaded Calls init once DOM is fully loaded
+ * @event DOMContentLoaded Calls go once DOM is fully loaded
  * @returns {object} Reference to the new object
  *
  */
@@ -25,6 +25,8 @@ function ATTAcomm(params) {
   this.Properties = null;   // testharness_properties from the opening window
   this.Tests = null;        // test object being processed
   this.testName = "";       // name of test being run
+  this.log = "";            // a buffer to capture log information for debugging
+  this.startReponse = {};   // startTest response will go in here for debugging
 
   this.loading = true;
 
@@ -87,6 +89,7 @@ function ATTAcomm(params) {
       test( function() {
         assert_true(false, "Loading of test components failed: " +JSON.stringify(err)) ;
       }, "Loading test components");
+      this.dumpLog();
       done() ;
       reject("Loading of test components failed: "+JSON.stringify(err));
       return ;
@@ -174,12 +177,14 @@ ATTAcomm.prototype = {
         .then(function() {
           // the tests all ran; close it out
           this.endTest().then(function() {
+            this.dumpLog();
             done();
           }.bind(this));
         }.bind(this))
         .catch(function(err) {
           console.log(err);
           this.endTest().then(function() {
+            this.dumpLog();
             done();
           }.bind(this));
         }.bind(this));
@@ -203,7 +208,7 @@ ATTAcomm.prototype = {
   setupManualTest: function(message) {
     // if we determine the test should run manually, then expose all of the conditions that are
     // in the TEST data structure so that a human can to the inspection and calculate the result
-    // 
+    //
     'use strict';
     console.log(message);
 
@@ -231,9 +236,12 @@ ATTAcomm.prototype = {
         // now what do we put over here? depends on the type
         if (type === "test") {
           // it is a test; dump the assertions
-          theTable += "<td>" + this.buildAssertionTable(subtest.test) + "</td>"; 
+          theTable += "<td>" + this.buildAssertionTable(subtest.test) + "</td>";
         } else if (type === "event" ) {
           // it is some events
+          if (subtest.hasOwnProperty("event") && subtest.hasOwnProperty("element")) {
+            theTable += "<td>Send event " + subtest.event + " to the element with ID " + subtest.element + "</td>";
+          }
         } else if (type === "script" ) {
           // it is a script fragment
           theTable += "<td>Script: " + subtest.script + "</td>";
@@ -251,6 +259,7 @@ ATTAcomm.prototype = {
   },
 
   buildAssertionTable:  function(asserts) {
+    "use strict";
     var output = "<table class='api'><tr><th>API Name</th><th colspan='4'>Assertions</th></tr>";
     var APIs = [] ;
     for (var k in asserts) {
@@ -258,7 +267,7 @@ ATTAcomm.prototype = {
         APIs.push(k);
       }
     }
-    
+
     APIs.sort().forEach(function(theAPI) {
       var rows = asserts[theAPI] ;
       var height = rows.length;
@@ -266,8 +275,9 @@ ATTAcomm.prototype = {
       var lastRow = rows.length - 1;
       rows.forEach(function(theRow, index) {
         var span = 4 - theRow.length;
+        var colspan = span ? " colspan='"+span+"'" : "";
         theRow.forEach(function(item) {
-          output += "<td>" + item + "</td>";
+          output += "<td" + colspan + ">" + item + "</td>";
         });
         output += "</tr>";
         if (index < lastRow) {
@@ -375,9 +385,14 @@ ATTAcomm.prototype = {
                 // the test ran - yay!
                 var messages = "";
                 var thisResult = null;
+                var theLog = "";
                 res.body.results.forEach( function (a) {
                   if (typeof a === "object") {
                     // we have a result for this assertion
+                    if (a.hasOwnProperty("log")) {
+                      // there is log data - save it
+                      theLog += a.log ;
+                    }
                     if (a.result === "ERROR") {
                       messages += "ATTA reported ERROR with message: " + a.message + "; ";
                     } else if (a.result === "FAIL") {
@@ -390,6 +405,9 @@ ATTAcomm.prototype = {
                     }
                   }
                 });
+                if (theLog !== "") {
+                  ANNO.saveLog("runTest", theLog, subtest);
+                }
                 if (thisResult !== null) {
                   assert_true(thisResult, messages);
                 } else {
@@ -430,6 +448,51 @@ ATTAcomm.prototype = {
     });
   },
 
+  /* dumpLog - put log information into the log div on the page if it exists
+   */
+
+  dumpLog: function() {
+    'use strict';
+    if (this.log !== "") {
+      var ref = document.getElementById("ATTAmessages");
+      if (ref) {
+        // we have a manualMode block.  Populate it
+        var content = "<h2>Logging information recorded</h2>";
+        if (this.startResponse && this.startResponse.hasOwnProperty("API")) {
+          content += "<h3>ATTA Information</h3>";
+          content += "<pre>"+JSON.stringify(this.startResponse, null, "  ")+"</pre>";
+        }
+        content += "<textarea rows='50' style='width:100%'>"+this.log+"</textarea>";
+        ref.innerHTML = content ;
+      }
+    }
+  },
+
+  /* saveLog - capture logging information so that it can be displayed on the page after testing is complete
+   *
+   * @param {string} caller name
+   * @param {string} log message
+   * @param {object} subtest
+   */
+
+  saveLog: function(caller, message, subtest) {
+    'use strict';
+
+    if (typeof message === "string" && message !== "") {
+      this.log += "============================================================\n";
+      this.log += "Message from " + caller + "\n";
+      if (subtest && typeof subtest === "object") {
+        var API = this.startResponse.API;
+        this.log += "\n    SUBTEST TITLE: " + subtest.title;
+        this.log += "\n  SUBTEST ELEMENT: " + subtest.element;
+        this.log += "\n     SUBTEST DATA: " + JSON.stringify(subtest.test[API]);
+        this.log += "\n\n";
+      }
+      this.log += message;
+    }
+    return;
+  },
+
   // startTest - send the test start message
   //
   // @returns {Promise} resolves if the start is successful, or rejects with
@@ -447,6 +510,11 @@ ATTAcomm.prototype = {
       .then(function(res) {
         if (res.body.hasOwnProperty("status")) {
           if (res.body.status === "READY") {
+            this.startResponse = res.body;
+            if (res.body.hasOwnProperty("log")) {
+              // there is some logging data - capture it
+              this.saveLog("startTest", res.body.log);
+            }
             // the system is ready for us - is it really?
             if (res.body.hasOwnProperty("API")) {
               resolve(res);
@@ -480,7 +548,14 @@ ATTAcomm.prototype = {
     if (typeof testData !== "string") {
       testData = JSON.stringify(testData);
     }
-    return this._fetch("POST", this.ATTAuri + "/test", null, testData, true);
+    var ret = this._fetch("POST", this.ATTAuri + "/test", null, testData, true);
+    ret.then(function(res) {
+      if (res.body.hasOwnProperty("log")) {
+        // there is some logging data - capture it
+        this.saveLog("sendTest", res.body.log);
+      }
+    }.bind(this));
+    return ret;
   },
 
   endTest: function() {

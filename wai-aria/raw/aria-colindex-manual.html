@@ -15,6 +15,14 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "AXAPI" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ]
+            ],
             "ATK" : [
                [
                   "TBD",
@@ -23,29 +31,31 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "result",
                   "GridItem.Column",
+                  "is",
                   "4"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "TBD",
-                  ""
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ],
             "MSAA" : [
                [
                   "TBD",
+                  "",
+                  "",
                   ""
                ]
             ]
@@ -69,7 +79,8 @@ var theTest = new ATTAcomm(
     </div>
   </div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

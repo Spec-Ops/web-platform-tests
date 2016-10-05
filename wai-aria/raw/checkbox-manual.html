@@ -15,6 +15,32 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXCheckbox"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "check box"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "1"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -37,55 +63,38 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Checkbox"
                ],
                [
+                  "property",
                   "Toggle",
-                  "ToggleState",
-                  "On"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXCheckbox"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXDescription",
-                  "check box"
-               ],
-               [
-                  "AXValue",
-                  "1"
+                  "contains",
+                  "ToggleState:On"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ],
             "MSAA" : [
                [
-                  "ROLE_SYSTEM_CHECKBUTTON"
-               ],
-               [
+                  "property",
+                  "states",
+                  "contains",
                   "STATE_SYSTEM_CHECKED"
-               ],
-               [
-                  "IAccessibile2",
-                  "object",
-                  "checkable",
-                  "true"
                ]
             ]
          },
@@ -104,7 +113,8 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for checkbox.</p>
   <div id='test' role='checkbox' aria-checked='true' class='chkbox'>I like cars</div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

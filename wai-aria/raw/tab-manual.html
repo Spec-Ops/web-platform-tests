@@ -17,24 +17,54 @@ var theTest = new ATTAcomm(
          "test" : {
             "IAccessible2" : [
                [
-                  "object",
-                  "posinset",
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:7"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:3"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXRadioButton"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "tab"
+               ],
+               [
+                  "property",
+                  "AXARIAPosInSet",
+                  "is",
                   "3"
                ],
                [
-                  "object",
-                  "setsize",
+                  "property",
+                  "AXARIASetSize",
+                  "is",
                   "7"
                ],
                [
-                  "groupPosition()",
-                  "similarItemsInGroup",
-                  "7"
-               ],
-               [
-                  "groupPosition()",
-                  "positionInGroup",
-                  "3"
+                  "property",
+                  "AXSelected",
+                  "is",
+                  "YES"
                ]
             ],
             "ATK" : [
@@ -71,68 +101,55 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "TabItem"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "posinset",
-                  "3"
+                  "contains",
+                  "posinset:3"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "setsize",
-                  "7"
+                  "contains",
+                  "setsize:7"
                ],
                [
+                  "property",
                   "SelectionItem",
+                  "isNot",
                   "IsSelected"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXRadioButton"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXRoleDescription",
-                  "tab"
-               ],
-               [
-                  "AXARIAPosInSet",
-                  "3"
-               ],
-               [
-                  "AXARIASetSize",
-                  "7"
-               ],
-               [
-                  "AXSelected",
-                  "YES"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ],
             "MSAA" : [
                [
-                  "ROLE_SYSTEM_PAGETAB"
-               ],
-               [
+                  "property",
+                  "states",
+                  "contains",
                   "STATE_SYSTEM_SELECTED"
                ],
                [
+                  "property",
+                  "states",
+                  "contains",
                   "STATE_SYSTEM_SELECTABLE"
                ]
             ]
@@ -155,7 +172,8 @@ var theTest = new ATTAcomm(
     <div role='tab' id='test' aria-selected='true' aria-posinset='3' aria-setsize='7'>Hello Bob</div>
   </div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>
