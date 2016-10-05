@@ -314,7 +314,71 @@ sub dump_table() {
         }
         $conditions[$i] = \@new;
       } elsif ($API eq "UIA") {
-        $output .= "|$conditions[$i]\n";
+        my $start = 0;
+        my $assert = "is";
+        if ($conditions[$i]->[$start] =~ m/\./) {
+          my $val = $conditions[$i]->[$start+1];
+          $val =~ s/"//g;
+          $val =~ s/'//g;
+          $new[0] = "result";
+          $new[1] = $conditions[$i]->[$start];
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start+1];
+        } elsif ($conditions[$i]->[$start] =~ m/^(AriaProperties|Toggle|ExpandCollapse)/) {
+          my $name = $conditions[$i]->[1];
+          $new[0] = "property";
+          $new[1] = $1;
+          my $val = $conditions[$i]->[2];
+          $val =~ s/"//g;
+          if ($val eq "not exposed" || $val eq "not mapped") {
+            $new[3] = $name;
+            $new[2] = "doesNotContain";
+          } else {
+            $new[3] = $name . ":" . $val;
+            $new[2] = "contains";
+          }
+        } elsif ($conditions[$i]->[$start] =~ m/^TBD/) {
+          $new[0] = "TBD";
+          $new[1] = $new[2] = $new[3] = "";
+        } else {
+          if ($conditions[$i]->[1] ne '<shown>'
+            && $conditions[$i]->[1] !~ m/true/i ) {
+            $assert = "isNot";
+          } else {
+            $assert = "is";
+          }
+          $new[0] = "property";
+          $new[1] = $conditions[$i]->[$start];
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start+1];
+        }
+      } elsif ($API eq "MSAA") {
+        my $start = 0;
+        my $assert = "is";
+        if ($conditions[$i]->[0] =~ m/^NOT/) {
+          $start = 1;
+          $assert = "isNot";
+        }
+
+        if ($conditions[$i]->[$start] =~ m/^role/) {
+          $new[0] = "property";
+          $new[1] = "role";
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start+1];
+        } elsif ($conditions[$i]->[$start] =~ m/^(STATE_.*) *([^ ]*)/) {
+          $new[0] = "property";
+          $new[1] = "states";
+          $new[3] = $1;
+          if ($2 && $2 eq "cleared") {
+            print "MATCHED $1, $2\n";
+            $new[2] = "doesNotContain";
+          } else {
+            $new[2] = "contains";
+          }
+        } elsif ($conditions[$i]->[$start] =~ m/^TBD/) {
+          $new[0] = "TBD";
+          $new[1] = $new[2] = $new[3] = "";
+        }
       } elsif ($API eq "IAccessible2") {
         my $start = 0;
         my $assert = "is";
@@ -422,37 +486,43 @@ sub dump_table() {
           if ($conditions[$i]->[2] eq '<shown>') {
             $new[2] = "contains";
           }
-          print STDERR "SHANE - fell through " . join(", ", @new) . "\n";
         }
         $conditions[$i] = \@new;
       } elsif ($API eq "AXAPI") {
-        $output .= "|$conditions[$i]\n";
-      } elsif ($API eq "MSAA") {
         my $start = 0;
         my $assert = "is";
         if ($conditions[$i]->[0] =~ m/^NOT/) {
           $start = 1;
           $assert = "isNot";
         }
-
-        if ($conditions[$i]->[$start] =~ m/^role/) {
+        if ($conditions[$i]->[$start] =~ m/^AXElementBusy/) {
+          if ($conditions[$i]->[$start+1] =~ m/yes/i) {
+            $new[3] = "true";
+          } else {
+            $new[3] = "false";
+          }
           $new[0] = "property";
-          $new[1] = "role";
+          $new[1] = $conditions[$i]->[$start];
+          $new[2] = $assert;
+        } elsif ($conditions[$i]->[$start] =~ m/^AX/) {
+          $new[0] = "property";
+          $new[1] = $conditions[$i]->[$start];
           $new[2] = $assert;
           $new[3] = $conditions[$i]->[$start+1];
-        } elsif ($conditions[$i]->[$start] =~ m/^(STATE_.*) *([^ ]*)/) {
-          $new[0] = "property";
-          $new[1] = "states";
-          $new[3] = $1;
-          if ($2 && $2 eq "cleared") {
-            print "MATCHED $1, $2\n";
-            $new[2] = "doesNotContain";
-          } else {
-            $new[2] = "contains";
-          }
         } elsif ($conditions[$i]->[$start] =~ m/^TBD/) {
           $new[0] = "TBD";
           $new[1] = $new[2] = $new[3] = "";
+        } else {
+          if ($conditions[$i]->[1] ne '<shown>'
+            && $conditions[$i]->[1] !~ m/true/i ) {
+            $assert = "isNot";
+          } else {
+            $assert = "is";
+          }
+          $new[0] = "result";
+          $new[1] = $conditions[$i]->[0];
+          $new[2] = $assert;
+          $new[3] = "true";
         }
       }
       foreach my $row (@new) {
