@@ -18,7 +18,11 @@ use Getopt::Long;
 my %specs = (
     "aria11" => { 
       title => "ARIA_1.1_Testable_Statements",
-      specURL => "https://www.w3.org/TR/wai-aria11"
+      specURL => "https://www.w3.org/TR/wai-aria11/"
+    },
+    "svg" => {
+      title => "SVG_Accessibility/Testing/Test_Assertions_with_Tables",
+      specURL => "https://www.w3.org/TR/svg-aam-1.0/"
     }
 );
 
@@ -137,7 +141,7 @@ while (<$io>) {
       # we are done with the code block
       $state = 3;
     } else  {
-      if (m/^\s/) {
+      if (m/^\s/ && !m/if given/) {
         $theCode .= $_;
       }
     }
