@@ -15,22 +15,44 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "List"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
+               ]
+            ],
             "AXAPI" : [
                [
+                  "property",
                   "AXRole",
+                  "is",
                   "AXList"
                ],
                [
+                  "property",
                   "AXSubrole",
+                  "is",
                   "<nil>"
                ],
                [
+                  "property",
                   "AXRoleDescription",
+                  "is",
                   "list"
                ],
                [
+                  "property",
                   "AXElementBusy",
-                  "YES"
+                  "is",
+                  "true"
                ]
             ],
             "ATK" : [
@@ -59,34 +81,32 @@ var theTest = new ATTAcomm(
                   "STATE_BUSY"
                ]
             ],
-            "UIA" : [
-               [
-                  "Control Type",
-                  "List"
-               ],
-               [
-                  "AriaProperties.busy",
-                  "true"
-               ]
-            ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ],
             "MSAA" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_SYSTEM_LISTBOX"
                ],
                [
-                  "STATE_SYSTEM_BUSY",
-                  "<shown>"
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY"
                ]
             ]
          },
@@ -108,7 +128,8 @@ var theTest = new ATTAcomm(
        <li role="option">option 2</li>
   </ul>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

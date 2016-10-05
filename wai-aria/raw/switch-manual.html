@@ -15,6 +15,32 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXCheckbox"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXSwitch"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "switch"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "0"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -37,44 +63,35 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Button"
                ],
                [
+                  "property",
                   "Localized Control Type",
+                  "isNot",
                   "toggleswitch"
                ],
                [
+                  "property",
                   "Toggle",
-                  "ToggleState",
-                  "Off"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXCheckbox"
-               ],
-               [
-                  "AXSubrole",
-                  "AXSwitch"
-               ],
-               [
-                  "AXDescription",
-                  "switch"
-               ],
-               [
-                  "AXValue",
-                  "0"
+                  "contains",
+                  "ToggleState:Off"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ]
@@ -94,7 +111,8 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for switch.</p>
   <div id='test' role='switch' aria-checked='false' class='switch'>power</div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

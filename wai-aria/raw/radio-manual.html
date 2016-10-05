@@ -15,6 +15,44 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXRadioButton"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "radio button"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "0"
+               ],
+               [
+                  "property",
+                  "AXARIAPosInSet",
+                  "is",
+                  "4"
+               ],
+               [
+                  "property",
+                  "AXARIASetSize",
+                  "is",
+                  "8"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -49,96 +87,50 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "RadioButton"
                ],
                [
+                  "property",
                   "Toggle",
-                  "ToggleState",
-                  "Off"
+                  "contains",
+                  "ToggleState:Off"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "posinset",
-                  "4"
+                  "contains",
+                  "posinset:4"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "setsize",
-                  "8"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXRadioButton"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXDescription",
-                  "radio button"
-               ],
-               [
-                  "AXValue",
-                  "0"
-               ],
-               [
-                  "AXARIAPosInSet",
-                  "4"
-               ],
-               [
-                  "AXARIASetSize",
-                  "8"
+                  "contains",
+                  "setsize:8"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ],
             "MSAA" : [
                [
-                  "ROLE_SYSTEM_RADIOBUTTON"
-               ],
-               [
-                  "NOT",
+                  "property",
+                  "states",
+                  "contains",
                   "STATE_SYSTEM_CHECKED"
-               ],
-               [
-                  "IAccessibile2"
-               ],
-               [
-                  "object",
-                  "checkable",
-                  "true"
-               ],
-               [
-                  "object",
-                  "posinset",
-                  "4"
-               ],
-               [
-                  "object",
-                  "setsize",
-                  "8"
-               ],
-               [
-                  "groupPosition()",
-                  "similarItemsInGroup",
-                  "8"
-               ],
-               [
-                  "groupPosition()",
-                  "positionInGroup",
-                  "4"
                ]
             ]
          },
@@ -157,7 +149,8 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for radio.</p>
   <div id='test' role='radio' aria-checked='false' class='radio' aria-posinset='4' aria-setsize='8'>Car</div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

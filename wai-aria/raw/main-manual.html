@@ -15,6 +15,26 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXLandmarkMain"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "main"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -31,43 +51,41 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Group"
                ],
                [
+                  "property",
                   "Localized Control Type",
+                  "isNot",
                   "main"
                ],
                [
+                  "property",
                   "Landmark Type",
+                  "isNot",
                   "Main"
                ],
                [
+                  "property",
                   "Localized Landmark Type",
-                  "main"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXGroup"
-               ],
-               [
-                  "AXSubrole",
-                  "AXLandmarkMain"
-               ],
-               [
-                  "AXRoleDescription",
+                  "isNot",
                   "main"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ]
@@ -87,7 +105,8 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for main.</p>
   <div id='test' role='main'>Hellp world</div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

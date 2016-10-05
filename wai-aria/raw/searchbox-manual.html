@@ -15,6 +15,29 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "IAccessible2" : [
+               []
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTextField"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXSearchField"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "search text field"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -37,37 +60,34 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Edit"
                ],
                [
+                  "property",
                   "Localized Control Type",
+                  "isNot",
                   "search box"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXTextField"
-               ],
-               [
-                  "AXSubrole",
-                  "AXSearchField"
-               ],
-               [
-                  "AXRoleDescription",
-                  "search text field"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               []
             ]
          },
          "title" : "step 1",
@@ -85,7 +105,8 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for searchbox.</p>
   <div id='test' role='searchbox' contenteditable='true'></div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

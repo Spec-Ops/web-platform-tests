@@ -15,6 +15,34 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "IAccessible2" : [
+               [
+                  "property",
+                  "interfaces",
+                  "doesNotContain",
+                  "IAccessibleTable2"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTable"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "grid"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -43,35 +71,34 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
-                  "DataGrid"
+                  "property",
+                  "DataGrid",
+                  "isNot",
+                  ""
                ],
                [
-                  "Selection pattern TODO"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXTable"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXDescription",
-                  "grid"
+                  "property",
+                  "Selection pattern TODO",
+                  "isNot",
+                  ""
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               []
             ]
          },
          "title" : "step 1",
@@ -89,13 +116,14 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for grid.</p>
   <div role='grid' id='test' aria-rowcount='3' aria-colcount='2'>
    <div role='row'>
-      <span role='gridcell'> 
+      <span role='gridcell'>
         <button>hello</button>
      </span>
    </div>
   </div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

@@ -15,6 +15,40 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "IAccessible2" : [
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "IA2_STATE_MODAL"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXApplicationDialog"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "dialog"
+               ],
+               [
+                  "result",
+                  "The element with role=\"dialog\" and id=\"test\", has a parent with childcount=1, exposes aria-modal=\"true\", and has a childcount=1",
+                  "is",
+                  "true"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -37,40 +71,38 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Pane"
                ],
                [
+                  "result",
                   "Window.isModal",
+                  "is",
                   "true"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXGroup"
-               ],
-               [
-                  "AXSubrole",
-                  "AXApplicationDialog"
-               ],
-               [
-                  "AXRoleDescription",
-                  "dialog"
-               ],
-               [
-                  "The element with role=\"dialog\" and id=\"test\", has a parent with childcount=1, exposes aria-modal=\"true\", and has a childcount=1",
-                  "<shown>"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_DIALOG"
                ]
             ]
          },
@@ -94,7 +126,8 @@ var theTest = new ATTAcomm(
      </div>
   </body>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

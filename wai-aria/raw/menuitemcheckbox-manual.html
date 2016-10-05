@@ -17,32 +17,60 @@ var theTest = new ATTAcomm(
          "test" : {
             "IAccessible2" : [
                [
+                  "property",
+                  "role",
+                  "is",
                   "IA2_ROLE_CHECK_MENU_ITEM"
                ],
                [
-                  "object",
-                  "checkable",
-                  "true"
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:8"
                ],
                [
-                  "object",
-                  "posinset",
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:4"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXMenuItem"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "menu item"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "1"
+               ],
+               [
+                  "property",
+                  "AXARIAPosInSet",
+                  "is",
                   "4"
                ],
                [
-                  "object",
-                  "setsize",
+                  "property",
+                  "AXARIASetSize",
+                  "is",
                   "8"
-               ],
-               [
-                  "groupPosition()",
-                  "similarItemsInGroup",
-                  "8"
-               ],
-               [
-                  "groupPosition()",
-                  "positionInGroup",
-                  "4"
                ]
             ],
             "ATK" : [
@@ -79,60 +107,46 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "MenuItem"
                ],
                [
+                  "property",
                   "Toggle",
-                  "ToggleState",
-                  "On"
+                  "contains",
+                  "ToggleState:On"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "posinset",
-                  "4"
+                  "contains",
+                  "posinset:4"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "setsize",
-                  "8"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXMenuItem"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXRoleDescription",
-                  "menu item"
-               ],
-               [
-                  "AXValue",
-                  "1"
-               ],
-               [
-                  "AXARIAPosInSet",
-                  "4"
-               ],
-               [
-                  "AXARIASetSize",
-                  "8"
+                  "contains",
+                  "setsize:8"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               []
             ]
          },
          "title" : "step 1",
@@ -150,12 +164,13 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for menuitemcheckbox.</p>
   <ul role='menu'>Menu
     <li role='menuitem'> option 1</li>
-    <li role='menuitemcheckbox' id='test' aria-posinset='4' aria-setsize='8' 
+    <li role='menuitemcheckbox' id='test' aria-posinset='4' aria-setsize='8'
         class='ckbox' aria-checked='true'>panda doodles</li>
     <li role='menuitem'> option 3</li>
   </ul>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

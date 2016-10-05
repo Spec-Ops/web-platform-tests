@@ -15,6 +15,32 @@ var theTest = new ATTAcomm(
    "steps" : [
       {
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXWebApplication"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "web application"
+               ],
+               [
+                  "result",
+                  "array",
+                  "isNot",
+                  "true"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -25,43 +51,34 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Pane"
                ],
                [
+                  "property",
                   "Localized Control Type",
+                  "isNot",
                   "application"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXGroup"
-               ],
-               [
-                  "AXSubrole",
-                  "AXWebApplication"
-               ],
-               [
-                  "AXRoleDescription",
-                  "web application"
-               ],
-               [
-                  "array",
-                  "AXSelectedRows",
-                  "pointer",
-                  "id='bob"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               []
             ]
          },
          "title" : "step 1",
@@ -83,7 +100,8 @@ var theTest = new ATTAcomm(
   </div>
  then role:application, aria-activedescendant: bob
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

@@ -17,24 +17,48 @@ var theTest = new ATTAcomm(
          "test" : {
             "IAccessible2" : [
                [
-                  "object",
-                  "posinset",
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:4"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXMenuItem"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "menu item"
+               ],
+               [
+                  "property",
+                  "AXARIAPosInSet",
+                  "is",
                   "4"
                ],
                [
-                  "object",
-                  "setsize",
+                  "property",
+                  "AXARIASetSize",
+                  "is",
                   "8"
-               ],
-               [
-                  "groupPosition()",
-                  "similarItemsInGroup",
-                  "8"
-               ],
-               [
-                  "groupPosition()",
-                  "positionInGroup",
-                  "4"
                ]
             ],
             "ATK" : [
@@ -59,51 +83,40 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "MenuItem"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "posinset",
-                  "4"
+                  "contains",
+                  "posinset:4"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "setsize",
-                  "8"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXMenuItem"
-               ],
-               [
-                  "AXSubrole",
-                  "<nil>"
-               ],
-               [
-                  "AXRoleDescription",
-                  "menu item"
-               ],
-               [
-                  "AXARIAPosInSet",
-                  "4"
-               ],
-               [
-                  "AXARIASetSize",
-                  "8"
+                  "contains",
+                  "setsize:8"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               []
             ]
          },
          "title" : "step 1",
@@ -125,7 +138,8 @@ var theTest = new ATTAcomm(
     <li role='menuitem'> option 3</li>
   </ul>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

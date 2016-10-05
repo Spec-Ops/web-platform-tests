@@ -17,16 +17,36 @@ var theTest = new ATTAcomm(
          "test" : {
             "IAccessible2" : [
                [
+                  "property",
+                  "states",
+                  "doesNotContain",
                   "IA2_MULTI_LINE"
                ],
                [
-                  "NOT",
+                  "property",
+                  "states",
+                  "doesNotContain",
                   "IA2_SINGLE_LINE"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTextField"
                ],
                [
-                  "object",
-                  "xml-roles",
-                  "search"
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXSearchField"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "search text field"
                ]
             ],
             "ATK" : [
@@ -57,42 +77,40 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Edit"
                ],
                [
+                  "property",
                   "Localized Control Type",
+                  "isNot",
                   "search box"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "multiline",
-                  "true"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXTextField"
-               ],
-               [
-                  "AXSubrole",
-                  "AXSearchField"
-               ],
-               [
-                  "AXRoleDescription",
-                  "search text field"
+                  "contains",
+                  "multiline:true"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               []
             ]
          },
          "title" : "step 1",
@@ -110,7 +128,8 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for searchbox-multiline.</p>
   <div id='test' role='searchbox' contenteditable='true' aria-multiline='true'></div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

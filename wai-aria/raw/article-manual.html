@@ -17,29 +17,48 @@ var theTest = new ATTAcomm(
          "test" : {
             "IAccessible2" : [
                [
-                  "object",
-                  "xml-roles",
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:4"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXDocumentArticle"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
                   "article"
                ],
                [
-                  "object",
-                  "posinset",
+                  "property",
+                  "AXARIAPosInSet",
+                  "is",
                   "4"
                ],
                [
-                  "object",
-                  "setsize",
+                  "property",
+                  "AXARIASetSize",
+                  "is",
                   "8"
-               ],
-               [
-                  "groupPosition()",
-                  "similarItemsInGroup",
-                  "8"
-               ],
-               [
-                  "groupPosition()",
-                  "positionInGroup",
-                  "4"
                ]
             ],
             "ATK" : [
@@ -70,64 +89,56 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "control type",
+                  "isNot",
                   "Group"
                ],
                [
+                  "property",
                   "localize control type",
+                  "isNot",
                   "article"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "posinset",
-                  "4"
+                  "contains",
+                  "posinset:4"
                ],
                [
+                  "property",
                   "AriaProperties",
-                  "setsize",
-                  "8"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXGroup"
-               ],
-               [
-                  "AXSubrole",
-                  "AXDocumentArticle"
-               ],
-               [
-                  "AXDescription",
-                  "article"
-               ],
-               [
-                  "AXARIAPosInSet",
-                  "4"
-               ],
-               [
-                  "AXARIASetSize",
-                  "8"
+                  "contains",
+                  "setsize:8"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ],
             "MSAA" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_SYSTEM_DOCUMENT"
                ],
                [
-                  "STATE_SYSTEM_READONLY",
-                  "<shown>"
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_READONLY"
                ]
             ]
          },
@@ -146,7 +157,8 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for article.</p>
   <div id="test" role="article" aria-posinset="4" aria-setsize="8">test cell</div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

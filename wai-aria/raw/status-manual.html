@@ -16,20 +16,32 @@ var theTest = new ATTAcomm(
       {
          "test" : {
             "IAccessible2" : [
+               []
+            ],
+            "AXAPI" : [
                [
-                  "object",
-                  "container-live",
-                  "polite"
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
                ],
                [
-                  "object",
-                  "live",
-                  "polite"
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXApplicationStatus"
                ],
                [
-                  "object",
-                  "container-live-role",
+                  "property",
+                  "AXRoleDescription",
+                  "is",
                   "status"
+               ],
+               [
+                  "property",
+                  "AXExpanded",
+                  "is",
+                  "YES"
                ]
             ],
             "ATK" : [
@@ -72,56 +84,49 @@ var theTest = new ATTAcomm(
             ],
             "UIA" : [
                [
+                  "property",
                   "Control Type",
+                  "isNot",
                   "Group"
                ],
                [
+                  "property",
                   "Localized Control Type",
+                  "isNot",
                   "status"
                ],
                [
+                  "property",
                   "LiveSettingProperty",
+                  "isNot",
                   "1"
                ],
                [
+                  "property",
                   "ExpandCollapse",
-                  "ExpandCollapseState",
-                  "expanded"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "AXRole",
-                  "AXGroup"
-               ],
-               [
-                  "AXSubrole",
-                  "AXApplicationStatus"
-               ],
-               [
-                  "AXRoleDescription",
-                  "status"
-               ],
-               [
-                  "AXExpanded",
-                  "YES"
+                  "contains",
+                  "ExpandCollapseState:expanded"
                ]
             ],
             "WAIFAKE" : [
                [
+                  "property",
                   "role",
+                  "is",
                   "ROLE_TABLE_CELL"
                ],
                [
-                  "interface",
+                  "property",
+                  "interfaces",
+                  "contains",
                   "TableCell"
                ]
             ],
             "MSAA" : [
                [
-                  "ROLE_SYSTEM_STATUSBAR"
-               ],
-               [
+                  "property",
+                  "states",
+                  "contains",
                   "STATE_SYSTEM_EXPANDED"
                ]
             ]
@@ -141,7 +146,8 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for status.</p>
   <div role='status' id='test' aria-expanded='false'> </div>
 
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>

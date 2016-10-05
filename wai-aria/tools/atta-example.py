@@ -87,7 +87,8 @@ def runTests(request):
     runResp = {
             "status":     "OK",
             "statusText": "",
-            "results":    []
+            "results":    [],
+            "log":        ""
             }
 
     params = get_params(request, [ 'title', 'id', 'data' ])
@@ -116,7 +117,7 @@ def runTests(request):
                 if assertion[0] == "shouldFail":
                   myRes = "FAIL"
                   myMessage = "Intentional failure"
-                runResp['results'].append({ "result": myRes, "message": myMessage})
+                runResp['results'].append({ "result": myRes, "log": "This is a log message\nwith a newline.\n", "message": myMessage})
 
         except Exception as ex:
             template = "An exception of type {0} occured. Arguments:\n{1!r}"
@@ -140,7 +141,8 @@ def startTest(request):
             "ATTAname":    "WPT Sample ATTA",
             "ATTAversion": 1,
             "API":         myAPI,
-            "APIversion":  myAPIversion
+            "APIversion":  myAPIversion,
+            "log":         "Just a simple log message to illustrate how that might work\n    Note that this is in a PRE block\n"
             }
 
     params = get_params(request, [ 'test', 'url' ])

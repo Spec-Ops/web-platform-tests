@@ -3,7 +3,7 @@
 #  make_tests.pl - generate WPT test cases from the testable statements wiki
 #
 #  This script assumes that a wiki has testable statement entries
-#  in the format described by the specification at 
+#  in the format described by the specification at
 #  https://spec-ops.github.io/atta-api/index.html
 #
 #  usage: make_tests.pl -f file | -w wiki_title | -s spec -d dir
@@ -16,7 +16,7 @@ use MediaWiki::API ;
 use Getopt::Long;
 
 my %specs = (
-    "aria11" => { 
+    "aria11" => {
       title => "ARIA_1.1_Testable_Statements",
       specURL => "https://www.w3.org/TR/wai-aria11"
     }
@@ -123,7 +123,7 @@ while (<$io>) {
       $theName = lc($1);
       $theAttributes->{$theName} = "";
       next;
-    } 
+    }
     if (m/^Reference: +(.*)$/) {
       $theAttributes->{reference} = $theSpecURL . "#" . $1;
     } elsif ($theName ne "") {
@@ -239,7 +239,7 @@ sub build_test() {
     return;
   }
 
-  $asserts->{WAIFAKE} = [ [ "role", "ROLE_TABLE_CELL" ], [ "interface", "TableCell" ] ];
+  $asserts->{WAIFAKE} = [ [ "property", "role", "is", "ROLE_TABLE_CELL" ], [ "property", "interfaces", "contains", "TableCell" ] ];
 
   # massage the data to make it more sensible
   if (exists $asserts->{"ATK"}) {
@@ -307,7 +307,7 @@ sub build_test() {
   }
 
 
-  my $testDef = 
+  my $testDef =
     { "title" => $title,
       "steps" => [
         {
@@ -360,8 +360,9 @@ $testDef_json
 <body>
 <p>This test examines the ARIA properties for $title_reference.</p>
 $code
-<div id="ATTAmessages"></div>
 <div id="manualMode"></div>
+<div id="log"></div>
+<div id="ATTAmessages"></div>
 </body>
 </html>
 );
