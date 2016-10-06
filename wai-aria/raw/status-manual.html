@@ -16,7 +16,24 @@ var theTest = new ATTAcomm(
       {
          "test" : {
             "IAccessible2" : [
-               []
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live-role:status"
+               ]
             ],
             "AXAPI" : [
                [
@@ -123,6 +140,12 @@ var theTest = new ATTAcomm(
                ]
             ],
             "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_STATUSBAR"
+               ],
                [
                   "property",
                   "states",

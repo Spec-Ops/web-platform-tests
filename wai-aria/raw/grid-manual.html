@@ -98,7 +98,12 @@ var theTest = new ATTAcomm(
                ]
             ],
             "MSAA" : [
-               []
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ]
             ]
          },
          "title" : "step 1",
@@ -116,7 +121,7 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for grid.</p>
   <div role='grid' id='test' aria-rowcount='3' aria-colcount='2'>
    <div role='row'>
-      <span role='gridcell'>
+      <span role='gridcell'> 
         <button>hello</button>
      </span>
    </div>

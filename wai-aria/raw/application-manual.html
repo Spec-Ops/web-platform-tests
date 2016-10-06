@@ -78,7 +78,12 @@ var theTest = new ATTAcomm(
                ]
             ],
             "MSAA" : [
-               []
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_APPLICATION"
+               ]
             ]
          },
          "title" : "step 1",
@@ -94,7 +99,6 @@ var theTest = new ATTAcomm(
 </head>
 <body>
 <p>This test examines the ARIA properties for application.</p>
-  if given
    <div id='test' role='application' aria-activedescendant='bob'>
      <div id='bob' tabindex='0' class='bobber'>Hello world</div>
   </div>

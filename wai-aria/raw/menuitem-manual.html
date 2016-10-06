@@ -17,6 +17,18 @@ var theTest = new ATTAcomm(
          "test" : {
             "IAccessible2" : [
                [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ],
+               [
                   "result",
                   "groupPosition()",
                   "contains",
@@ -116,7 +128,12 @@ var theTest = new ATTAcomm(
                ]
             ],
             "MSAA" : [
-               []
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_MENUITEM"
+               ]
             ]
          },
          "title" : "step 1",

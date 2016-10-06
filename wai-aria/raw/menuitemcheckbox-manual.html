@@ -23,6 +23,24 @@ var theTest = new ATTAcomm(
                   "IA2_ROLE_CHECK_MENU_ITEM"
                ],
                [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "checkable:true"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ],
+               [
                   "result",
                   "groupPosition()",
                   "contains",
@@ -146,7 +164,12 @@ var theTest = new ATTAcomm(
                ]
             ],
             "MSAA" : [
-               []
+               [
+                  "property",
+                  "role",
+                  "anyOf",
+                  "[ROLE_SYSTEM_MENUITEM, ROLE_SYSTEM_CHECKBUTTON]"
+               ]
             ]
          },
          "title" : "step 1",
@@ -164,7 +187,7 @@ var theTest = new ATTAcomm(
 <p>This test examines the ARIA properties for menuitemcheckbox.</p>
   <ul role='menu'>Menu
     <li role='menuitem'> option 1</li>
-    <li role='menuitemcheckbox' id='test' aria-posinset='4' aria-setsize='8'
+    <li role='menuitemcheckbox' id='test' aria-posinset='4' aria-setsize='8' 
         class='ckbox' aria-checked='true'>panda doodles</li>
     <li role='menuitem'> option 3</li>
   </ul>
