@@ -369,6 +369,11 @@ sub dump_table() {
           $new[1] = "role";
           $new[2] = $assert;
           $new[3] = $conditions[$i]->[$start+1];
+        } elsif ($conditions[$i]->[$start] =~ m/^ROLE_/) {
+          $new[0] = "property";
+          $new[1] = "role";
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start];
         } elsif ($conditions[$i]->[$start] =~ m/^(STATE_.*) *([^ ]*)/) {
           $new[0] = "property";
           $new[1] = "states";
@@ -459,7 +464,6 @@ sub dump_table() {
           } else {
             $new[2] = "contains";
           }
-        } elsif ($conditions[$i]->[$start] eq "object" || $conditions[$i]->[$start] eq "attribute" ) {
         } elsif ($conditions[$i]->[$start] eq "object" || $conditions[$i]->[$start] eq "attribute" ) {
           $new[0] = "property";
           $new[1] = "objectAttributes";
