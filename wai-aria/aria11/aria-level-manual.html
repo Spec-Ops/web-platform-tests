@@ -1,7 +1,7 @@
 <!doctype html>
   <html>
   <head>
-  <title>searchbox</title>
+  <title>aria-level</title>
   <link rel="stylesheet" href="/resources/testharness.css">
   <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
   <script src="/resources/testharness.js"></script>
@@ -12,44 +12,11 @@
 
   var theTest = new ATTAcomm(
   {
+   "title" : "aria-level",
    "steps" : [
       {
-         "element" : "test",
+         "title" : "step 1",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXTextField"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXSearchField"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "search text field"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Edit"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "search box"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -69,51 +36,96 @@
                   "property",
                   "role",
                   "is",
-                  "ROLE_ENTRY"
+                  "ROLE_HEADING"
                ],
                [
                   "property",
-                  "states",
+                  "objectAttributes",
                   "contains",
-                  "STATE_SINGLE_LINE"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "EditableText"
+                  "level:\"2"
                ]
             ],
-            "MSAA" : [
+            "UIA" : [
                [
                   "property",
-                  "role",
+                  "Control Type",
                   "is",
-                  "ROLE_SYSTEM_TEXT"
+                  "Text"
+               ],
+               [
+                  "property",
+                  "StyleId_Heading2",
+                  "is",
+                  "present"
+               ],
+               [
+                  "property",
+                  "AriaProperties.level",
+                  "contains",
+                  "2"
                ]
             ],
             "IAccessible2" : [
                [
                   "property",
+                  "role",
+                  "is",
+                  "IA2_ROLE_HEADING"
+               ],
+               [
+                  "property",
                   "objectAttributes",
                   "contains",
-                  "xml-roles:search"
+                  "level:\"2"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:heading"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXHeading"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "heading"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "2"
                ]
             ]
          },
          "type" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
-   ],
-   "title" : "searchbox"
+   ]
 }
 
   ) ;
   </script>
   </head>
   <body>
-  <p>This test examines the ARIA properties for searchbox.</p>
-    <div id='test' role='searchbox' contenteditable='true'></div>
+  <p>This test examines the ARIA properties for aria-level.</p>
+    <div role="heading" id="test">
+  Go Fish
+  </div>
 
   <div id="manualMode"></div>
   <div id="log"></div>

@@ -1,7 +1,7 @@
 <!doctype html>
   <html>
   <head>
-  <title>searchbox</title>
+  <title>checkbox true</title>
   <link rel="stylesheet" href="/resources/testharness.css">
   <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
   <script src="/resources/testharness.js"></script>
@@ -12,28 +12,35 @@
 
   var theTest = new ATTAcomm(
   {
+   "title" : "checkbox true",
    "steps" : [
       {
-         "element" : "test",
+         "title" : "step 1",
          "test" : {
             "AXAPI" : [
                [
                   "property",
                   "AXRole",
                   "is",
-                  "AXTextField"
+                  "AXCheckbox"
                ],
                [
                   "property",
                   "AXSubrole",
                   "is",
-                  "AXSearchField"
+                  "<nil>"
                ],
                [
                   "property",
-                  "AXRoleDescription",
+                  "AXDescription",
                   "is",
-                  "search text field"
+                  "check box"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "1"
                ]
             ],
             "UIA" : [
@@ -41,13 +48,13 @@
                   "property",
                   "Control Type",
                   "isNot",
-                  "Edit"
+                  "Checkbox"
                ],
                [
                   "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "search box"
+                  "Toggle",
+                  "contains",
+                  "ToggleState:On"
                ]
             ],
             "WAIFAKE" : [
@@ -69,27 +76,19 @@
                   "property",
                   "role",
                   "is",
-                  "ROLE_ENTRY"
+                  "ROLE_CHECK_BOX"
                ],
                [
                   "property",
                   "states",
                   "contains",
-                  "STATE_SINGLE_LINE"
+                  "STATE_CHECKABLE"
                ],
                [
                   "property",
-                  "interfaces",
+                  "states",
                   "contains",
-                  "EditableText"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TEXT"
+                  "STATE_CHECKED"
                ]
             ],
             "IAccessible2" : [
@@ -97,23 +96,36 @@
                   "property",
                   "objectAttributes",
                   "contains",
-                  "xml-roles:search"
+                  "checkable:true"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_CHECKBUTTON"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_CHECKED"
                ]
             ]
          },
          "type" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
-   ],
-   "title" : "searchbox"
+   ]
 }
 
   ) ;
   </script>
   </head>
   <body>
-  <p>This test examines the ARIA properties for searchbox.</p>
-    <div id='test' role='searchbox' contenteditable='true'></div>
+  <p>This test examines the ARIA properties for checkbox true.</p>
+    <div id='test' role='checkbox' aria-checked='true' class='chkbox'>I like cars</div>
 
   <div id="manualMode"></div>
   <div id="log"></div>

@@ -1,88 +1,35 @@
 <!doctype html>
-<html>
-<head>
-<title>radio</title>
-<link rel="stylesheet" href="/resources/testharness.css">
-<link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-<script src="/resources/testharness.js"></script>
-<script src="/resources/testharnessreport.js"></script>
-<script src="/wai-aria/scripts/ATTAcomm.js"></script>
-<script>
-setup({explicit_timeout: true, explicit_done: true });
+  <html>
+  <head>
+  <title>radio</title>
+  <link rel="stylesheet" href="/resources/testharness.css">
+  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+  <script src="/resources/testharness.js"></script>
+  <script src="/resources/testharnessreport.js"></script>
+  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+  <script>
+  setup({explicit_timeout: true, explicit_done: true });
 
-var theTest = new ATTAcomm(
-{
+  var theTest = new ATTAcomm(
+  {
+   "title" : "radio",
    "steps" : [
       {
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
-            "IAccessible2" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "objectAttributes",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
                   "contains",
-                  "checkable:true"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "similarItemsInGroup:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "positionInGroup:4"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXRadioButton"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "radio button"
-               ],
-               [
-                  "property",
-                  "AXValue",
-                  "is",
-                  "0"
-               ],
-               [
-                  "property",
-                  "AXARIAPosInSet",
-                  "is",
-                  "4"
-               ],
-               [
-                  "property",
-                  "AXARIASetSize",
-                  "is",
-                  "8"
+                  "TableCell"
                ]
             ],
             "ATK" : [
@@ -143,18 +90,36 @@ var theTest = new ATTAcomm(
                   "setsize:8"
                ]
             ],
-            "WAIFAKE" : [
+            "IAccessible2" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
+                  "objectAttributes",
+                  "contains",
+                  "checkable:true"
                ],
                [
                   "property",
-                  "interfaces",
+                  "objectAttributes",
                   "contains",
-                  "TableCell"
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:4"
                ]
             ],
             "MSAA" : [
@@ -170,25 +135,61 @@ var theTest = new ATTAcomm(
                   "contains",
                   "STATE_SYSTEM_CHECKED"
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXRadioButton"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "radio button"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "0"
+               ],
+               [
+                  "property",
+                  "AXARIAPosInSet",
+                  "is",
+                  "4"
+               ],
+               [
+                  "property",
+                  "AXARIASetSize",
+                  "is",
+                  "8"
+               ]
             ]
          },
-         "title" : "step 1",
-         "type" : "test",
-         "element" : "test"
+         "type" : "test"
       }
-   ],
-   "title" : "radio"
+   ]
 }
 
-) ;
-</script>
-</head>
-<body>
-<p>This test examines the ARIA properties for radio.</p>
-  <div id='test' role='radio' aria-checked='false' class='radio' aria-posinset='4' aria-setsize='8'>Car</div>
+  ) ;
+  </script>
+  </head>
+  <body>
+  <p>This test examines the ARIA properties for radio.</p>
+    <div id='test' role='radio' aria-checked='false' class='radio' aria-posinset='4' aria-setsize='8'>Car</div>
 
-<div id="manualMode"></div>
-<div id="log"></div>
-<div id="ATTAmessages"></div>
-</body>
-</html>
+  <div id="manualMode"></div>
+  <div id="log"></div>
+  <div id="ATTAmessages"></div>
+  </body>
+  </html>
+  
