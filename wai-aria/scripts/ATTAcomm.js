@@ -386,24 +386,30 @@ ATTAcomm.prototype = {
                 var messages = "";
                 var thisResult = null;
                 var theLog = "";
+                var assertionCount = 0;
                 res.body.results.forEach( function (a) {
                   if (typeof a === "object") {
                     // we have a result for this assertion
+                    // first, what is the assertion?
+                    var aRef = data.data[assertionCount];
+                    var assertionText = '"' + aRef.join(" ") +'"';
+
                     if (a.hasOwnProperty("log")) {
                       // there is log data - save it
-                      theLog += a.log ;
+                      theLog += "Assertion: " + assertionText + "\nLog data: "+a.log ;
                     }
                     if (a.result === "ERROR") {
                       messages += "ATTA reported ERROR with message: " + a.message + "; ";
                     } else if (a.result === "FAIL") {
                       thisResult = false;
-                      messages += a.message + "; ";
+                      messages += assertionText + " failed with " + a.message + "; ";
                     } else if (a.result === "PASS" && thisResult === null) {
                       // if we got a pass and there was no other result thus far
                       // then we are passing
                       thisResult = true;
                     }
                   }
+                  assertionCount++;
                 });
                 if (theLog !== "") {
                   ANNO.saveLog("runTest", theLog, subtest);
