@@ -18,11 +18,13 @@ use Getopt::Long;
 my %specs = (
     "aria11" => {
       title => "ARIA_1.1_Testable_Statements",
-      specURL => "https://www.w3.org/TR/wai-aria11/"
+      specURL => "https://www.w3.org/TR/wai-aria11/",
+      dir => "aria11"
     },
     "svg" => {
       title => "SVG_Accessibility/Testing/Test_Assertions_with_Tables_for_ATTA",
-      specURL => "https://www.w3.org/TR/svg-aam-1.0/"
+      specURL => "https://www.w3.org/TR/svg-aam-1.0/",
+      dir => "svg"
     }
 );
 
@@ -49,6 +51,17 @@ my $wiki_config = {
   "api_url" => "https://www.w3.org/wiki/api.php"
 };
 
+my $io ;
+our $theSpecURL = "";
+
+if ($spec) {
+  $wiki_title = $specs{$spec}->{title};
+  $theSpecURL = $specs{$spec}->{specURL};
+  if (!$dir) {
+    $dir = "../" . $specs{$spec}->{dir};
+  }
+}
+
 if (!$dir) {
   $dir = "../raw";
 }
@@ -56,14 +69,6 @@ if (!$dir) {
 if (!-d $dir) {
   print STDERR "No such directory: $dir\n";
   exit 1;
-}
-
-my $io ;
-our $theSpecURL = "";
-
-if ($spec) {
-  $wiki_title = $specs{$spec}->{title};
-  $theSpecURL = $specs{$spec}->{specURL};
 }
 
 if ($wiki_title) {
