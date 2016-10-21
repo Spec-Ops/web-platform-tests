@@ -394,9 +394,10 @@ ATTAcomm.prototype = {
                     var aRef = data.data[assertionCount];
                     var assertionText = '"' + aRef.join(" ") +'"';
 
-                    if (a.hasOwnProperty("log")) {
+                    if (a.hasOwnProperty("log") && a.log !== null && a.log !== '' ) {
                       // there is log data - save it
-                      theLog += "Assertion: " + assertionText + "\nLog data: "+a.log ;
+                      theLog += "\n--- Assertion " + assertionCount + " ---";
+                      theLog += "\nAssertion: " + assertionText + "\nLog data: "+a.log ;
                     }
                     if (a.result === "ERROR") {
                       messages += "ATTA reported ERROR with message: " + a.message + "; ";
