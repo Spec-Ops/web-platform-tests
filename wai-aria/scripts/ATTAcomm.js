@@ -399,11 +399,19 @@ ATTAcomm.prototype = {
                       theLog += "\n--- Assertion " + assertionCount + " ---";
                       theLog += "\nAssertion: " + assertionText + "\nLog data: "+a.log ;
                     }
-                    if (a.result === "ERROR") {
-                      messages += "ATTA reported ERROR with message: " + a.message + "; ";
+
+                    // is there a message?
+                    var theMessage = "";
+                    if (a.hasOwnProperty("message")) {
+                      theMessage = a.message;
+                    }
+                    if (!a.hasOwnProperty("result")) {
+                      messages += "ATTA did not report a result " + theMessage + "; ";
+                    } else if (a.result === "ERROR") {
+                      messages += "ATTA reported ERROR with message: " + theMessage + "; ";
                     } else if (a.result === "FAIL") {
                       thisResult = false;
-                      messages += assertionText + " failed with " + a.message + "; ";
+                      messages += assertionText + " failed " + theMessage + "; ";
                     } else if (a.result === "PASS" && thisResult === null) {
                       // if we got a pass and there was no other result thus far
                       // then we are passing
