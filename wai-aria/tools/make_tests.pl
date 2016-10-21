@@ -45,7 +45,7 @@ my $result = GetOptions(
     "f|file=s"   => \$file,
     "w|wiki=s"   => \$wiki_title,
     "s|spec=s"   => \$spec,
-    "d|dir=s"   => \$dir);
+    "d|dir=s"   => \$dir) || usage();
 
 my $wiki_config = {
   "api_url" => "https://www.w3.org/wiki/api.php"
@@ -55,6 +55,7 @@ my $io ;
 our $theSpecURL = "";
 
 if ($spec) {
+  print "Processing spec $spec\n";
   $wiki_title = $specs{$spec}->{title};
   $theSpecURL = $specs{$spec}->{specURL};
   if (!$dir) {
@@ -73,8 +74,17 @@ if (!-d $dir) {
 
 if ($wiki_title) {
   my $MW = MediaWiki::API->new( $wiki_config );
+
+  $MW->{config}->{on_error} = \&on_error;
+
+  sub on_error {
+    print "Error code: " . $MW->{error}->{code} . "\n";
+    print $MW->{error}->{stacktrace}."\n";
+    die;
+  }
   my $page = $MW->get_page( { title => $wiki_title } );
   my $theContent = $page->{'*'};
+  print "Loaded " . length($theContent) . " from $wiki_title\n";
   $io = IO::String->new($theContent);
 } elsif ($file) {
   open($io, "<", $file) || die("Failed to open $file: " . $@);
@@ -109,7 +119,7 @@ while (<$io>) {
     $theSpecURL =~ s/^ *//;
     $theSpecURL =~ s/ *$//;
   }
-  if (m/^=== (.*) ===/) {
+  if (m/^=== +(.*[^ ]) +===/) {
     if ($state != 0) {
       # we were in an item; dump it
       build_test($current, $theAttributes, $theCode, $theAsserts) ;
@@ -159,8 +169,8 @@ while (<$io>) {
   } elsif ($state == 4) {
     if (m/^\|-/) {
       if ($theAPI
-          && exists($theAsserts->{$theAPI}->[$theAssertCount])
-          && scalar(@{$theAsserts->{$theAPI}->[$theAssertCount]})) {
+        && exists($theAsserts->{$theAPI}->[$theAssertCount])
+        && scalar(@{$theAsserts->{$theAPI}->[$theAssertCount]})) {
         $theAssertCount++;
       }
       # start of a table row
@@ -195,8 +205,8 @@ while (<$io>) {
         $typeRows--;
         # populate the first cell
         if ($theAPI
-            && exists($theAsserts->{$theAPI}->[$theAssertCount])
-            && scalar(@{$theAsserts->{$theAPI}->[$theAssertCount]})) {
+          && exists($theAsserts->{$theAPI}->[$theAssertCount])
+          && scalar(@{$theAsserts->{$theAPI}->[$theAssertCount]})) {
           $theAssertCount++;
         }
         $theAsserts->{$theAPI}->[$theAssertCount] = [ $theType ] ;
@@ -283,7 +293,7 @@ sub build_test() {
         $val =~ s/"//g;
         $new[1] = $conditions[$i]->[1] . ":" . $val;
         if ($conditions[$i]->[3] eq "not exposed"
-            || $conditions[$i]->[3] eq "false") {
+          || $conditions[$i]->[3] eq "false") {
           $new[2] = "false";
         } else {
           $new[2] = "true";
@@ -317,14 +327,14 @@ sub build_test() {
 
 
   my $testDef =
-    { "title" => $title,
-      "steps" => [
-        {
-          "type"=>  "test",
-          "title"=> "step 1",
-          "element"=> "test",
-          "test" => $asserts
-        }
+  { "title" => $title,
+    "steps" => [
+      {
+        "type"=>  "test",
+        "title"=> "step 1",
+        "element"=> "test",
+        "test" => $asserts
+      }
     ]
   };
 
@@ -350,36 +360,37 @@ sub build_test() {
   $fileName .= $theSuffix;
 
   my $template = qq(<!doctype html>
-<html>
-<head>
-<title>$title</title>
-<link rel="stylesheet" href="/resources/testharness.css">
-<link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-<script src="/resources/testharness.js"></script>
-<script src="/resources/testharnessreport.js"></script>
-<script src="/wai-aria/scripts/ATTAcomm.js"></script>
-<script>
-setup({explicit_timeout: true, explicit_done: true });
+  <html>
+  <head>
+  <title>$title</title>
+  <link rel="stylesheet" href="/resources/testharness.css">
+  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+  <script src="/resources/testharness.js"></script>
+  <script src="/resources/testharnessreport.js"></script>
+  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+  <script>
+  setup({explicit_timeout: true, explicit_done: true });
 
-var theTest = new ATTAcomm(
-$testDef_json
-) ;
-</script>
-</head>
-<body>
-<p>This test examines the ARIA properties for $title_reference.</p>
-$code
-<div id="manualMode"></div>
-<div id="log"></div>
-<div id="ATTAmessages"></div>
-</body>
-</html>
-);
+  var theTest = new ATTAcomm(
+  $testDef_json
+  ) ;
+  </script>
+  </head>
+  <body>
+  <p>This test examines the ARIA properties for $title_reference.</p>
+  $code
+  <div id="manualMode"></div>
+  <div id="log"></div>
+  <div id="ATTAmessages"></div>
+  </body>
+  </html>
+  );
 
   my $file ;
 
   if (open($file, ">", "$dir/$fileName")) {
     print $file $template;
+    print $file "\n";
     close $file;
   } else {
     print qq(Failed to create file "$dir/$fileName" $!\n);
