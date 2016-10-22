@@ -369,7 +369,7 @@ ATTAcomm.prototype = {
     var data = {
       "title" : subtest.title,
       "id" : subtest.element,
-      "data": subtest.test[API]
+      "data": this.normalize(subtest.test[API])
     };
 
     return new Promise(function(resolve) {
@@ -577,6 +577,36 @@ ATTAcomm.prototype = {
     'use strict';
 
     return this._fetch("GET", this.ATTAuri + "/end");
+  },
+
+  /* normalize - ensure subtest data conforms to ATTA spec
+   */
+
+  normalize: function( data ) {
+    'use strict';
+
+    var ret = [] ;
+
+    data.forEach(function(assert) {
+      var normal = [] ;
+      // ensure if there is a value list it is compressed
+      if (Array.isArray(assert)) {
+        // we have an array
+        normal[0] = assert[0];
+        normal[1] = assert[1];
+        normal[2] = assert[2];
+        if ("string" === typeof assert[3] && assert[3].match(/^\[.*\]$/)) {
+          // it is a string and matches the valuelist pattern
+          normal[3] = assert[3].replace(/, +/, ',');
+        } else {
+          normal[3] = assert[3];
+        }
+        ret.push(normal);
+      } else {
+        ret.push(assert);
+      }
+    });
+    return ret;
   },
 
   // _fetch - return a promise after sending data
