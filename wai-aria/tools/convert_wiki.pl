@@ -306,10 +306,18 @@ sub dump_table() {
           }
         } elsif ($conditions[$i]->[$start] =~ m/^name/) {
           my $name = $conditions[$i]->[1];
+          my $cond = "is" ;
+          if ($name eq "<empty>" ) {
+            $cond = "empty";
+            $name = "true"
+          } elsif ($name eq "<not empty>") {
+            $cond = "empty";
+            $name = "false";
+          }
           $new[0] = "property";
           $new[1] = "name";
-          $new[2] = "is";
-          $new[3] = $conditions[$i]->[1];
+          $new[2] = $cond;
+          $new[3] = $name;
         } else {
           @new = @{$conditions[$i]};
           if ($conditions[$i]->[2] eq '<shown>') {
@@ -350,10 +358,18 @@ sub dump_table() {
           $new[3] = $conditions[$i]->[$start+1];
         } elsif ($conditions[$i]->[$start] =~ m/^Name/) {
           my $name = $conditions[$i]->[1];
+          my $cond = "is" ;
+          if ($name eq "<empty>" ) {
+            $cond = "empty";
+            $name = "true"
+          } elsif ($name eq "<not empty>") {
+            $cond = "empty";
+            $name = "false";
+          }
           $new[0] = "property";
           $new[1] = "Name";
-          $new[2] = "is";
-          $new[3] = $conditions[$i]->[1];
+          $new[2] = $cond;
+          $new[3] = $name;
         } elsif ($conditions[$i]->[$start] =~ m/^TBD/) {
           $new[0] = "TBD";
           $new[1] = $new[2] = $new[3] = "";
@@ -385,10 +401,19 @@ sub dump_table() {
         } elsif ($conditions[$i]->[$start] =~ m/not in accessibility tree/i) {
           @new = qw(property accessible exists false);
         } elsif ($conditions[$i]->[$start] =~ m/^accName/) {
+          my $name = $conditions[$i]->[$start+1];
+          my $cond = "is" ;
+          if ($name eq "<empty>" ) {
+            $cond = "empty";
+            $name = "true"
+          } elsif ($name eq "<not empty>") {
+            $cond = "empty";
+            $name = "false";
+          }
           $new[0] = "property";
           $new[1] = "accName";
-          $new[2] = $assert;
-          $new[3] = $conditions[$i]->[$start+1];
+          $new[2] = $cond;
+          $new[3] = $name;
         } elsif ($conditions[$i]->[$start] =~ m/^ROLE_/) {
           $new[0] = "property";
           $new[1] = "role";
