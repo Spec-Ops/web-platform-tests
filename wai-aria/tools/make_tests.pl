@@ -176,6 +176,9 @@ while (<$io>) {
       $state = 3;
     } else  {
       if (m/^\s/ && !m/if given/) {
+        # trim any trailing whitespace
+        $theCode =~ s/ +$//;
+        $theCode =~ s/\t/ /g;
         $theCode .= $_;
       }
     }
@@ -275,6 +278,9 @@ sub build_test() {
     $frag =~ s/%code%/$code/;
     $code = $frag;
   }
+
+  $code =~ s/ +$//m;
+  $code =~ s/\t/ /g;
 
   my $title_reference = $title;
 
@@ -423,7 +429,7 @@ sub build_test() {
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  );
+);
 
   my $file ;
 
