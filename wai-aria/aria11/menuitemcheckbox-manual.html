@@ -99,8 +99,8 @@
                [
                   "property",
                   "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
+                  "anyOf",
+                  "[ROLE_SYSTEM_MENUITEM, ROLE_SYSTEM_CHECKBUTTON]"
                ],
                [
                   "property",
@@ -187,7 +187,7 @@
   <p>This test examines the ARIA properties for menuitemcheckbox.</p>
     <ul role='menu'>Menu
     <li role='menuitem'> option 1</li>
-    <li role='menuitemcheckbox' id='test' aria-posinset='4' aria-setsize='8' 
+    <li role='menuitemcheckbox' id='test' aria-posinset='4' aria-setsize='8'
         class='ckbox' aria-checked='true'>panda doodles</li>
     <li role='menuitem'> option 3</li>
   </ul>
@@ -197,4 +197,4 @@
   <div id="ATTAmessages"></div>
   </body>
   </html>
-  
+
