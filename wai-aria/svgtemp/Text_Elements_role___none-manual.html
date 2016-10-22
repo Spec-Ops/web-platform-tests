@@ -14,32 +14,9 @@
     {
    "steps" : [
       {
-         "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -61,10 +38,33 @@
                   "exists",
                   "false"
                ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "type" : "test"
       }
    ],
    "title" : "Text Elements role = none"
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text Elements role = none.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="250" y="180" font-family="Verdana" font-size="64" fill="blue" role="none">Hello, out 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="250" y="180" font-family="Verdana" font-size="64" fill="blue" role="none">Hello, out
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -12,17 +12,22 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Elements no accessible object created",
    "steps" : [
       {
          "type" : "test",
          "test" : {
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "accessible",
-                  "exists",
-                  "false"
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "ATK" : [
@@ -33,7 +38,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -49,25 +54,20 @@
                   "false"
                ]
             ],
-            "WAIFAKE" : [
+            "UIA" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "accessible",
+                  "exists",
+                  "false"
                ]
             ]
          },
          "title" : "step 1",
          "element" : "test"
       }
-   ]
+   ],
+   "title" : "Elements no accessible object created"
 }
 
     ) ;
@@ -77,11 +77,11 @@
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs id="test">
  <solidColor id="MyLightPurple" solid-color="#a080ff" solid-opacity="0.5"/>
- </defs> 
+ </defs>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

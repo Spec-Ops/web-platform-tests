@@ -15,9 +15,25 @@
    "title" : "Elements no accessible object created",
    "steps" : [
       {
+         "title" : "step 1",
+         "element" : "test",
          "type" : "test",
          "test" : {
-            "UIA" : [
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -33,28 +49,6 @@
                   "false"
                ]
             ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -62,10 +56,16 @@
                   "exists",
                   "false"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
-         },
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
    ]
 }
@@ -77,11 +77,11 @@
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <marker id="test" orient="auto" overflow="visible">
  <rect x="-1" y="-0.5" width="1" height="1" fill="green"/>
- </marker> 
+ </marker>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -12,12 +12,8 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Element aria-hidden",
    "steps" : [
       {
-         "element" : "test",
-         "title" : "step 1",
-         "type" : "test",
          "test" : {
             "WAIFAKE" : [
                [
@@ -33,7 +29,7 @@
                   "TableCell"
                ]
             ],
-            "AXAPI" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -49,7 +45,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -57,7 +53,7 @@
                   "false"
                ]
             ],
-            "ATK" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -65,9 +61,13 @@
                   "false"
                ]
             ]
-         }
+         },
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test"
       }
-   ]
+   ],
+   "title" : "Element aria-hidden"
 }
 
     ) ;
@@ -77,11 +77,11 @@
   <p>This test examines the ARIA properties for Element aria-hidden.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <polygon id="test" fill="magenta" points="850,75 958,137.5 958,262.5 850,325 742,262.6 742,137.5" aria-hidden="true" >
  <desc>built up area</desc>
- </polygon> 
+ </polygon>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -12,10 +12,28 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Elements no accessible object created",
    "steps" : [
       {
+         "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
          "test" : {
-            "UIA" : [
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -39,21 +57,7 @@
                   "false"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -61,13 +65,9 @@
                   "false"
                ]
             ]
-         },
-         "type" : "test",
-         "title" : "step 1",
-         "element" : "test"
+         }
       }
-   ],
-   "title" : "Elements no accessible object created"
+   ]
 }
 
     ) ;
@@ -75,12 +75,12 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect x='5' y='5' width='20' height='15'> <animate id="test" attributeName="opacity" from="1" to="0" 
- </rect> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect x='5' y='5' width='20' height='15'> <animate id="test" attributeName="opacity" from="1" to="0"
+ </rect>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -15,24 +15,33 @@
    "title" : "Elements no accessible object created",
    "steps" : [
       {
+         "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
          "test" : {
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
                [
                   "property",
-                  "accessible",
-                  "exists",
-                  "false"
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -48,24 +57,15 @@
                   "false"
                ]
             ],
-            "WAIFAKE" : [
+            "UIA" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "accessible",
+                  "exists",
+                  "false"
                ]
             ]
-         },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
    ]
 }
@@ -79,11 +79,11 @@
  <stop offset="0%"  stop-color="#A8F" />
  <stop offset="50%"  stop-color="#FDC" />
  <stop offset="100%" stop-color="#A8F" />
- </radialGradient> 
+ </radialGradient>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

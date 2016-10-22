@@ -12,13 +12,38 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Empty aria-describedby testable statements",
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "element" : "test",
          "type" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -39,35 +64,10 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
          }
       }
-   ],
-   "title" : "Empty aria-describedby testable statements"
+   ]
 }
 
     ) ;
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Empty aria-describedby testable statements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-describedby="" cx='50' cy='100' r='15'/> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-describedby="" cx='50' cy='100' r='15'/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

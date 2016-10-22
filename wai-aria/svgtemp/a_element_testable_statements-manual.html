@@ -12,13 +12,26 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "a element testable statements",
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "element" : "test",
          "type" : "test",
          "test" : {
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -35,28 +48,6 @@
                   "booth"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
-                  "is",
-                  "booth"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -64,10 +55,19 @@
                   "is",
                   "booth"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "booth"
+               ]
             ]
          }
       }
-   ]
+   ],
+   "title" : "a element testable statements"
 }
 
     ) ;
@@ -76,11 +76,11 @@
   <body>
   <p>This test examines the ARIA properties for a element testable statements.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <a id="test" aria-label="booth" href="../index.html" xlink:title="table" >
- </a> 
+ </a>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

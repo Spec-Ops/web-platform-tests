@@ -12,13 +12,18 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Empty or all whitespace title/desc",
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
          "type" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "<empty>"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -31,14 +36,6 @@
                [
                   "property",
                   "name",
-                  "is",
-                  "<empty>"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
                   "is",
                   "<empty>"
                ]
@@ -65,9 +62,12 @@
                   "TableCell"
                ]
             ]
-         }
+         },
+         "element" : "test",
+         "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "Empty or all whitespace title/desc"
 }
 
     ) ;
@@ -78,11 +78,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" d="M 100 100 L 300 100 L 200 300 z" fill="red" >
    <title>
  </title>
- </path> 
+ </path>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

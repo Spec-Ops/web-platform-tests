@@ -1,21 +1,37 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>aria-busy="true" on a listbox</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>aria-busy="false" on a listbox</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
+    var theTest = new ATTAcomm(
+    {
+   "title" : "aria-busy=\"false\" on a listbox",
    "steps" : [
       {
-         "element" : "test",
+         "type" : "test",
+         "title" : "step 1",
          "test" : {
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -39,35 +55,7 @@
                   "property",
                   "AXElementBusy",
                   "is",
-                  "true"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "List"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "true"
+                  "false"
                ]
             ],
             "ATK" : [
@@ -85,15 +73,29 @@
                ],
                [
                   "result",
-                  "Selection.select_child(1)",
+                  "Selection.clear_selection()",
                   "is",
                   "false"
                ],
                [
                   "property",
                   "states",
-                  "contains",
+                  "doesNotContain",
                   "STATE_BUSY"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "List"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "false"
                ]
             ],
             "MSAA" : [
@@ -107,23 +109,21 @@
                   "property",
                   "states",
                   "contains",
-                  "STATE_SYSTEM_BUSY"
+                  "STATE_SYSTEM_BUSY cleared"
                ]
             ]
          },
-         "type" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
-   ],
-   "title" : "aria-busy=\"true\" on a listbox"
+   ]
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
-  <p>This test examines the ARIA properties for aria-busy="true" on a listbox.</p>
-    <ul role="listbox" aria-busy="true" id="test">
+  <p>This test examines the ARIA properties for aria-busy="false" on a listbox.</p>
+    <ul role="listbox" aria-busy="false" id="test">
        <li role="option">option 1</li>
        <li role="option">option 2</li>
   </ul>
@@ -132,5 +132,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

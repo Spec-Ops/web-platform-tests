@@ -14,18 +14,7 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
-         "type" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "counter"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -40,18 +29,18 @@
                   "TableCell"
                ]
             ],
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "accName",
+                  "AXDescription",
                   "is",
                   "counter"
                ]
             ],
-            "UIA" : [
+            "MSAA" : [
                [
                   "property",
-                  "Name",
+                  "accName",
                   "is",
                   "counter"
                ]
@@ -63,8 +52,19 @@
                   "is",
                   "counter"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "counter"
+               ]
             ]
-         }
+         },
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test"
       }
    ],
    "title" : "a element testable statements"
@@ -77,11 +77,11 @@
   <p>This test examines the ARIA properties for a element testable statements.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <a id="test" href="../index.html">
    <title>counter</title>
- </a> 
+ </a>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

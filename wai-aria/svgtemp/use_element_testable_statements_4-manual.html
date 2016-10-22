@@ -12,10 +12,18 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "use element testable statements",
    "steps" : [
       {
-         "type" : "test",
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXTitle",
+                  "is",
+                  "rock"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -40,14 +48,6 @@
                   "rock"
                ]
             ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXTitle",
-                  "is",
-                  "rock"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -63,11 +63,11 @@
                ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1"
       }
-   ],
-   "title" : "use element testable statements"
+   ]
 }
 
     ) ;
@@ -80,11 +80,11 @@
    <title>rock</title>
  </path>
  </defs>
- <use id="test" transform="translate(30 345)" xlink:href="#r1"/> 
+ <use id="test" transform="translate(30 345)" xlink:href="#r1"/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -12,21 +12,12 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Simple name testable statements",
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "element" : "test",
          "type" : "test",
          "test" : {
-            "IAccessible2" : [
-               [
-                  "relation",
-                  "IA2_RELATION_LABELLED_BY",
-                  "is",
-                  "[t1]"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -41,20 +32,12 @@
                   "TableCell"
                ]
             ],
-            "AXAPI" : [
+            "IAccessible2" : [
                [
-                  "property",
-                  "AXDescription",
+                  "relation",
+                  "IA2_RELATION_LABELLED_BY",
                   "is",
-                  "end"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "end"
+                  "[t1]"
                ]
             ],
             "ATK" : [
@@ -69,6 +52,22 @@
                   "RELATION_LABELLED_BY",
                   "is",
                   "[t1]"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "end"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "end"
                ]
             ],
             "UIA" : [
@@ -87,7 +86,8 @@
             ]
          }
       }
-   ]
+   ],
+   "title" : "Simple name testable statements"
 }
 
     ) ;
@@ -96,11 +96,11 @@
   <body>
   <p>This test examines the ARIA properties for Simple name testable statements.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'/>
- <text id="t1" x="40" y="90">end</text> 
+ <text id="t1" x="40" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

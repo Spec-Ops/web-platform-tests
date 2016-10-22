@@ -1,70 +1,28 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>grid</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>grid</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "grid",
+    var theTest = new ATTAcomm(
+    {
    "steps" : [
       {
+         "title" : "step 1",
          "element" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXTable"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "grid"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
                   "interfaces",
                   "doesNotContain",
                   "IAccessibleTable2"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
                ]
             ],
             "ATK" : [
@@ -106,22 +64,64 @@
                   "isNot",
                   ""
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTable"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "grid"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "title" : "step 1",
          "type" : "test"
       }
-   ]
+   ],
+   "title" : "grid"
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for grid.</p>
     <div role='grid' id='test' aria-rowcount='3' aria-colcount='2'>
    <div role='row'>
-      <span role='gridcell'> 
+      <span role='gridcell'>
         <button>hello</button>
      </span>
    </div>
@@ -131,5 +131,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

@@ -12,11 +12,26 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Empty or all whitespace title/desc",
    "steps" : [
       {
-         "type" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ]
+            ],
+            "MSAA" : [
+               []
+            ],
+            "ATK" : [
+               [
+                  "description",
+                  "<empty>"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -38,29 +53,14 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "ATK" : [
-               [
-                  "description",
-                  "<empty>"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ]
-            ],
-            "MSAA" : [
-               []
             ]
          },
+         "type" : "test",
          "element" : "test",
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "Empty or all whitespace title/desc"
 }
 
     ) ;
@@ -72,11 +72,11 @@
    <title>
  </title>
  <desc>   </desc>
- </circle> 
+ </circle>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

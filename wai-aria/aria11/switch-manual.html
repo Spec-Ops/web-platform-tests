@@ -1,22 +1,41 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>switch</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>switch</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "switch",
+    var theTest = new ATTAcomm(
+    {
    "steps" : [
       {
          "element" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Button"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "toggleswitch"
+               ],
+               [
+                  "property",
+                  "Toggle",
+                  "contains",
+                  "ToggleState:Off"
+               ]
+            ],
             "IAccessible2" : [
                [
                   "property",
@@ -29,20 +48,6 @@
                   "objectAttributes",
                   "contains",
                   "xml-roles:switch"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
                ]
             ],
             "ATK" : [
@@ -63,26 +68,6 @@
                   "states",
                   "doesNotContain",
                   "STATE_CHECKED"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Button"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "toggleswitch"
-               ],
-               [
-                  "property",
-                  "Toggle",
-                  "contains",
-                  "ToggleState:Off"
                ]
             ],
             "AXAPI" : [
@@ -110,16 +95,31 @@
                   "is",
                   "0"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "type" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "switch"
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for switch.</p>
@@ -129,5 +129,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

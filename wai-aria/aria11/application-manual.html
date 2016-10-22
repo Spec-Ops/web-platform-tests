@@ -1,21 +1,20 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>application</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>application</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "application",
+    var theTest = new ATTAcomm(
+    {
    "steps" : [
       {
-         "type" : "test",
+         "title" : "step 1",
          "test" : {
             "MSAA" : [
                [
@@ -39,6 +38,14 @@
                   "application"
                ]
             ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_EMBEDDED"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -51,14 +58,6 @@
                   "interfaces",
                   "contains",
                   "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_EMBEDDED"
                ]
             ],
             "AXAPI" : [
@@ -88,14 +87,15 @@
                ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "element" : "test",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "application"
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for application.</p>
@@ -108,5 +108,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

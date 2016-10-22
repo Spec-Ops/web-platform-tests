@@ -14,21 +14,14 @@
     {
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
          "test" : {
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "accName",
-                  "is",
-                  "<empty>"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
+                  "AXDescription",
                   "is",
                   "<empty>"
                ]
@@ -41,10 +34,18 @@
                   "<empty>"
                ]
             ],
-            "AXAPI" : [
+            "MSAA" : [
                [
                   "property",
-                  "AXDescription",
+                  "accName",
+                  "is",
+                  "<empty>"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
                   "is",
                   "<empty>"
                ]
@@ -63,8 +64,7 @@
                   "TableCell"
                ]
             ]
-         },
-         "type" : "test"
+         }
       }
    ],
    "title" : "Empty or all whitespace title/desc"
@@ -79,11 +79,11 @@
    <title>
  </title>
  <desc>   </desc>
- </circle> 
+ </circle>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

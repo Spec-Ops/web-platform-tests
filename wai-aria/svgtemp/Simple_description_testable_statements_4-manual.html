@@ -15,15 +15,9 @@
    "title" : "Simple description testable statements",
    "steps" : [
       {
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXHelp",
-                  "is",
-                  "end"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -46,12 +40,20 @@
                   "<not empty>"
                ]
             ],
-            "MSAA" : [
-               []
-            ],
             "ATK" : [
                [
                   "description",
+                  "end"
+               ]
+            ],
+            "MSAA" : [
+               []
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXHelp",
+                  "is",
                   "end"
                ]
             ],
@@ -70,9 +72,7 @@
                ]
             ]
          },
-         "type" : "test",
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
    ]
 }
@@ -83,11 +83,11 @@
   <body>
   <p>This test examines the ARIA properties for Simple description testable statements.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-describedby="t1" cx='50' cy='100' r='15'/>
- <text id="t1" x="40" 
+ <text id="t1" x="40"
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

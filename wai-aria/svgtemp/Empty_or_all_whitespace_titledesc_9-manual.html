@@ -12,16 +12,24 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Empty or all whitespace title/desc",
    "steps" : [
       {
+         "type" : "test",
          "test" : {
-            "MSAA" : [
-               []
-            ],
             "ATK" : [
                [
                   "description",
+                  "<empty>"
+               ]
+            ],
+            "MSAA" : [
+               []
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXHelp",
+                  "is",
                   "<empty>"
                ]
             ],
@@ -46,21 +54,13 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXHelp",
-                  "is",
-                  "<empty>"
-               ]
             ]
          },
-         "type" : "test",
          "element" : "test",
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "Empty or all whitespace title/desc"
 }
 
     ) ;
@@ -70,12 +70,12 @@
   <p>This test examines the ARIA properties for Empty or all whitespace title/desc.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <line id="test" x1='10' y1='10' x2='50' y2='10'>
    <title> </title>
- <desc>		 </desc>
- </line> 
+ <desc>   </desc>
+ </line>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

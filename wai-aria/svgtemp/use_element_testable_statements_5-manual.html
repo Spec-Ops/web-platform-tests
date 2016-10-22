@@ -12,7 +12,6 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "use element testable statements",
    "steps" : [
       {
          "test" : {
@@ -30,10 +29,10 @@
                   "TableCell"
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
-                  "AXTitle",
+                  "Name",
                   "is",
                   "rock"
                ]
@@ -54,20 +53,21 @@
                   "rock"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "Name",
+                  "AXTitle",
                   "is",
                   "rock"
                ]
             ]
          },
          "type" : "test",
-         "title" : "step 1",
-         "element" : "test"
+         "element" : "test",
+         "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "use element testable statements"
 }
 
     ) ;
@@ -80,11 +80,11 @@
    <title>rock</title>
  </path>
  </defs>
- <use id="test" transform="translate(30 345)" href="#r1"/> 
+ <use id="test" transform="translate(30 345)" href="#r1"/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

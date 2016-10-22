@@ -152,23 +152,18 @@ ATTAcomm.prototype = {
             // this is a set of assertions that should be evaluated
             pending.push(this.runTest(testCount, API, subtest));
           } else if (theType === "script") {
-            // @@@TODO@@@ this is some javascript...  run it
-            console.log("Got a script test step");
             Promise.all(pending).then(function() {
               pending = [];
               // execute the script
               this.runScript(testCount, subtest);
             }.bind(this));
           } else if (theType === "event") {
-            // @@@TODO@@@ act on the event
-            console.log("Got an event test step");
             Promise.all(pending).then(function() {
               pending = [];
               // raise the event
               this.raiseEvent(testCount, subtest);
             }.bind(this));
-          } else {
-            console.log("Unknown subtest type: " + theType);
+          // } else {
           }
         }.bind(this));
 
@@ -182,7 +177,6 @@ ATTAcomm.prototype = {
           }.bind(this));
         }.bind(this))
         .catch(function(err) {
-          console.log(err);
           this.endTest().then(function() {
             this.dumpLog();
             done();
@@ -210,7 +204,6 @@ ATTAcomm.prototype = {
     // in the TEST data structure so that a human can to the inspection and calculate the result
     //
     'use strict';
-    console.log(message);
 
     var ref = document.getElementById("manualMode");
     if (ref) {
@@ -307,7 +300,6 @@ ATTAcomm.prototype = {
           }
         }
         catch (e) {
-          console.log(e);
           test(function() {
             assert_true(false, "Subtest event failed to dispatch: " +e);
           }, "Event subtest " + testNum);
@@ -341,7 +333,6 @@ ATTAcomm.prototype = {
           eval(subtest.script);
         }
         catch (e) {
-          console.log(e);
           test(function() {
             assert_true(false, "Subtest script " + subtest.script + " failed to evaluate: " +e);
           }, "Event subtest " + testNum);

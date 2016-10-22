@@ -15,23 +15,21 @@
    "title" : "Empty aria-labelledby testable statements",
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "accName",
+                  "role",
                   "is",
-                  "abc"
-               ]
-            ],
-            "ATK" : [
+                  "ROLE_TABLE_CELL"
+               ],
                [
                   "property",
-                  "name",
-                  "is",
-                  "abc"
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "UIA" : [
@@ -50,18 +48,20 @@
                   "abc"
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
-                  "role",
+                  "accName",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
+                  "abc"
+               ]
+            ],
+            "ATK" : [
                [
                   "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "name",
+                  "is",
+                  "abc"
                ]
             ]
          },
@@ -77,7 +77,7 @@
   <p>This test examines the ARIA properties for Empty aria-labelledby testable statements.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="" cx='50' cy='100' r='15'>
    <title>abc</title>
- </circle> 
+ </circle>
 
 
 </svg>
@@ -86,4 +86,4 @@
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

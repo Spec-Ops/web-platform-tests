@@ -14,7 +14,8 @@
     {
    "steps" : [
       {
-         "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
             "WAIFAKE" : [
                [
@@ -38,7 +39,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -54,7 +55,7 @@
                   "false"
                ]
             ],
-            "MSAA" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -63,8 +64,7 @@
                ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
    ],
    "title" : "Basic shapes and path"
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes and path.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <line id="test" x1='10' y1='10' x2='50' y2='10' /> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <line id="test" x1='10' y1='10' x2='50' y2='10' />
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

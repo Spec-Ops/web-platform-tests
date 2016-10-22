@@ -12,9 +12,25 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Elements that may be in the accessibility tree (normal rules)",
    "steps" : [
       {
+         "type" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "xml-roles",
+                  "ROLE_IMAGE"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -35,6 +51,14 @@
                   "image"
                ]
             ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -48,36 +72,12 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GRAPHIC"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Image"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_IMAGE"
-               ]
             ]
          },
-         "type" : "test",
          "title" : "step 1",
          "element" : "test"
       }
-   ],
-   "title" : "Elements that may be in the accessibility tree (normal rules)"
+   ]
 }
 
     ) ;
@@ -87,11 +87,11 @@
   <p>This test examines the ARIA properties for Elements that may be in the accessibility tree (normal rules).</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image id="test" x="200" y="200" width="100px" height="100px" href="myimage.png">
    <title>My image</title>
- </image> 
+ </image>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

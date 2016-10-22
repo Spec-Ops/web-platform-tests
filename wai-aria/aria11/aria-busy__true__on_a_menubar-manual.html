@@ -1,78 +1,22 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>aria-busy="false" on a menubar</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>aria-busy="true" on a menubar</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "aria-busy=\"false\" on a menubar",
+    var theTest = new ATTAcomm(
+    {
+   "title" : "aria-busy=\"true\" on a menubar",
    "steps" : [
       {
          "element" : "test",
          "test" : {
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:menubar"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_MENUBAR"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_BUSY cleared"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "MenuBar"
-               ],
-               [
-                  "property",
-                  "Selection Pattern",
-                  "is",
-                  "<shown>"
-               ],
-               [
-                  "property",
-                  "AriaProperties.busy",
-                  "is",
-                  "false"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -101,8 +45,50 @@
                [
                   "property",
                   "states",
-                  "doesNotContain",
+                  "contains",
                   "STATE_BUSY"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:menubar"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "MenuBar"
+               ],
+               [
+                  "property",
+                  "Selection Pattern",
+                  "is",
+                  "<shown>"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_MENUBAR"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY"
                ]
             ],
             "AXAPI" : [
@@ -128,7 +114,21 @@
                   "property",
                   "AXElementBusy",
                   "is",
-                  "false"
+                  "true"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ]
          },
@@ -138,12 +138,12 @@
    ]
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
-  <p>This test examines the ARIA properties for aria-busy="false" on a menubar.</p>
-    <div role="menubar" aria-busy="false" id="test">
+  <p>This test examines the ARIA properties for aria-busy="true" on a menubar.</p>
+    <div role="menubar" aria-busy="true" id="test">
     <div role="menuitem">File</div>
     <div role="menuitem">Edit</div>
     <div role="menuitem">View</div>
@@ -153,5 +153,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

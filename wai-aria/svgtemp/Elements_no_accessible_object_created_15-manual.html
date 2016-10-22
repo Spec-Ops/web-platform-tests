@@ -14,17 +14,10 @@
     {
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -39,7 +32,7 @@
                   "TableCell"
                ]
             ],
-            "ATK" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -47,7 +40,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -62,9 +55,16 @@
                   "exists",
                   "false"
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
-         },
-         "type" : "test"
+         }
       }
    ],
    "title" : "Elements no accessible object created"
@@ -76,11 +76,11 @@
   <body>
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <metadata id="test"> <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#" xmlns:dc = "http://purl.org/dc/elements/1.1/" > <rdf:Description about="http://example.org/myfoo" dc:title="MyFoo Financial Report" dc:language="en" >
- </rdf:Description> </rdf:RDF> </metadata> 
+ </rdf:Description> </rdf:RDF> </metadata>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

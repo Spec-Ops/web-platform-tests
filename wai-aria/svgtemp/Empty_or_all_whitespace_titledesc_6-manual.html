@@ -15,7 +15,24 @@
    "title" : "Empty or all whitespace title/desc",
    "steps" : [
       {
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test",
          "test" : {
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -32,28 +49,6 @@
                   "<empty>"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
-                  "is",
-                  "<empty>"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -61,11 +56,16 @@
                   "is",
                   "<empty>"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "<empty>"
+               ]
             ]
-         },
-         "type" : "test",
-         "title" : "step 1",
-         "element" : "test"
+         }
       }
    ]
 }
@@ -77,12 +77,12 @@
   <p>This test examines the ARIA properties for Empty or all whitespace title/desc.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <line id="test" x1='10' y1='10' x2='50' y2='10'>
    <title> </title>
- <desc>		 </desc>
- </line> 
+ <desc>   </desc>
+ </line>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

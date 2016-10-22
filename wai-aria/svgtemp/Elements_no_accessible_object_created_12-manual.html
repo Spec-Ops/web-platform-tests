@@ -14,8 +14,11 @@
     {
    "steps" : [
       {
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test",
          "test" : {
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -39,6 +42,14 @@
                   "false"
                ]
             ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -52,19 +63,8 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
-         },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
    ],
    "title" : "Elements no accessible object created"
@@ -84,11 +84,11 @@
  <rect x="0" y="0" width="200" height="200" fill="url(#Gradient)"/>
  </mask>
  </defs>
- <rect x="0" y="0" width="200" height="200" fill="red" mask="url(#test)" /> 
+ <rect x="0" y="0" width="200" height="200" fill="red" mask="url(#test)" />
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

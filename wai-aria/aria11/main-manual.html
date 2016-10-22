@@ -1,35 +1,34 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>main</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>main</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "main",
+    var theTest = new ATTAcomm(
+    {
    "steps" : [
       {
+         "title" : "step 1",
          "element" : "test",
-         "type" : "test",
          "test" : {
-            "WAIFAKE" : [
+            "ATK" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
+                  "ROLE_LANDMARK"
                ],
                [
                   "property",
-                  "interfaces",
+                  "objectAttributes",
                   "contains",
-                  "TableCell"
+                  "xml-roles:main"
                ]
             ],
             "UIA" : [
@@ -58,18 +57,18 @@
                   "main"
                ]
             ],
-            "ATK" : [
+            "WAIFAKE" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_LANDMARK"
+                  "ROLE_TABLE_CELL"
                ],
                [
                   "property",
-                  "objectAttributes",
+                  "interfaces",
                   "contains",
-                  "xml-roles:main"
+                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -93,13 +92,14 @@
                ]
             ]
          },
-         "title" : "step 1"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "main"
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for main.</p>
@@ -109,5 +109,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

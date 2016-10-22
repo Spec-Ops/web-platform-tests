@@ -12,16 +12,24 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Text Elements role = presentation",
    "steps" : [
       {
+         "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
          "test" : {
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "accessible",
-                  "exists",
-                  "false"
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "UIA" : [
@@ -40,18 +48,12 @@
                   "false"
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "accessible",
+                  "exists",
+                  "false"
                ]
             ],
             "AXAPI" : [
@@ -62,12 +64,10 @@
                   "false"
                ]
             ]
-         },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
-   ]
+   ],
+   "title" : "Text Elements role = presentation"
 }
 
     ) ;
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text Elements role = presentation.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text x="100" y="180" fill="blue" >But you <tspan id="test" dx="2em" dy="-50" font-weight="bold" 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text x="100" y="180" fill="blue" >But you <tspan id="test" dx="2em" dy="-50" font-weight="bold"
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

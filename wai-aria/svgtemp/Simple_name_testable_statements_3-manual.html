@@ -14,45 +14,8 @@
     {
    "steps" : [
       {
+         "type" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "end"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "relation",
-                  "IA2_RELATION_LABELLED_BY",
-                  "is",
-                  "[t1]"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "end"
-               ]
-            ],
             "UIA" : [
                [
                   "property",
@@ -80,11 +43,48 @@
                   "is",
                   "[t1]"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "end"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "end"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "relation",
+                  "IA2_RELATION_LABELLED_BY",
+                  "is",
+                  "[t1]"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "element" : "test"
       }
    ],
    "title" : "Simple name testable statements"
@@ -98,11 +98,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
- <text id="t1" x="40" y="90">end</text> 
+ <text id="t1" x="40" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

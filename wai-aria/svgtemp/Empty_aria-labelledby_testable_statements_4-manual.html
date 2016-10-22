@@ -12,6 +12,7 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Empty aria-labelledby testable statements",
    "steps" : [
       {
          "type" : "test",
@@ -24,18 +25,18 @@
                   "<empty>"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "is",
-                  "<empty>"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
                   "accName",
+                  "is",
+                  "<empty>"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
                   "is",
                   "<empty>"
                ]
@@ -66,8 +67,7 @@
          "element" : "test",
          "title" : "step 1"
       }
-   ],
-   "title" : "Empty aria-labelledby testable statements"
+   ]
 }
 
     ) ;
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Empty aria-labelledby testable statements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="" cx='50' cy='100' r='15'/> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="" cx='50' cy='100' r='15'/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

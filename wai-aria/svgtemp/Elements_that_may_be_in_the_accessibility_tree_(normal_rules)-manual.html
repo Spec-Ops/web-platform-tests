@@ -12,25 +12,32 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Elements that may be in the accessibility tree (normal rules)",
    "steps" : [
       {
+         "title" : "step 1",
+         "element" : "test",
          "type" : "test",
          "test" : {
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
                   "ROLE_SYSTEM_GROUPING"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "group"
                ]
             ],
             "ATK" : [
@@ -59,25 +66,18 @@
                   "graphics object"
                ]
             ],
-            "WAIFAKE" : [
+            "UIA" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "control type",
+                  "isNot",
+                  "group"
                ]
             ]
-         },
-         "title" : "step 1",
-         "element" : "test"
+         }
       }
-   ]
+   ],
+   "title" : "Elements that may be in the accessibility tree (normal rules)"
 }
 
     ) ;
@@ -89,11 +89,11 @@
  <body xmlns="http://www.w3.org/1999/xhtml">
  <p>Here is a paragraph that requires word wrap</p>
  </body>
- </foreignObject> 
+ </foreignObject>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

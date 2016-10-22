@@ -12,11 +12,19 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Element aria-hidden",
    "steps" : [
       {
-         "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -26,14 +34,6 @@
                ]
             ],
             "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -64,10 +64,10 @@
                ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "Element aria-hidden"
 }
 
     ) ;
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Element aria-hidden.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <line id="test" aria-label="hello" x1='10' y1='10' x2='50' y2='10' aria-hidden="true" /> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <line id="test" aria-label="hello" x1='10' y1='10' x2='50' y2='10' aria-hidden="true" />
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

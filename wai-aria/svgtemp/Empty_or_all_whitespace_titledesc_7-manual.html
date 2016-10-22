@@ -14,17 +14,7 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXHelp",
-                  "is",
-                  "<empty>"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -39,9 +29,6 @@
                   "TableCell"
                ]
             ],
-            "MSAA" : [
-               []
-            ],
             "UIA" : [
                [
                   "TBD",
@@ -50,6 +37,17 @@
                   ""
                ]
             ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXHelp",
+                  "is",
+                  "<empty>"
+               ]
+            ],
+            "MSAA" : [
+               []
+            ],
             "ATK" : [
                [
                   "description",
@@ -57,7 +55,9 @@
                ]
             ]
          },
-         "type" : "test"
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1"
       }
    ],
    "title" : "Empty or all whitespace title/desc"
@@ -73,11 +73,11 @@
  </title>
  <desc>
  </desc>
- </ellipse> 
+ </ellipse>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

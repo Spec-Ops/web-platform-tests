@@ -14,7 +14,8 @@
     {
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
             "WAIFAKE" : [
                [
@@ -30,14 +31,6 @@
                   "TableCell"
                ]
             ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "stone"
-               ]
-            ],
             "UIA" : [
                [
                   "property",
@@ -46,10 +39,10 @@
                   "stone"
                ]
             ],
-            "ATK" : [
+            "AXAPI" : [
                [
                   "property",
-                  "name",
+                  "AXDescription",
                   "is",
                   "stone"
                ]
@@ -61,10 +54,17 @@
                   "is",
                   "stone"
                ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "is",
+                  "stone"
+               ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
    ],
    "title" : "use element testable statements"
@@ -80,11 +80,11 @@
    <title>rock</title>
  </path>
  </defs>
- <use id="test" transform="translate(30 345)" xlink:href="#r1" aria-label="stone"/> 
+ <use id="test" transform="translate(30 345)" xlink:href="#r1" aria-label="stone"/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

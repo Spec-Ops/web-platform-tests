@@ -15,31 +15,7 @@
    "title" : "Basic shapes role = presentation",
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "UIA" : [
                [
                   "property",
@@ -63,9 +39,33 @@
                   "exists",
                   "false"
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "type" : "test"
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test"
       }
    ]
 }
@@ -76,11 +76,11 @@
   <body>
   <p>This test examines the ARIA properties for Basic shapes role = presentation.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" d="M 100 100 L 300 100 L 200 300 z" fill="red" role="presentation" >
- </path> 
+ </path>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

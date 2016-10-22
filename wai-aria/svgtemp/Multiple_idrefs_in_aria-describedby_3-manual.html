@@ -14,30 +14,16 @@
     {
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
-         "type" : "test",
+         "element" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
+            "MSAA" : [
+               []
             ],
-            "IAccessible2" : [
+            "ATK" : [
                [
-                  "relation",
-                  "IA2_RELATION_DESCRIBED_BY",
-                  "is",
-                  "<not empty>"
+                  "description",
+                  "end"
                ]
             ],
             "AXAPI" : [
@@ -62,16 +48,30 @@
                   "<not empty>"
                ]
             ],
-            "ATK" : [
+            "WAIFAKE" : [
                [
-                  "description",
-                  "end"
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
-            "MSAA" : [
-               []
+            "IAccessible2" : [
+               [
+                  "relation",
+                  "IA2_RELATION_DESCRIBED_BY",
+                  "is",
+                  "<not empty>"
+               ]
             ]
-         }
+         },
+         "type" : "test"
       }
    ],
    "title" : "Multiple idrefs in aria-describedby"
@@ -83,11 +83,11 @@
   <body>
   <p>This test examines the ARIA properties for Multiple idrefs in aria-describedby.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-describedby="t1 t2" cx='50' cy='100' r='15'/>
- <text id="t2" x="40" 
+ <text id="t2" x="40"
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

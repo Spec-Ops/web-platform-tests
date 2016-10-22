@@ -14,25 +14,8 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
-         "type" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -40,7 +23,7 @@
                   "false"
                ]
             ],
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -56,15 +39,32 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
                   "exists",
                   "false"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
-         }
+         },
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test"
       }
    ],
    "title" : "Elements role is presentation"
@@ -76,11 +76,11 @@
   <body>
   <p>This test examines the ARIA properties for Elements role is presentation.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image id="test" x="200" y="200" width="100px" height="100px" href="myimage.png" role="presentation">
- </image> 
+ </image>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

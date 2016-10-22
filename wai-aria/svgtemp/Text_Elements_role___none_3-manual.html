@@ -14,8 +14,26 @@
     {
    "steps" : [
       {
+         "element" : "test",
+         "title" : "step 1",
          "type" : "test",
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -25,14 +43,6 @@
                ]
             ],
             "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -53,18 +63,8 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
-         },
-         "title" : "step 1",
-         "element" : "test"
+         }
       }
    ],
    "title" : "Text Elements role = none"
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text Elements role = none.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text x="100" y="180" fill="blue"  role="none">But you <tspan id="test" dx="2em" dy="-50" font-weight="bold" fill="red" > are a peach </tspan> </text> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text x="100" y="180" fill="blue"  role="none">But you <tspan id="test" dx="2em" dy="-50" font-weight="bold" fill="red" > are a peach </tspan> </text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

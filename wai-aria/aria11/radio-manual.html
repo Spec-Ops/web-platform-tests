@@ -1,22 +1,21 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>radio</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>radio</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "radio",
+    var theTest = new ATTAcomm(
+    {
    "steps" : [
       {
+         "type" : "test",
          "element" : "test",
-         "title" : "step 1",
          "test" : {
             "WAIFAKE" : [
                [
@@ -30,6 +29,76 @@
                   "interfaces",
                   "contains",
                   "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXRadioButton"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "radio button"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "0"
+               ],
+               [
+                  "property",
+                  "AXARIAPosInSet",
+                  "is",
+                  "4"
+               ],
+               [
+                  "property",
+                  "AXARIASetSize",
+                  "is",
+                  "8"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "checkable:true"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:4"
                ]
             ],
             "ATK" : [
@@ -90,38 +159,6 @@
                   "setsize:8"
                ]
             ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "checkable:true"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "similarItemsInGroup:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "positionInGroup:4"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -135,53 +172,16 @@
                   "contains",
                   "STATE_SYSTEM_CHECKED"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXRadioButton"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "radio button"
-               ],
-               [
-                  "property",
-                  "AXValue",
-                  "is",
-                  "0"
-               ],
-               [
-                  "property",
-                  "AXARIAPosInSet",
-                  "is",
-                  "4"
-               ],
-               [
-                  "property",
-                  "AXARIASetSize",
-                  "is",
-                  "8"
-               ]
             ]
          },
-         "type" : "test"
+         "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "radio"
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for radio.</p>
@@ -191,5 +191,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

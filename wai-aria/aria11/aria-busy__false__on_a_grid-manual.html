@@ -1,70 +1,23 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>aria-busy="true" on a grid</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>aria-busy="false" on a grid</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "aria-busy=\"true\" on a grid",
+    var theTest = new ATTAcomm(
+    {
+   "title" : "aria-busy=\"false\" on a grid",
    "steps" : [
       {
-         "element" : "test",
+         "type" : "test",
+         "title" : "step 1",
          "test" : {
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:grid"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "IAccessibleTable2"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_BUSY"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "DataGrid"
-               ],
-               [
-                  "property",
-                  "Selection Pattern",
-                  "is",
-                  "<shown>"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "true"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -77,38 +30,6 @@
                   "interfaces",
                   "contains",
                   "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:grid"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Table"
-               ],
-               [
-                  "result",
-                  "Selection.clear_selection()",
-                  "is",
-                  "false"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_BUSY"
                ]
             ],
             "AXAPI" : [
@@ -134,22 +55,107 @@
                   "property",
                   "AXElementBusy",
                   "is",
-                  "true"
+                  "false"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "DataGrid"
+               ],
+               [
+                  "property",
+                  "Selection Pattern",
+                  "is",
+                  "<shown>"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "false"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY cleared"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:grid"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "IAccessibleTable2"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:grid"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Table"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Selection"
+               ],
+               [
+                  "result",
+                  "Selection.clear_selection()",
+                  "is",
+                  "false"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_BUSY"
                ]
             ]
          },
-         "type" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
    ]
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
-  <p>This test examines the ARIA properties for aria-busy="true" on a grid.</p>
-    <div role="grid" aria-busy="true" id="test">
+  <p>This test examines the ARIA properties for aria-busy="false" on a grid.</p>
+    <div role="grid" aria-busy="false" id="test">
     <div role="row">
        <div role="columnheader">shoes</div>
        <div role="columnheader">shirts</div>
@@ -168,5 +174,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

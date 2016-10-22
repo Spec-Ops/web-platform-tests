@@ -14,9 +14,24 @@
     {
    "steps" : [
       {
-         "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "MSAA" : [
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -32,6 +47,14 @@
                   "false"
                ]
             ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -39,32 +62,9 @@
                   "exists",
                   "false"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
    ],
    "title" : "Basic shapes role is none"
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes role is none.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect id="test" x='10' y='10' width='50' height='30' role="none"/> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect id="test" x='10' y='10' width='50' height='30' role="none"/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -12,34 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Text elements",
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
+         "title" : "step 1",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GROUPING"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_PANEL"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "group"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -73,11 +50,34 @@
                   "is",
                   "graphics object"
                ]
+            ],
+            "ATK" : [
+               [
+                  "xml-roles",
+                  "ROLE_PANEL"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GROUPING"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "group"
+               ]
             ]
          },
          "type" : "test"
       }
-   ]
+   ],
+   "title" : "Text elements"
 }
 
     ) ;
@@ -85,7 +85,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text elements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="250" y="180" font-family="Verdana" font-size="64" fill="blue">Hello, out 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="250" y="180" font-family="Verdana" font-size="64" fill="blue">Hello, out
 
 </svg>
   <div id="manualMode"></div>
@@ -93,4 +93,4 @@
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

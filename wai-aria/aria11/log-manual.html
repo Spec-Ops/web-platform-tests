@@ -1,20 +1,75 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>log</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>log</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
+    var theTest = new ATTAcomm(
+    {
+   "title" : "log",
    "steps" : [
       {
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXApplicationLog"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "log"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Group"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "log"
+               ],
+               [
+                  "property",
+                  "LiveSettingProperty",
+                  "isNot",
+                  "Polite"
+               ]
+            ],
             "IAccessible2" : [
                [
                   "property",
@@ -72,72 +127,17 @@
                   "contains",
                   "container-live-role:log"
                ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Group"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "log"
-               ],
-               [
-                  "property",
-                  "LiveSettingProperty",
-                  "isNot",
-                  "Polite"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXApplicationLog"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "log"
-               ]
             ]
          },
-         "type" : "test",
+         "element" : "test",
          "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
-   ],
-   "title" : "log"
+   ]
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for log.</p>
@@ -147,5 +147,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

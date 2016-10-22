@@ -15,20 +15,22 @@
    "title" : "Path default role = img, properties and children testable statements",
    "steps" : [
       {
+         "title" : "step 1",
+         "element" : "test",
          "type" : "test",
          "test" : {
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SYSTEM_GRAPHIC"
-               ]
-            ],
-            "ATK" : [
+                  "ROLE_TABLE_CELL"
+               ],
                [
-                  "xml-roles",
-                  "ROLE_IMAGE"
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "UIA" : [
@@ -59,23 +61,21 @@
                   "image"
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
+                  "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
+            "ATK" : [
                [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "xml-roles",
+                  "ROLE_IMAGE"
                ]
             ]
-         },
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
    ]
 }
@@ -85,14 +85,14 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Path default role = img, properties and children testable statements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-labelledby="t1" aria-label="down" d="M 100 100 L 300 100 L 200 300 z" 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-labelledby="t1" aria-label="down" d="M 100 100 L 300 100 L 200 300 z"
    <title>abc</title>
  </path>
- <text id="t1" x="40" y="90">end</text> 
+ <text id="t1" x="40" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

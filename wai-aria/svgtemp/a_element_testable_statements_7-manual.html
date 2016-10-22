@@ -12,27 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "a element testable statements",
    "steps" : [
       {
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
-            "ATK" : [
-               [
-                  "description",
-                  "<empty>"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ]
-            ],
-            "MSAA" : [
-               []
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -47,6 +31,15 @@
                   "TableCell"
                ]
             ],
+            "MSAA" : [
+               []
+            ],
+            "ATK" : [
+               [
+                  "description",
+                  "<empty>"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -54,13 +47,20 @@
                   "is",
                   "<empty>"
                ]
+            ],
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ]
             ]
          },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "a element testable statements"
 }
 
     ) ;
@@ -69,11 +69,11 @@
   <body>
   <p>This test examines the ARIA properties for a element testable statements.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <a id="test" aria-label="booth" href="../index.html" xlink:title="table" >
- </a> 
+ </a>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

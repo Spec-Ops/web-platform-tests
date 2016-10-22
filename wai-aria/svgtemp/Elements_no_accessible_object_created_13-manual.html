@@ -12,13 +12,28 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Elements no accessible object created",
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "element" : "test",
          "type" : "test",
          "test" : {
-            "ATK" : [
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -26,7 +41,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -42,20 +57,6 @@
                   "false"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -66,8 +67,7 @@
             ]
          }
       }
-   ],
-   "title" : "Elements no accessible object created"
+   ]
 }
 
     ) ;
@@ -81,7 +81,7 @@
  <stop path="c  25,-25  75, 25  100,0" /> <stop path="c  25, 25 -25, 75  0,100" stop-color="lightblue" /> <stop path="c -25, 25 -75,-25" stop-color="purple" />
  </meshpatch>
  </meshrow>
- <meshrow> 
+ <meshrow>
  <meshpatch>
  <stop path="c  25, 25 -25, 75  0,100" />
  <stop path="c -25, 25 -75,-25 -100,0" stop-color="purple" />
@@ -92,11 +92,11 @@
  <stop path="c -25, 25 -75,-25" stop-color="lightblue" />
  </meshpatch>
  </meshrow>
- </mesh> 
+ </mesh>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

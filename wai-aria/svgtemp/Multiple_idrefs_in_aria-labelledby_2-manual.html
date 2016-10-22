@@ -14,21 +14,8 @@
     {
    "steps" : [
       {
+         "type" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -37,10 +24,16 @@
                   "big end"
                ]
             ],
-            "IAccessible2" : [
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "is",
+                  "big end"
+               ],
                [
                   "relation",
-                  "IA2_RELATION_LABELLED_BY",
+                  "RELATION_LABELLED_BY",
                   "is",
                   "[t1,t2]"
                ]
@@ -67,24 +60,31 @@
                   "[t1,t2]"
                ]
             ],
-            "ATK" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "name",
+                  "role",
                   "is",
-                  "big end"
+                  "ROLE_TABLE_CELL"
                ],
                [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "IAccessible2" : [
+               [
                   "relation",
-                  "RELATION_LABELLED_BY",
+                  "IA2_RELATION_LABELLED_BY",
                   "is",
                   "[t1,t2]"
                ]
             ]
          },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "element" : "test"
       }
    ],
    "title" : "Multiple idrefs in aria-labelledby"
@@ -96,11 +96,11 @@
   <body>
   <p>This test examines the ARIA properties for Multiple idrefs in aria-labelledby.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1 t2" cx='50' cy='100' r='15'/>
- <text id="t1" x="40" y="90" aria-label="big">the</text> <text id="t2" x="140" y="90">end</text> 
+ <text id="t1" x="40" y="90" aria-label="big">the</text> <text id="t2" x="140" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -15,15 +15,10 @@
    "title" : "Elements role is none",
    "steps" : [
       {
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -36,6 +31,22 @@
                   "interfaces",
                   "contains",
                   "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
                ]
             ],
             "MSAA" : [
@@ -53,19 +64,8 @@
                   "exists",
                   "false"
                ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
-         },
-         "type" : "test",
-         "title" : "step 1",
-         "element" : "test"
+         }
       }
    ]
 }
@@ -78,11 +78,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs>
  <rect id="MyRect" width="60" height="10"/>
  </defs>
- <use id="test"  role="none" x="20" y="10" href="#MyRect"  aria-label="black bar"/> 
+ <use id="test"  role="none" x="20" y="10" href="#MyRect"  aria-label="black bar"/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

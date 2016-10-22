@@ -12,12 +12,43 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Simple name testable statements",
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
+         "title" : "step 1",
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "hello"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "is",
+                  "hello"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "hello"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "hello"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -31,43 +62,12 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "hello"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "hello"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "is",
-                  "hello"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
-                  "is",
-                  "hello"
-               ]
             ]
          },
          "type" : "test"
       }
-   ]
+   ],
+   "title" : "Simple name testable statements"
 }
 
     ) ;
@@ -84,4 +84,4 @@
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

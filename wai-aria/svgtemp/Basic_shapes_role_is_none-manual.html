@@ -15,33 +15,8 @@
    "title" : "Basic shapes role is none",
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
-         "type" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -64,8 +39,33 @@
                   "exists",
                   "false"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
-         }
+         },
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1"
       }
    ]
 }
@@ -76,11 +76,11 @@
   <body>
   <p>This test examines the ARIA properties for Basic shapes role is none.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" d="M 100 100 L 300 100 L 200 300 z" fill="red" role="none" >
- </path> 
+ </path>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

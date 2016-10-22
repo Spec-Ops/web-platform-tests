@@ -15,7 +15,21 @@
    "steps" : [
       {
          "test" : {
-            "ATK" : [
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -23,7 +37,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -39,26 +53,12 @@
                   "false"
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
                   "exists",
                   "false"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
                ]
             ]
          },
@@ -79,11 +79,11 @@
  <body xmlns="http://www.w3.org/1999/xhtml">
  <p>Here is a paragraph that requires word wrap</p>
  </body>
- </foreignObject> 
+ </foreignObject>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

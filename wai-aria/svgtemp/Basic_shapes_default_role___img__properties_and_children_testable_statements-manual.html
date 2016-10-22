@@ -14,9 +14,8 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
-         "type" : "test",
+         "title" : "step 1",
          "test" : {
             "UIA" : [
                [
@@ -24,20 +23,6 @@
                   "control type",
                   "isNot",
                   "Image"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_IMAGE"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GRAPHIC"
                ]
             ],
             "AXAPI" : [
@@ -60,6 +45,20 @@
                   "image"
                ]
             ],
+            "ATK" : [
+               [
+                  "xml-roles",
+                  "ROLE_IMAGE"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -74,7 +73,8 @@
                   "TableCell"
                ]
             ]
-         }
+         },
+         "type" : "test"
       }
    ],
    "title" : "Basic shapes default role = img, properties and children testable statements"
@@ -88,11 +88,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1" aria-label="bob" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
- <text id="t1" x="40" y="90">end</text> 
+ <text id="t1" x="40" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

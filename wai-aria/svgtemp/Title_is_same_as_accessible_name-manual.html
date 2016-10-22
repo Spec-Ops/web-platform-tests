@@ -12,27 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Title is same as accessible name",
    "steps" : [
       {
-         "type" : "test",
          "test" : {
-            "ATK" : [
-               [
-                  "description",
-                  "<empty>"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ]
-            ],
-            "MSAA" : [
-               []
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -47,6 +30,14 @@
                   "TableCell"
                ]
             ],
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -54,13 +45,22 @@
                   "is",
                   "<empty>"
                ]
+            ],
+            "ATK" : [
+               [
+                  "description",
+                  "<empty>"
+               ]
+            ],
+            "MSAA" : [
+               []
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test"
       }
-   ],
-   "title" : "Title is same as accessible name"
+   ]
 }
 
     ) ;
@@ -71,11 +71,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
- <text id="t1" x="40" y="90">abc</text> 
+ <text id="t1" x="40" y="90">abc</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

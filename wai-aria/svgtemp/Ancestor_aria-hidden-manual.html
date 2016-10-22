@@ -14,9 +14,16 @@
     {
    "steps" : [
       {
-         "element" : "test",
-         "title" : "step 1",
+         "type" : "test",
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -25,7 +32,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -33,7 +40,7 @@
                   "false"
                ]
             ],
-            "ATK" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -54,17 +61,10 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
          },
-         "type" : "test"
+         "element" : "test",
+         "title" : "step 1"
       }
    ],
    "title" : "Ancestor aria-hidden"
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Ancestor aria-hidden.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g aria-hidden="true"> <rect id="test" aria-label="hello" x='10' y='10' width='50' height='30'/> </g> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g aria-hidden="true"> <rect id="test" aria-label="hello" x='10' y='10' width='50' height='30'/> </g>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

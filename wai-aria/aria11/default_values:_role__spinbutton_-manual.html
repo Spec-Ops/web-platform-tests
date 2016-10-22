@@ -1,21 +1,38 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>default values: role="spinbutton"</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>default values: role="spinbutton"</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
+    var theTest = new ATTAcomm(
+    {
+   "title" : "default values: role=\"spinbutton\"",
    "steps" : [
       {
+         "type" : "test",
          "title" : "step 1",
+         "element" : "test",
          "test" : {
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -54,54 +71,6 @@
                   "100"
                ]
             ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "AccessibleValue"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.minimumValue",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.currentValue",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.maximumValue",
-                  "contains",
-                  "100"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_SPINBUTTON"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "UIA" : [
                [
                   "property",
@@ -132,6 +101,14 @@
                   "RangeValue.Maximum",
                   "contains",
                   "100"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_SPINBUTTON"
                ]
             ],
             "ATK" : [
@@ -165,17 +142,40 @@
                   "contains",
                   "100"
                ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "AccessibleValue"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.minimumValue",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.currentValue",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.maximumValue",
+                  "contains",
+                  "100"
+               ]
             ]
-         },
-         "type" : "test",
-         "element" : "test"
+         }
       }
-   ],
-   "title" : "default values: role=\"spinbutton\""
+   ]
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for default values: role="spinbutton".</p>
@@ -187,5 +187,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

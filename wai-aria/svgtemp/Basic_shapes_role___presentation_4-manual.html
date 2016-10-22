@@ -15,15 +15,10 @@
    "title" : "Basic shapes role = presentation",
    "steps" : [
       {
+         "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -38,7 +33,7 @@
                   "TableCell"
                ]
             ],
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -46,7 +41,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -61,11 +56,16 @@
                   "exists",
                   "false"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
-         },
-         "type" : "test",
-         "title" : "step 1",
-         "element" : "test"
+         }
       }
    ]
 }
@@ -76,11 +76,11 @@
   <body>
   <p>This test examines the ARIA properties for Basic shapes role = presentation.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <polygon id="test" fill="magenta" points="850,75 958,137.5 958,262.5 850,325 742,262.6 742,137.5" role="presentation">
- </polygon> 
+ </polygon>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -12,28 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Text Elements role = presentation",
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
-         "type" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -41,7 +23,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -57,17 +39,35 @@
                   "false"
                ]
             ],
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
                   "exists",
                   "false"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
-         }
+         },
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test"
       }
-   ]
+   ],
+   "title" : "Text Elements role = presentation"
 }
 
     ) ;
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text Elements role = presentation.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="250" y="180" font-family="Verdana" font-size="64" fill="blue" role="presentation">Hello, out 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="250" y="180" font-family="Verdana" font-size="64" fill="blue" role="presentation">Hello, out
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

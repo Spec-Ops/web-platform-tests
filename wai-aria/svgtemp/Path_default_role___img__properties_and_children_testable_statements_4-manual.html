@@ -12,13 +12,24 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Path default role = img, properties and children testable statements",
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
          "type" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "xml-roles",
+                  "ROLE_IMAGE"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -39,6 +50,14 @@
                   "image"
                ]
             ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -52,32 +71,13 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GRAPHIC"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Image"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_IMAGE"
-               ]
             ]
-         }
+         },
+         "element" : "test",
+         "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "Path default role = img, properties and children testable statements"
 }
 
     ) ;
@@ -85,12 +85,12 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Path default role = img, properties and children testable statements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-labelledby="t1" aria-label="bob" d="M 100 100 L 300 100 L 200 300 z" 
- <text id="t1" x="40" y="90">end</text> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-labelledby="t1" aria-label="bob" d="M 100 100 L 300 100 L 200 300 z"
+ <text id="t1" x="40" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

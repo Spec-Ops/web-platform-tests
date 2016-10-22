@@ -12,21 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Elements role is none",
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
-         "type" : "test",
+         "title" : "step 1",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -39,6 +29,22 @@
                   "interfaces",
                   "contains",
                   "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
                ]
             ],
             "MSAA" : [
@@ -56,18 +62,12 @@
                   "exists",
                   "false"
                ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
-         }
+         },
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "Elements role is none"
 }
 
     ) ;
@@ -79,11 +79,11 @@
  <image x="200" y="200" width="100px" height="100px" href="myimage.png">
    <title>My image</title>
  </image>
- </svg> 
+ </svg>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

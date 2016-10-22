@@ -12,19 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Text elements",
    "steps" : [
       {
-         "element" : "test",
-         "title" : "step 1",
+         "type" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -34,6 +26,22 @@
                ]
             ],
             "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -54,20 +62,12 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
          },
-         "type" : "test"
+         "element" : "test",
+         "title" : "step 1"
       }
-   ],
-   "title" : "Text elements"
+   ]
 }
 
     ) ;
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text elements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text x="100" y="180" fill="blue" >But you <tspan id="test" dx="2em" dy="-50" font-weight="bold" 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text x="100" y="180" fill="blue" >But you <tspan id="test" dx="2em" dy="-50" font-weight="bold"
 
 </svg>
   <div id="manualMode"></div>
@@ -83,4 +83,4 @@
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

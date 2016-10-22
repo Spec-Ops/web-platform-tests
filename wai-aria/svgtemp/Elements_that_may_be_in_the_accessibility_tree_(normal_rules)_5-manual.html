@@ -12,19 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Elements that may be in the accessibility tree (normal rules)",
    "steps" : [
       {
-         "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Image"
-               ]
-            ],
             "ATK" : [
                [
                   "xml-roles",
@@ -59,6 +51,14 @@
                   "image"
                ]
             ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -74,10 +74,10 @@
                ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "Elements that may be in the accessibility tree (normal rules)"
 }
 
     ) ;
@@ -88,11 +88,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs>
  <rect id="MyRect" width="60" height="10"/>
  </defs>
- <use id="test" x="20" y="10" href="#MyRect"  aria-label="black bar"/> 
+ <use id="test" x="20" y="10" href="#MyRect"  aria-label="black bar"/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

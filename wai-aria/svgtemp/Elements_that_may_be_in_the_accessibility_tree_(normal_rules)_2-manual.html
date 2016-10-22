@@ -14,21 +14,27 @@
     {
    "steps" : [
       {
-         "element" : "test",
-         "title" : "step 1",
          "test" : {
-            "WAIFAKE" : [
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "group"
+               ]
+            ],
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
+                  "ROLE_SYSTEM_GROUPING"
+               ]
+            ],
+            "ATK" : [
                [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "xml-roles",
+                  "ROLE_PANEL"
                ]
             ],
             "AXAPI" : [
@@ -51,30 +57,24 @@
                   "graphics object"
                ]
             ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_PANEL"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "group"
-               ]
-            ],
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SYSTEM_GROUPING"
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ]
          },
-         "type" : "test"
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1"
       }
    ],
    "title" : "Elements that may be in the accessibility tree (normal rules)"
@@ -88,11 +88,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="test">
    <title>Venn Diagram</title>
  <circle cx='50' cy='50' r='20' aria-label="set A"/> <circle cx='50' cy='75' r='20' aria-label="set B"/>
- </g> 
+ </g>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

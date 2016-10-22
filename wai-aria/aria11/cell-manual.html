@@ -1,21 +1,21 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>cell</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>cell</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
+    var theTest = new ATTAcomm(
+    {
    "title" : "cell",
    "steps" : [
       {
-         "element" : "test",
+         "title" : "step 1",
          "test" : {
             "AXAPI" : [
                [
@@ -71,6 +71,14 @@
                   "invoke pattern TODO"
                ]
             ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_CELL"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -84,24 +92,16 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_CELL"
-               ]
             ]
          },
-         "title" : "step 1",
+         "element" : "test",
          "type" : "test"
       }
    ]
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for cell.</p>
@@ -116,5 +116,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

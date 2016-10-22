@@ -12,10 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Elements no accessible object created",
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
+         "title" : "step 1",
          "type" : "test",
          "test" : {
             "WAIFAKE" : [
@@ -30,22 +31,6 @@
                   "interfaces",
                   "contains",
                   "TableCell"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
                ]
             ],
             "ATK" : [
@@ -63,11 +48,26 @@
                   "exists",
                   "false"
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
          }
       }
-   ],
-   "title" : "Elements no accessible object created"
+   ]
 }
 
     ) ;
@@ -77,11 +77,11 @@
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <hatch  id="test" hatchUnits="userSpaceOnUse" pitch="5" rotate="135">
  <hatchpath stroke="#a080ff" stroke-width="2"/>
- </hatch> 
+ </hatch>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

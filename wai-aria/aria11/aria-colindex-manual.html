@@ -1,30 +1,22 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>aria-colindex</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>aria-colindex</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "aria-colindex",
+    var theTest = new ATTAcomm(
+    {
    "steps" : [
       {
-         "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "result",
-                  "GridItem.Column",
-                  "is",
-                  "4"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -39,9 +31,11 @@
                   "TableCell"
                ]
             ],
-            "ATK" : [
+            "AXAPI" : [
                [
                   "TBD",
+                  "",
+                  "",
                   ""
                ]
             ],
@@ -53,23 +47,29 @@
                   ""
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
+               [
+                  "result",
+                  "GridItem.Column",
+                  "is",
+                  "4"
+               ]
+            ],
+            "ATK" : [
                [
                   "TBD",
-                  "",
-                  "",
                   ""
                ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "aria-colindex"
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for aria-colindex.</p>
@@ -83,5 +83,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

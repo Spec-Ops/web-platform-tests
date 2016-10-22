@@ -14,20 +14,29 @@
     {
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
-            "WAIFAKE" : [
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "xml-roles",
+                  "ROLE_IMAGE"
+               ]
+            ],
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "ROLE_SYSTEM_GRAPHIC"
                ]
             ],
             "AXAPI" : [
@@ -50,31 +59,22 @@
                   "image"
                ]
             ],
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SYSTEM_GRAPHIC"
-               ]
-            ],
-            "UIA" : [
+                  "ROLE_TABLE_CELL"
+               ],
                [
                   "property",
-                  "control type",
-                  "isNot",
-                  "Image"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_IMAGE"
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "type" : "test"
       }
    ],
    "title" : "Path default role = img, properties and children testable statements"
@@ -85,11 +85,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Path default role = img, properties and children testable statements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-label="hello" d="M 100 100 L 300 100 L 200 300 z" fill="red"/> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-label="hello" d="M 100 100 L 300 100 L 200 300 z" fill="red"/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

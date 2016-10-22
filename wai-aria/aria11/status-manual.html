@@ -1,88 +1,22 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>status</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>status</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
+    var theTest = new ATTAcomm(
+    {
+   "title" : "status",
    "steps" : [
       {
          "element" : "test",
-         "title" : "step 1",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXApplicationStatus"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "status"
-               ],
-               [
-                  "property",
-                  "AXExpanded",
-                  "is",
-                  "YES"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Group"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "status"
-               ],
-               [
-                  "property",
-                  "LiveSettingProperty",
-                  "isNot",
-                  "1"
-               ],
-               [
-                  "property",
-                  "ExpandCollapse",
-                  "contains",
-                  "ExpandCollapseState:expanded"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -154,16 +88,82 @@
                   "contains",
                   "STATE_SYSTEM_EXPANDED"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Group"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "status"
+               ],
+               [
+                  "property",
+                  "LiveSettingProperty",
+                  "isNot",
+                  "1"
+               ],
+               [
+                  "property",
+                  "ExpandCollapse",
+                  "contains",
+                  "ExpandCollapseState:expanded"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXApplicationStatus"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "status"
+               ],
+               [
+                  "property",
+                  "AXExpanded",
+                  "is",
+                  "YES"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
+         "title" : "step 1",
          "type" : "test"
       }
-   ],
-   "title" : "status"
+   ]
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for status.</p>
@@ -173,5 +173,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

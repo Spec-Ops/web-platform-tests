@@ -15,20 +15,21 @@
    "title" : "Empty or all whitespace title/desc",
    "steps" : [
       {
-         "type" : "test",
          "test" : {
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
-                  "role",
+                  "accName",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
+                  "<empty>"
+               ]
+            ],
+            "ATK" : [
                [
                   "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "name",
+                  "is",
+                  "<empty>"
                ]
             ],
             "AXAPI" : [
@@ -47,23 +48,22 @@
                   "<empty>"
                ]
             ],
-            "ATK" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "name",
+                  "role",
                   "is",
-                  "<empty>"
-               ]
-            ],
-            "MSAA" : [
+                  "ROLE_TABLE_CELL"
+               ],
                [
                   "property",
-                  "accName",
-                  "is",
-                  "<empty>"
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ]
          },
+         "type" : "test",
          "title" : "step 1",
          "element" : "test"
       }
@@ -79,11 +79,11 @@
    <title>  </title>
  <desc>
  </desc>
- </line> 
+ </line>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

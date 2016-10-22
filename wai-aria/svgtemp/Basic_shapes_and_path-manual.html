@@ -15,8 +15,33 @@
    "title" : "Basic shapes and path",
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -38,34 +63,9 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "type" : "test"
       }
    ]
 }
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes and path.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect id="test" x='10' y='10' width='50' height='30' /> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect id="test" x='10' y='10' width='50' height='30' />
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

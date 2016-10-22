@@ -18,26 +18,6 @@
          "element" : "test",
          "title" : "step 1",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXImage"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "image"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -60,18 +40,38 @@
                   "ROLE_SYSTEM_GRAPHIC"
                ]
             ],
+            "ATK" : [
+               [
+                  "xml-roles",
+                  "ROLE_IMAGE"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXImage"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "image"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
                   "control type",
                   "isNot",
                   "Image"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_IMAGE"
                ]
             ]
          },
@@ -86,11 +86,11 @@
   <body>
   <p>This test examines the ARIA properties for Path default role = img, properties and children testable statements.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-labelledby="t1" d="M 100 100 L 300 100 L 200 300 z" fill="red"/>
- <text 
+ <text
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

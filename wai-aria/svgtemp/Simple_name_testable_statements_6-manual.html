@@ -12,35 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Simple name testable statements",
    "steps" : [
       {
-         "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
-                  "is",
-                  "hello"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "is",
-                  "hello"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "hello"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -62,12 +38,36 @@
                   "is",
                   "hello"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "hello"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "is",
+                  "hello"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "hello"
+               ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "Simple name testable statements"
 }
 
     ) ;
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Simple name testable statements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-label="hello" cx='10' cy='10' r='5'/> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-label="hello" cx='10' cy='10' r='5'/>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

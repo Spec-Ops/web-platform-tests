@@ -17,7 +17,7 @@
       {
          "type" : "test",
          "test" : {
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -26,6 +26,14 @@
                ]
             ],
             "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -54,14 +62,6 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
          },
          "element" : "test",
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Element aria-hidden.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect id="test" aria-label="hello" x='10' y='10' width='50' height='30' aria-hidden="true" /> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect id="test" aria-label="hello" x='10' y='10' width='50' height='30' aria-hidden="true" />
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -14,22 +14,41 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
-         "type" : "test",
+         "title" : "step 1",
          "test" : {
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "role",
+                  "AXRole",
                   "is",
-                  "ROLE_SYSTEM_GRAPHIC"
+                  "AXImage"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "image"
                ]
             ],
             "ATK" : [
                [
                   "xml-roles",
                   "ROLE_IMAGE"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GRAPHIC"
                ]
             ],
             "UIA" : [
@@ -53,28 +72,9 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXImage"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "image"
-               ]
             ]
-         }
+         },
+         "type" : "test"
       }
    ],
    "title" : "Basic shapes default role = img"
@@ -91,7 +91,7 @@
  <stop path="c  25,-25  75, 25  100,0" /> <stop path="c  25, 25 -25, 75  0,100" stop-color="lightblue" /> <stop path="c -25, 25 -75,-25" stop-color="purple" />
  </meshpatch>
  </meshrow>
- <meshrow> 
+ <meshrow>
  <meshpatch>
  <stop path="c  25, 25 -25, 75  0,100" />
  <stop path="c -25, 25 -75,-25 -100,0" stop-color="purple" />
@@ -102,11 +102,11 @@
  <stop path="c -25, 25 -75,-25" stop-color="lightblue" />
  </meshpatch>
  </meshrow>
- </mesh> 
+ </mesh>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

@@ -12,46 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Basic shapes default role = img",
    "steps" : [
       {
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Image"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_IMAGE"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GRAPHIC"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -71,13 +34,50 @@
                   "is",
                   "image"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "xml-roles",
+                  "ROLE_IMAGE"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
          "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "element" : "test"
       }
-   ]
+   ],
+   "title" : "Basic shapes default role = img"
 }
 
     ) ;
@@ -87,11 +87,11 @@
   <p>This test examines the ARIA properties for Basic shapes default role = img.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <polygon id="test" fill="magenta" points="850,75 958,137.5 958,262.5 850,325 742,262.6 742,137.5" >
  <desc>built up area</desc>
- </polygon> 
+ </polygon>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

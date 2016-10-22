@@ -12,15 +12,25 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Path default role = img, properties and children testable statements",
    "steps" : [
       {
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test",
          "test" : {
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SYSTEM_GRAPHIC"
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "UIA" : [
@@ -37,18 +47,12 @@
                   "ROLE_IMAGE"
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "ROLE_SYSTEM_GRAPHIC"
                ]
             ],
             "AXAPI" : [
@@ -71,13 +75,9 @@
                   "image"
                ]
             ]
-         },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
-   ],
-   "title" : "Path default role = img, properties and children testable statements"
+   ]
 }
 
     ) ;
@@ -85,14 +85,14 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Path default role = img, properties and children testable statements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-labelledby="t1" aria-label="down" d="M 100 100 L 300 100 L 200 300 z" 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-labelledby="t1" aria-label="down" d="M 100 100 L 300 100 L 200 300 z"
  <desc>abc</desc>
  </path>
- <text id="t1" x="40" y="90">end</text> 
+ <text id="t1" x="40" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

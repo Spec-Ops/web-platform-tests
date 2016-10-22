@@ -1,21 +1,20 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>menuitemcheckbox</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>menuitemcheckbox</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "menuitemcheckbox",
+    var theTest = new ATTAcomm(
+    {
    "steps" : [
       {
-         "type" : "test",
+         "title" : "step 1",
          "test" : {
             "IAccessible2" : [
                [
@@ -55,14 +54,6 @@
                   "positionInGroup:4"
                ]
             ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "anyOf",
-                  "[ROLE_SYSTEM_MENUITEM, ROLE_SYSTEM_CHECKBUTTON]"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -95,18 +86,12 @@
                   "setsize:8"
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "anyOf",
                   "[ROLE_SYSTEM_MENUITEM, ROLE_SYSTEM_CHECKBUTTON]"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
                ]
             ],
             "UIA" : [
@@ -133,6 +118,20 @@
                   "AriaProperties",
                   "contains",
                   "setsize:8"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -174,14 +173,15 @@
                ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "element" : "test",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "menuitemcheckbox"
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for menuitemcheckbox.</p>
@@ -196,5 +196,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
+</html>
 

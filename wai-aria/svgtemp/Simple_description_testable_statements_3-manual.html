@@ -15,18 +15,8 @@
    "title" : "Simple description testable statements",
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
          "type" : "test",
          "test" : {
-            "IAccessible2" : [
-               [
-                  "relation",
-                  "IA2_RELATION_DESCRIBED_BY",
-                  "is",
-                  "<not empty>"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -39,6 +29,14 @@
                   "interfaces",
                   "contains",
                   "TableCell"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "relation",
+                  "IA2_RELATION_DESCRIBED_BY",
+                  "is",
+                  "<not empty>"
                ]
             ],
             "AXAPI" : [
@@ -72,7 +70,9 @@
                   "<not empty>"
                ]
             ]
-         }
+         },
+         "title" : "step 1",
+         "element" : "test"
       }
    ]
 }
@@ -85,11 +85,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-describedby="t1" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
- <text 
+ <text
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

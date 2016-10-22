@@ -12,10 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Text elements",
    "steps" : [
       {
-         "element" : "test",
-         "title" : "step 1",
          "test" : {
             "WAIFAKE" : [
                [
@@ -29,6 +28,20 @@
                   "interfaces",
                   "contains",
                   "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GROUPING"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "xml-roles",
+                  "ROLE_PANEL"
                ]
             ],
             "AXAPI" : [
@@ -51,12 +64,6 @@
                   "graphics object"
                ]
             ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_PANEL"
-               ]
-            ],
             "UIA" : [
                [
                   "property",
@@ -64,20 +71,13 @@
                   "isNot",
                   "group"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GROUPING"
-               ]
             ]
          },
-         "type" : "test"
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test"
       }
-   ],
-   "title" : "Text elements"
+   ]
 }
 
     ) ;
@@ -87,11 +87,11 @@
   <p>This test examines the ARIA properties for Text elements.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text transform="rotate(45)">
  <textPath id="test" href="#path1">Text on a path1</textPath>
- </text> 
+ </text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

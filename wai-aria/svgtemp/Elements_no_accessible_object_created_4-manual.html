@@ -14,9 +14,17 @@
     {
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "element" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -25,7 +33,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -33,7 +41,7 @@
                   "false"
                ]
             ],
-            "ATK" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -54,14 +62,6 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
          },
          "type" : "test"
@@ -78,11 +78,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs> <clipPath id="test">
  <rect x="0" y="0" width="200" height="100"/>
  </clipPath>
- </defs> <circle cx="100" cy="100" r="100" clip-path="url(#test)" /> 
+ </defs> <circle cx="100" cy="100" r="100" clip-path="url(#test)" />
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

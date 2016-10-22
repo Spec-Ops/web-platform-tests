@@ -12,16 +12,34 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Title is description",
    "steps" : [
       {
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
+            "ATK" : [
+               [
+                  "description",
+                  "abc"
+               ]
+            ],
+            "MSAA" : [
+               []
+            ],
             "AXAPI" : [
                [
                   "property",
                   "AXHelp",
                   "is",
                   "abc"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
                ]
             ],
             "WAIFAKE" : [
@@ -37,30 +55,12 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "ATK" : [
-               [
-                  "description",
-                  "abc"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ]
-            ],
-            "MSAA" : [
-               []
             ]
          },
-         "type" : "test",
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "Title is description"
 }
 
     ) ;
@@ -71,11 +71,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
- <text 
+ <text
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

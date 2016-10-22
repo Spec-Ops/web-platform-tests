@@ -14,51 +14,15 @@
     {
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
-                  "is",
-                  "the end"
-               ],
-               [
-                  "property",
-                  "LabelledBy",
-                  "isNot",
-                  "[t1,t2]"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "is",
-                  "the end"
-               ],
+            "IAccessible2" : [
                [
                   "relation",
-                  "RELATION_LABELLED_BY",
+                  "IA2_RELATION_LABELLED_BY",
                   "is",
                   "[t1,t2]"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "the end"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "the end"
                ]
             ],
             "WAIFAKE" : [
@@ -75,12 +39,48 @@
                   "TableCell"
                ]
             ],
-            "IAccessible2" : [
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "the end"
+               ],
+               [
+                  "property",
+                  "LabelledBy",
+                  "isNot",
+                  "[t1,t2]"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "the end"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "is",
+                  "the end"
+               ],
                [
                   "relation",
-                  "IA2_RELATION_LABELLED_BY",
+                  "RELATION_LABELLED_BY",
                   "is",
                   "[t1,t2]"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "the end"
                ]
             ]
          },
@@ -96,11 +96,11 @@
   <body>
   <p>This test examines the ARIA properties for Multiple idrefs in aria-labelledby.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1 t2" cx='50' cy='100' r='15'/>
- <text id="t1" x="40" y="90">the</text> <text id="t2" x="140" y="90">end</text> 
+ <text id="t1" x="40" y="90">the</text> <text id="t2" x="140" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

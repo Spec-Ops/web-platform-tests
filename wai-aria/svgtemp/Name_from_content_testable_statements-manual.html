@@ -15,9 +15,31 @@
    "title" : "Name from content testable statements",
    "steps" : [
       {
-         "element" : "test",
-         "title" : "step 1",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "end"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "is",
+                  "end"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "end"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -39,33 +61,11 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "end"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
-                  "is",
-                  "end"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "is",
-                  "end"
-               ]
             ]
          },
-         "type" : "test"
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1"
       }
    ]
 }
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Name from content testable statements.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="40" y="90">end</text> 
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="40" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

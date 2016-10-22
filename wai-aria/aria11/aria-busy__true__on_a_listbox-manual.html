@@ -1,65 +1,21 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>aria-busy="false" on a listbox</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>aria-busy="true" on a listbox</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "aria-busy=\"false\" on a listbox",
+    var theTest = new ATTAcomm(
+    {
+   "title" : "aria-busy=\"true\" on a listbox",
    "steps" : [
       {
-         "element" : "test",
-         "type" : "test",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_LISTBOX"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_BUSY cleared"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "List"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "false"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -75,15 +31,57 @@
                ],
                [
                   "result",
-                  "Selection.clear_selection()",
+                  "Selection.select_child(1)",
                   "is",
                   "false"
                ],
                [
                   "property",
                   "states",
-                  "doesNotContain",
+                  "contains",
                   "STATE_BUSY"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "List"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_LISTBOX"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -109,21 +107,23 @@
                   "property",
                   "AXElementBusy",
                   "is",
-                  "false"
+                  "true"
                ]
             ]
          },
-         "title" : "step 1"
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test"
       }
    ]
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
-  <p>This test examines the ARIA properties for aria-busy="false" on a listbox.</p>
-    <ul role="listbox" aria-busy="false" id="test">
+  <p>This test examines the ARIA properties for aria-busy="true" on a listbox.</p>
+    <ul role="listbox" aria-busy="true" id="test">
        <li role="option">option 1</li>
        <li role="option">option 2</li>
   </ul>
@@ -132,5 +132,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

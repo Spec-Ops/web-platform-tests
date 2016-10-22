@@ -12,19 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Empty aria-describedby testable statements",
    "steps" : [
       {
-         "element" : "test",
-         "title" : "step 1",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXHelp",
-                  "is",
-                  "123"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -55,12 +46,21 @@
             ],
             "MSAA" : [
                []
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXHelp",
+                  "is",
+                  "123"
+               ]
             ]
          },
-         "type" : "test"
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1"
       }
-   ],
-   "title" : "Empty aria-describedby testable statements"
+   ]
 }
 
     ) ;
@@ -71,11 +71,11 @@
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-describedby="" cx='50' cy='100' r='15'>
    <title>abc</title>
  <desc>123</desc>
- </circle> 
+ </circle>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+

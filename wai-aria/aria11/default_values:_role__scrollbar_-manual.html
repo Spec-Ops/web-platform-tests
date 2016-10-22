@@ -1,30 +1,21 @@
 <!doctype html>
-  <html>
+<html>
   <head>
-  <title>default values: role="slider"</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>default values: role="scrollbar"</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  {
-   "title" : "default values: role=\"slider\"",
+    var theTest = new ATTAcomm(
+    {
    "steps" : [
       {
          "title" : "step 1",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_SLIDER"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
@@ -51,26 +42,12 @@
                   "100"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SLIDER"
+                  "ROLE_SCROLLBAR"
                ],
                [
                   "property",
@@ -102,7 +79,7 @@
                   "property",
                   "Control Type",
                   "is",
-                  "slider"
+                  "scrollbar"
                ],
                [
                   "property",
@@ -129,12 +106,20 @@
                   "100"
                ]
             ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_SCROLLBAR"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
                   "AXRole",
                   "is",
-                  "AXSlider"
+                  "AXScrollBar"
                ],
                [
                   "property",
@@ -146,7 +131,7 @@
                   "property",
                   "AXRoleDescription",
                   "is",
-                  "slider"
+                  "scroll bar"
                ],
                [
                   "property",
@@ -166,20 +151,35 @@
                   "is",
                   "100"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "type" : "test",
-         "element" : "test"
+         "element" : "test",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "default values: role=\"scrollbar\""
 }
 
-  ) ;
-  </script>
+    ) ;
+    </script>
   </head>
   <body>
-  <p>This test examines the ARIA properties for default values: role="slider".</p>
-    <div role="slider" id="test">
+  <p>This test examines the ARIA properties for default values: role="scrollbar".</p>
+    <div role="scrollbar" id="test">
   Go Fish
   </div>
 
@@ -187,5 +187,5 @@
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
-  
+</html>
+

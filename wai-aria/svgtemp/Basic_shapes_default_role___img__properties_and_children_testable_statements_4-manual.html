@@ -12,6 +12,7 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Basic shapes default role = img, properties and children testable statements",
    "steps" : [
       {
          "element" : "test",
@@ -29,6 +30,28 @@
                   "interfaces",
                   "contains",
                   "TableCell"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "xml-roles",
+                  "ROLE_IMAGE"
                ]
             ],
             "AXAPI" : [
@@ -50,34 +73,11 @@
                   "is",
                   "image"
                ]
-            ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_IMAGE"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Image"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GRAPHIC"
-               ]
             ]
          },
          "type" : "test"
       }
-   ],
-   "title" : "Basic shapes default role = img, properties and children testable statements"
+   ]
 }
 
     ) ;
@@ -86,11 +86,11 @@
   <body>
   <p>This test examines the ARIA properties for Basic shapes default role = img, properties and children testable statements.</p>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'/>
- <text id="t1" x="40" y="90">end</text> 
+ <text id="t1" x="40" y="90">end</text>
 </svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
 </html>
-  
+
