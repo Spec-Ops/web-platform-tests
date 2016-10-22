@@ -24,7 +24,8 @@ my %specs = (
     "svg" => {
       title => "SVG_Accessibility/Testing/Test_Assertions_with_Tables_for_ATTA",
       specURL => "https://www.w3.org/TR/svg-aam-1.0/",
-      dir => "svg"
+      dir => "svg",
+      fragment => '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">%code%</svg>'
     }
 );
 
@@ -40,6 +41,7 @@ my $file = undef ;
 my $spec = undef ;
 my $wiki_title = undef ;
 my $dir = undef;
+my $theSpecFragment = "%code%";
 
 my $result = GetOptions(
     "f|file=s"   => \$file,
@@ -61,6 +63,7 @@ if ($spec) {
   if (!$dir) {
     $dir = "../" . $specs{$spec}->{dir};
   }
+  $theSpecFragment = $specs{$spec}->{fragment};
 }
 
 if (!$dir) {
@@ -72,7 +75,9 @@ if (!-d $dir) {
   exit 1;
 }
 
-if ($wiki_title) {
+if ($file) {
+  open($io, "<", $file) || die("Failed to open $file: " . $@);
+} elsif ($wiki_title) {
   my $MW = MediaWiki::API->new( $wiki_config );
 
   $MW->{config}->{on_error} = \&on_error;
@@ -86,8 +91,6 @@ if ($wiki_title) {
   my $theContent = $page->{'*'};
   print "Loaded " . length($theContent) . " from $wiki_title\n";
   $io = IO::String->new($theContent);
-} elsif ($file) {
-  open($io, "<", $file) || die("Failed to open $file: " . $@);
 } else {
   usage() ;
 }
@@ -112,6 +115,8 @@ my $theType = "";
 my $theName = "";
 my $theRef = "";
 
+our $testNames = {} ;
+
 while (<$io>) {
   # look for state
   if (m/^SpecURL: (.*)$/) {
@@ -119,10 +124,20 @@ while (<$io>) {
     $theSpecURL =~ s/^ *//;
     $theSpecURL =~ s/ *$//;
   }
-  if (m/^=== +(.*[^ ]) +===/) {
+  if ($state == 5 && m/^; \/\/ (.*)/) {
+    # we found another test inside a block
+    # we were in an item; dump it
+    build_test($current, $theAttributes, $theCode, $theAsserts, $theSpecFragment) ;
+    print "Finished $current and new subblock $1\n";
+    $state = 1;
+    $theAttributes = {} ;
+    $theCode = "";
+    $theAsserts = {};
+    $theName = "";
+  } elsif (m/^=== +(.*[^ ]) +===/) {
     if ($state != 0) {
       # we were in an item; dump it
-      build_test($current, $theAttributes, $theCode, $theAsserts) ;
+      build_test($current, $theAttributes, $theCode, $theAsserts, $theSpecFragment) ;
       print "Finished $current\n";
     }
     $state = 1;
@@ -132,6 +147,7 @@ while (<$io>) {
     $theAsserts = {};
     $theName = "";
   }
+
   if ($state == 1) {
     if (m/<pre>/) {
       # we are now in the code block
@@ -149,8 +165,11 @@ while (<$io>) {
       # accumulate whatever was in the block under the data for it
       chomp();
       $theAttributes->{$theName} .= $_;
+    } elsif (m/TODO/) {
+      $state = 0;
     }
   }
+
   if ($state == 2) {
     if (m/<\/pre>/) {
       # we are done with the code block
@@ -228,22 +247,33 @@ while (<$io>) {
 };
 
 if ($state != 0) {
-  build_test($current, $theAttributes, $theCode, $theAsserts) ;
+  build_test($current, $theAttributes, $theCode, $theAsserts, $theSpecFragment) ;
   print "Finished $current\n";
 }
 
 exit 0;
 
+# build_test
+#
+# create a test file
+#
+# attempts to create unique test names
 
 sub build_test() {
   my $title = shift ;
   my $attrs = shift ;
   my $code = shift ;
   my $asserts = shift;
+  my $frag = shift ;
 
   if ($title eq "") {
     print "No name provided!";
     return;
+  }
+
+  if ($frag ne "") {
+    $frag =~ s/%code%/$code/;
+    $code = $frag;
   }
 
   my $title_reference = $title;
@@ -252,7 +282,6 @@ sub build_test() {
     print "No code for $title; skipping.\n";
     return;
   }
-
   if ( $asserts eq {}) {
     print "No code or assertions for $title; skipping.\n";
     return;
@@ -353,28 +382,38 @@ sub build_test() {
 
   my $fileName = $title;
   $fileName =~ s/\s*$//;
-  $fileName =~ s/"//g;
   $fileName =~ s/\///g;
   $fileName =~ s/\s+/_/g;
-  $fileName =~ s/=/_/g;
+  $fileName =~ s/[",=]/_/g;
+
+  my $count = 2;
+  if ($testNames->{$fileName}) {
+    while (exists $testNames->{$fileName . "_$count"}) {
+      $count++;
+    }
+    $fileName .= "_$count";
+  }
+
+  $testNames->{$fileName} = 1;
+
   $fileName .= $theSuffix;
 
   my $template = qq(<!doctype html>
-  <html>
+<html>
   <head>
-  <title>$title</title>
-  <link rel="stylesheet" href="/resources/testharness.css">
-  <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
-  <script src="/resources/testharness.js"></script>
-  <script src="/resources/testharnessreport.js"></script>
-  <script src="/wai-aria/scripts/ATTAcomm.js"></script>
-  <script>
-  setup({explicit_timeout: true, explicit_done: true });
+    <title>$title</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
 
-  var theTest = new ATTAcomm(
-  $testDef_json
-  ) ;
-  </script>
+    var theTest = new ATTAcomm(
+    $testDef_json
+    ) ;
+    </script>
   </head>
   <body>
   <p>This test examines the ARIA properties for $title_reference.</p>
@@ -383,7 +422,7 @@ sub build_test() {
   <div id="log"></div>
   <div id="ATTAmessages"></div>
   </body>
-  </html>
+</html>
   );
 
   my $file ;

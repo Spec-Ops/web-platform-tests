@@ -86,7 +86,6 @@ if (defined $outFile) {
 # open($io, "<", "raw") ;
 
 my $state = 0;   # between items
-my $current = "";
 my $theCode = "";
 my $theAttributes = {};
 my $theAsserts = {} ;
@@ -106,30 +105,19 @@ my $linecount = 0;
 while (<$io>) {
   $linecount++;
   # look for state
-  if (m/^=== +(.*) *===/) {
-    print $outH  $before ;
+  if ($state == 0) {
     if (scalar(keys(%$theAsserts))) {
       # we were in an item; dump it
       print $outH  dump_table($theAsserts) ;
+      $theAsserts = {};
     }
-    print $outH  $after ;
-    $before = $after = "";
-    $state = 1;
-    $current = $1;
-    $theAsserts = {};
+    print $outH $_;
   }
-  if ($state == 1) {
-    if (m/<\/pre>/) {
-      # we are done with the code block
-      $state = 3;
-    }
-  } elsif ($state == 3) {
-    # look for a table
-    if (m/^\{\|/) {
-      # table started
-      $state = 4;
-    }
-  } elsif ($state == 4) {
+  if (m/^\{\|/) {
+    # table started
+    $state = 4;
+  }
+  if ($state == 4) {
     if (m/^\|-/) {
       if ($theAPI
           && exists($theAsserts->{$theAPI}->[$theAssertCount])
@@ -147,7 +135,7 @@ while (<$io>) {
       }
     } elsif (m/^\|\}/) {
       # ran out of table
-      $state = 5;
+      $state = 0;
     } elsif (m/^\|rowspan="*([0-9])"*\|(.*)$/) {
       # someone put a rowspan in here..  is ht an API?
       my $rows = $1;
@@ -174,6 +162,10 @@ while (<$io>) {
         }
         $theAsserts->{$theAPI}->[$theAssertCount] = [ $theType ] ;
       }
+    } elsif (m/^\|note/) {
+      # there is a note in the table...  throw it out
+      # and the next line too
+      my $l = <$io>;
     } elsif (m/^\|(MSAA|UIA|IA2|IAccessible2|ATK|AXAPI) *$/) {
       # they FORGOT a rowspan on an API.  That means there is only 1
       # row
@@ -204,11 +196,6 @@ while (<$io>) {
       }
     }
     next;
-  }
-  if ($state <= 4) {
-    $before .= $_;
-  } else {
-    $after .= $_;
   }
 };
 
@@ -265,6 +252,13 @@ sub dump_table() {
           $new[1] = "role";
           $new[2] = $assert;
           $new[3] = $conditions[$i]->[$start];
+        } elsif ($conditions[$i]->[$start] =~ m/not in accessibility tree/i) {
+          @new = qw(property accessible exists false);
+        } elsif ($conditions[$i]->[$start] =~ m/^RELATION/) {
+          $new[0] = "relation";
+          $new[1] = $conditions[$i]->[$start];
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start+1];
         } elsif ($conditions[$i]->[$start] =~ m/(.*) interface/i) {
           $new[0] = "property";
           $new[1] = "interfaces";
@@ -310,6 +304,12 @@ sub dump_table() {
             $new[3] = $name . ":" . $val;
             $new[2] = "contains";
           }
+        } elsif ($conditions[$i]->[$start] =~ m/^name/) {
+          my $name = $conditions[$i]->[1];
+          $new[0] = "property";
+          $new[1] = "name";
+          $new[2] = "is";
+          $new[3] = $conditions[$i]->[1];
         } else {
           @new = @{$conditions[$i]};
           if ($conditions[$i]->[2] eq '<shown>') {
@@ -328,6 +328,8 @@ sub dump_table() {
           $new[1] = $conditions[$i]->[$start];
           $new[2] = $assert;
           $new[3] = $conditions[$i]->[$start+1];
+        } elsif ($conditions[$i]->[$start] =~ m/not in accessibility tree/i) {
+          @new = qw(property accessible exists false);
         } elsif ($conditions[$i]->[$start] =~ m/^(AriaProperties|Toggle|ExpandCollapse)/) {
           my $name = $conditions[$i]->[1];
           $new[0] = "property";
@@ -341,6 +343,17 @@ sub dump_table() {
             $new[3] = $name . ":" . $val;
             $new[2] = "contains";
           }
+        } elsif ($conditions[$i]->[$start] =~ m/^LabeledBy/i) {
+          $new[0] = "property";
+          $new[1] = $conditions[$i]->[$start];
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start+1];
+        } elsif ($conditions[$i]->[$start] =~ m/^Name/) {
+          my $name = $conditions[$i]->[1];
+          $new[0] = "property";
+          $new[1] = "Name";
+          $new[2] = "is";
+          $new[3] = $conditions[$i]->[1];
         } elsif ($conditions[$i]->[$start] =~ m/^TBD/) {
           $new[0] = "TBD";
           $new[1] = $new[2] = $new[3] = "";
@@ -367,6 +380,13 @@ sub dump_table() {
         if ($conditions[$i]->[$start] =~ m/^role/) {
           $new[0] = "property";
           $new[1] = "role";
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start+1];
+        } elsif ($conditions[$i]->[$start] =~ m/not in accessibility tree/i) {
+          @new = qw(property accessible exists false);
+        } elsif ($conditions[$i]->[$start] =~ m/^accName/) {
+          $new[0] = "property";
+          $new[1] = "accName";
           $new[2] = $assert;
           $new[3] = $conditions[$i]->[$start+1];
         } elsif ($conditions[$i]->[$start] =~ m/^ROLE_/) {
@@ -400,6 +420,13 @@ sub dump_table() {
           $new[1] = "role";
           $new[2] = $assert;
           $new[3] = $conditions[$i]->[$start];
+        } elsif ($conditions[$i]->[$start] =~ m/not in accessibility tree/i) {
+          @new = qw(property accessible exists false);
+        } elsif ($conditions[$i]->[$start] =~ m/^IA2_RELATION_/) {
+          $new[0] = "relation";
+          $new[1] = $conditions[$i]->[$start];
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start+1];
         } elsif ($conditions[$i]->[$start] =~ m/^IA2_STATE_/) {
           $new[0] = "property";
           $new[1] = "states";
@@ -512,6 +539,8 @@ sub dump_table() {
           $new[0] = "property";
           $new[1] = $conditions[$i]->[$start];
           $new[2] = $assert;
+        } elsif ($conditions[$i]->[$start] =~ m/not in accessibility tree/i) {
+          @new = qw(property accessible exists false);
         } elsif ($conditions[$i]->[$start] =~ m/^AX/) {
           $new[0] = "property";
           $new[1] = $conditions[$i]->[$start];
