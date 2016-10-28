@@ -12,10 +12,50 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "application",
    "steps" : [
       {
-         "title" : "step 1",
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXWebApplication"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "web application"
+               ],
+               [
+                  "result",
+                  "array",
+                  "isNot",
+                  "true"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -45,53 +85,13 @@
                   "is",
                   "ROLE_EMBEDDED"
                ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXWebApplication"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "web application"
-               ],
-               [
-                  "result",
-                  "array",
-                  "isNot",
-                  "true"
-               ]
             ]
          },
+         "title" : "step 1",
          "element" : "test",
          "type" : "test"
       }
-   ],
-   "title" : "application"
+   ]
 }
 
     ) ;

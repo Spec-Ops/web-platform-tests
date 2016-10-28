@@ -12,11 +12,102 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "default values: role=\"slider\"",
    "steps" : [
       {
+         "element" : "test",
          "type" : "test",
+         "title" : "step 1",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "slider"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "RangeValue"
+               ],
+               [
+                  "result",
+                  "RangeValue.Minimum",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "RangeValue.Value",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "RangeValue.Maximum",
+                  "contains",
+                  "100"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SLIDER"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Value"
+               ],
+               [
+                  "result",
+                  "Value.atk_value_get_minimum_value",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "Value.atk_value_get_current_value",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "Value.atk_value_get_maximum_value",
+                  "contains",
+                  "100"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "AccessibleValue"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.minimumValue",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.currentValue",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.maximumValue",
+                  "contains",
+                  "100"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -76,102 +167,11 @@
                   "is",
                   "ROLE_SYSTEM_SLIDER"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "slider"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "RangeValue"
-               ],
-               [
-                  "result",
-                  "RangeValue.Minimum",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "RangeValue.Value",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "RangeValue.Maximum",
-                  "contains",
-                  "100"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "AccessibleValue"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.minimumValue",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.currentValue",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.maximumValue",
-                  "contains",
-                  "100"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SLIDER"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Value"
-               ],
-               [
-                  "result",
-                  "Value.atk_value_get_minimum_value",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "Value.atk_value_get_current_value",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "Value.atk_value_get_maximum_value",
-                  "contains",
-                  "100"
-               ]
             ]
-         },
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
-   ]
+   ],
+   "title" : "default values: role=\"slider\""
 }
 
     ) ;

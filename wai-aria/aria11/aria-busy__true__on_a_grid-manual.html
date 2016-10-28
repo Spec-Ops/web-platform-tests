@@ -16,6 +16,7 @@
       {
          "type" : "test",
          "element" : "test",
+         "title" : "step 1",
          "test" : {
             "AXAPI" : [
                [
@@ -57,18 +58,38 @@
                   "TableCell"
                ]
             ],
-            "IAccessible2" : [
+            "MSAA" : [
                [
                   "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:grid"
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
                ],
                [
                   "property",
-                  "interfaces",
+                  "states",
                   "contains",
-                  "IAccessibleTable2"
+                  "STATE_SYSTEM_BUSY"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "DataGrid"
+               ],
+               [
+                  "property",
+                  "Selection Pattern",
+                  "is",
+                  "<shown>"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
                ]
             ],
             "ATK" : [
@@ -103,42 +124,21 @@
                   "STATE_BUSY"
                ]
             ],
-            "MSAA" : [
+            "IAccessible2" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ],
-               [
-                  "property",
-                  "states",
+                  "objectAttributes",
                   "contains",
-                  "STATE_SYSTEM_BUSY"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "DataGrid"
+                  "xml-roles:grid"
                ],
                [
                   "property",
-                  "Selection Pattern",
-                  "is",
-                  "<shown>"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "true"
+                  "interfaces",
+                  "contains",
+                  "IAccessibleTable2"
                ]
             ]
-         },
-         "title" : "step 1"
+         }
       }
    ],
    "title" : "aria-busy=\"true\" on a grid"

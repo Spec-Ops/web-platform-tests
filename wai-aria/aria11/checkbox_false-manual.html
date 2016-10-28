@@ -12,18 +12,22 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "checkbox false",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
+         "title" : "step 1",
          "test" : {
-            "IAccessible2" : [
+            "UIA" : [
                [
                   "property",
-                  "objectAttributes",
+                  "Control Type",
+                  "isNot",
+                  "Checkbox"
+               ],
+               [
+                  "property",
+                  "Toggle",
                   "contains",
-                  "checkable:true"
+                  "ToggleState:Off"
                ]
             ],
             "ATK" : [
@@ -46,32 +50,12 @@
                   "STATE_CHECKED"
                ]
             ],
-            "UIA" : [
+            "IAccessible2" : [
                [
                   "property",
-                  "Control Type",
-                  "isNot",
-                  "Checkbox"
-               ],
-               [
-                  "property",
-                  "Toggle",
+                  "objectAttributes",
                   "contains",
-                  "ToggleState:Off"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_CHECKBUTTON"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_CHECKED"
+                  "checkable:true"
                ]
             ],
             "AXAPI" : [
@@ -113,11 +97,27 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_CHECKBUTTON"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_CHECKED"
+               ]
             ]
          },
-         "title" : "step 1"
+         "element" : "test",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "checkbox false"
 }
 
     ) ;

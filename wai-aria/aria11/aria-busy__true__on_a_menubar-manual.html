@@ -12,10 +12,8 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "aria-busy=\"true\" on a menubar",
    "steps" : [
       {
-         "element" : "test",
          "test" : {
             "ATK" : [
                [
@@ -77,6 +75,20 @@
                   "true"
                ]
             ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -116,26 +128,14 @@
                   "is",
                   "true"
                ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
             ]
          },
          "title" : "step 1",
+         "element" : "test",
          "type" : "test"
       }
-   ]
+   ],
+   "title" : "aria-busy=\"true\" on a menubar"
 }
 
     ) ;

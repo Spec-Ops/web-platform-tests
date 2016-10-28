@@ -16,23 +16,8 @@
    "steps" : [
       {
          "type" : "test",
-         "title" : "step 1",
          "element" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -51,6 +36,48 @@
                   "AXRoleDescription",
                   "is",
                   "search text field"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TEXT"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Edit"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "search box"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "multiline:true"
                ]
             ],
             "IAccessible2" : [
@@ -98,36 +125,9 @@
                   "contains",
                   "EditableText"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Edit"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "search box"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "multiline:true"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TEXT"
-               ]
             ]
-         }
+         },
+         "title" : "step 1"
       }
    ]
 }

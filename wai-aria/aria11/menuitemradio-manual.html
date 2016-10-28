@@ -16,6 +16,54 @@
       {
          "title" : "step 1",
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXMenuItem"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "menu item"
+               ],
+               [
+                  "property",
+                  "AXMenuItemMarkChar",
+                  "is",
+                  "<nil>"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "anyOf",
+                  "[ROLE_SYSTEM_MENUITEM, ROLE_SYSTEM_CHECKBUTTON]"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -34,14 +82,6 @@
                   "SelectItem Pattern",
                   "isNot",
                   ""
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "anyOf",
-                  "[ROLE_SYSTEM_MENUITEM, ROLE_SYSTEM_CHECKBUTTON]"
                ]
             ],
             "ATK" : [
@@ -76,46 +116,6 @@
                   "objectAttributes",
                   "contains",
                   "checkable:true"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXMenuItem"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "menu item"
-               ],
-               [
-                  "property",
-                  "AXMenuItemMarkChar",
-                  "is",
-                  "<nil>"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
                ]
             ]
          },

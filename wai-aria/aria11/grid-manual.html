@@ -14,15 +14,22 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
+         "type" : "test",
+         "title" : "step 1",
          "test" : {
-            "IAccessible2" : [
+            "UIA" : [
                [
                   "property",
-                  "interfaces",
-                  "doesNotContain",
-                  "IAccessibleTable2"
+                  "DataGrid",
+                  "isNot",
+                  ""
+               ],
+               [
+                  "property",
+                  "Selection pattern TODO",
+                  "isNot",
+                  ""
                ]
             ],
             "ATK" : [
@@ -51,26 +58,12 @@
                   "Selection"
                ]
             ],
-            "UIA" : [
+            "IAccessible2" : [
                [
                   "property",
-                  "DataGrid",
-                  "isNot",
-                  ""
-               ],
-               [
-                  "property",
-                  "Selection pattern TODO",
-                  "isNot",
-                  ""
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
+                  "interfaces",
+                  "doesNotContain",
+                  "IAccessibleTable2"
                ]
             ],
             "AXAPI" : [
@@ -106,9 +99,16 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ]
             ]
-         },
-         "type" : "test"
+         }
       }
    ],
    "title" : "grid"

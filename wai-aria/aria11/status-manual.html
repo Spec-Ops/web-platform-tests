@@ -12,11 +12,58 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "status",
    "steps" : [
       {
          "element" : "test",
+         "type" : "test",
+         "title" : "step 1",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Group"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "status"
+               ],
+               [
+                  "property",
+                  "LiveSettingProperty",
+                  "isNot",
+                  "1"
+               ],
+               [
+                  "property",
+                  "ExpandCollapse",
+                  "contains",
+                  "ExpandCollapseState:expanded"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live-role:status"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -53,66 +100,6 @@
                   "states",
                   "doesNotContain",
                   "STATE_EXPANDED"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "container-live:polite"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "live:polite"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "container-live-role:status"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_STATUSBAR"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_EXPANDED"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Group"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "status"
-               ],
-               [
-                  "property",
-                  "LiveSettingProperty",
-                  "isNot",
-                  "1"
-               ],
-               [
-                  "property",
-                  "ExpandCollapse",
-                  "contains",
-                  "ExpandCollapseState:expanded"
                ]
             ],
             "AXAPI" : [
@@ -154,12 +141,25 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_STATUSBAR"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_EXPANDED"
+               ]
             ]
-         },
-         "title" : "step 1",
-         "type" : "test"
+         }
       }
-   ]
+   ],
+   "title" : "status"
 }
 
     ) ;

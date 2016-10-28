@@ -16,6 +16,20 @@
    "steps" : [
       {
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_PUSHBUTTON"
+               ],
+               [
+                  "property",
+                  "accKeyboardShortcut",
+                  "is",
+                  "Shift+Space"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -56,18 +70,18 @@
                   "true"
                ]
             ],
-            "MSAA" : [
+            "ATK" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SYSTEM_PUSHBUTTON"
+                  "ROLE_PUSH_BUTTON"
                ],
                [
                   "property",
-                  "accKeyboardShortcut",
-                  "is",
-                  "Shift+Space"
+                  "objectAttributes",
+                  "contains",
+                  "keyshortcuts:\"Shift+Space"
                ]
             ],
             "UIA" : [
@@ -83,25 +97,11 @@
                   "is",
                   "Shift+Space"
                ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_PUSH_BUTTON"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "keyshortcuts:\"Shift+Space"
-               ]
             ]
          },
-         "element" : "test",
          "title" : "step 1",
-         "type" : "test"
+         "type" : "test",
+         "element" : "test"
       }
    ]
 }
@@ -112,7 +112,7 @@
   <body>
   <p>This test examines the ARIA properties for aria-keyshortcuts.</p>
     <body>
-     <div id="test" tabindex="0" role="buttion" aria-keyshortuts="Shift+Space">Submit</h1>
+     <div id="test" tabindex="0" role="button" aria-keyshortcuts="Shift+Space">Submit</h1>
   </body>
 
   <div id="manualMode"></div>

@@ -12,10 +12,24 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "aria-busy=\"true\" on a listbox",
    "steps" : [
       {
+         "title" : "step 1",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "List"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -42,16 +56,28 @@
                   "STATE_BUSY"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "Control Type",
-                  "isNot",
-                  "List"
+                  "AXRole",
+                  "is",
+                  "AXList"
                ],
                [
-                  "result",
-                  "AriaProperties.busy",
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "list"
+               ],
+               [
+                  "property",
+                  "AXElementBusy",
                   "is",
                   "true"
                ]
@@ -83,39 +109,13 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXList"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "list"
-               ],
-               [
-                  "property",
-                  "AXElementBusy",
-                  "is",
-                  "true"
-               ]
             ]
          },
          "element" : "test",
-         "title" : "step 1",
          "type" : "test"
       }
-   ]
+   ],
+   "title" : "aria-busy=\"true\" on a listbox"
 }
 
     ) ;

@@ -16,48 +16,8 @@
    "steps" : [
       {
          "type" : "test",
-         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXList"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "list"
-               ],
-               [
-                  "property",
-                  "AXElementBusy",
-                  "is",
-                  "false"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -111,9 +71,49 @@
                   "contains",
                   "STATE_SYSTEM_BUSY cleared"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXList"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "list"
+               ],
+               [
+                  "property",
+                  "AXElementBusy",
+                  "is",
+                  "false"
+               ]
             ]
          },
-         "element" : "test"
+         "title" : "step 1"
       }
    ]
 }

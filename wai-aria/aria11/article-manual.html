@@ -12,10 +12,72 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "article",
    "steps" : [
       {
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXDocumentArticle"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "article"
+               ],
+               [
+                  "property",
+                  "AXARIAPosInSet",
+                  "is",
+                  "4"
+               ],
+               [
+                  "property",
+                  "AXARIASetSize",
+                  "is",
+                  "8"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_DOCUMENT"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_READONLY"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -42,18 +104,30 @@
                   "setsize:8"
                ]
             ],
-            "MSAA" : [
+            "ATK" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SYSTEM_DOCUMENT"
+                  "ROLE_ARTICLE"
                ],
                [
                   "property",
-                  "states",
+                  "objectAttributes",
                   "contains",
-                  "STATE_SYSTEM_READONLY"
+                  "xml-roles:article"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
                ]
             ],
             "IAccessible2" : [
@@ -87,85 +161,11 @@
                   "contains",
                   "positionInGroup:4"
                ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_ARTICLE"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:article"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXDocumentArticle"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "article"
-               ],
-               [
-                  "property",
-                  "AXARIAPosInSet",
-                  "is",
-                  "4"
-               ],
-               [
-                  "property",
-                  "AXARIASetSize",
-                  "is",
-                  "8"
-               ]
             ]
-         },
-         "element" : "test",
-         "title" : "step 1",
-         "type" : "test"
+         }
       }
-   ]
+   ],
+   "title" : "article"
 }
 
     ) ;

@@ -14,24 +14,7 @@
     {
    "steps" : [
       {
-         "type" : "test",
-         "title" : "step 1",
-         "element" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -50,6 +33,20 @@
                   "AXRoleDescription",
                   "is",
                   "search"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "UIA" : [
@@ -78,20 +75,6 @@
                   "search"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_LANDMARK"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:search"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
@@ -105,8 +88,25 @@
                   "contains",
                   "xml-roles:search"
                ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_LANDMARK"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:search"
+               ]
             ]
-         }
+         },
+         "title" : "step 1",
+         "element" : "test",
+         "type" : "test"
       }
    ],
    "title" : "search"

@@ -12,28 +12,48 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "switch",
    "steps" : [
       {
-         "element" : "test",
          "test" : {
-            "UIA" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "Control Type",
-                  "isNot",
-                  "Button"
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
                ],
                [
                   "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "toggleswitch"
-               ],
-               [
-                  "property",
-                  "Toggle",
+                  "interfaces",
                   "contains",
-                  "ToggleState:Off"
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXCheckbox"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXSwitch"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "switch"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "0"
                ]
             ],
             "IAccessible2" : [
@@ -70,52 +90,32 @@
                   "STATE_CHECKED"
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
-                  "AXRole",
-                  "is",
-                  "AXCheckbox"
+                  "Control Type",
+                  "isNot",
+                  "Button"
                ],
                [
                   "property",
-                  "AXSubrole",
-                  "is",
-                  "AXSwitch"
+                  "Localized Control Type",
+                  "isNot",
+                  "toggleswitch"
                ],
                [
                   "property",
-                  "AXDescription",
-                  "is",
-                  "switch"
-               ],
-               [
-                  "property",
-                  "AXValue",
-                  "is",
-                  "0"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
+                  "Toggle",
                   "contains",
-                  "TableCell"
+                  "ToggleState:Off"
                ]
             ]
          },
          "title" : "step 1",
-         "type" : "test"
+         "type" : "test",
+         "element" : "test"
       }
-   ],
-   "title" : "switch"
+   ]
 }
 
     ) ;

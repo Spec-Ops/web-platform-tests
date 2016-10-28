@@ -12,64 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "log",
    "steps" : [
       {
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXApplicationLog"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "log"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Group"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "log"
-               ],
-               [
-                  "property",
-                  "LiveSettingProperty",
-                  "isNot",
-                  "Polite"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
@@ -127,13 +72,68 @@
                   "contains",
                   "container-live-role:log"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Group"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "log"
+               ],
+               [
+                  "property",
+                  "LiveSettingProperty",
+                  "isNot",
+                  "Polite"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXApplicationLog"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "log"
+               ]
             ]
          },
-         "element" : "test",
          "title" : "step 1",
-         "type" : "test"
+         "type" : "test",
+         "element" : "test"
       }
-   ]
+   ],
+   "title" : "log"
 }
 
     ) ;

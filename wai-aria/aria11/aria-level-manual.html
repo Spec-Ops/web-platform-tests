@@ -15,9 +15,62 @@
    "title" : "aria-level",
    "steps" : [
       {
-         "type" : "test",
          "title" : "step 1",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_HEADING"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "level:\"2"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "IA2_ROLE_HEADING"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "level:\"2"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:heading"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Text"
+               ],
+               [
+                  "property",
+                  "StyleId_Heading2",
+                  "is",
+                  "present"
+               ],
+               [
+                  "property",
+                  "AriaProperties.level",
+                  "contains",
+                  "2"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -57,62 +110,9 @@
                   "is",
                   "2"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Text"
-               ],
-               [
-                  "property",
-                  "StyleId_Heading2",
-                  "is",
-                  "present"
-               ],
-               [
-                  "property",
-                  "AriaProperties.level",
-                  "contains",
-                  "2"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "IA2_ROLE_HEADING"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "level:\"2"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:heading"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_HEADING"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "level:\"2"
-               ]
             ]
          },
+         "type" : "test",
          "element" : "test"
       }
    ]

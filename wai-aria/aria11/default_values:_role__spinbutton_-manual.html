@@ -15,10 +15,106 @@
    "title" : "default values: role=\"spinbutton\"",
    "steps" : [
       {
-         "type" : "test",
          "title" : "step 1",
-         "element" : "test",
          "test" : {
+            "IAccessible2" : [
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "AccessibleValue"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.minimumValue",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.currentValue",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.maximumValue",
+                  "contains",
+                  "100"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SPIN_BUTTON"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Value"
+               ],
+               [
+                  "result",
+                  "Value.atk_value_get_minimum_value",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "Value.atk_value_get_current_value",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "Value.atk_value_get_maximum_value",
+                  "contains",
+                  "100"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Spinner"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "RangeValue"
+               ],
+               [
+                  "result",
+                  "RangeValue.Minimum",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "RangeValue.Value",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "RangeValue.Maximum",
+                  "contains",
+                  "100"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_SPINBUTTON"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -70,106 +166,10 @@
                   "is",
                   "100"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Spinner"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "RangeValue"
-               ],
-               [
-                  "result",
-                  "RangeValue.Minimum",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "RangeValue.Value",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "RangeValue.Maximum",
-                  "contains",
-                  "100"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_SPINBUTTON"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SPIN_BUTTON"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Value"
-               ],
-               [
-                  "result",
-                  "Value.atk_value_get_minimum_value",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "Value.atk_value_get_current_value",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "Value.atk_value_get_maximum_value",
-                  "contains",
-                  "100"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "AccessibleValue"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.minimumValue",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.currentValue",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.maximumValue",
-                  "contains",
-                  "100"
-               ]
             ]
-         }
+         },
+         "element" : "test",
+         "type" : "test"
       }
    ]
 }

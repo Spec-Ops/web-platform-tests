@@ -14,71 +14,10 @@
     {
    "steps" : [
       {
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXTextField"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXSearchField"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "search text field"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TEXT"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Edit"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "search box"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:search"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -98,11 +37,72 @@
                   "contains",
                   "EditableText"
                ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:search"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Edit"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "search box"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TEXT"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTextField"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXSearchField"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "search text field"
+               ]
             ]
-         },
-         "element" : "test",
-         "title" : "step 1",
-         "type" : "test"
+         }
       }
    ],
    "title" : "searchbox"

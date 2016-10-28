@@ -12,12 +12,19 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "table",
    "steps" : [
       {
          "type" : "test",
          "element" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -52,32 +59,18 @@
                   "grid"
                ]
             ],
-            "MSAA" : [
+            "IAccessible2" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Table"
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:table"
                ],
                [
                   "property",
-                  "grid pattern TODO",
-                  "isNot",
-                  ""
-               ],
-               [
-                  "property",
-                  "table pattern TODO",
-                  "isNot",
-                  ""
+                  "interfaces",
+                  "doesNotContain",
+                  "IAccessibleTable2"
                ]
             ],
             "ATK" : [
@@ -100,24 +93,31 @@
                   "Table"
                ]
             ],
-            "IAccessible2" : [
+            "UIA" : [
                [
                   "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:table"
+                  "Control Type",
+                  "isNot",
+                  "Table"
                ],
                [
                   "property",
-                  "interfaces",
-                  "doesNotContain",
-                  "IAccessibleTable2"
+                  "grid pattern TODO",
+                  "isNot",
+                  ""
+               ],
+               [
+                  "property",
+                  "table pattern TODO",
+                  "isNot",
+                  ""
                ]
             ]
          },
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "table"
 }
 
     ) ;

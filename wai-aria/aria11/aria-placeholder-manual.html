@@ -12,51 +12,24 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "aria-placeholder",
    "steps" : [
       {
+         "element" : "test",
          "type" : "test",
          "title" : "step 1",
-         "element" : "test",
          "test" : {
-            "WAIFAKE" : [
+            "UIA" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
+                  "Control Type",
+                  "isNot",
+                  "Edit"
                ],
                [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
+                  "result",
+                  "AriaProperties.placeholder",
                   "is",
-                  "AXTextField"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "text field"
-               ],
-               [
-                  "property",
-                  "AXOrientation",
-                  "is",
-                  "AXHorizontalOrientation"
+                  "DD/MM/YYYY"
                ]
             ],
             "ATK" : [
@@ -96,21 +69,47 @@
                   "property",
                   "objectAttributes",
                   "contains",
-                  "placeholder:DD/MM/YYYY"
+                  "placeholder-text:DD/MM/YYYY"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "Control Type",
-                  "isNot",
-                  "Edit"
+                  "AXRole",
+                  "is",
+                  "AXTextField"
                ],
                [
-                  "result",
-                  "AriaProperties.placeholder",
+                  "property",
+                  "AXSubrole",
                   "is",
-                  "DD/MM/YYYY"
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "text field"
+               ],
+               [
+                  "property",
+                  "AXOrientation",
+                  "is",
+                  "AXHorizontalOrientation"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "MSAA" : [
@@ -123,7 +122,8 @@
             ]
          }
       }
-   ]
+   ],
+   "title" : "aria-placeholder"
 }
 
     ) ;

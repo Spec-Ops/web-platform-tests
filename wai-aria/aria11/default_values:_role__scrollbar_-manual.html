@@ -14,8 +14,42 @@
     {
    "steps" : [
       {
+         "type" : "test",
+         "element" : "test",
          "title" : "step 1",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "scrollbar"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "RangeValue"
+               ],
+               [
+                  "result",
+                  "RangeValue.Minimum",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "RangeValue.Value",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "RangeValue.Maximum",
+                  "contains",
+                  "100"
+               ]
+            ],
             "IAccessible2" : [
                [
                   "property",
@@ -74,46 +108,6 @@
                   "100"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "scrollbar"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "RangeValue"
-               ],
-               [
-                  "result",
-                  "RangeValue.Minimum",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "RangeValue.Value",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "RangeValue.Maximum",
-                  "contains",
-                  "100"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_SCROLLBAR"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -152,6 +146,14 @@
                   "100"
                ]
             ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_SCROLLBAR"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -166,9 +168,7 @@
                   "TableCell"
                ]
             ]
-         },
-         "element" : "test",
-         "type" : "test"
+         }
       }
    ],
    "title" : "default values: role=\"scrollbar\""
