@@ -14,7 +14,22 @@
     {
    "steps" : [
       {
+         "title" : "step 1",
          "test" : {
+            "IAccessible2" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "IA2_ROLE_LANDMARK"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:search"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -33,20 +48,6 @@
                   "AXRoleDescription",
                   "is",
                   "search"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
                ]
             ],
             "UIA" : [
@@ -75,18 +76,18 @@
                   "search"
                ]
             ],
-            "IAccessible2" : [
+            "WAIFAKE" : [
                [
                   "property",
                   "role",
                   "is",
-                  "IA2_ROLE_LANDMARK"
+                  "ROLE_TABLE_CELL"
                ],
                [
                   "property",
-                  "objectAttributes",
+                  "interfaces",
                   "contains",
-                  "xml-roles:search"
+                  "TableCell"
                ]
             ],
             "ATK" : [
@@ -104,9 +105,8 @@
                ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test",
-         "type" : "test"
+         "type" : "test",
+         "element" : "test"
       }
    ],
    "title" : "search"

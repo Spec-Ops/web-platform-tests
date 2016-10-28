@@ -14,34 +14,33 @@
     {
    "steps" : [
       {
-         "element" : "test",
          "type" : "test",
-         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "Control Type",
-                  "isNot",
-                  "Group"
+                  "AXRole",
+                  "is",
+                  "AXGroup"
                ],
                [
                   "property",
-                  "Localized Control Type",
-                  "isNot",
+                  "AXSubrole",
+                  "is",
+                  "AXApplicationStatus"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
                   "status"
                ],
                [
                   "property",
-                  "LiveSettingProperty",
-                  "isNot",
-                  "1"
-               ],
-               [
-                  "property",
-                  "ExpandCollapse",
-                  "contains",
-                  "ExpandCollapseState:expanded"
+                  "AXExpanded",
+                  "is",
+                  "YES"
                ]
             ],
             "IAccessible2" : [
@@ -102,30 +101,30 @@
                   "STATE_EXPANDED"
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
+                  "Control Type",
+                  "isNot",
+                  "Group"
                ],
                [
                   "property",
-                  "AXSubrole",
-                  "is",
-                  "AXApplicationStatus"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
+                  "Localized Control Type",
+                  "isNot",
                   "status"
                ],
                [
                   "property",
-                  "AXExpanded",
-                  "is",
-                  "YES"
+                  "LiveSettingProperty",
+                  "isNot",
+                  "1"
+               ],
+               [
+                  "property",
+                  "ExpandCollapse",
+                  "contains",
+                  "ExpandCollapseState:expanded"
                ]
             ],
             "WAIFAKE" : [
@@ -156,7 +155,8 @@
                   "STATE_SYSTEM_EXPANDED"
                ]
             ]
-         }
+         },
+         "title" : "step 1"
       }
    ],
    "title" : "status"

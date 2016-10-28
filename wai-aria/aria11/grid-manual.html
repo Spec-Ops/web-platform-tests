@@ -14,24 +14,9 @@
     {
    "steps" : [
       {
-         "element" : "test",
          "type" : "test",
-         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "DataGrid",
-                  "isNot",
-                  ""
-               ],
-               [
-                  "property",
-                  "Selection pattern TODO",
-                  "isNot",
-                  ""
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -58,12 +43,40 @@
                   "Selection"
                ]
             ],
-            "IAccessible2" : [
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
                [
                   "property",
                   "interfaces",
-                  "doesNotContain",
-                  "IAccessibleTable2"
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "DataGrid",
+                  "isNot",
+                  ""
+               ],
+               [
+                  "property",
+                  "Selection pattern TODO",
+                  "isNot",
+                  ""
                ]
             ],
             "AXAPI" : [
@@ -86,29 +99,16 @@
                   "grid"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
+            "IAccessible2" : [
                [
                   "property",
                   "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
+                  "doesNotContain",
+                  "IAccessibleTable2"
                ]
             ]
-         }
+         },
+         "title" : "step 1"
       }
    ],
    "title" : "grid"

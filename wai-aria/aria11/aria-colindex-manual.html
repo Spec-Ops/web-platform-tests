@@ -12,13 +12,19 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "aria-colindex",
    "steps" : [
       {
-         "element" : "test",
-         "type" : "test",
-         "title" : "step 1",
          "test" : {
-            "AXAPI" : [
+            "UIA" : [
+               [
+                  "result",
+                  "GridItem.Column",
+                  "is",
+                  "4"
+               ]
+            ],
+            "MSAA" : [
                [
                   "TBD",
                   "",
@@ -40,32 +46,26 @@
                   "TableCell"
                ]
             ],
-            "MSAA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ]
-            ],
-            "UIA" : [
-               [
-                  "result",
-                  "GridItem.Column",
-                  "is",
-                  "4"
-               ]
-            ],
             "ATK" : [
                [
                   "TBD",
                   ""
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ]
             ]
-         }
+         },
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1"
       }
-   ],
-   "title" : "aria-colindex"
+   ]
 }
 
     ) ;

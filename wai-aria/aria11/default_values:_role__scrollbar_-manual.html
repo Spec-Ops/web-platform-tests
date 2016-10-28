@@ -12,12 +12,43 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "default values: role=\"scrollbar\"",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
          "title" : "step 1",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SCROLLBAR"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Value"
+               ],
+               [
+                  "result",
+                  "Value.atk_value_get_minimum_value",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "Value.atk_value_get_current_value",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "Value.atk_value_get_maximum_value",
+                  "contains",
+                  "100"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -50,62 +81,26 @@
                   "100"
                ]
             ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "AccessibleValue"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.minimumValue",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.currentValue",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.maximumValue",
-                  "contains",
-                  "100"
-               ]
-            ],
-            "ATK" : [
+            "WAIFAKE" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SCROLLBAR"
+                  "ROLE_TABLE_CELL"
                ],
                [
                   "property",
                   "interfaces",
                   "contains",
-                  "Value"
-               ],
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
                [
-                  "result",
-                  "Value.atk_value_get_minimum_value",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "Value.atk_value_get_current_value",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "Value.atk_value_get_maximum_value",
-                  "contains",
-                  "100"
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_SCROLLBAR"
                ]
             ],
             "AXAPI" : [
@@ -146,32 +141,37 @@
                   "100"
                ]
             ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_SCROLLBAR"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
+            "IAccessible2" : [
                [
                   "property",
                   "interfaces",
                   "contains",
-                  "TableCell"
+                  "AccessibleValue"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.minimumValue",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.currentValue",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.maximumValue",
+                  "contains",
+                  "100"
                ]
             ]
-         }
+         },
+         "type" : "test",
+         "element" : "test"
       }
-   ],
-   "title" : "default values: role=\"scrollbar\""
+   ]
 }
 
     ) ;

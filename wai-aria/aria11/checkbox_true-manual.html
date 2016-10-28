@@ -12,80 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "checkbox true",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
          "title" : "step 1",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Checkbox"
-               ],
-               [
-                  "property",
-                  "Toggle",
-                  "contains",
-                  "ToggleState:On"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "checkable:true"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_CHECK_BOX"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_CHECKABLE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_CHECKED"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXCheckbox"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "check box"
-               ],
-               [
-                  "property",
-                  "AXValue",
-                  "is",
-                  "1"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -113,11 +44,80 @@
                   "contains",
                   "STATE_SYSTEM_CHECKED"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Checkbox"
+               ],
+               [
+                  "property",
+                  "Toggle",
+                  "contains",
+                  "ToggleState:On"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_CHECK_BOX"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_CHECKABLE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_CHECKED"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "checkable:true"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXCheckbox"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "check box"
+               ],
+               [
+                  "property",
+                  "AXValue",
+                  "is",
+                  "1"
+               ]
             ]
-         }
+         },
+         "element" : "test",
+         "type" : "test"
       }
-   ],
-   "title" : "checkbox true"
+   ]
 }
 
     ) ;

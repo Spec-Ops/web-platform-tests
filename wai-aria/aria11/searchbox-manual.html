@@ -12,10 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "searchbox",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
          "title" : "step 1",
          "test" : {
             "ATK" : [
@@ -36,28 +35,6 @@
                   "interfaces",
                   "contains",
                   "EditableText"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:search"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Edit"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "search box"
                ]
             ],
             "MSAA" : [
@@ -82,6 +59,20 @@
                   "TableCell"
                ]
             ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Edit"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "search box"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -101,11 +92,20 @@
                   "is",
                   "search text field"
                ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:search"
+               ]
             ]
-         }
+         },
+         "element" : "test",
+         "type" : "test"
       }
-   ],
-   "title" : "searchbox"
+   ]
 }
 
     ) ;

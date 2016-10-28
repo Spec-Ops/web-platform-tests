@@ -15,40 +15,7 @@
    "title" : "radio",
    "steps" : [
       {
-         "title" : "step 1",
          "test" : {
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_RADIO_BUTTON"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_CHECKABLE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "STATE_CHECKED"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
@@ -79,60 +46,6 @@
                   "groupPosition()",
                   "contains",
                   "positionInGroup:4"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "RadioButton"
-               ],
-               [
-                  "property",
-                  "Toggle",
-                  "contains",
-                  "ToggleState:Off"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "setsize:8"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_RADIOBUTTON"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_CHECKED"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -172,10 +85,97 @@
                   "is",
                   "8"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_RADIOBUTTON"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_CHECKED"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "RadioButton"
+               ],
+               [
+                  "property",
+                  "Toggle",
+                  "contains",
+                  "ToggleState:Off"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "setsize:8"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_RADIO_BUTTON"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_CHECKABLE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_CHECKED"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ]
             ]
          },
+         "type" : "test",
          "element" : "test",
-         "type" : "test"
+         "title" : "step 1"
       }
    ]
 }

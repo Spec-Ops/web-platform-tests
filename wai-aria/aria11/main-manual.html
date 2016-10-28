@@ -15,30 +15,7 @@
    "title" : "main",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXLandmarkMain"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "main"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -92,8 +69,31 @@
                   "contains",
                   "xml-roles:main"
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXLandmarkMain"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "main"
+               ]
             ]
-         }
+         },
+         "element" : "test",
+         "type" : "test",
+         "title" : "step 1"
       }
    ]
 }

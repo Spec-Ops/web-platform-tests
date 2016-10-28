@@ -12,31 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "cell",
    "steps" : [
       {
+         "title" : "step 1",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_CELL"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -90,14 +70,34 @@
                   "isNot",
                   "invoke pattern TODO"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_CELL"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "title" : "step 1",
          "element" : "test",
          "type" : "test"
       }
-   ],
-   "title" : "cell"
+   ]
 }
 
     ) ;

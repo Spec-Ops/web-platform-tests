@@ -12,9 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "checkbox false",
    "steps" : [
       {
-         "title" : "step 1",
          "test" : {
             "UIA" : [
                [
@@ -28,6 +28,34 @@
                   "Toggle",
                   "contains",
                   "ToggleState:Off"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_CHECKBUTTON"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_CHECKED"
                ]
             ],
             "ATK" : [
@@ -83,41 +111,13 @@
                   "is",
                   "0"
                ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_CHECKBUTTON"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_CHECKED"
-               ]
             ]
          },
+         "type" : "test",
          "element" : "test",
-         "type" : "test"
+         "title" : "step 1"
       }
-   ],
-   "title" : "checkbox false"
+   ]
 }
 
     ) ;

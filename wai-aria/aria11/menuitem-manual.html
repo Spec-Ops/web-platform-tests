@@ -15,6 +15,68 @@
    "steps" : [
       {
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_MENU_ITEM"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "MenuItem"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "setsize:8"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_MENUITEM"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -47,48 +109,6 @@
                   "8"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_MENUITEM"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "MenuItem"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "setsize:8"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
@@ -114,31 +134,11 @@
                   "contains",
                   "positionInGroup:4"
                ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_MENU_ITEM"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ]
             ]
          },
-         "title" : "step 1",
+         "type" : "test",
          "element" : "test",
-         "type" : "test"
+         "title" : "step 1"
       }
    ],
    "title" : "menuitem"

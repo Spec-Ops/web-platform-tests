@@ -12,10 +12,75 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "menuitemradio",
    "steps" : [
       {
          "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_RADIO_MENU_ITEM"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_CHECKABLE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_CHECKED"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "MenuItem"
+               ],
+               [
+                  "property",
+                  "Toggle",
+                  "contains",
+                  "ToggleState:Off"
+               ],
+               [
+                  "property",
+                  "SelectItem Pattern",
+                  "isNot",
+                  ""
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "anyOf",
+                  "[ROLE_SYSTEM_MENUITEM, ROLE_SYSTEM_CHECKBUTTON]"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -42,68 +107,6 @@
                   "<nil>"
                ]
             ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "anyOf",
-                  "[ROLE_SYSTEM_MENUITEM, ROLE_SYSTEM_CHECKBUTTON]"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "MenuItem"
-               ],
-               [
-                  "property",
-                  "Toggle",
-                  "contains",
-                  "ToggleState:Off"
-               ],
-               [
-                  "property",
-                  "SelectItem Pattern",
-                  "isNot",
-                  ""
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_RADIO_MENU_ITEM"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_CHECKABLE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "STATE_CHECKED"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
@@ -118,12 +121,9 @@
                   "checkable:true"
                ]
             ]
-         },
-         "element" : "test",
-         "type" : "test"
+         }
       }
-   ],
-   "title" : "menuitemradio"
+   ]
 }
 
     ) ;

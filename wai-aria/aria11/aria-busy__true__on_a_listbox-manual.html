@@ -12,9 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "aria-busy=\"true\" on a listbox",
    "steps" : [
       {
-         "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
          "test" : {
             "UIA" : [
                [
@@ -28,6 +30,34 @@
                   "AriaProperties.busy",
                   "is",
                   "true"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_LISTBOX"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY"
                ]
             ],
             "ATK" : [
@@ -81,41 +111,11 @@
                   "is",
                   "true"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_LISTBOX"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_BUSY"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
             ]
          },
-         "element" : "test",
-         "type" : "test"
+         "title" : "step 1"
       }
-   ],
-   "title" : "aria-busy=\"true\" on a listbox"
+   ]
 }
 
     ) ;

@@ -12,25 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "aria-level",
    "steps" : [
       {
-         "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
          "test" : {
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_HEADING"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "level:\"2"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
@@ -42,47 +28,13 @@
                   "property",
                   "objectAttributes",
                   "contains",
-                  "level:\"2"
+                  "level:2"
                ],
                [
                   "property",
                   "objectAttributes",
                   "contains",
                   "xml-roles:heading"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Text"
-               ],
-               [
-                  "property",
-                  "StyleId_Heading2",
-                  "is",
-                  "present"
-               ],
-               [
-                  "property",
-                  "AriaProperties.level",
-                  "contains",
-                  "2"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -110,12 +62,60 @@
                   "is",
                   "2"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Text"
+               ],
+               [
+                  "property",
+                  "StyleId_Heading2",
+                  "is",
+                  "present"
+               ],
+               [
+                  "property",
+                  "AriaProperties.level",
+                  "contains",
+                  "2"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_HEADING"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "level:2"
+               ]
             ]
          },
-         "type" : "test",
-         "element" : "test"
+         "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "aria-level"
 }
 
     ) ;

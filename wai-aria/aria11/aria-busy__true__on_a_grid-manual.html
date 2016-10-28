@@ -14,36 +14,8 @@
     {
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
          "title" : "step 1",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXTable"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "grid"
-               ],
-               [
-                  "property",
-                  "AXElementBusy",
-                  "is",
-                  "true"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -137,8 +109,36 @@
                   "contains",
                   "IAccessibleTable2"
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTable"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "grid"
+               ],
+               [
+                  "property",
+                  "AXElementBusy",
+                  "is",
+                  "true"
+               ]
             ]
-         }
+         },
+         "type" : "test",
+         "element" : "test"
       }
    ],
    "title" : "aria-busy=\"true\" on a grid"

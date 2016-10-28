@@ -14,82 +14,9 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
+         "type" : "test",
+         "element" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXTable"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "grid"
-               ],
-               [
-                  "property",
-                  "AXElementBusy",
-                  "is",
-                  "false"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_BUSY cleared"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "DataGrid"
-               ],
-               [
-                  "property",
-                  "Selection Pattern",
-                  "is",
-                  "<shown>"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "false"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -128,6 +55,80 @@
                   "STATE_BUSY"
                ]
             ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "DataGrid"
+               ],
+               [
+                  "property",
+                  "Selection Pattern",
+                  "is",
+                  "<shown>"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "false"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY cleared"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTable"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "grid"
+               ],
+               [
+                  "property",
+                  "AXElementBusy",
+                  "is",
+                  "false"
+               ]
+            ],
             "IAccessible2" : [
                [
                   "property",
@@ -143,8 +144,7 @@
                ]
             ]
          },
-         "element" : "test",
-         "type" : "test"
+         "title" : "step 1"
       }
    ],
    "title" : "aria-busy=\"false\" on a grid"

@@ -15,27 +15,15 @@
    "title" : "role button with aria-roledescription empty",
    "steps" : [
       {
+         "element" : "test",
+         "type" : "test",
          "test" : {
-            "MSAA" : [
+            "IAccessible2" : [
                [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_PUSHBUTTON"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
+                  "result",
+                  "IAccessible2_2.localizedExtendedRole",
                   "contains",
-                  "TableCell"
+                  "null"
                ]
             ],
             "AXAPI" : [
@@ -58,12 +46,40 @@
                   "button"
                ]
             ],
-            "IAccessible2" : [
+            "UIA" : [
                [
-                  "result",
-                  "IAccessible2_2.localizedExtendedRole",
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Button"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "is",
+                  "Button"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_PUSHBUTTON"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
                   "contains",
-                  "null"
+                  "TableCell"
                ]
             ],
             "ATK" : [
@@ -79,25 +95,9 @@
                   "doesNotContain",
                   "roledescription"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Button"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "is",
-                  "Button"
-               ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test",
-         "type" : "test"
+         "title" : "step 1"
       }
    ]
 }
