@@ -15,65 +15,8 @@
    "title" : "aria-keyshortcuts",
    "steps" : [
       {
-         "element" : "test",
          "type" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Button"
-               ],
-               [
-                  "property",
-                  "AcceleratorKey",
-                  "is",
-                  "Shift+Space"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_PUSHBUTTON"
-               ],
-               [
-                  "property",
-                  "accKeyboardShortcut",
-                  "is",
-                  "Shift+Space"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_PUSH_BUTTON"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "keyshortcuts:Shift+Space"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -99,9 +42,66 @@
                   "is",
                   "true"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_PUSHBUTTON"
+               ],
+               [
+                  "property",
+                  "accKeyboardShortcut",
+                  "is",
+                  "Shift+Space"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_PUSH_BUTTON"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "keyshortcuts:Shift+Space"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Button"
+               ],
+               [
+                  "property",
+                  "AcceleratorKey",
+                  "is",
+                  "Shift+Space"
+               ]
             ]
          },
-         "title" : "step 1"
+         "title" : "step 1",
+         "element" : "test"
       }
    ]
 }

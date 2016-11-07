@@ -15,8 +15,9 @@
    "title" : "aria-busy=\"true\" on a listbox",
    "steps" : [
       {
-         "element" : "test",
          "type" : "test",
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
             "UIA" : [
                [
@@ -30,6 +31,32 @@
                   "AriaProperties.busy",
                   "is",
                   "true"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_LIST_BOX"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Selection"
+               ],
+               [
+                  "result",
+                  "Selection.select_child(1)",
+                  "is",
+                  "false"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_BUSY"
                ]
             ],
             "WAIFAKE" : [
@@ -60,32 +87,6 @@
                   "STATE_SYSTEM_BUSY"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_LIST_BOX"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Selection"
-               ],
-               [
-                  "result",
-                  "Selection.select_child(1)",
-                  "is",
-                  "false"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_BUSY"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -112,8 +113,7 @@
                   "true"
                ]
             ]
-         },
-         "title" : "step 1"
+         }
       }
    ]
 }

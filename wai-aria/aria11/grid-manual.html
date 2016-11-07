@@ -15,8 +15,73 @@
    "steps" : [
       {
          "type" : "test",
+         "title" : "step 1",
          "element" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "interfaces",
+                  "doesNotContain",
+                  "IAccessibleTable2"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTable"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "grid"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "DataGrid",
+                  "isNot",
+                  ""
+               ],
+               [
+                  "property",
+                  "Selection pattern TODO",
+                  "isNot",
+                  ""
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -42,73 +107,8 @@
                   "contains",
                   "Selection"
                ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "DataGrid",
-                  "isNot",
-                  ""
-               ],
-               [
-                  "property",
-                  "Selection pattern TODO",
-                  "isNot",
-                  ""
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXTable"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "grid"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "interfaces",
-                  "doesNotContain",
-                  "IAccessibleTable2"
-               ]
             ]
-         },
-         "title" : "step 1"
+         }
       }
    ],
    "title" : "grid"

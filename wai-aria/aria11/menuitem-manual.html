@@ -12,8 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "menuitem",
    "steps" : [
       {
+         "type" : "test",
          "test" : {
             "ATK" : [
                [
@@ -33,6 +35,20 @@
                   "objectAttributes",
                   "contains",
                   "setsize:8"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "UIA" : [
@@ -55,26 +71,30 @@
                   "setsize:8"
                ]
             ],
-            "MSAA" : [
+            "IAccessible2" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_MENUITEM"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
                ],
                [
                   "property",
-                  "interfaces",
+                  "objectAttributes",
                   "contains",
-                  "TableCell"
+                  "setsize:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:4"
                ]
             ],
             "AXAPI" : [
@@ -109,39 +129,19 @@
                   "8"
                ]
             ],
-            "IAccessible2" : [
+            "MSAA" : [
                [
                   "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "similarItemsInGroup:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "positionInGroup:4"
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_MENUITEM"
                ]
             ]
          },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "element" : "test"
       }
-   ],
-   "title" : "menuitem"
+   ]
 }
 
     ) ;

@@ -12,42 +12,39 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "search",
    "steps" : [
       {
+         "type" : "test",
          "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "IAccessible2" : [
+            "WAIFAKE" : [
                [
                   "property",
                   "role",
                   "is",
-                  "IA2_ROLE_LANDMARK"
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_LANDMARK"
                ],
                [
                   "property",
                   "objectAttributes",
                   "contains",
                   "xml-roles:search"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXLandmarkSearch"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "search"
                ]
             ],
             "UIA" : [
@@ -76,26 +73,32 @@
                   "search"
                ]
             ],
-            "WAIFAKE" : [
+            "AXAPI" : [
                [
                   "property",
-                  "role",
+                  "AXRole",
                   "is",
-                  "ROLE_TABLE_CELL"
+                  "AXGroup"
                ],
                [
                   "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "AXSubrole",
+                  "is",
+                  "AXLandmarkSearch"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "search"
                ]
             ],
-            "ATK" : [
+            "IAccessible2" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_LANDMARK"
+                  "IA2_ROLE_LANDMARK"
                ],
                [
                   "property",
@@ -104,12 +107,9 @@
                   "xml-roles:search"
                ]
             ]
-         },
-         "type" : "test",
-         "element" : "test"
+         }
       }
-   ],
-   "title" : "search"
+   ]
 }
 
     ) ;

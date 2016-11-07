@@ -12,8 +12,12 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "aria-busy=\"true\" on a menubar",
    "steps" : [
       {
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1",
          "test" : {
             "WAIFAKE" : [
                [
@@ -27,40 +31,6 @@
                   "interfaces",
                   "contains",
                   "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_MENUBAR"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_BUSY"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "MenuBar"
-               ],
-               [
-                  "property",
-                  "Selection Pattern",
-                  "is",
-                  "<shown>"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "true"
                ]
             ],
             "ATK" : [
@@ -93,6 +63,26 @@
                   "states",
                   "contains",
                   "STATE_BUSY"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "MenuBar"
+               ],
+               [
+                  "property",
+                  "Selection Pattern",
+                  "is",
+                  "<shown>"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
                ]
             ],
             "IAccessible2" : [
@@ -128,14 +118,24 @@
                   "is",
                   "true"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_MENUBAR"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY"
+               ]
             ]
-         },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
-   ],
-   "title" : "aria-busy=\"true\" on a menubar"
+   ]
 }
 
     ) ;

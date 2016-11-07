@@ -12,11 +12,30 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "aria-busy=\"false\" on a grid",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "DataGrid"
+               ],
+               [
+                  "property",
+                  "Selection Pattern",
+                  "is",
+                  "<shown>"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "false"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -55,26 +74,6 @@
                   "STATE_BUSY"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "DataGrid"
-               ],
-               [
-                  "property",
-                  "Selection Pattern",
-                  "is",
-                  "<shown>"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "false"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -103,6 +102,20 @@
                   "STATE_SYSTEM_BUSY cleared"
                ]
             ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:grid"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "IAccessibleTable2"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -128,26 +141,13 @@
                   "is",
                   "false"
                ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:grid"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "IAccessibleTable2"
-               ]
             ]
          },
-         "title" : "step 1"
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test"
       }
-   ],
-   "title" : "aria-busy=\"false\" on a grid"
+   ]
 }
 
     ) ;

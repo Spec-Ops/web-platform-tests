@@ -12,11 +12,71 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "searchbox-multiline",
    "steps" : [
       {
          "title" : "step 1",
+         "element" : "test",
          "test" : {
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_ENTRY"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_SINGLE_LINE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_MULTI_LINE"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "EditableText"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Edit"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "search box"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "multiline:true"
+               ]
+            ],
             "IAccessible2" : [
                [
                   "property",
@@ -57,26 +117,6 @@
                   "search text field"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Edit"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "search box"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "multiline:true"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -84,52 +124,12 @@
                   "is",
                   "ROLE_SYSTEM_TEXT"
                ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_ENTRY"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "STATE_SINGLE_LINE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_MULTI_LINE"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "EditableText"
-               ]
             ]
          },
-         "type" : "test",
-         "element" : "test"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "searchbox-multiline"
 }
 
     ) ;

@@ -12,11 +12,102 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "status",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Group"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "status"
+               ],
+               [
+                  "property",
+                  "LiveSettingProperty",
+                  "isNot",
+                  "1"
+               ],
+               [
+                  "property",
+                  "ExpandCollapse",
+                  "contains",
+                  "ExpandCollapseState:expanded"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_STATUSBAR"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live-role:status"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_EXPANDABLE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_EXPANDED"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_STATUSBAR"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_EXPANDED"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -62,104 +153,13 @@
                   "contains",
                   "container-live-role:status"
                ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_STATUSBAR"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "container-live:polite"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "live:polite"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "container-live-role:status"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_EXPANDABLE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "STATE_EXPANDED"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Group"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "status"
-               ],
-               [
-                  "property",
-                  "LiveSettingProperty",
-                  "isNot",
-                  "1"
-               ],
-               [
-                  "property",
-                  "ExpandCollapse",
-                  "contains",
-                  "ExpandCollapseState:expanded"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_STATUSBAR"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_EXPANDED"
-               ]
             ]
          },
-         "title" : "step 1"
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test"
       }
-   ],
-   "title" : "status"
+   ]
 }
 
     ) ;

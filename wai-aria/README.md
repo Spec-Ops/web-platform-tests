@@ -63,3 +63,22 @@ Writing Tests
 
 If you are interested in writing tests for this environment, see the
 associated [CONTRIBUTING](CONTRIBUTING.md) document.
+
+ATTA Information
+----------------
+
+Linux ATK / ATSPI
+
+MacOS AXAPI
+
+Windows IAccessible2
+
+The IAccessible2 ATTA is written in Python 2 (so as to be compatible with WPT) and
+relies upon a IAccessible2
+Proxy](https://wiki.linuxfoundation.org/accessibility/iaccessible2/comproxydll)
+supplied by the Linux Foundation.
+
+
+Windows MSAA
+
+Windows UIA

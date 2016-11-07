@@ -12,35 +12,18 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "default values: role=\"slider\"",
    "steps" : [
       {
+         "type" : "test",
          "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "IAccessible2" : [
+            "MSAA" : [
                [
                   "property",
-                  "interfaces",
-                  "contains",
-                  "AccessibleValue"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.minimumValue",
-                  "contains",
-                  "0"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.currentValue",
-                  "contains",
-                  "50"
-               ],
-               [
-                  "result",
-                  "AccessibleValue.maximumValue",
-                  "contains",
-                  "100"
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_SLIDER"
                ]
             ],
             "AXAPI" : [
@@ -78,6 +61,32 @@
                   "property",
                   "AXMaxValue",
                   "is",
+                  "100"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "AccessibleValue"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.minimumValue",
+                  "contains",
+                  "0"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.currentValue",
+                  "contains",
+                  "50"
+               ],
+               [
+                  "result",
+                  "AccessibleValue.maximumValue",
+                  "contains",
                   "100"
                ]
             ],
@@ -127,14 +136,6 @@
                   "TableCell"
                ]
             ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_SLIDER"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -167,11 +168,10 @@
                   "100"
                ]
             ]
-         },
-         "element" : "test",
-         "type" : "test"
+         }
       }
-   ]
+   ],
+   "title" : "default values: role=\"slider\""
 }
 
     ) ;

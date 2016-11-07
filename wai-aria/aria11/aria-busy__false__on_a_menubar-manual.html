@@ -12,9 +12,77 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "aria-busy=\"false\" on a menubar",
    "steps" : [
       {
+         "type" : "test",
          "test" : {
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_MENU_BAR"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:menubar"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Selection"
+               ],
+               [
+                  "result",
+                  "Selection.clear_selection()",
+                  "is",
+                  "false"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_BUSY"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "MenuBar"
+               ],
+               [
+                  "property",
+                  "Selection Pattern",
+                  "is",
+                  "<shown>"
+               ],
+               [
+                  "property",
+                  "AriaProperties.busy",
+                  "is",
+                  "false"
+               ]
+            ],
             "IAccessible2" : [
                [
                   "property",
@@ -49,40 +117,6 @@
                   "false"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "MenuBar"
-               ],
-               [
-                  "property",
-                  "Selection Pattern",
-                  "is",
-                  "<shown>"
-               ],
-               [
-                  "property",
-                  "AriaProperties.busy",
-                  "is",
-                  "false"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -96,46 +130,12 @@
                   "contains",
                   "STATE_SYSTEM_BUSY cleared"
                ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_MENU_BAR"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:menubar"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Selection"
-               ],
-               [
-                  "result",
-                  "Selection.clear_selection()",
-                  "is",
-                  "false"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "STATE_BUSY"
-               ]
             ]
          },
-         "type" : "test",
          "element" : "test",
          "title" : "step 1"
       }
-   ],
-   "title" : "aria-busy=\"false\" on a menubar"
+   ]
 }
 
     ) ;

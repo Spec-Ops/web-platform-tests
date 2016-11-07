@@ -12,8 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "log",
    "steps" : [
       {
+         "type" : "test",
          "test" : {
             "UIA" : [
                [
@@ -33,20 +35,6 @@
                   "LiveSettingProperty",
                   "isNot",
                   "Polite"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
                ]
             ],
             "ATK" : [
@@ -81,6 +69,40 @@
                   "container-live-role:log"
                ]
             ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXApplicationLog"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "log"
+               ]
+            ],
             "IAccessible2" : [
                [
                   "property",
@@ -106,34 +128,12 @@
                   "contains",
                   "container-live-role:log"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXApplicationLog"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "log"
-               ]
             ]
          },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "element" : "test"
       }
-   ],
-   "title" : "log"
+   ]
 }
 
     ) ;

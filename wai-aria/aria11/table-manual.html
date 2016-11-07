@@ -15,8 +15,23 @@
    "steps" : [
       {
          "type" : "test",
+         "title" : "step 1",
          "element" : "test",
          "test" : {
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:table"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "doesNotContain",
+                  "IAccessibleTable2"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -35,40 +50,6 @@
                   "AXRoleDescription",
                   "is",
                   "grid"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:table"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "doesNotContain",
-                  "IAccessibleTable2"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:table"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Table"
                ]
             ],
             "MSAA" : [
@@ -93,6 +74,26 @@
                   "TableCell"
                ]
             ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:table"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Table"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -113,8 +114,7 @@
                   ""
                ]
             ]
-         },
-         "title" : "step 1"
+         }
       }
    ],
    "title" : "table"

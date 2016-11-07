@@ -12,20 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "role button with aria-roledescription empty",
    "steps" : [
       {
-         "element" : "test",
          "type" : "test",
          "test" : {
-            "IAccessible2" : [
-               [
-                  "result",
-                  "IAccessible2_2.localizedExtendedRole",
-                  "contains",
-                  "null"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -46,18 +36,12 @@
                   "button"
                ]
             ],
-            "UIA" : [
+            "IAccessible2" : [
                [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Button"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "is",
-                  "Button"
+                  "result",
+                  "IAccessible2_2.localizedExtendedRole",
+                  "contains",
+                  "null"
                ]
             ],
             "MSAA" : [
@@ -66,6 +50,20 @@
                   "role",
                   "is",
                   "ROLE_SYSTEM_PUSHBUTTON"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_PUSH_BUTTON"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "doesNotContain",
+                  "roledescription"
                ]
             ],
             "WAIFAKE" : [
@@ -82,24 +80,26 @@
                   "TableCell"
                ]
             ],
-            "ATK" : [
+            "UIA" : [
                [
                   "property",
-                  "role",
+                  "Control Type",
                   "is",
-                  "ROLE_PUSH_BUTTON"
+                  "Button"
                ],
                [
                   "property",
-                  "objectAttributes",
-                  "doesNotContain",
-                  "roledescription"
+                  "Localized Control Type",
+                  "is",
+                  "Button"
                ]
             ]
          },
+         "element" : "test",
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "role button with aria-roledescription empty"
 }
 
     ) ;
