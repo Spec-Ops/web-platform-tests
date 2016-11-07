@@ -166,7 +166,7 @@ def collection_get(request, response):
 
 @wptserve.handlers.handler
 def collection_head(request, response):
-    container_path = doc_root + request.request_path
+    container_path = doc_root + request.url_parts.path
     if os.path.isdir(container_path):
         response.status = 200
     else:
@@ -182,7 +182,9 @@ def collection_head(request, response):
 
 @wptserve.handlers.handler
 def collection_options(request, response):
-    container_path = doc_root + request.request_path
+    # container_path = doc_root + request.request_path
+    container_path = doc_root + request.url_parts.path
+    print 'container_path is ' + container_path
     if os.path.isdir(container_path):
         response.status = 200
     else:
@@ -248,7 +250,7 @@ def page(request, response):
 @wptserve.handlers.handler
 def annotation_get(request, response):
     """Individual Annotations"""
-    requested_file = doc_root + request.request_path[1:]
+    requested_file = doc_root + request.url_parts.path
     base = os.path.basename( requested_file )
 
     headers_file = doc_root + 'annotations/annotation.headers'
@@ -286,7 +288,7 @@ def annotation_get(request, response):
 
 @wptserve.handlers.handler
 def annotation_head(request, response):
-    requested_file = doc_root + request.request_path[1:]
+    requested_file = doc_root + request.url_parts.path
     base = os.path.basename(requested_file)
 
     headers_file = doc_root + 'annotations/annotation.options.headers'
@@ -305,7 +307,7 @@ def annotation_head(request, response):
 
 @wptserve.handlers.handler
 def annotation_options(request, response):
-    requested_file = doc_root + request.request_path[1:]
+    requested_file = doc_root + request.url_parts.path
     base = os.path.basename(requested_file)
 
     headers_file = doc_root + 'annotations/annotation.options.headers'
@@ -376,8 +378,9 @@ def annotation_put(request, response):
 
 @wptserve.handlers.handler
 def annotation_delete(request, response):
-    base = os.path.basename(request.request_path[1:])
-    requested_file = doc_root + request.request_path[1:]
+    # base = os.path.basename(request.request_path[1:])
+    base = os.path.basename(request.url_parts.path)
+    requested_file = doc_root + request.url_parts.path
 
     add_cors_headers(response)
 
