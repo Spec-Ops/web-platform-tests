@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sample test that checks a11y events</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
+
+    var theTest = new ATTAcomm(
+    {
+   "title" : "events",
+   "steps" : [
+      {
+         "type" : "event",
+         "element" : "other",
+         "event" : "focus",
+         "title": "Put focus on something that is not a combobox",
+      },
+      {
+         "type" : "test",
+         "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_COMBO_BOX"
+               ]
+            ]
+         },
+         "title" : "check combobox roles",
+         "element" : "test"
+      },
+      {
+         "type" : "event",
+         "element" : "test",
+         "event" : "focus",
+         "title": "Put focus on the combobox",
+      },
+      {
+         "type" : "test",
+         "title" : "check focus events",
+         "element" : "test",
+         "test" : {
+            "ATK" : [
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:state-changed:focused"
+               ],
+               [
+                  "event",
+                  "element",
+                  "is",
+                  "other"
+               ],
+               [
+                  "event",
+                  "detail1",
+                  "is",
+                  "0"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:state-changed:focused"
+               ],
+               [
+                  "event",
+                  "element",
+                  "is",
+                  "test"
+               ],
+               [
+                  "event",
+                  "detail1",
+                  "is",
+                  "1"
+               ]
+            ]
+         },
+      },
+      {
+         "type" : "event",
+         "element" : "test",
+         "event" : "keydown",
+         "title": "expand the combobox",
+      },
+      {
+         "type" : "test",
+         "title" : "check expand event",
+         "element" : "test",
+         "test" : {
+            "ATK" : [
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:state-changed:expanded"
+               ],
+               [
+                  "event",
+                  "element",
+                  "is",
+                  "test"
+               ],
+               [
+                  "event",
+                  "detail1",
+                  "is",
+                  "1"
+               ]
+            ]
+         },
+      },
+      {
+         "type" : "event",
+         "element" : "test",
+         "event" : "keydown",
+         "title": "select an item",
+      },
+      {
+         "type" : "test",
+         "title" : "check item selected",
+         "element" : "test",
+         "test" : {
+            "ATK" : [
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:selection-changed"
+               ],
+               [
+                  "event",
+                  "element",
+                  "is",
+                  "test"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:state-changed:selected"
+               ],
+               [
+                  "event",
+                  "element",
+                  "is",
+                  "item0"
+               ],
+               [
+                  "event",
+                  "detail1",
+                  "is",
+                  "0"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:state-changed:selected"
+               ],
+               [
+                  "event",
+                  "element",
+                  "is",
+                  "item1"
+               ],
+               [
+                  "event",
+                  "detail1",
+                  "is",
+                  "1"
+               ],
+            ]
+         },
+      },
+   ]
+}
+
+    ) ;
+    </script>
+  </head>
+  <body>
+  <p>This test examines the ARIA properties for a text combobox.</p>
+  <p>This is a sentence with a selection list as combo-box: <a href="#test" id="other">link</a> to the next item
+  so that it can receive focus.</p>
+  <div>
+    <p>Here is a paragraph with a
+    <select id="test" name="test" size="1">
+      <option id="item0"></option>
+      <option id="item1">item 1</option>
+      <option id="item2">item 2</option>
+      <option id="item3">item 3</option>
+      <option id="itemlast">last item</option>
+    </select>
+    </p>
+  </div>
+
+  <div id="manualMode"></div>
+  <div id="log"></div>
+  <div id="ATTAmessages"></div>
+  </body>
+</html>
+
