@@ -83,6 +83,47 @@ def get_params(request, params):
 
     return resp
 
+def listenFor(request):
+    listenResp = {
+            "status":     "READY",
+            "statusText": "",
+            "log":        ""
+            }
+
+    params = get_params(request, [ 'events' ])
+
+    if (params['error'] == ""):
+        # we got the input we wanted
+
+        # element to be examined is in the id parameter
+        # data to check is in the data parameter
+        if debug:
+            print ("Handling events")
+
+        try:
+            theEvents = params['events']
+
+            # loop over each item and update the results
+
+            for event in theEvents:
+                print("Looking for event " + event)
+                listenResp['log'] += "   listening for " + event + "\n";
+
+        except Exception as ex:
+            template = "An exception of type {0} occured. Arguments:\n{1!r}"
+            message = template.format(type(ex).__name__, ex.args)
+            print("ERROR: " + message)
+            listenResp['status'] = "ERROR"
+            listenResp['statusText'] += message
+
+    else:
+        listenResp['status'] = "ERROR"
+        listenResp['statusText'] = params['error']
+
+    request.send_response(200)
+    add_aria_headers(request)
+    request.wfile.write(bytes(dump_json(listenResp), "utf-8"))
+
 def runTests(request):
     runResp = {
             "status":     "OK",
@@ -208,6 +249,8 @@ class theServer(BaseHTTPRequestHandler):
         myPath = self.path
         if (myPath.endswith('start')):
             startTest(self)
+        elif (myPath.endswith('listen')):
+            listenFor(self)
         elif (myPath.endswith('end')):
             endTest(self)
         elif (myPath.endswith('test')):
