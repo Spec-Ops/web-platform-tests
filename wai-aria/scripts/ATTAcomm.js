@@ -322,13 +322,29 @@ ATTAcomm.prototype = {
   raiseEvent: function(testNum, subtest) {
     "use strict";
     if (subtest) {
+      var kp = function(target, key) {
+        var evt = document.createEvent("KeyboardEvent");
+        evt.initKeyEvent ("keypress", true, true, window,
+                          0, 0, 0, 0, 0, "e".charCodeAt(0))
+        target.dispatchEvent(evt);
+      };
       if (subtest.hasOwnProperty("event") && subtest.hasOwnProperty("element")) {
-        // execute the script
+        // throw an event
         try {
           var node = document.getElementById(subtest.element);
           if (node) {
-            var ev = new Event(subtest.event);
-            node.dispatchEvent(ev);
+            if (subtest.event === "focus") {
+              node.focus();
+            } else if (subtest.event === "select") {
+              node.click();
+            } else if (subtest.event.startsWith('key:')) {
+              var key = subtest.event.replace('key:', '');
+              var evt = new KeyboardEvent("keypress", { "key": key});
+              node.dispatchEvent(evt);
+            } else {
+              var evt = new Event(subtest.element);
+              node.dispatchEvent(evt);
+            }
           }
         }
         catch (e) {
