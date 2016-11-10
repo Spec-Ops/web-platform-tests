@@ -43,8 +43,8 @@
       },
       {
          "type" : "test",
-         "title" : "check focus events",
-         "element" : "test",
+         "title" : "check that focus was removed",
+         "element" : "other",
          "test" : {
             "ATK" : [
                [
@@ -55,27 +55,24 @@
                ],
                [
                   "event",
-                  "element",
-                  "is",
-                  "other"
-               ],
-               [
-                  "event",
                   "detail1",
                   "is",
                   "0"
-               ],
+               ]
+            ]
+         },
+      },
+      {
+         "type" : "test",
+         "title" : "check that focus is now on combobox",
+         "element" : "test",
+         "test" : {
+            "ATK" : [
                [
                   "event",
                   "type",
                   "is",
                   "object:state-changed:focused"
-               ],
-               [
-                  "event",
-                  "element",
-                  "is",
-                  "test"
                ],
                [
                   "event",
@@ -89,7 +86,7 @@
       {
          "type" : "event",
          "element" : "test",
-         "event" : "keydown",
+         "event" : "key:downarrow",
          "title": "expand the combobox",
       },
       {
@@ -106,12 +103,6 @@
                ],
                [
                   "event",
-                  "element",
-                  "is",
-                  "test"
-               ],
-               [
-                  "event",
                   "detail1",
                   "is",
                   "1"
@@ -122,12 +113,12 @@
       {
          "type" : "event",
          "element" : "test",
-         "event" : "keydown",
+         "event" : "key:enter",
          "title": "select an item",
       },
       {
          "type" : "test",
-         "title" : "check item selected",
+         "title" : "check selection changed",
          "element" : "test",
          "test" : {
             "ATK" : [
@@ -136,31 +127,37 @@
                   "type",
                   "is",
                   "object:selection-changed"
-               ],
-               [
-                  "event",
-                  "element",
-                  "is",
-                  "test"
-               ],
+               ]
+            ]
+         },
+      },
+      {
+         "type" : "test",
+         "title" : "check item0 deselected",
+         "element" : "item0",
+         "test" : {
+            "ATK" : [
                [
                   "event",
                   "type",
                   "is",
                   "object:state-changed:selected"
-               ],
-               [
-                  "event",
-                  "element",
-                  "is",
-                  "item0"
                ],
                [
                   "event",
                   "detail1",
                   "is",
                   "0"
-               ],
+               ]
+            ]
+         },
+      },
+      {
+         "type" : "test",
+         "title" : "check item1 selected",
+         "element" : "item1",
+         "test" : {
+            "ATK" : [
                [
                   "event",
                   "type",
@@ -169,16 +166,10 @@
                ],
                [
                   "event",
-                  "element",
-                  "is",
-                  "item1"
-               ],
-               [
-                  "event",
                   "detail1",
                   "is",
                   "1"
-               ],
+               ]
             ]
          },
       },
