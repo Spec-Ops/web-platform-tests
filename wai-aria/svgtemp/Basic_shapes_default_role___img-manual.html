@@ -14,14 +14,28 @@
     {
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
-            "MSAA" : [
+            "ATK" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SYSTEM_GRAPHIC"
+                  "ROLE_IMAGE"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -44,18 +58,12 @@
                   "image"
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "ROLE_SYSTEM_GRAPHIC"
                ]
             ],
             "UIA" : [
@@ -65,17 +73,9 @@
                   "isNot",
                   "Image"
                ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_IMAGE"
-               ]
             ]
          },
-         "element" : "test",
+         "type" : "test",
          "title" : "step 1"
       }
    ],
@@ -87,8 +87,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes default role = img.</p>
-   <rect id="test" aria-label="hello" x='10' y='10' width='50' height='30'/>
-
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect id="test" aria-label="hello" x='10' y='10' width='50' height='30'/>
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

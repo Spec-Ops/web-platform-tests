@@ -12,11 +12,13 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Elements no accessible object created",
    "steps" : [
       {
+         "title" : "step 1",
          "type" : "test",
          "test" : {
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -25,14 +27,6 @@
                ]
             ],
             "MSAA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -54,7 +48,15 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -63,11 +65,9 @@
                ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
-   ],
-   "title" : "Elements no accessible object created"
+   ]
 }
 
     ) ;
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
-     <script type="text/javascript">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">   <script type="text/javascript">
     // <![CDATA[
     function change(evt) {
       var target = evt.target;
@@ -94,7 +94,7 @@
 
   <circle cx="50" cy="50" r="45" fill="green"
           onclick="change(evt)" />
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

@@ -12,12 +12,17 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Title is description",
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -32,14 +37,6 @@
                   "AXHelp",
                   "is",
                   "abc"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
                ]
             ],
             "WAIFAKE" : [
@@ -77,9 +74,12 @@
                ]
             ]
          },
+         "element" : "test",
+         "title" : "step 1",
          "type" : "test"
       }
-   ]
+   ],
+   "title" : "Title is description"
 }
 
     ) ;
@@ -87,11 +87,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Title is description.</p>
-   <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
  <text
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

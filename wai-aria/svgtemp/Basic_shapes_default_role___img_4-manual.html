@@ -18,12 +18,18 @@
          "title" : "step 1",
          "type" : "test",
          "test" : {
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_SYSTEM_GRAPHIC"
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -46,6 +52,14 @@
                   "image"
                ]
             ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_IMAGE"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -54,26 +68,12 @@
                   "Image"
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_IMAGE"
+                  "ROLE_SYSTEM_GRAPHIC"
                ]
             ]
          },
@@ -87,7 +87,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes default role = img.</p>
-   <mesh x="50" y="50" id="test" aria-label="hello">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <mesh x="50" y="50" id="test" aria-label="hello">
  <meshrow> <meshpatch> <stop path="c  25,-25  75, 25  100,0" stop-color="lightblue" /> <stop path="c  25, 25 -25, 75  0,100" stop-color="purple" /> <stop path="c -25, 25 -75,-25 -100,0" stop-color="red" /> <stop path="c -25,-25, 25,-75" stop-color="purple" /> </meshpatch>
  <meshpatch>
  <stop path="c  25,-25  75, 25  100,0" /> <stop path="c  25, 25 -25, 75  0,100" stop-color="lightblue" /> <stop path="c -25, 25 -75,-25" stop-color="purple" />
@@ -105,7 +105,7 @@
  </meshpatch>
  </meshrow>
  </mesh>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

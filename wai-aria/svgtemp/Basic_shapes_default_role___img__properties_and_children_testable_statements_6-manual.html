@@ -14,46 +14,16 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
          "type" : "test",
+         "title" : "step 1",
          "element" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Image"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
                   "role",
                   "is",
                   "ROLE_IMAGE"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GRAPHIC"
                ]
             ],
             "AXAPI" : [
@@ -75,6 +45,36 @@
                   "is",
                   "image"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
+               ]
             ]
          }
       }
@@ -87,8 +87,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes default role = img, properties and children testable statements.</p>
-   <circle id="test" aria-label="hello" cx='10' cy='10' r='5'/>
-
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-label="hello" cx='10' cy='10' r='5'/>
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

@@ -15,8 +15,9 @@
    "title" : "Elements no accessible object created",
    "steps" : [
       {
+         "element" : "test",
          "test" : {
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -32,7 +33,7 @@
                   "false"
                ]
             ],
-            "ATK" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -54,7 +55,7 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -63,7 +64,6 @@
                ]
             ]
          },
-         "element" : "test",
          "type" : "test",
          "title" : "step 1"
       }
@@ -75,10 +75,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
-   <hatch hatchUnits="userSpaceOnUse" pitch="5" rotate="135">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <hatch hatchUnits="userSpaceOnUse" pitch="5" rotate="135">
  <hatchpath  id="test" stroke="#a080ff" stroke-width="2"/>
  </hatch>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

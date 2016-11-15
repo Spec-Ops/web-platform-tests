@@ -16,7 +16,7 @@
    "steps" : [
       {
          "title" : "step 1",
-         "element" : "test",
+         "type" : "test",
          "test" : {
             "UIA" : [
                [
@@ -24,6 +24,14 @@
                   "control type",
                   "isNot",
                   "group"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GROUPING"
                ]
             ],
             "WAIFAKE" : [
@@ -38,22 +46,6 @@
                   "interfaces",
                   "contains",
                   "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_PANEL"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GROUPING"
                ]
             ],
             "AXAPI" : [
@@ -75,9 +67,17 @@
                   "is",
                   "graphics object"
                ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_PANEL"
+               ]
             ]
          },
-         "type" : "test"
+         "element" : "test"
       }
    ]
 }
@@ -87,9 +87,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text elements.</p>
-   <text id="test" x="250" y="180" font-family="Verdana" font-size="64" fill="blue">Hello, out
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="250" y="180" font-family="Verdana" font-size="64" fill="blue">Hello, out
 
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

@@ -15,17 +15,22 @@
    "title" : "Elements no accessible object created",
    "steps" : [
       {
-         "element" : "test",
          "test" : {
-            "AXAPI" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "accessible",
-                  "exists",
-                  "false"
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -49,23 +54,18 @@
                   "false"
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "accessible",
+                  "exists",
+                  "false"
                ]
             ]
          },
-         "type" : "test",
-         "title" : "step 1"
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test"
       }
    ]
 }
@@ -75,12 +75,12 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
-   <path id="path1" d="M100,250 C 100,50 400,50 400,250" fill="none" stroke="blue" stroke-width="7.06"  />
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="path1" d="M100,250 C 100,50 400,50 400,250" fill="none" stroke="blue" stroke-width="7.06"  />
  <path d="M-25,-12.5 L25,-12.5 L 0,-87.5 z" fill="yellow" stroke="red" stroke-width="7.06" >
  <animateMotion id="test" dur="6s" repeatCount="indefinite" rotate="auto" > <mpath href="#path1"/>
  </animateMotion>
  </path>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

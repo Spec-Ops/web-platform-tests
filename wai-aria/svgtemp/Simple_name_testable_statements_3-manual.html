@@ -16,6 +16,7 @@
    "steps" : [
       {
          "type" : "test",
+         "title" : "step 1",
          "element" : "test",
          "test" : {
             "ATK" : [
@@ -32,6 +33,14 @@
                   "[t1]"
                ]
             ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "end"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -44,6 +53,22 @@
                   "interfaces",
                   "contains",
                   "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "end"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "relation",
+                  "IA2_RELATION_LABELLED_BY",
+                  "is",
+                  "[t1]"
                ]
             ],
             "UIA" : [
@@ -59,33 +84,8 @@
                   "is",
                   "[t1]"
                ]
-            ],
-            "IAccessible2" : [
-               [
-                  "relation",
-                  "IA2_RELATION_LABELLED_BY",
-                  "is",
-                  "[t1]"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "end"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "end"
-               ]
             ]
-         },
-         "title" : "step 1"
+         }
       }
    ]
 }
@@ -95,11 +95,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Simple name testable statements.</p>
-   <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
  <text id="t1" x="40" y="90">end</text>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

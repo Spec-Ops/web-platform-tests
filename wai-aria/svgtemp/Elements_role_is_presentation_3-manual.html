@@ -14,21 +14,16 @@
     {
    "steps" : [
       {
+         "type" : "test",
          "title" : "step 1",
          "element" : "test",
          "test" : {
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "accessible",
+                  "exists",
+                  "false"
                ]
             ],
             "UIA" : [
@@ -47,12 +42,18 @@
                   "false"
                ]
             ],
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "accessible",
-                  "exists",
-                  "false"
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -63,8 +64,7 @@
                   "false"
                ]
             ]
-         },
-         "type" : "test"
+         }
       }
    ],
    "title" : "Elements role is presentation"
@@ -75,9 +75,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements role is presentation.</p>
-   <image id="test" x="200" y="200" width="100px" height="100px" href="myimage.png" role="presentation">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image id="test" x="200" y="200" width="100px" height="100px" href="myimage.png" role="presentation">
  </image>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

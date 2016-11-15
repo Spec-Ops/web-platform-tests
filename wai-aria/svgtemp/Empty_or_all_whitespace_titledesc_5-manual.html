@@ -14,12 +14,29 @@
     {
    "steps" : [
       {
-         "element" : "test",
+         "title" : "step 1",
+         "type" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "empty",
+                  "true"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
                   "Name",
+                  "empty",
+                  "true"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
                   "empty",
                   "true"
                ]
@@ -38,22 +55,6 @@
                   "TableCell"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "empty",
-                  "true"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "empty",
-                  "true"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -63,8 +64,7 @@
                ]
             ]
          },
-         "type" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
    ],
    "title" : "Empty or all whitespace title/desc"
@@ -75,12 +75,12 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Empty or all whitespace title/desc.</p>
-   <circle id="test" cx='10' cy='10' r='5'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" cx='10' cy='10' r='5'>
    <title>
  </title>
  <desc>   </desc>
  </circle>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

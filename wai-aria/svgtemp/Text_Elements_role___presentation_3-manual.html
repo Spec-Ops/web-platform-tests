@@ -14,8 +14,18 @@
     {
    "steps" : [
       {
+         "type" : "test",
          "title" : "step 1",
+         "element" : "test",
          "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -30,7 +40,7 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -38,7 +48,7 @@
                   "false"
                ]
             ],
-            "ATK" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -53,18 +63,8 @@
                   "exists",
                   "false"
                ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
-         },
-         "element" : "test",
-         "type" : "test"
+         }
       }
    ],
    "title" : "Text Elements role = presentation"
@@ -75,8 +75,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text Elements role = presentation.</p>
-   <text x="100" y="180" fill="blue" >But you <tspan id="test" dx="2em" dy="-50" font-weight="bold"
-
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text x="100" y="180" fill="blue" >But you <tspan id="test" dx="2em" dy="-50" font-weight="bold"
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

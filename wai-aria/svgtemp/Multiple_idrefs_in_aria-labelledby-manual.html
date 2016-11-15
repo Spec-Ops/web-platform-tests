@@ -14,22 +14,9 @@
     {
    "steps" : [
       {
+         "title" : "step 1",
          "type" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "UIA" : [
                [
                   "property",
@@ -41,20 +28,6 @@
                   "property",
                   "LabelledBy",
                   "isNot",
-                  "[t1,t2]"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "is",
-                  "the end"
-               ],
-               [
-                  "relation",
-                  "RELATION_LABELLED_BY",
-                  "is",
                   "[t1,t2]"
                ]
             ],
@@ -74,6 +47,20 @@
                   "[t1,t2]"
                ]
             ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -81,10 +68,23 @@
                   "is",
                   "the end"
                ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "is",
+                  "the end"
+               ],
+               [
+                  "relation",
+                  "RELATION_LABELLED_BY",
+                  "is",
+                  "[t1,t2]"
+               ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
    ],
    "title" : "Multiple idrefs in aria-labelledby"
@@ -95,9 +95,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Multiple idrefs in aria-labelledby.</p>
-   <circle id="test" aria-labelledby="t1 t2" cx='50' cy='100' r='15'/>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1 t2" cx='50' cy='100' r='15'/>
  <text id="t1" x="40" y="90">the</text> <text id="t2" x="140" y="90">end</text>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

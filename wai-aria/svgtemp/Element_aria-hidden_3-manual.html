@@ -12,26 +12,12 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Element aria-hidden",
    "steps" : [
       {
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -46,7 +32,7 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -61,13 +47,27 @@
                   "exists",
                   "false"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
-         },
-         "element" : "test",
-         "type" : "test",
-         "title" : "step 1"
+         }
       }
-   ]
+   ],
+   "title" : "Element aria-hidden"
 }
 
     ) ;
@@ -75,10 +75,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Element aria-hidden.</p>
-   <polygon id="test" fill="magenta" points="850,75 958,137.5 958,262.5 850,325 742,262.6 742,137.5" aria-hidden="true" >
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <polygon id="test" fill="magenta" points="850,75 958,137.5 958,262.5 850,325 742,262.6 742,137.5" aria-hidden="true" >
  <desc>built up area</desc>
  </polygon>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

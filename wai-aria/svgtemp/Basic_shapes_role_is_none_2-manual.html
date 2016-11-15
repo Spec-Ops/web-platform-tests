@@ -15,9 +15,8 @@
    "title" : "Basic shapes role is none",
    "steps" : [
       {
-         "title" : "step 1",
          "test" : {
-            "AXAPI" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -25,7 +24,7 @@
                   "false"
                ]
             ],
-            "MSAA" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -41,7 +40,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -65,6 +64,7 @@
             ]
          },
          "element" : "test",
+         "title" : "step 1",
          "type" : "test"
       }
    ]
@@ -75,8 +75,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes role is none.</p>
-   <rect id="test" x='10' y='10' width='50' height='30' role="none"/>
-
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect id="test" x='10' y='10' width='50' height='30' role="none"/>
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

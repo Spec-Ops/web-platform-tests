@@ -16,24 +16,8 @@
    "steps" : [
       {
          "title" : "step 1",
-         "element" : "test",
+         "type" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXHelp",
-                  "is",
-                  "<empty>"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accDescription",
-                  "empty",
-                  "true"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -68,6 +52,22 @@
                   "TableCell"
                ]
             ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXHelp",
+                  "is",
+                  "<empty>"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accDescription",
+                  "empty",
+                  "true"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -77,7 +77,7 @@
                ]
             ]
          },
-         "type" : "test"
+         "element" : "test"
       }
    ]
 }
@@ -87,11 +87,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Empty aria-describedby testable statements.</p>
-   <circle id="test" aria-describedby="" cx='50' cy='100' r='15'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-describedby="" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
 
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

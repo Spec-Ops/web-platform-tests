@@ -15,23 +15,22 @@
    "title" : "Empty or all whitespace title/desc",
    "steps" : [
       {
-         "type" : "test",
          "element" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
                   "accDescription",
                   "empty",
                   "true"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXHelp",
-                  "is",
-                  "<empty>"
                ]
             ],
             "WAIFAKE" : [
@@ -48,12 +47,12 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
-                  "TBD",
-                  "",
-                  "",
-                  ""
+                  "property",
+                  "AXHelp",
+                  "is",
+                  "<empty>"
                ]
             ],
             "ATK" : [
@@ -77,6 +76,7 @@
                ]
             ]
          },
+         "type" : "test",
          "title" : "step 1"
       }
    ]
@@ -87,11 +87,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Empty or all whitespace title/desc.</p>
-   <polygon id="test" fill="magenta" points="850,75 958,137.5 958,262.5 850,325 742,262.6 742,137.5" >
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <polygon id="test" fill="magenta" points="850,75 958,137.5 958,262.5 850,325 742,262.6 742,137.5" >
  <desc>
  </desc>
  </polygon>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

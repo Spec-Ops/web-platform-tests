@@ -14,9 +14,24 @@
     {
    "steps" : [
       {
-         "type" : "test",
          "element" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -39,14 +54,6 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Image"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -66,16 +73,9 @@
                   "is",
                   "image"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_GRAPHIC"
-               ]
             ]
          },
+         "type" : "test",
          "title" : "step 1"
       }
    ],
@@ -87,11 +87,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Path default role = img, properties and children testable statements.</p>
-   <path id="test" aria-labelledby="t1" aria-label="down" d="M 100 100 L 300 100 L 200 300 z"
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-labelledby="t1" aria-label="down" d="M 100 100 L 300 100 L 200 300 z"
  <desc>abc</desc>
  </path>
  <text id="t1" x="40" y="90">end</text>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

@@ -15,21 +15,23 @@
    "title" : "Title is same as accessible name",
    "steps" : [
       {
+         "title" : "step 1",
+         "type" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXHelp",
-                  "is",
-                  "<empty>"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
                   "accDescription",
                   "empty",
                   "true"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
                ]
             ],
             "ATK" : [
@@ -52,14 +54,6 @@
                   "test"
                ]
             ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -73,11 +67,17 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXHelp",
+                  "is",
+                  "<empty>"
+               ]
             ]
          },
-         "element" : "test",
-         "type" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
    ]
 }
@@ -87,10 +87,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Title is same as accessible name.</p>
-   <circle id="test" aria-label="bob" cx='50' cy='100' r='15'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-label="bob" cx='50' cy='100' r='15'>
    <title>bob</title>
  </circle>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

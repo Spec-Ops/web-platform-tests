@@ -15,8 +15,17 @@
    "title" : "Name from content testable statements",
    "steps" : [
       {
+         "title" : "step 1",
          "type" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "is",
+                  "end"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -31,18 +40,10 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "Name",
-                  "is",
-                  "end"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
+                  "AXDescription",
                   "is",
                   "end"
                ]
@@ -55,17 +56,16 @@
                   "end"
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
-                  "AXDescription",
+                  "Name",
                   "is",
                   "end"
                ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
    ]
 }
@@ -75,8 +75,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Name from content testable statements.</p>
-   <text id="test" x="40" y="90">end</text>
-
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text id="test" x="40" y="90">end</text>
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

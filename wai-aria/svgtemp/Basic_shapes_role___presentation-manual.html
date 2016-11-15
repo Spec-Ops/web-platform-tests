@@ -12,10 +12,14 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Basic shapes role = presentation",
    "steps" : [
       {
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -31,15 +35,7 @@
                   "false"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -60,14 +56,18 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
-         },
-         "element" : "test",
-         "type" : "test",
-         "title" : "step 1"
+         }
       }
-   ],
-   "title" : "Basic shapes role = presentation"
+   ]
 }
 
     ) ;
@@ -75,9 +75,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes role = presentation.</p>
-   <path id="test" d="M 100 100 L 300 100 L 200 300 z" fill="red" role="presentation" >
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" d="M 100 100 L 300 100 L 200 300 z" fill="red" role="presentation" >
  </path>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

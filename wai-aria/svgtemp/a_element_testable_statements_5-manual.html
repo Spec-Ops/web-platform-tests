@@ -12,25 +12,31 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "a element testable statements",
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
          "test" : {
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
                   "AXHelp",
                   "is",
                   "<empty>"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accDescription",
-                  "empty",
-                  "true"
                ]
             ],
             "ATK" : [
@@ -61,25 +67,19 @@
                   ""
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "accDescription",
+                  "empty",
+                  "true"
                ]
             ]
          },
-         "type" : "test"
+         "type" : "test",
+         "title" : "step 1"
       }
-   ],
-   "title" : "a element testable statements"
+   ]
 }
 
     ) ;
@@ -87,10 +87,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for a element testable statements.</p>
-   <a id="test" aria-labelledby="t1" aria-label="booth" href="../index.html" xlink:title="table" >
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <a id="test" aria-labelledby="t1" aria-label="booth" href="../index.html" xlink:title="table" >
  </a>
  <text id="t1" x="40" y="90">end</text>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

@@ -14,7 +14,6 @@
     {
    "steps" : [
       {
-         "type" : "test",
          "element" : "test",
          "test" : {
             "ATK" : [
@@ -39,14 +38,6 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -62,8 +53,17 @@
                   "exists",
                   "false"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
          },
+         "type" : "test",
          "title" : "step 1"
       }
    ],
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Filter elements no accessible object created.</p>
-    <defs>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">  <defs>
     <filter id="shadow">
       <feDropShadow id='test' dx="4" dy="8" stdDeviation="4"/>
     </filter>
@@ -83,7 +83,7 @@
 
   <circle cx="50%" cy="50%" r="80"
       style="fill:blue; filter:url(#shadow);"/>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

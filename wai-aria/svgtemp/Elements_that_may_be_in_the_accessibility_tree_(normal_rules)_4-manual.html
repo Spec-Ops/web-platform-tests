@@ -12,9 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Elements that may be in the accessibility tree (normal rules)",
    "steps" : [
       {
+         "element" : "test",
          "test" : {
             "ATK" : [
                [
@@ -22,28 +22,6 @@
                   "role",
                   "is",
                   "ROLE_PANEL"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "group"
                ]
             ],
             "AXAPI" : [
@@ -66,6 +44,20 @@
                   "graphics object"
                ]
             ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -73,13 +65,21 @@
                   "is",
                   "ROLE_SYSTEM_GROUPING"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "group"
+               ]
             ]
          },
-         "element" : "test",
          "type" : "test",
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "Elements that may be in the accessibility tree (normal rules)"
 }
 
     ) ;
@@ -87,14 +87,14 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements that may be in the accessibility tree (normal rules).</p>
-   <svg id="test" width="4in" height="3in" xmlns="http://www.w3.org/2000/svg">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <svg id="test" width="4in" height="3in" xmlns="http://www.w3.org/2000/svg">
  <desc>This graphic links to an external image</desc>
  <image x="200" y="200" width="100px" height="100px"
 
    <title>My image</title>
  </image>
  </svg>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

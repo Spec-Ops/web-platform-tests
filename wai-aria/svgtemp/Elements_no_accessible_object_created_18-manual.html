@@ -14,7 +14,6 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
          "test" : {
             "MSAA" : [
@@ -25,7 +24,15 @@
                   "false"
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -47,15 +54,7 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "ATK" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -64,7 +63,8 @@
                ]
             ]
          },
-         "type" : "test"
+         "type" : "test",
+         "title" : "step 1"
       }
    ],
    "title" : "Elements no accessible object created"
@@ -75,12 +75,12 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
-   <radialGradient id="test" gradientUnits="userSpaceOnUse" cx="150" cy="100" r="100">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <radialGradient id="test" gradientUnits="userSpaceOnUse" cx="150" cy="100" r="100">
  <stop offset="0%"  stop-color="#A8F" />
  <stop offset="50%"  stop-color="#FDC" />
  <stop offset="100%" stop-color="#A8F" />
  </radialGradient>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

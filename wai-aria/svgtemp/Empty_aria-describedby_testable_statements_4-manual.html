@@ -15,18 +15,8 @@
    "title" : "Empty aria-describedby testable statements",
    "steps" : [
       {
-         "title" : "step 1",
-         "type" : "test",
          "element" : "test",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "accDescription",
-                  "empty",
-                  "true"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -49,14 +39,6 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "FullDescription",
-                  "isNot",
-                  "<empty>"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -76,8 +58,26 @@
                   "is",
                   "test"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "FullDescription",
+                  "isNot",
+                  "<empty>"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accDescription",
+                  "empty",
+                  "true"
+               ]
             ]
-         }
+         },
+         "type" : "test",
+         "title" : "step 1"
       }
    ]
 }
@@ -87,8 +87,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Empty aria-describedby testable statements.</p>
-   <circle id="test" aria-label='hello' aria-describedby="" cx='50' cy='100' r='15'/>
-
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-label='hello' aria-describedby="" cx='50' cy='100' r='15'/>
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

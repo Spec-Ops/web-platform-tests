@@ -15,8 +15,10 @@
    "steps" : [
       {
          "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -46,7 +48,7 @@
                   "false"
                ]
             ],
-            "MSAA" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -54,7 +56,7 @@
                   "false"
                ]
             ],
-            "AXAPI" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -62,9 +64,7 @@
                   "false"
                ]
             ]
-         },
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
    ],
    "title" : "Filter elements no accessible object created"
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Filter elements no accessible object created.</p>
-   <defs>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs>
     <filter id="MyFilter" filterUnits="userSpaceOnUse" x="0" y="0" width="200" height="120">
       <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
       <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
@@ -106,7 +106,7 @@
     </g>
   </g>
 
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

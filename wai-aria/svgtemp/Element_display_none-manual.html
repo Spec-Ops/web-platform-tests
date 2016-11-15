@@ -16,7 +16,7 @@
    "steps" : [
       {
          "test" : {
-            "MSAA" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -24,7 +24,7 @@
                   "false"
                ]
             ],
-            "AXAPI" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -46,7 +46,7 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -64,8 +64,8 @@
             ]
          },
          "element" : "test",
-         "type" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "type" : "test"
       }
    ]
 }
@@ -75,10 +75,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Element display none.</p>
-   <circle cx="50" cy="50" r="40" id="test" style="display: none;" >
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle cx="50" cy="50" r="40" id="test" style="display: none;" >
    <title>Mars</title>
  </circle>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

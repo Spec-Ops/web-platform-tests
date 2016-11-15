@@ -12,37 +12,24 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Basic shapes default role = img, properties and children testable statements",
    "steps" : [
       {
          "element" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXImage"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "image"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
                   "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
                ]
             ],
             "ATK" : [
@@ -67,19 +54,32 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "control type",
-                  "isNot",
-                  "Image"
+                  "AXRole",
+                  "is",
+                  "AXImage"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "image"
                ]
             ]
          },
          "type" : "test",
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "Basic shapes default role = img, properties and children testable statements"
 }
 
     ) ;
@@ -87,11 +87,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes default role = img, properties and children testable statements.</p>
-   <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
  <text id="t1" x="40" y="90">end</text>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

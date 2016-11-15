@@ -12,10 +12,19 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "HTML elements",
    "steps" : [
       {
          "element" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ATK_ROLE_AUDIO"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -36,25 +45,6 @@
                   "AXToolbar"
                ]
             ],
-            "MSAA" : [
-               []
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ATK_ROLE_AUDIO"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Group"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -68,13 +58,23 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               []
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Group"
+               ]
             ]
          },
          "type" : "test",
          "title" : "step 1"
       }
-   ],
-   "title" : "HTML elements"
+   ]
 }
 
     ) ;
@@ -82,9 +82,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for HTML elements.</p>
-   <html:audio id="test" src="file.mp3" controls="controls">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <html:audio id="test" src="file.mp3" controls="controls">
  </html:audio>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

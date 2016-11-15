@@ -12,14 +12,30 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "use element testable statements",
    "steps" : [
       {
+         "element" : "test",
          "test" : {
             "UIA" : [
                [
                   "property",
                   "Name",
+                  "is",
+                  "rock"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "rock"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXTitle",
                   "is",
                   "rock"
                ]
@@ -45,29 +61,13 @@
                   "is",
                   "rock"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "rock"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXTitle",
-                  "is",
-                  "rock"
-               ]
             ]
          },
-         "element" : "test",
          "type" : "test",
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "use element testable statements"
 }
 
     ) ;
@@ -75,13 +75,13 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for use element testable statements.</p>
-   <defs>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs>
  <path id="r1" d="M 8,2 L 10,0 L 7,-5  L 3,-7 L 3,-8 L -9,1  L -5,4 L 1,3 L 2,2 L 5,3 z">
    <title>rock</title>
  </path>
  </defs>
  <use id="test" transform="translate(30 345)" href="#r1"/>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

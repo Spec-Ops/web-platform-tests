@@ -14,9 +14,27 @@
     {
    "steps" : [
       {
+         "type" : "test",
+         "title" : "step 1",
          "element" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -38,22 +56,6 @@
                   "TableCell"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -62,9 +64,7 @@
                   "false"
                ]
             ]
-         },
-         "type" : "test",
-         "title" : "step 1"
+         }
       }
    ],
    "title" : "Text Elements role = none"
@@ -75,8 +75,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text Elements role = none.</p>
-   <text x="100" y="180" fill="blue"  role="none">But you <tspan id="test" dx="2em" dy="-50" font-weight="bold" fill="red" > are a peach </tspan> </text>
-
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text x="100" y="180" fill="blue"  role="none">But you <tspan id="test" dx="2em" dy="-50" font-weight="bold" fill="red" > are a peach </tspan> </text>
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

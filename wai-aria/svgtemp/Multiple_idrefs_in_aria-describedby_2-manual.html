@@ -12,18 +12,21 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Multiple idrefs in aria-describedby",
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
          "test" : {
-            "MSAA" : [
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ],
                [
                   "property",
-                  "accDescription",
-                  "is",
-                  "the end"
+                  "DescribedBy",
+                  "isNot",
+                  "<not empty>"
                ]
             ],
             "IAccessible2" : [
@@ -34,10 +37,10 @@
                   "<not empty>"
                ]
             ],
-            "AXAPI" : [
+            "MSAA" : [
                [
                   "property",
-                  "AXHelp",
+                  "accDescription",
                   "is",
                   "the end"
                ]
@@ -56,18 +59,12 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ],
+            "AXAPI" : [
                [
                   "property",
-                  "DescribedBy",
-                  "isNot",
-                  "<not empty>"
+                  "AXHelp",
+                  "is",
+                  "the end"
                ]
             ],
             "ATK" : [
@@ -91,9 +88,12 @@
                ]
             ]
          },
+         "element" : "test",
+         "title" : "step 1",
          "type" : "test"
       }
-   ]
+   ],
+   "title" : "Multiple idrefs in aria-describedby"
 }
 
     ) ;
@@ -101,9 +101,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Multiple idrefs in aria-describedby.</p>
-   <circle id="test" aria-describedby="t1 t2" cx='50' cy='100' r='15'/>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-describedby="t1 t2" cx='50' cy='100' r='15'/>
  <text id="t1" x="40"
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

@@ -12,12 +12,14 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Basic shapes and path",
    "steps" : [
       {
+         "type" : "test",
          "title" : "step 1",
          "element" : "test",
          "test" : {
-            "MSAA" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -25,7 +27,7 @@
                   "false"
                ]
             ],
-            "AXAPI" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -47,7 +49,7 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -63,11 +65,9 @@
                   "false"
                ]
             ]
-         },
-         "type" : "test"
+         }
       }
-   ],
-   "title" : "Basic shapes and path"
+   ]
 }
 
     ) ;
@@ -75,8 +75,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes and path.</p>
-   <circle id="test" cx='10' cy='10' r='5'/>
-
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" cx='10' cy='10' r='5'/>
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

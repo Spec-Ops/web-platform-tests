@@ -15,17 +15,10 @@
    "title" : "Text Elements role = none",
    "steps" : [
       {
+         "type" : "test",
          "title" : "step 1",
          "element" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -34,7 +27,23 @@
                   "false"
                ]
             ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -55,17 +64,8 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
-         },
-         "type" : "test"
+         }
       }
    ]
 }
@@ -75,10 +75,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text Elements role = none.</p>
-   <text transform="rotate(45)" role="none">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text transform="rotate(45)" role="none">
  <textPath id="test" href="#path1">Text on a path1</textPath>
  </text>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

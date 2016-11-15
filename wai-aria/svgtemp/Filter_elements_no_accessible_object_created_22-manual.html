@@ -12,12 +12,18 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Filter elements no accessible object created",
    "steps" : [
       {
-         "type" : "test",
          "element" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -27,14 +33,6 @@
                ]
             ],
             "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -65,9 +63,11 @@
                ]
             ]
          },
+         "type" : "test",
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "Filter elements no accessible object created"
 }
 
     ) ;
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Filter elements no accessible object created.</p>
-       </desc>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">     </desc>
     <filter id = "i1">
         <feGaussianBlur in = "SourceAlpha" stdDeviation = "8" result = "blur1"/>
         <feDiffuseLighting result = "diffOut" in = "SourceGraphic" diffuseConstant = "20" lighting-color = "white">
@@ -89,7 +89,7 @@
         <rect x = "10%" y = "55%" width = "40%" height = "40%"/>
         <rect x = "55%" y = "55%" width = "40%" height = "40%"/>
     </g>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

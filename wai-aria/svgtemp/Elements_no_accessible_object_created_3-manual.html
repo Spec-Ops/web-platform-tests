@@ -12,20 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Elements no accessible object created",
    "steps" : [
       {
          "title" : "step 1",
-         "element" : "test",
+         "type" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -34,7 +25,23 @@
                   "false"
                ]
             ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -55,19 +62,12 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
             ]
          },
-         "type" : "test"
+         "element" : "test"
       }
-   ]
+   ],
+   "title" : "Elements no accessible object created"
 }
 
     ) ;
@@ -75,10 +75,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements no accessible object created.</p>
-   <rect width="100" height="100">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect width="100" height="100">
  <animateTransform id="test" attributeName="transform" type="scale" from="2" to="3" repeatCount="3" dur="4s" fill="freeze"/>
  </rect>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

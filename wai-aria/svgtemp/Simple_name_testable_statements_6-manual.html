@@ -12,11 +12,26 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Simple name testable statements",
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "is",
+                  "hello"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "hello"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -31,22 +46,6 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
-                  "is",
-                  "hello"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "is",
-                  "hello"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -55,19 +54,20 @@
                   "hello"
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
-                  "AXDescription",
+                  "Name",
                   "is",
                   "hello"
                ]
             ]
          },
-         "element" : "test",
+         "type" : "test",
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "Simple name testable statements"
 }
 
     ) ;
@@ -75,8 +75,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Simple name testable statements.</p>
-   <circle id="test" aria-label="hello" cx='10' cy='10' r='5'/>
-
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-label="hello" cx='10' cy='10' r='5'/>
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

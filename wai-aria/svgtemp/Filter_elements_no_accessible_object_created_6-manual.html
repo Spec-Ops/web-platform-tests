@@ -12,10 +12,8 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Filter elements no accessible object created",
    "steps" : [
       {
-         "type" : "test",
          "test" : {
             "MSAA" : [
                [
@@ -25,7 +23,15 @@
                   "false"
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -47,15 +53,7 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "ATK" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -65,9 +63,11 @@
             ]
          },
          "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "Filter elements no accessible object created"
 }
 
     ) ;
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Filter elements no accessible object created.</p>
-      <filter id="convolve">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    <filter id="convolve">
       <feConvolveMatrix id="test" preserveAlpha="" kernelMatrix="1 0 0 0 0 0 0 0 -1" bias="0.5"/>
     </filter>
 
@@ -86,7 +86,7 @@
         <rect x = "10%" y = "55%" width = "40%" height = "40%"/>
         <rect x = "55%" y = "55%" width = "40%" height = "40%"/>
     </g>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

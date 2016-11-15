@@ -12,11 +12,27 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Elements role is none",
    "steps" : [
       {
-         "type" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -38,22 +54,6 @@
                   "TableCell"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -64,10 +64,10 @@
             ]
          },
          "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "type" : "test"
       }
-   ],
-   "title" : "Elements role is none"
+   ]
 }
 
     ) ;
@@ -75,10 +75,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements role is none.</p>
-   <g id="test"  role="none">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="test"  role="none">
  <circle cx='50' cy='50' r='20' aria-label="set A"/> <circle cx='50' cy='75' r='20' aria-label="set B"/>
  </g>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

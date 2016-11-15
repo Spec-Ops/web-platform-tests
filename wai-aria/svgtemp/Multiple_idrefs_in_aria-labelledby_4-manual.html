@@ -15,23 +15,22 @@
    "title" : "Multiple idrefs in aria-labelledby",
    "steps" : [
       {
+         "type" : "test",
          "title" : "step 1",
          "element" : "test",
          "test" : {
-            "IAccessible2" : [
-               [
-                  "relation",
-                  "IA2_RELATION_LABELLED_BY",
-                  "is",
-                  "[t2]"
-               ]
-            ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
-                  "AXDescription",
+                  "Name",
                   "is",
                   "end"
+               ],
+               [
+                  "property",
+                  "LabelledBy",
+                  "isNot",
+                  "[t2]"
                ]
             ],
             "MSAA" : [
@@ -42,16 +41,10 @@
                   "end"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "is",
-                  "end"
-               ],
+            "IAccessible2" : [
                [
                   "relation",
-                  "RELATION_LABELLED_BY",
+                  "IA2_RELATION_LABELLED_BY",
                   "is",
                   "[t2]"
                ]
@@ -70,22 +63,29 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "Name",
+                  "AXDescription",
+                  "is",
+                  "end"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
                   "is",
                   "end"
                ],
                [
-                  "property",
-                  "LabelledBy",
-                  "isNot",
+                  "relation",
+                  "RELATION_LABELLED_BY",
+                  "is",
                   "[t2]"
                ]
             ]
-         },
-         "type" : "test"
+         }
       }
    ]
 }
@@ -95,9 +95,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Multiple idrefs in aria-labelledby.</p>
-   <circle id="test" aria-labelledby="t1 t2" cx='50' cy='100' r='15'/>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-labelledby="t1 t2" cx='50' cy='100' r='15'/>
  <text id="t2" x="40" y="90">end</text>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

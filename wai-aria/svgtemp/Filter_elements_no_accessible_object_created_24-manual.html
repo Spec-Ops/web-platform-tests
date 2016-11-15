@@ -12,12 +12,22 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Filter elements no accessible object created",
    "steps" : [
       {
          "type" : "test",
+         "title" : "step 1",
          "element" : "test",
          "test" : {
-            "ATK" : [
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -39,14 +49,6 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -55,7 +57,7 @@
                   "false"
                ]
             ],
-            "MSAA" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -63,11 +65,9 @@
                   "false"
                ]
             ]
-         },
-         "title" : "step 1"
+         }
       }
-   ],
-   "title" : "Filter elements no accessible object created"
+   ]
 }
 
     ) ;
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Filter elements no accessible object created.</p>
-    <filter id="displacementFilter">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">  <filter id="displacementFilter">
     <feTurbulence id='test' type="turbulence" baseFrequency="0.05"
         numOctaves="2" result="turbulence"/>
     <feDisplacementMap in2="turbulence" in="SourceGraphic"
@@ -84,7 +84,7 @@
 
   <circle cx="100" cy="100" r="100"
       style="filter: url(#displacementFilter)"/>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

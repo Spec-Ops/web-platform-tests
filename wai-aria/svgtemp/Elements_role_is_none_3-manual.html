@@ -14,40 +14,9 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
-         "type" : "test",
+         "element" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -62,9 +31,40 @@
                   "exists",
                   "false"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
          },
-         "element" : "test"
+         "type" : "test",
+         "title" : "step 1"
       }
    ],
    "title" : "Elements role is none"
@@ -75,9 +75,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements role is none.</p>
-   <image id="test" x="200" y="200" width="100px" height="100px" href="myimage.png" role="none">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <image id="test" x="200" y="200" width="100px" height="100px" href="myimage.png" role="none">
  </image>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

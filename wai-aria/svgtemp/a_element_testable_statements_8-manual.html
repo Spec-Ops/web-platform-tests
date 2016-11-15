@@ -18,6 +18,22 @@
          "title" : "step 1",
          "type" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "accDescription",
+                  "empty",
+                  "true"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -38,6 +54,14 @@
                   "test"
                ]
             ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXHelp",
+                  "is",
+                  "<empty>"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -51,30 +75,6 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXHelp",
-                  "is",
-                  "<empty>"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accDescription",
-                  "empty",
-                  "true"
-               ]
             ]
          },
          "element" : "test"
@@ -87,10 +87,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for a element testable statements.</p>
-   <a id="test" href="../index.html" xlink:title="table" >
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <a id="test" href="../index.html" xlink:title="table" >
    <title>counter</title>
  </a>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

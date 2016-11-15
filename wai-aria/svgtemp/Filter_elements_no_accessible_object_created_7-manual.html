@@ -12,20 +12,25 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Filter elements no accessible object created",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
          "test" : {
-            "AXAPI" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "accessible",
-                  "exists",
-                  "false"
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -49,25 +54,20 @@
                   "false"
                ]
             ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "accessible",
+                  "exists",
+                  "false"
                ]
             ]
          },
-         "title" : "step 1"
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test"
       }
-   ],
-   "title" : "Filter elements no accessible object created"
+   ]
 }
 
     ) ;
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Filter elements no accessible object created.</p>
-     <filter id = "i1">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">   <filter id = "i1">
         <feGaussianBlur in = "SourceAlpha" stdDeviation = "8" result = "blur1"/>
         <feSpecularLighting result = "specOut" in = "blur1" specularConstant = "1.2" specularExponent = "12" lighting-color = "#bbbbbb">
             <feDistantLight azimuth = "45" elevation = "45" id="test" />
@@ -88,7 +88,7 @@
         <rect x = "10%" y = "55%" width = "40%" height = "40%"/>
         <rect x = "55%" y = "55%" width = "40%" height = "40%"/>
     </g>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

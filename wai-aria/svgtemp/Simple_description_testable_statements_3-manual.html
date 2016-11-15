@@ -12,20 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Simple description testable statements",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
          "test" : {
-            "IAccessible2" : [
-               [
-                  "relation",
-                  "IA2_RELATION_DESCRIBED_BY",
-                  "is",
-                  "<not empty>"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -34,12 +23,18 @@
                   "end"
                ]
             ],
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "accDescription",
+                  "role",
                   "is",
-                  "end"
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "ATK" : [
@@ -62,20 +57,6 @@
                   "test"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "UIA" : [
                [
                   "TBD",
@@ -89,11 +70,30 @@
                   "isNot",
                   "<not empty>"
                ]
+            ],
+            "IAccessible2" : [
+               [
+                  "relation",
+                  "IA2_RELATION_DESCRIBED_BY",
+                  "is",
+                  "<not empty>"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accDescription",
+                  "is",
+                  "end"
+               ]
             ]
          },
-         "title" : "step 1"
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "Simple description testable statements"
 }
 
     ) ;
@@ -101,11 +101,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Simple description testable statements.</p>
-   <circle id="test" aria-describedby="t1" cx='50' cy='100' r='15'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" aria-describedby="t1" cx='50' cy='100' r='15'>
    <title>abc</title>
  </circle>
  <text
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

@@ -17,7 +17,7 @@
          "title" : "step 1",
          "type" : "test",
          "test" : {
-            "ATK" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -39,7 +39,7 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -47,7 +47,7 @@
                   "false"
                ]
             ],
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -75,11 +75,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements role is presentation.</p>
-   <defs>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs>
  <rect id="MyRect" width="60" height="10"/>
  </defs>
  <use id="test"  role="presentation" x="20" y="10" href="#MyRect" />
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

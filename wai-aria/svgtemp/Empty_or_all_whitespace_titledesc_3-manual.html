@@ -18,20 +18,12 @@
          "title" : "step 1",
          "type" : "test",
          "test" : {
-            "MSAA" : [
+            "ATK" : [
                [
                   "property",
-                  "accName",
+                  "name",
                   "empty",
                   "true"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "<empty>"
                ]
             ],
             "WAIFAKE" : [
@@ -48,18 +40,26 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "Name",
+                  "AXDescription",
+                  "is",
+                  "<empty>"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
                   "empty",
                   "true"
                ]
             ],
-            "ATK" : [
+            "UIA" : [
                [
                   "property",
-                  "name",
+                  "Name",
                   "empty",
                   "true"
                ]
@@ -75,13 +75,13 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Empty or all whitespace title/desc.</p>
-   <ellipse id="test" cx='40' cy='100' rx='25' ry='15'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <ellipse id="test" cx='40' cy='100' rx='25' ry='15'>
    <title>
  </title>
  <desc>
  </desc>
  </ellipse>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

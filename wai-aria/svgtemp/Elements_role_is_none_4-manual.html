@@ -15,8 +15,10 @@
    "steps" : [
       {
          "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -32,15 +34,7 @@
                   "false"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -61,10 +55,16 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
-         },
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
    ],
    "title" : "Elements role is none"
@@ -75,12 +75,12 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Elements role is none.</p>
-   <svg id="test" width="4in" height="3in" xmlns="http://www.w3.org/2000/svg" role="none">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <svg id="test" width="4in" height="3in" xmlns="http://www.w3.org/2000/svg" role="none">
  <image x="200" y="200" width="100px" height="100px" href="myimage.png">
    <title>My image</title>
  </image>
  </svg>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

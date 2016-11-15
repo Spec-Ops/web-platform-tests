@@ -15,24 +15,18 @@
    "steps" : [
       {
          "type" : "test",
+         "title" : "step 1",
+         "element" : "test",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -54,6 +48,14 @@
                   "TableCell"
                ]
             ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -62,9 +64,7 @@
                   "false"
                ]
             ]
-         },
-         "element" : "test",
-         "title" : "step 1"
+         }
       }
    ],
    "title" : "Filter elements no accessible object created"
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Filter elements no accessible object created.</p>
-    <defs>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">  <defs>
       <filter id="r2" filterRes="400 400">
             <feComponentTransfer>
                 <feFuncR id="test" type="linear" slope="255"/>
@@ -89,7 +89,7 @@
  <g filter="url(#r2)">
   <circle cx="24" cy="50" r="14"/>
  </g>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

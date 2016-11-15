@@ -14,13 +14,28 @@
     {
    "steps" : [
       {
-         "type" : "test",
          "element" : "test",
          "test" : {
             "UIA" : [
                [
                   "property",
                   "Name",
+                  "is",
+                  "counter"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "counter"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXDescription",
                   "is",
                   "counter"
                ]
@@ -46,24 +61,9 @@
                   "is",
                   "counter"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "counter"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "counter"
-               ]
             ]
          },
+         "type" : "test",
          "title" : "step 1"
       }
    ],
@@ -75,10 +75,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for a element testable statements.</p>
-   <a id="test" href="../index.html">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <a id="test" href="../index.html">
    <title>counter</title>
  </a>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

@@ -12,26 +12,25 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Simple description testable statements",
    "steps" : [
       {
          "title" : "step 1",
-         "element" : "test",
+         "type" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXHelp",
-                  "is",
-                  "123"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
                   "accDescription",
                   "is",
                   "123"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
                ]
             ],
             "ATK" : [
@@ -54,6 +53,14 @@
                   "test"
                ]
             ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXHelp",
+                  "is",
+                  "123"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -67,19 +74,12 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ]
             ]
          },
-         "type" : "test"
+         "element" : "test"
       }
-   ]
+   ],
+   "title" : "Simple description testable statements"
 }
 
     ) ;
@@ -87,11 +87,11 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Simple description testable statements.</p>
-   <circle id="test" cx='50' cy='100' r='15'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" cx='50' cy='100' r='15'>
    <title>abc</title>
  <desc>123</desc>
  </circle>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

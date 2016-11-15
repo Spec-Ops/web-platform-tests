@@ -12,16 +12,41 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Text elements",
    "steps" : [
       {
+         "type" : "test",
+         "title" : "step 1",
          "element" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "group"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
                   "ROLE_SYSTEM_GROUPING"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -44,28 +69,6 @@
                   "graphics object"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "group"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -74,12 +77,9 @@
                   "ROLE_PANEL"
                ]
             ]
-         },
-         "type" : "test",
-         "title" : "step 1"
+         }
       }
-   ],
-   "title" : "Text elements"
+   ]
 }
 
     ) ;
@@ -87,10 +87,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Text elements.</p>
-   <text transform="rotate(45)">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <text transform="rotate(45)">
  <textPath id="test" href="#path1">Text on a path1</textPath>
  </text>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

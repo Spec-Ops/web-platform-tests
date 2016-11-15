@@ -15,6 +15,7 @@
    "steps" : [
       {
          "title" : "step 1",
+         "type" : "test",
          "test" : {
             "MSAA" : [
                [
@@ -22,6 +23,22 @@
                   "role",
                   "is",
                   "ROLE_SYSTEM_GRAPHIC"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "Image"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_IMAGE"
                ]
             ],
             "AXAPI" : [
@@ -44,14 +61,6 @@
                   "image"
                ]
             ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Image"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -65,18 +74,9 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_IMAGE"
-               ]
             ]
          },
-         "element" : "test",
-         "type" : "test"
+         "element" : "test"
       }
    ],
    "title" : "Path default role = img, properties and children testable statements"
@@ -87,10 +87,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Path default role = img, properties and children testable statements.</p>
-   <path id="test" aria-label="hello" d="M 100 100 L 300 100 L 200 300 z" fill="red">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path id="test" aria-label="hello" d="M 100 100 L 300 100 L 200 300 z" fill="red">
    <title>abc</title>
  </path>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

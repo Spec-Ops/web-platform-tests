@@ -12,13 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Basic shapes role is none",
    "steps" : [
       {
-         "type" : "test",
          "element" : "test",
          "test" : {
-            "AXAPI" : [
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -34,7 +32,7 @@
                   "false"
                ]
             ],
-            "ATK" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -56,7 +54,7 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "ATK" : [
                [
                   "property",
                   "accessible",
@@ -65,9 +63,11 @@
                ]
             ]
          },
+         "type" : "test",
          "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "Basic shapes role is none"
 }
 
     ) ;
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes role is none.</p>
-   <mesh x="50" y="50" id="test" role='none'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <mesh x="50" y="50" id="test" role='none'>
  <meshrow> <meshpatch> <stop path="c 25,-25 75, 25 100,0" stop-color="lightblue" /> <stop path="c 25, 25 -25, 75 0,100" stop-color="purple" /> <stop path="c -25, 25 -75,-25 -100,0" stop-color="red" /> <stop path="c -25,-25, 25,-75" stop-color="purple" /> </meshpatch> <meshpatch>
  <stop path="c 25,-25 75, 25 100,0" /> <stop path="c 25, 25 -25, 75 0,100" stop-color="lightblue" /> <stop path="c -25, 25 -75,-25" stop-color="purple" />
  </meshpatch>
@@ -90,7 +90,7 @@
  </meshpatch>
  </meshrow>
  </mesh>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

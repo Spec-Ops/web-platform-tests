@@ -15,9 +15,15 @@
    "title" : "Filter elements no accessible object created",
    "steps" : [
       {
-         "type" : "test",
-         "element" : "test",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -27,14 +33,6 @@
                ]
             ],
             "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -65,7 +63,9 @@
                ]
             ]
          },
-         "title" : "step 1"
+         "element" : "test",
+         "title" : "step 1",
+         "type" : "test"
       }
    ]
 }
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Filter elements no accessible object created.</p>
-    <defs>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">  <defs>
         <filter id="screen" filterUnits="userSpaceOnUse"
          x="0" y="0" width="1200" height="400">
                 <feOffset dx="-400" in="SourceGraphic" result="g" width="400" height="400"/>
@@ -88,7 +88,7 @@
  <g filter="url(#screen)">
   <circle cx="24" cy="50" r="14"/>
  </g>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

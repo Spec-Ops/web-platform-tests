@@ -15,12 +15,37 @@
    "title" : "a element testable statements",
    "steps" : [
       {
+         "title" : "step 1",
          "type" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "counter"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "counter"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
                   "name",
+                  "is",
+                  "counter"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXDescription",
                   "is",
                   "counter"
                ]
@@ -38,34 +63,9 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
-                  "is",
-                  "counter"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "counter"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "counter"
-               ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
    ]
 }
@@ -75,10 +75,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for a element testable statements.</p>
-   <a id="test" href="../index.html" xlink:title="table" >
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <a id="test" href="../index.html" xlink:title="table" >
    <title>counter</title>
  </a>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

@@ -12,34 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Empty or all whitespace title/desc",
    "steps" : [
       {
-         "title" : "step 1",
-         "element" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -60,12 +35,18 @@
                   "test"
                ]
             ],
-            "MSAA" : [
+            "WAIFAKE" : [
                [
                   "property",
-                  "accDescription",
-                  "empty",
-                  "true"
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -75,11 +56,30 @@
                   "is",
                   "<empty>"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accDescription",
+                  "empty",
+                  "true"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ]
             ]
          },
+         "element" : "test",
+         "title" : "step 1",
          "type" : "test"
       }
-   ]
+   ],
+   "title" : "Empty or all whitespace title/desc"
 }
 
     ) ;
@@ -87,12 +87,12 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Empty or all whitespace title/desc.</p>
-   <circle id="test" cx='10' cy='10' r='5'>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <circle id="test" cx='10' cy='10' r='5'>
    <title>
  </title>
  <desc>   </desc>
  </circle>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

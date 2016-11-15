@@ -15,36 +15,12 @@
    "title" : "use element testable statements",
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "pebble"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "pebble"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
                   "name",
-                  "is",
-                  "pebble"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Name",
                   "is",
                   "pebble"
                ]
@@ -62,9 +38,33 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "pebble"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "is",
+                  "pebble"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Name",
+                  "is",
+                  "pebble"
+               ]
             ]
          },
-         "element" : "test",
+         "type" : "test",
          "title" : "step 1"
       }
    ]
@@ -75,7 +75,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for use element testable statements.</p>
-   <defs>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs>
  <path id="r1" d="M 8,2 L 10,0 L 7,-5  L 3,-7 L 3,-8 L -9,1  L -5,4 L 1,3 L 2,2 L 5,3  z">
    <title>rock</title>
  </path>
@@ -83,7 +83,7 @@
  <use id="test" transform="translate(30 345)" xlink:href="#r1">
    <title>pebble</title>
  </use>
-
+</svg>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
