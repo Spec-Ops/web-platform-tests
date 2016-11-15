@@ -200,10 +200,11 @@ while (<$io>) {
   }
 };
 
-if ($state != 0) {
-  print $outH $before ;
-  print $outH dump_table($theAsserts) ;
-  print $outH $after ;
+if ($state == 0) {
+  if (scalar(keys(%$theAsserts))) {
+    # we were in an item; dump it
+    print $outH  dump_table($theAsserts) ;
+  }
 }
 
 if (@errors) {
@@ -231,8 +232,8 @@ sub dump_table() {
   foreach my $API (sort(keys(%$asserts))) {
     # looking at each API in turn
     my $ref = $asserts->{$API};
-    my $count = scalar(@$ref) ;
-    $output .= "|-\n|rowspan=$count|$API\n" ;
+    my $rowcount = scalar(@$ref) ;
+    # $output .= "|-\n|rowspan=$count|$API\n" ;
     # now we are in the assertions; special case each API
     my @conditions = @$ref;
     for (my $i = 0; $i < scalar(@conditions); $i++) {
@@ -408,6 +409,11 @@ sub dump_table() {
         }
 
         if ($conditions[$i]->[$start] =~ m/^role/) {
+          $new[0] = "property";
+          $new[1] = "role";
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start+1];
+        } elsif ($conditions[$i]->[$start] =~ m/^xml-roles/) {
           $new[0] = "property";
           $new[1] = "role";
           $new[2] = $assert;
@@ -600,6 +606,12 @@ sub dump_table() {
           $new[2] = $assert;
           $new[3] = "true";
         }
+      }
+      if ($i == 0) {
+        if (scalar(@additional)) {
+          $rowcount += scalar(@additional);
+        }
+        $output .= "|-\n|rowspan=$rowcount|$API\n";
       }
       foreach my $row (@new) {
         $output .= "|$row\n";
