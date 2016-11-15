@@ -12,26 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "Empty or all whitespace title/desc",
    "steps" : [
       {
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "accName",
-                  "is",
-                  "<empty>"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "name",
-                  "is",
-                  "<empty>"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -40,12 +23,20 @@
                   "<empty>"
                ]
             ],
+            "ATK" : [
+               [
+                  "property",
+                  "name",
+                  "empty",
+                  "true"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
                   "Name",
-                  "is",
-                  "<empty>"
+                  "empty",
+                  "true"
                ]
             ],
             "WAIFAKE" : [
@@ -61,13 +52,22 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accName",
+                  "empty",
+                  "true"
+               ]
             ]
          },
-         "type" : "test",
          "title" : "step 1",
+         "type" : "test",
          "element" : "test"
       }
-   ]
+   ],
+   "title" : "Empty or all whitespace title/desc"
 }
 
     ) ;
@@ -75,12 +75,12 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Empty or all whitespace title/desc.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <line id="test" x1='10' y1='10' x2='50' y2='10'>
+   <line id="test" x1='10' y1='10' x2='50' y2='10'>
    <title>  </title>
  <desc>
  </desc>
  </line>
-</svg>
+
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>

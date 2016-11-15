@@ -14,8 +14,6 @@
     {
    "steps" : [
       {
-         "element" : "test",
-         "title" : "step 1",
          "test" : {
             "AXAPI" : [
                [
@@ -26,14 +24,6 @@
                ]
             ],
             "ATK" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
-            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -62,9 +52,19 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
             ]
          },
-         "type" : "test"
+         "title" : "step 1",
+         "type" : "test",
+         "element" : "test"
       }
    ],
    "title" : "Basic shapes role = presentation"
@@ -75,8 +75,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for Basic shapes role = presentation.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <rect id="test" x='10' y='10' width='50' height='30' role="presentation"/>
-</svg>
+   <rect id="test" x='10' y='10' width='50' height='30' role="presentation"/>
+
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
