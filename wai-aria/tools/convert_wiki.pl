@@ -116,6 +116,7 @@ while (<$io>) {
   if (m/^\{\|/) {
     # table started
     $state = 4;
+		$theAPI = "";
   }
   if ($state == 4) {
     if (m/^\|-/) {
@@ -235,7 +236,7 @@ sub dump_table() {
     # now we are in the assertions; special case each API
     my @conditions = @$ref;
     for (my $i = 0; $i < scalar(@conditions); $i++) {
-      my @new ;
+      my (@new, @additional) ;
       if ($i) {
         $output .= "|-\n";
       }
@@ -252,6 +253,14 @@ sub dump_table() {
           $new[1] = "role";
           $new[2] = $assert;
           $new[3] = $conditions[$i]->[$start];
+        } elsif ($conditions[$i]->[$start] =~ m/^description/) {
+          my $id = $conditions[$i]->[$start+1];
+          $new[0] = "property";
+          $new[1] = "description";
+          $new[2] = $assert;
+          $new[3] = $id;
+          push(@{$additional[0]}, ("relation", "RELATION_DESCRIBED_BY", $assert, $id));
+          push(@{$additional[1]}, ("relation", "RELATION_DESCRIPTION_FOR", $assert, "test"));
         } elsif ($conditions[$i]->[$start] =~ m/not in accessibility tree/i) {
           @new = qw(property accessible exists false);
         } elsif ($conditions[$i]->[$start] =~ m/^RELATION/) {
@@ -277,7 +286,7 @@ sub dump_table() {
           $val =~ s/"//g;
           $new[3] = $conditions[$i]->[1] . ":" . $val;
           if ($conditions[$i]->[1] eq "not exposed"
-              || $conditions[$i]->[2] eq "false") {
+            || $conditions[$i]->[2] eq "false") {
             $new[2] = "doesNotContain";
           } else {
             $new[2] = "contains";
@@ -400,7 +409,7 @@ sub dump_table() {
           $new[3] = $conditions[$i]->[$start+1];
         } elsif ($conditions[$i]->[$start] =~ m/not in accessibility tree/i) {
           @new = qw(property accessible exists false);
-        } elsif ($conditions[$i]->[$start] =~ m/^accName/) {
+        } elsif ($conditions[$i]->[$start] =~ m/^(accName|accDescription)/) {
           my $name = $conditions[$i]->[$start+1];
           my $cond = "is" ;
           if ($name eq "<empty>" ) {
@@ -411,7 +420,7 @@ sub dump_table() {
             $name = "false";
           }
           $new[0] = "property";
-          $new[1] = "accName";
+          $new[1] = $conditions[$i]->[$start];
           $new[2] = $cond;
           $new[3] = $name;
         } elsif ($conditions[$i]->[$start] =~ m/^ROLE_/) {
@@ -499,7 +508,7 @@ sub dump_table() {
           $val =~ s/"//g;
           $new[3] = $conditions[$i]->[1] . ":" . $val;
           if ($conditions[$i]->[1] eq "not exposed"
-              || $conditions[$i]->[2] eq "false") {
+            || $conditions[$i]->[2] eq "false") {
             $new[2] = "doesNotContain";
           } else {
             $new[2] = "contains";
@@ -511,7 +520,7 @@ sub dump_table() {
           $val =~ s/"//g;
           $new[3] = $conditions[$i]->[1] . ":" . $val;
           if ($conditions[$i]->[1] eq "not exposed"
-              || $conditions[$i]->[2] eq "false") {
+            || $conditions[$i]->[2] eq "false") {
             $new[2] = "doesNotContain";
           } else {
             $new[2] = "contains";
@@ -523,7 +532,7 @@ sub dump_table() {
           $val =~ s/"//g;
           $new[3] = $conditions[$i]->[1] . ":" . $val;
           if ($conditions[$i]->[1] eq "not exposed"
-              || $conditions[$i]->[2] eq "false") {
+            || $conditions[$i]->[2] eq "false") {
             $new[2] = "doesNotContain";
           } else {
             $new[2] = "contains";
@@ -589,6 +598,14 @@ sub dump_table() {
       }
       foreach my $row (@new) {
         $output .= "|$row\n";
+      }
+      if (scalar(@additional)) {
+        foreach my $arow (@additional) {
+          $output .= "|-\n" ;
+          foreach my $aItem (@$arow) {
+            $output .= "|$aItem\n";
+          }
+        }
       }
     }
   }
