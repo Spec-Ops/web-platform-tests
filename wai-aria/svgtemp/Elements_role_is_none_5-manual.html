@@ -15,7 +15,21 @@
    "steps" : [
       {
          "test" : {
-            "AXAPI" : [
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
                [
                   "property",
                   "accessible",
@@ -31,7 +45,7 @@
                   "false"
                ]
             ],
-            "UIA" : [
+            "MSAA" : [
                [
                   "property",
                   "accessible",
@@ -39,21 +53,7 @@
                   "false"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
+            "AXAPI" : [
                [
                   "property",
                   "accessible",
@@ -62,9 +62,9 @@
                ]
             ]
          },
-         "title" : "step 1",
+         "element" : "test",
          "type" : "test",
-         "element" : "test"
+         "title" : "step 1"
       }
    ],
    "title" : "Elements role is none"

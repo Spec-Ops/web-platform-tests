@@ -253,6 +253,11 @@ sub dump_table() {
           $new[1] = "role";
           $new[2] = $assert;
           $new[3] = $conditions[$i]->[$start];
+        } elsif ($conditions[$i]->[$start] =~ m/^xml-roles/) {
+          $new[0] = "property";
+          $new[1] = "role";
+          $new[2] = $assert;
+          $new[3] = $conditions[$i]->[$start+1];
         } elsif ($conditions[$i]->[$start] =~ m/^description/) {
           my $id = $conditions[$i]->[$start+1];
           $new[0] = "property";

@@ -12,17 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Basic shapes and path",
    "steps" : [
       {
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "accessible",
-                  "exists",
-                  "false"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -53,6 +46,14 @@
                   "TableCell"
                ]
             ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "exists",
+                  "false"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -62,12 +63,11 @@
                ]
             ]
          },
-         "title" : "step 1",
+         "element" : "test",
          "type" : "test",
-         "element" : "test"
+         "title" : "step 1"
       }
-   ],
-   "title" : "Basic shapes and path"
+   ]
 }
 
     ) ;

@@ -12,9 +12,18 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Simple description testable statements",
    "steps" : [
       {
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "accDescription",
+                  "is",
+                  "end"
+               ]
+            ],
             "IAccessible2" : [
                [
                   "relation",
@@ -29,6 +38,34 @@
                   "AXHelp",
                   "is",
                   "end"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "TBD",
+                  "",
+                  "",
+                  ""
+               ],
+               [
+                  "property",
+                  "DescribedBy",
+                  "isNot",
+                  "<not empty>"
                ]
             ],
             "ATK" : [
@@ -50,50 +87,13 @@
                   "is",
                   "test"
                ]
-            ],
-            "UIA" : [
-               [
-                  "TBD",
-                  "",
-                  "",
-                  ""
-               ],
-               [
-                  "property",
-                  "DescribedBy",
-                  "isNot",
-                  "<not empty>"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "accDescription",
-                  "is",
-                  "end"
-               ]
             ]
          },
-         "title" : "step 1",
+         "element" : "test",
          "type" : "test",
-         "element" : "test"
+         "title" : "step 1"
       }
-   ],
-   "title" : "Simple description testable statements"
+   ]
 }
 
     ) ;

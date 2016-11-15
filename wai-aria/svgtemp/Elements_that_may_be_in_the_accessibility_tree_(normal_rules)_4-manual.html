@@ -12,9 +12,40 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Elements that may be in the accessibility tree (normal rules)",
    "steps" : [
       {
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_PANEL"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "isNot",
+                  "group"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -35,34 +66,6 @@
                   "graphics object"
                ]
             ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_PANEL"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "group"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -72,12 +75,11 @@
                ]
             ]
          },
-         "title" : "step 1",
+         "element" : "test",
          "type" : "test",
-         "element" : "test"
+         "title" : "step 1"
       }
-   ],
-   "title" : "Elements that may be in the accessibility tree (normal rules)"
+   ]
 }
 
     ) ;

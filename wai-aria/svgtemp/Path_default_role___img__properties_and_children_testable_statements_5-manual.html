@@ -12,35 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "Path default role = img, properties and children testable statements",
    "steps" : [
       {
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXImage"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "image"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "xml-roles",
-                  "ROLE_IMAGE"
-               ]
-            ],
             "UIA" : [
                [
                   "property",
@@ -63,6 +38,14 @@
                   "TableCell"
                ]
             ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_IMAGE"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -70,14 +53,33 @@
                   "is",
                   "ROLE_SYSTEM_GRAPHIC"
                ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXImage"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "image"
+               ]
             ]
          },
-         "title" : "step 1",
+         "element" : "test",
          "type" : "test",
-         "element" : "test"
+         "title" : "step 1"
       }
-   ],
-   "title" : "Path default role = img, properties and children testable statements"
+   ]
 }
 
     ) ;
