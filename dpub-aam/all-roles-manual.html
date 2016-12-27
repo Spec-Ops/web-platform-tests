@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Publishing WAI-ARIA Roles</title>
+    <meta charset="utf-8">
+    <style>
+nav > ol {
+  list-style-type: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="manualMode"></div>
+    <div id="log"></div>
+    <div id="ATTAmessages"></div>
+    <img id="test-doc-cover" role="doc-cover" src="coverimage.jpg" alt="A Room of One's Own by Virginia Woolf" />
+
+    <p id="test-doc-dedication" role="doc-dedication">To my family, without whom this would have never been possible.</p>
+
+    <blockquote id="test-doc-epigraph" role="doc-epigraph">
+      <p>“Would you tell me please, which way I ought to go from here?”</p>
+      <p>“That depends a good deal on where you want to get to,” said the cat.</p>
+    </blockquote>
+
+    <nav id="test-doc-toc" role="doc-toc">
+      <h1>Contents</h1>
+      <ol id="test-directory" role="directory">
+        <li><a href="#foreword">Foreword</a></li>
+        <li><a href="#test-doc-part">Part One</a></li>
+        <li><a href="#test-doc-chapter">Chapter One</a></li>
+      </ol>
+    </nav>
+
+    <nav id="test-doc-pagelist" role="doc-pagelist">
+      <h1>Pages</h1>
+      <ol>
+        <li><a href="#test-doc-pagebreak">4</a></li>
+      </ol>
+    </nav>
+
+    <section id="test-doc-foreword" role="doc-foreword">
+      <h1>Foreword</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </section>
+
+    <section id="test-doc-preface" role="doc-preface">
+      <h1>Preface</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </section>
+
+    <section id="test-doc-acknowledgments" role="doc-acknowledgments">
+      <p>I would like to extend my sincere gratitude to … </p>
+    </section>
+
+    <section id="test-doc-introduction" role="doc-introduction">
+      <p>Everyone has some experience with marketing … </p>
+    </section>
+
+    <section id="test-doc-prologue" role="doc-prologue">
+      <header>
+        <h1>Prologue</h1>
+        <p>Chorus</p>
+      </header>
+
+      <p>Two households, both alike in dignity, …</p>
+    </section>
+
+    <section id="test-doc-part" role="doc-part">
+      <h1>Part One</h1>
+
+      <section id="test-doc-chapter" role="doc-chapter">
+        <h2>Chapter 1</h2>
+
+        <div id="test-doc-abstract" role="doc-abstract" aria-label="Abstract">
+          <p>Accessibility of web content requires semantic information about widgets, structures, and behaviors …</p>
+        </div>
+
+        <p> … as studies have shown.<a id="test-doc-noteref" role="doc-noteref">[1]</a></p>
+
+        <aside id="test-doc-footnote" role="doc-footnote">
+          <a id="test-doc-backlink" role="doc-backlink" href="#test-doc-noteref">1.</a> Additional results of this study and similar studies can be found
+          at …
+        </aside>
+      </section>
+
+      <section role="doc-chapter">
+        <header>
+          <h1>Chapter 2 The Battle</h1>
+          <p id="test-doc-subtitle" role="doc-subtitle">Once more unto the breach</p>
+        </header>
+
+        <p> As <a id="test-doc-biblioref" role="doc-biblioref" href="#test-doc-biblioentry">Steinbeck</a> says in his great novel … </p>
+
+        <aside id="test-doc-example" role="doc-example">
+          <h1>Hello World!</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </aside>
+
+        <p> This is indicated in the cost of a <a href="#bcc0f155" id="test-doc-glossref" role="doc-glossref">credit default swap</a> … </p>
+
+        <aside role="doc-footnote"> * Additional results of this study and similar studies can be found at … </aside>
+
+        <div role="doc-notice" aria-label="Explosion Risk">
+          <p><em>Danger!</em> Mixing reactive materials may cause an explosion.</p>
+        </div>
+
+        <span id="test-doc-pagebreak" role="doc-pagebreak" title="4"/>
+
+          <aside id="test-doc-pullquote" role="doc-pullquote"> Better habits pave the way to growth, and growth leads to greater happiness. </aside>
+
+          <aside id="test-doc-tip" role="doc-tip">
+            <h3>Tip</h3>
+            <p>You can assign a variable a new value that is the result of an expression involving its previous value.</p>
+          </aside>
+      </section>
+    </section>
+
+    <section id="test-doc-notice" role="doc-notice">
+      <img src="warning.png" alt="warning icon" />
+      <p>Just because you can include a font doesn’t mean you should. Think carefully about readability. Also, be
+      respectful of intellectual property. There are many excellent free open source fonts available.</p>
+    </section>
+
+    <section id="test-doc-epilogue" role="doc-epilogue">
+      <header>
+        <h1>Epilogue</h1>
+        <p>SPOKEN BY PROSPERO</p>
+      </header>
+      <p>Now my charms are all o'erthrown, …</p>
+    </section>
+
+    <section id="test-doc-afterword" role="doc-afterword">
+      <h1>Afterword: Why I Wrote This Book</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </section>
+
+    <section id="test-doc-conclusion" role="doc-conclusion">
+      <h1>Summary</h1>
+      <p>A central task in feminist scholarship is to expose and dismantle the stereotypes … </p>
+    </section>
+
+    <section id="test-doc-qna" role="doc-qna">
+      <h2>Interview with the Author</h2>
+      <dl>
+        <dt>Q: When did you begin writing this book?</dt>
+        <dd>A: I first got the idea …</dd>
+      </dl>
+    </section>
+
+    <section id="test-doc-appendix" role="doc-appendix">
+      <h1>Appendix A. Historical Timeline</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </section>
+
+    <section id="test-doc-endnotes" role="doc-endnotes">
+      <h2>Notes</h2>
+      <section id="ch1-notes">
+        <h3>Chapter 1</h3>
+        <div role="list">
+          <p id="test-doc-endnote" role="doc-endnote">1. Additional results of this study can be found at … </p>
+          <div id="7b2c0555" role="doc-endnote">
+            <p>2. The primary source of infomation …</p>
+            <p class="note-cont">In the case of secondary studies …</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section role="doc-endnotes">
+      <h2>More Notes</h2>
+      <ol>
+        <li id="6baa07ae" role="doc-endnote">Additional results of this study can be found at … </li>
+        <li id="7b2c0554" role="doc-endnote">…</li>
+      </ol>
+    </section>
+
+    <section id="test-doc-credits" role="doc-credits">
+      <h1>Photo Credits</h1>
+      <p id="test-doc-credit" role="doc-credit"> Page 62, Table 3.1 from <cite>“Economic Foundations of Cost-Effectiveness Analysis”</cite> by
+      A. M. Garber and C. E. Phelps … </p>
+    </section>
+
+    <section id="test-doc-glossary" role="doc-glossary">
+      <h1>Glossary</h1>
+      <dl>
+        <dt id="bcc0f155">Credit default swap</dt>
+        <dd>A credit default swap effectively insures against default by a borrower. </dd>
+      </dl>
+    </section>
+
+    <section id="test-doc-bibliography" role="doc-bibliography">
+      <h1>Cited Works</h1>
+      <div role="list">
+        <p id="test-doc-biblioentry" role="doc-biblioentry"> John Steinbeck, The Grapes of Wrath (New
+        York: The Viking Press, 1939) </p>
+      </div>
+    </section>
+
+    <section role="doc-bibliography">
+      <h1>Select Bibliography</h1>
+      <ul>
+        <li role="doc-biblioentry" id="faulkner-dying"> William Faulkner, As I Lay Dying (New York: Jonathan Cape
+          &amp; Harrison Smith, 1930) </li>
+      </ul>
+    </section>
+
+    <section id="test-doc-index" role="doc-index">
+      <h1>Index</h1>
+      <section>
+        <h2>A</h2>
+        <ul>
+          <li>A/B testing, <a href="#test-doc-pagebreak">4</a></li>
+        </ul>
+      </section>
+    </section>
+
+    <section id="test-doc-errata" role="doc-errata">
+      <h1>Corrections</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </section>
+
+    <section id="test-doc-colophon" role="doc-colophon" aria-label="About the type">
+      <p>This publication was set using … </p>
+    </section>
+  </body>
+</html>
+
