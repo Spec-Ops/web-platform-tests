@@ -119,70 +119,38 @@ ATTAcomm.prototype = {
 
       var subtestsForAPI = true;
 
+      // check main and potentially nested lists of tests for
+      // tests with this API.  If any step is missing this API
+      // mapping, then we need to be manual
       this.Tests.forEach(function(subtest) {
         if (subtest.hasOwnProperty("test") &&
             !subtest.test.hasOwnProperty(API)) {
           // this item doesn't have anything for this API
           // and this is a test that needs to be looked at by an atta
           subtestsForAPI = false;
+        } else if (Array.isArray(subtest)) {
+          subtest.forEach(function(st) {
+            if (st.hasOwnProperty("test") &&
+                !st.test.hasOwnProperty(API)) {
+              subtestsForAPI = false;
+            }
+          });
         }
       });
 
       if (subtestsForAPI) {
-        this.sendEvents(API).then(function() {
-
-          // accumulate promises; complete when done
-          var pending = [];
-          var testCount = 0;
-
-          /* Loop strategy...
-           *
-           * If the the step is a 'test' then push it into the pending queue as a promise
-           *
-           * If the step is anything else, then if there is anything in pending, wait on it
-           * Once it resolves, clear the queue and then execute the other step.
-           *
-           */
-          this.Tests.forEach(function(subtest) {
-            //  what "type" of step in the sequence is this?
-            var theType = "test" ;
-            if (subtest.hasOwnProperty("type")) {
-              theType = subtest.type;
-            }
-            testCount++;
-            if (theType === "test") {
-              // this is a set of assertions that should be evaluated
-              pending.push(this.runTest(testCount, API, subtest));
-            } else if (theType === "script") {
-              Promise.all(pending).then(function() {
-                pending = [];
-                // execute the script
-                this.runScript(testCount, subtest);
-              }.bind(this));
-            } else if (theType === "event") {
-              Promise.all(pending).then(function() {
-                pending = [];
-                // raise the event
-                this.raiseEvent(testCount, subtest);
-              }.bind(this));
-            // } else {
-            }
+        this.runTests(API, this.Tests)
+        .then(function() {
+          // the tests all ran; close it out
+          this.endTest().then(function() {
+            this.dumpLog();
+            done();
           }.bind(this));
-
-          // wait for all the subtests to execute
-          Promise.all(pending)
-          .then(function() {
-            // the tests all ran; close it out
-            this.endTest().then(function() {
-              this.dumpLog();
-              done();
-            }.bind(this));
-          }.bind(this))
-          .catch(function(err) {
-            this.endTest().then(function() {
-              this.dumpLog();
-              done();
-            }.bind(this));
+        }.bind(this))
+        .catch(function(err) {
+          this.endTest().then(function() {
+            this.dumpLog();
+            done();
           }.bind(this));
         }.bind(this));
       } else {
@@ -199,6 +167,74 @@ ATTAcomm.prototype = {
       } else {
         this.setupManualTest("Error from ATTA: " + res.status + ": " + res.statusText);
       }
+    }.bind(this));
+  },
+
+  runTests: function(API, collection) {
+    // this method returns a promise
+
+    return new Promise(function(resolve, reject) {
+      // accumulate promises; complete when done
+      var pending = [];
+      var testCount = 0;
+
+      this.sendEvents(API, collection)
+      .then(function(eventStatus) {
+
+        /* Loop strategy...
+         *
+         * If the the step is a 'test' then push it into the pending queue as a promise
+         *
+         * If the step is anything else, then if there is anything in pending, wait on it
+         * Once it resolves, clear the queue and then execute the other step.
+         *
+         */
+        collection.forEach(function(subtest) {
+          //  what "type" of step in the sequence is this?
+          var theType = "test" ;
+          if (Array.isArray(subtest)) {
+            // it is a group
+            Promise.all(pending).then(function() {
+              pending = [];
+              // recursively run the tests
+              pending.push(this.runTests(API, subtest));
+            }.bind(this));
+          } else if (subtest.hasOwnProperty("type")) {
+            theType = subtest.type;
+          }
+          testCount++;
+          if (theType === "test") {
+            // this is a set of assertions that should be evaluated
+            pending.push(this.runTest(testCount, API, subtest));
+          } else if (theType === "script") {
+            Promise.all(pending).then(function() {
+              pending = [];
+              // execute the script
+              this.runScript(testCount, subtest);
+            }.bind(this));
+          } else if (theType === "event") {
+            Promise.all(pending).then(function() {
+              pending = [];
+              // raise the event
+              this.raiseEvent(testCount, subtest);
+            }.bind(this));
+          // } else {
+          }
+        }.bind(this));
+
+        Promise.all(pending)
+        .then(function() {
+          // this collection all ran
+          if (eventStatus !== "NOEVENTS") {
+            // there were some events at the beginning
+            this.sendStopListen().then(function() {
+              resolve(true);
+            });
+          } else {
+            resolve(true);
+          }
+        }.bind(this));
+      }.bind(this));
     }.bind(this));
   },
 
@@ -289,16 +325,17 @@ ATTAcomm.prototype = {
   // eventList - find the events for an API
   //
   // @param {string} API
+  // @param {array} collection - a collection of tests
   // @returns {array} list of event names
 
-  eventList: function(API) {
+  eventList: function(API, collection) {
     var eventHash = {};
 
     if (!API || API === "") {
       return [];
     }
 
-    this.Tests.forEach(function(subtest) {
+    collection.forEach(function(subtest) {
       if (subtest.hasOwnProperty("test") &&
           subtest.test.hasOwnProperty(API)) {
         // this is a subtest for this API; look at the events
@@ -321,11 +358,12 @@ ATTAcomm.prototype = {
    */
   raiseEvent: function(testNum, subtest) {
     "use strict";
+    var evt;
     if (subtest) {
       var kp = function(target, key) {
-        var evt = document.createEvent("KeyboardEvent");
+        evt = document.createEvent("KeyboardEvent");
         evt.initKeyEvent ("keypress", true, true, window,
-                          0, 0, 0, 0, 0, "e".charCodeAt(0))
+                          0, 0, 0, 0, 0, "e".charCodeAt(0));
         target.dispatchEvent(evt);
       };
       if (subtest.hasOwnProperty("event") && subtest.hasOwnProperty("element")) {
@@ -339,10 +377,10 @@ ATTAcomm.prototype = {
               node.click();
             } else if (subtest.event.startsWith('key:')) {
               var key = subtest.event.replace('key:', '');
-              var evt = new KeyboardEvent("keypress", { "key": key});
+              evt = new KeyboardEvent("keypress", { "key": key});
               node.dispatchEvent(evt);
             } else {
-              var evt = new Event(subtest.element);
+              evt = new Event(subtest.element);
               node.dispatchEvent(evt);
             }
           }
@@ -594,20 +632,21 @@ ATTAcomm.prototype = {
 
   // sendEvents - send the list of events the ATTA needs to listen for
   //
-  // @param {array} eventList
+  // @param {string} API
+  // @param {array} collection - a list of tests
   // @returns {Promise} resolves if the message is successful, or rejects with
 
-  sendEvents: function(API) {
+  sendEvents: function(API, collection) {
     'use strict';
 
     return new Promise(function(resolve, reject) {
-      var eList = this.eventList(API) ;
+      var eList = this.eventList(API, collection) ;
       if (eList && eList.length) {
         var params = {
           events: eList
         };
 
-        this._fetch("POST", this.ATTAuri + "/listen", null, params)
+        this._fetch("POST", this.ATTAuri + "/startlisten", null, params)
         .then(function(res) {
           if (res.body.hasOwnProperty("status")) {
             if (res.body.status === "READY") {
@@ -631,9 +670,15 @@ ATTAcomm.prototype = {
         });
       } else {
         // there are no events
-        resolve("READY");
+        resolve("NOEVENTS");
       }
     }.bind(this));
+  },
+
+  sendStopListen: function() {
+    'use strict';
+
+    return this._fetch("POST", this.ATTAuri + "/stoplisten", null, null)
   },
 
   // sendTest - send test data to an ATTA and wait for a response
