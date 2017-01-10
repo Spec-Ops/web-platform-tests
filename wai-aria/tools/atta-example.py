@@ -23,7 +23,8 @@ import hashlib
 import json
 
 debug = True
-myAPI = 'WAIFAKE'
+# myAPI = 'WAIFAKE'
+myAPI = "ATK"
 myAPIversion = 0.1
 myprotocol = 'http'
 myhost = 'localhost'
@@ -119,6 +120,22 @@ def listenFor(request):
     else:
         listenResp['status'] = "ERROR"
         listenResp['statusText'] = params['error']
+
+    request.send_response(200)
+    add_aria_headers(request)
+    request.wfile.write(bytes(dump_json(listenResp), "utf-8"))
+
+def listenStop(request):
+    listenResp = {
+            "status":     "READY",
+            "statusText": "",
+            "log":        ""
+            }
+
+    # element to be examined is in the id parameter
+    # data to check is in the data parameter
+    if debug:
+        print ("Stopping listening")
 
     request.send_response(200)
     add_aria_headers(request)
@@ -249,8 +266,10 @@ class theServer(BaseHTTPRequestHandler):
         myPath = self.path
         if (myPath.endswith('start')):
             startTest(self)
-        elif (myPath.endswith('listen')):
+        elif (myPath.endswith('startlisten')):
             listenFor(self)
+        elif (myPath.endswith('stoplisten')):
+            listenStop(self)
         elif (myPath.endswith('end')):
             endTest(self)
         elif (myPath.endswith('test')):
