@@ -14,49 +14,48 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
+         "title" : "step 1",
+         "type" : "test",
          "test" : {
             "AXAPI" : [
                [
                   "property",
-                  "AXRole",
+                  "AXFocused",
                   "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXWebApplication"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "web application"
+                  "true"
                ],
                [
                   "result",
-                  "array",
-                  "isNot",
+                  "accessibilityIsAttributeSettable()",
+                  "is",
+                  "YES"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "AXFocusedUIElementChanged"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "IUIAutomationElement.UIA_IsKeyboardFocusablePropertyId",
+                  "is",
                   "true"
-               ]
-            ],
-            "MSAA" : [
+               ],
                [
                   "property",
-                  "role",
+                  "IUIAutomationElement.UIA_HasKeyboardFocusPropertyId",
                   "is",
-                  "ROLE_SYSTEM_APPLICATION"
-               ]
-            ],
-            "ATK" : [
+                  "true"
+               ],
                [
-                  "property",
-                  "role",
+                  "event",
+                  "type",
                   "is",
-                  "ROLE_EMBEDDED"
+                  "UIA_AutomationFocusChangedEventId"
                ]
             ],
             "WAIFAKE" : [
@@ -73,22 +72,53 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "MSAA" : [
                [
                   "property",
-                  "Control Type",
-                  "isNot",
-                  "Pane"
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_FOCUSED"
                ],
                [
                   "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "application"
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_FOCUSABLE"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "EVENT_OBJECT_FOCUS"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_FOCUSED"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_FOCUSABLE"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:state-change:focused"
+               ],
+               [
+                  "event",
+                  "detail1",
+                  "is",
+                  "0"
                ]
             ]
-         },
-         "type" : "test"
+         }
       }
    ],
    "title" : "application"
@@ -99,8 +129,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for application.</p>
-     <div id='test' role='application' aria-activedescendant='bob'>
-     <div id='bob' tabindex='0' class='bobber'>Hello world</div>
+     <div id='test' tabindex="0" role='application'>
+     <div id='bob' class='bobber'>Hello world</div>
   </div>
  then role:application, aria-activedescendant: bob
 

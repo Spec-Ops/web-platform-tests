@@ -12,13 +12,40 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "aria-busy=\"true\" on a menubar",
    "steps" : [
       {
-         "type" : "test",
          "element" : "test",
          "title" : "step 1",
+         "type" : "test",
          "test" : {
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:menubar"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "MenuBar"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "selection pattern"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -65,32 +92,18 @@
                   "STATE_BUSY"
                ]
             ],
-            "UIA" : [
+            "MSAA" : [
                [
                   "property",
-                  "Control Type",
-                  "isNot",
-                  "MenuBar"
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_MENUBAR"
                ],
                [
                   "property",
-                  "Selection Pattern",
-                  "is",
-                  "<shown>"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "true"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
+                  "states",
                   "contains",
-                  "xml-roles:menubar"
+                  "STATE_SYSTEM_BUSY"
                ]
             ],
             "AXAPI" : [
@@ -118,24 +131,11 @@
                   "is",
                   "true"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_MENUBAR"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_BUSY"
-               ]
             ]
          }
       }
-   ]
+   ],
+   "title" : "aria-busy=\"true\" on a menubar"
 }
 
     ) ;

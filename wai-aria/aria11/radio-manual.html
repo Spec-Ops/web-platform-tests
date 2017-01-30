@@ -12,116 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "radio",
    "steps" : [
       {
-         "type" : "test",
-         "title" : "step 1",
          "element" : "test",
          "test" : {
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_RADIO_BUTTON"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_CHECKABLE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "STATE_CHECKED"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "RadioButton"
-               ],
-               [
-                  "property",
-                  "Toggle",
-                  "contains",
-                  "ToggleState:Off"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "setsize:8"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "checkable:true"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "similarItemsInGroup:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "positionInGroup:4"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -160,6 +55,110 @@
                   "8"
                ]
             ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "checkable:true"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:4"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "RadioButton"
+               ],
+               [
+                  "property",
+                  "Toggle",
+                  "contains",
+                  "ToggleState:Off"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "setsize:8"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_RADIO_BUTTON"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_CHECKABLE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_CHECKED"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ]
+            ],
             "MSAA" : [
                [
                   "property",
@@ -174,10 +173,11 @@
                   "STATE_SYSTEM_CHECKED"
                ]
             ]
-         }
+         },
+         "title" : "step 1",
+         "type" : "test"
       }
-   ],
-   "title" : "radio"
+   ]
 }
 
     ) ;

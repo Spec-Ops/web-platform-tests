@@ -12,9 +12,11 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "role button with aria-roledescription empty",
    "steps" : [
       {
          "type" : "test",
+         "title" : "step 1",
          "test" : {
             "AXAPI" : [
                [
@@ -34,36 +36,6 @@
                   "AXRoleDescription",
                   "is",
                   "button"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "result",
-                  "IAccessible2_2.localizedExtendedRole",
-                  "contains",
-                  "null"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_PUSHBUTTON"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_PUSH_BUTTON"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "doesNotContain",
-                  "roledescription"
                ]
             ],
             "WAIFAKE" : [
@@ -93,13 +65,41 @@
                   "is",
                   "Button"
                ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "IAccessible2_2.localizedExtendedRole",
+                  "is",
+                  "null"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_PUSHBUTTON"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_PUSH_BUTTON"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "doesNotContain",
+                  "roledescription"
+               ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "element" : "test"
       }
-   ],
-   "title" : "role button with aria-roledescription empty"
+   ]
 }
 
     ) ;

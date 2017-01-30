@@ -14,26 +14,10 @@
     {
    "steps" : [
       {
-         "type" : "test",
-         "title" : "step 1",
          "element" : "test",
+         "title" : "step 1",
+         "type" : "test",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "interfaces",
-                  "doesNotContain",
-                  "IAccessibleTable2"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -54,6 +38,20 @@
                   "grid"
                ]
             ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -68,18 +66,20 @@
                   ""
                ]
             ],
-            "WAIFAKE" : [
+            "IAccessible2" : [
+               [
+                  "property",
+                  "interfaces",
+                  "doesNotContain",
+                  "IAccessibleTable2"
+               ]
+            ],
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "ROLE_SYSTEM_TABLE"
                ]
             ],
             "ATK" : [

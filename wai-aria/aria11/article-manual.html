@@ -12,10 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "article",
    "steps" : [
       {
          "element" : "test",
-         "title" : "step 1",
          "test" : {
             "MSAA" : [
                [
@@ -29,96 +29,6 @@
                   "states",
                   "contains",
                   "STATE_SYSTEM_READONLY"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXDocumentArticle"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "article"
-               ],
-               [
-                  "property",
-                  "AXARIAPosInSet",
-                  "is",
-                  "4"
-               ],
-               [
-                  "property",
-                  "AXARIASetSize",
-                  "is",
-                  "8"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:article"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "similarItemsInGroup:8"
-               ],
-               [
-                  "result",
-                  "groupPosition()",
-                  "contains",
-                  "positionInGroup:4"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "control type",
-                  "isNot",
-                  "Group"
-               ],
-               [
-                  "property",
-                  "localize control type",
-                  "isNot",
-                  "article"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "AriaProperties",
-                  "contains",
-                  "setsize:8"
                ]
             ],
             "ATK" : [
@@ -160,12 +70,102 @@
                   "contains",
                   "TableCell"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "control type",
+                  "is",
+                  "Group"
+               ],
+               [
+                  "property",
+                  "localize control type",
+                  "is",
+                  "article"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "AriaProperties",
+                  "contains",
+                  "setsize:8"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:article"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:4"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXDocumentArticle"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "article"
+               ],
+               [
+                  "property",
+                  "AXARIAPosInSet",
+                  "is",
+                  "4"
+               ],
+               [
+                  "property",
+                  "AXARIASetSize",
+                  "is",
+                  "8"
+               ]
             ]
          },
-         "type" : "test"
+         "type" : "test",
+         "title" : "step 1"
       }
-   ],
-   "title" : "article"
+   ]
 }
 
     ) ;

@@ -14,10 +14,69 @@
     {
    "steps" : [
       {
-         "type" : "test",
-         "title" : "step 1",
-         "element" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:table"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Table"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Table"
+               ],
+               [
+                  "property",
+                  "grid pattern TODO",
+                  "isNot",
+                  ""
+               ],
+               [
+                  "property",
+                  "table pattern TODO",
+                  "isNot",
+                  ""
+               ]
+            ],
             "IAccessible2" : [
                [
                   "property",
@@ -51,70 +110,11 @@
                   "is",
                   "grid"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:table"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Table"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Table"
-               ],
-               [
-                  "property",
-                  "grid pattern TODO",
-                  "isNot",
-                  ""
-               ],
-               [
-                  "property",
-                  "table pattern TODO",
-                  "isNot",
-                  ""
-               ]
             ]
-         }
+         },
+         "type" : "test",
+         "title" : "step 1",
+         "element" : "test"
       }
    ],
    "title" : "table"

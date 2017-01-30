@@ -15,17 +15,9 @@
    "title" : "aria-placeholder",
    "steps" : [
       {
-         "element" : "test",
          "title" : "step 1",
+         "type" : "test",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TEXT"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -52,46 +44,12 @@
                   "AXHorizontalOrientation"
                ]
             ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "IA2_STATE_SINGLE_LINE"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "placeholder-text:DD/MM/YYYY"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Edit"
-               ],
-               [
-                  "result",
-                  "AriaProperties.placeholder",
-                  "is",
-                  "DD/MM/YYYY"
-               ]
-            ],
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "ROLE_SYSTEM_TEXT"
                ]
             ],
             "ATK" : [
@@ -119,9 +77,51 @@
                   "contains",
                   "placeholder-text:DD/MM/YYYY"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Edit"
+               ],
+               [
+                  "result",
+                  "AriaProperties.placeholder",
+                  "is",
+                  "DD/MM/YYYY"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "IA2_STATE_SINGLE_LINE"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "placeholder-text:DD/MM/YYYY"
+               ]
             ]
          },
-         "type" : "test"
+         "element" : "test"
       }
    ]
 }

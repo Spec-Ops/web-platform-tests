@@ -12,31 +12,12 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "log",
    "steps" : [
       {
+         "element" : "test",
          "type" : "test",
+         "title" : "step 1",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "Group"
-               ],
-               [
-                  "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "log"
-               ],
-               [
-                  "property",
-                  "LiveSettingProperty",
-                  "isNot",
-                  "Polite"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -44,6 +25,32 @@
                   "is",
                   "ROLE_LOG"
                ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:log"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live-role:log"
+               ]
+            ],
+            "IAccessible2" : [
                [
                   "property",
                   "objectAttributes",
@@ -83,6 +90,26 @@
                   "TableCell"
                ]
             ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "isNot",
+                  "Group"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "isNot",
+                  "log"
+               ],
+               [
+                  "property",
+                  "LiveSettingProperty",
+                  "isNot",
+                  "Polite"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -102,38 +129,11 @@
                   "is",
                   "log"
                ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:log"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "container-live:polite"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "live:polite"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "container-live-role:log"
-               ]
             ]
-         },
-         "title" : "step 1",
-         "element" : "test"
+         }
       }
-   ]
+   ],
+   "title" : "log"
 }
 
     ) ;

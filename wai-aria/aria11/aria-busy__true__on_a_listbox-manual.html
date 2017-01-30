@@ -15,24 +15,8 @@
    "title" : "aria-busy=\"true\" on a listbox",
    "steps" : [
       {
-         "type" : "test",
          "element" : "test",
-         "title" : "step 1",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "List"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "true"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -59,20 +43,6 @@
                   "STATE_BUSY"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -85,6 +55,34 @@
                   "states",
                   "contains",
                   "STATE_SYSTEM_BUSY"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "List"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
                ]
             ],
             "AXAPI" : [
@@ -113,7 +111,9 @@
                   "true"
                ]
             ]
-         }
+         },
+         "type" : "test",
+         "title" : "step 1"
       }
    ]
 }

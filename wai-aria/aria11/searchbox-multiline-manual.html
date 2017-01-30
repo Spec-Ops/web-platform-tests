@@ -15,20 +15,14 @@
    "steps" : [
       {
          "title" : "step 1",
-         "element" : "test",
+         "type" : "test",
          "test" : {
-            "WAIFAKE" : [
+            "MSAA" : [
                [
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
+                  "ROLE_SYSTEM_TEXT"
                ]
             ],
             "ATK" : [
@@ -77,6 +71,20 @@
                   "multiline:true"
                ]
             ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "IAccessible2" : [
                [
                   "property",
@@ -116,17 +124,9 @@
                   "is",
                   "search text field"
                ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TEXT"
-               ]
             ]
          },
-         "type" : "test"
+         "element" : "test"
       }
    ],
    "title" : "searchbox-multiline"

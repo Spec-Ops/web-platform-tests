@@ -12,25 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "aria-busy=\"true\" on a grid",
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_BUSY"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -57,32 +42,18 @@
                   "true"
                ]
             ],
-            "IAccessible2" : [
+            "UIA" : [
                [
                   "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:grid"
+                  "Control Type",
+                  "is",
+                  "DataGrid"
                ],
                [
                   "property",
                   "interfaces",
                   "contains",
-                  "IAccessibleTable2"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "isNot",
-                  "DataGrid"
-               ],
-               [
-                  "property",
-                  "Selection Pattern",
-                  "is",
-                  "<shown>"
+                  "selection pattern"
                ],
                [
                   "result",
@@ -103,6 +74,34 @@
                   "interfaces",
                   "contains",
                   "TableCell"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:grid"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "IAccessibleTable2"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY"
                ]
             ],
             "ATK" : [
@@ -138,10 +137,11 @@
                ]
             ]
          },
-         "title" : "step 1",
-         "element" : "test"
+         "type" : "test",
+         "title" : "step 1"
       }
-   ]
+   ],
+   "title" : "aria-busy=\"true\" on a grid"
 }
 
     ) ;
