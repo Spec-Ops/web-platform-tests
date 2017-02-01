@@ -12,11 +12,65 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "aria-busy=\"true\" on a listbox",
    "steps" : [
       {
          "element" : "test",
+         "title" : "step 1",
          "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "List"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXList"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "list"
+               ],
+               [
+                  "property",
+                  "AXElementBusy",
+                  "is",
+                  "true"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "ATK" : [
                [
                   "property",
@@ -56,66 +110,12 @@
                   "contains",
                   "STATE_SYSTEM_BUSY"
                ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "List"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "true"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXList"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "list"
-               ],
-               [
-                  "property",
-                  "AXElementBusy",
-                  "is",
-                  "true"
-               ]
             ]
          },
-         "type" : "test",
-         "title" : "step 1"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "aria-busy=\"true\" on a listbox"
 }
 
     ) ;
