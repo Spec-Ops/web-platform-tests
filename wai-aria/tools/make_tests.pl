@@ -103,10 +103,22 @@ if ($file) {
 # my $io ;
 # open($io, "<", "raw") ;
 
+# data structure:
+#
+# steps is a list of steps to be performed.
+# Each step is an object that has a type property and other properties based upon that type.
+#
+# Types include:
+#
+# 'test' - has a property for each ATAPI for which there are tests
+# 'attribute' - has a property for the target id, attribute name, and value
+# 'event' - has a property for the target id and event name
 my $state = 0;   # between items
+my $theStep = undef;
 my $current = "";
 my $theCode = "";
 my $theAttributes = {};
+my @steps ;
 my $theAsserts = {} ;
 my $theAssertCount = 0;
 my $theAPI = "";
@@ -114,10 +126,12 @@ my $typeRows = 0;
 my $theType = "";
 my $theName = "";
 my $theRef = "";
+my $lineCounter = 0;
 
 our $testNames = {} ;
 
 while (<$io>) {
+  $lineCounter++;
   # look for state
   if (m/^SpecURL: (.*)$/) {
     $theSpecURL = $1;
@@ -127,24 +141,26 @@ while (<$io>) {
   if ($state == 5 && m/^; \/\/ (.*)/) {
     # we found another test inside a block
     # we were in an item; dump it
-    build_test($current, $theAttributes, $theCode, $theAsserts, $theSpecFragment) ;
-    print "Finished $current and new subblock $1\n";
+    build_test($current, $theAttributes, $theCode, \@steps, $theSpecFragment) ;
+    # print "Finished $current and new subblock $1\n";
     $state = 1;
     $theAttributes = {} ;
+    @steps = ();
     $theCode = "";
-    $theAsserts = {};
+    $theAsserts = undef;
     $theName = "";
   } elsif (m/^=== +(.*[^ ]) +===/) {
     if ($state != 0) {
       # we were in an item; dump it
-      build_test($current, $theAttributes, $theCode, $theAsserts, $theSpecFragment) ;
-      print "Finished $current\n";
+      build_test($current, $theAttributes, $theCode, \@steps, $theSpecFragment) ;
+      # print "Finished $current\n";
     }
     $state = 1;
     $current = $1;
     $theAttributes = {} ;
+    @steps = ();
     $theCode = "";
-    $theAsserts = {};
+    $theAsserts = undef;
     $theName = "";
   }
 
@@ -197,7 +213,7 @@ while (<$io>) {
       }
       # start of a table row
       if ($theType ne "" && $typeRows) {
-        print qq($theType typeRows was $typeRows\n);
+        # print qq($theType typeRows was $typeRows\n);
         # we are still processing items for a type
         $typeRows--;
         # populate the first cell
@@ -208,12 +224,56 @@ while (<$io>) {
     } elsif (m/^\|\}/) {
       # ran out of table
       $state = 5;
+    # adding processing for additional block types
+    # a colspan followed by a keyword triggers a start
+    # so |colspan=5|element triggers a new collection
+    # |colspan=5|attribute triggers the setting of an attribute
+    } elsif (m/^\|colspan="*([0-9])"*\|([^ ]+) (.*)$/) {
+      my $type = $2;
+      my $params = $3;
+
+      my $obj = {} ;
+      if ($type eq "attribute") {
+        if ($params =~ m/([^:]+):([^ ]+) +(.*)$/) {
+          $obj = {
+            type => $type,
+            element => $1,
+            attribute => $2,
+            value => $3
+          };
+          $theStep = undef;
+        } else {
+          print STDERR "Malformed attribute instruction at line $lineCounter: " . $_ . "\n";
+        }
+        push(@steps, $obj);
+      } elsif ($type eq "event") {
+        print STDERR "Event support from wikis is not yet implemnted at line #lineCounter\n";
+      } elsif ($type eq "element") {
+        $obj = {
+          type => "test",
+          element => $3
+        };
+        push(@steps, $obj);
+        $theStep = scalar(@steps) - 1;
+        $theAsserts = $steps[$theStep];
+      } else {
+        print STDERR "Unknown operation type: $type at line " . $lineCounter . "; skipping.\n";
+      }
     } elsif (m/^\|rowspan="*([0-9])"*\|(.*)$/) {
       my $rows = $1;
       my $theString = $2;
       $theString =~ s/ +$//;
       $theString =~ s/^ +//;
       if (grep { $_ eq $theString } @apiNames) {
+        # we found an API name - were we already processing assertions?
+        if (!$theAsserts) {
+          # nope - now what?
+          $theAsserts = {
+            type => "test",
+            element => "test"
+          };
+          push(@steps, $theAsserts);
+        }
         $theAssertCount = 0;
         # this is a new API section
         $theAPI = $theString ;
@@ -223,7 +283,7 @@ while (<$io>) {
         # this is a multi-row type
         $theType = $theString;
         $typeRows = $rows;
-        print qq(Found multi-row $theString for $theAPI with $typeRows rows\n);
+        # print qq(Found multi-row $theString for $theAPI with $typeRows rows\n);
         $typeRows--;
         # populate the first cell
         if ($theAPI
@@ -250,7 +310,7 @@ while (<$io>) {
 };
 
 if ($state != 0) {
-  build_test($current, $theAttributes, $theCode, $theAsserts, $theSpecFragment) ;
+  build_test($current, $theAttributes, $theCode, \@steps, $theSpecFragment) ;
   print "Finished $current\n";
 }
 
@@ -266,11 +326,11 @@ sub build_test() {
   my $title = shift ;
   my $attrs = shift ;
   my $code = shift ;
-  my $asserts = shift;
+  my $steps = shift;
   my $frag = shift ;
 
   if ($title eq "") {
-    print "No name provided!";
+    print STDERR "No name provided!";
     return;
   }
 
@@ -285,97 +345,125 @@ sub build_test() {
   my $title_reference = $title;
 
   if ($code eq "") {
-    print "No code for $title; skipping.\n";
+    print STDERR "No code for $title; skipping.\n";
     return;
   }
-  if ( $asserts eq {}) {
-    print "No code or assertions for $title; skipping.\n";
+  if ( $steps eq {}) {
+    print STDERR "No assertions for $title; skipping.\n";
     return;
   }
-
-  $asserts->{WAIFAKE} = [ [ "property", "role", "is", "ROLE_TABLE_CELL" ], [ "property", "interfaces", "contains", "TableCell" ] ];
-
-  # massage the data to make it more sensible
-  if (exists $asserts->{"ATK"}) {
-    print "processing ATK for $title\n";
-    my @conditions = @{$asserts->{"ATK"}};
-    for (my $i = 0; $i < scalar(@conditions); $i++) {
-      my @new = ();
-      my $start = 0;
-      my $assert = "true";
-      if ($conditions[$i]->[0] =~ m/^NOT/) {
-        $start = 1;
-        $assert = "false";
-      }
-
-      print qq(Looking at $title $conditions[$i]->[$start]\n);
-      if ($conditions[$i]->[$start] =~ m/^ROLE_/) {
-        $new[0] = "role";
-        $new[1] = $conditions[$i]->[$start];
-        $new[2] = $assert;
-      } elsif ($conditions[$i]->[$start] =~ m/(.*) interface/i) {
-        $new[0] = "interface";
-        $new[1] = $1;
-        print "$1 condition is " . $conditions[$i]->[1] . "\n";
-        if ($conditions[$i]->[1] ne '<shown>'
-          && $conditions[$i]->[1] !~ m/true/i ) {
-          $assert = "false";
-        }
-        $new[2] = $assert;
-      } elsif ($conditions[$i]->[$start] eq "object" || $conditions[$i]->[$start] eq "attribute" ) {
-        $new[0] = "attribute";
-        my $val = $conditions[$i]->[2];
-        $val =~ s/"//g;
-        $new[1] = $conditions[$i]->[1] . ":" . $val;
-        if ($conditions[$i]->[3] eq "not exposed"
-          || $conditions[$i]->[3] eq "false") {
-          $new[2] = "false";
-        } else {
-          $new[2] = "true";
-        }
-      } elsif ($conditions[$i]->[$start] =~ m/^STATE_/) {
-        $new[0] = "state";
-        $new[1] = $conditions[$i]->[$start];
-        $new[2] = $assert;
-      } elsif ($conditions[$i]->[$start] =~ m/^object attribute (.*)/) {
-        my $name = $1;
-        $new[0] = "attribute";
-        my $val = $conditions[$i]->[1];
-        $val =~ s/"//g;
-        if ($val eq "not exposed" || $val eq "not mapped") {
-          $new[1] = $name;
-          $new[2] = "false";
-        } else {
-          $new[1] = $name . ":" . $val;
-          $new[2] = "true";
-        }
-      } else {
-        @new = @{$conditions[$i]};
-        if ($conditions[$i]->[2] eq '<shown>') {
-          $new[2] = "true";
-        }
-      }
-      $conditions[$i] = \@new;
-    }
-    $asserts->{"ATK"} = \@conditions;
-  }
-
 
   my $testDef =
   { "title" => $title,
-    "steps" => [
-      {
-        "type"=>  "test",
-        "title"=> "step 1",
-        "element"=> "test",
-        "test" => $asserts
-      }
-    ]
+    "steps" => []
   };
+  my $stepCount = 0;
+  foreach my $asserts (@$steps) {
+    $stepCount++;
+    my $step =
+      {
+        "type" => $asserts->{"type"},
+        "title"=> "step " . $stepCount,
+      };
+
+    if ($asserts->{type} eq "test") {
+      # everything in the block is about testing an element
+      $step->{"element"} = ( $asserts->{"element"} || "test" );
+
+      my $tests = {
+        WAIFAKE => [ [ "property", "role", "is", "ROLE_TABLE_CELL" ], [ "property", "interfaces", "contains", "TableCell" ] ]
+      };
+      foreach my $name (@apiNames) {
+        if (exists $asserts->{$name}) {
+          $tests->{$name} = $asserts->{$name};
+        }
+      };
+
+
+      # massage the data to make it more sensible
+      if (exists $tests->{"ATK"}) {
+        # # print "processing ATK for $title\n";
+        my @conditions = @{$tests->{"ATK"}};
+        for (my $i = 0; $i < scalar(@conditions); $i++) {
+          my @new = ();
+          my $start = 0;
+          my $assert = "true";
+          if ($conditions[$i]->[0] =~ m/^NOT/) {
+            $start = 1;
+            $assert = "false";
+          }
+
+          # print qq(Looking at $title $conditions[$i]->[$start]\n);
+          if ($conditions[$i]->[$start] =~ m/^ROLE_/) {
+            $new[0] = "role";
+            $new[1] = $conditions[$i]->[$start];
+            $new[2] = $assert;
+          } elsif ($conditions[$i]->[$start] =~ m/(.*) interface/i) {
+            $new[0] = "interface";
+            $new[1] = $1;
+            # print "$1 condition is " . $conditions[$i]->[1] . "\n";
+            if ($conditions[$i]->[1] ne '<shown>'
+              && $conditions[$i]->[1] !~ m/true/i ) {
+              $assert = "false";
+            }
+            $new[2] = $assert;
+          } elsif ($conditions[$i]->[$start] eq "object" || $conditions[$i]->[$start] eq "attribute" ) {
+            $new[0] = "attribute";
+            my $val = $conditions[$i]->[2];
+            $val =~ s/"//g;
+            $new[1] = $conditions[$i]->[1] . ":" . $val;
+            if ($conditions[$i]->[3] eq "not exposed"
+              || $conditions[$i]->[3] eq "false") {
+              $new[2] = "false";
+            } else {
+              $new[2] = "true";
+            }
+          } elsif ($conditions[$i]->[$start] =~ m/^STATE_/) {
+            $new[0] = "state";
+            $new[1] = $conditions[$i]->[$start];
+            $new[2] = $assert;
+          } elsif ($conditions[$i]->[$start] =~ m/^object attribute (.*)/) {
+            my $name = $1;
+            $new[0] = "attribute";
+            my $val = $conditions[$i]->[1];
+            $val =~ s/"//g;
+            if ($val eq "not exposed" || $val eq "not mapped") {
+              $new[1] = $name;
+              $new[2] = "false";
+            } else {
+              $new[1] = $name . ":" . $val;
+              $new[2] = "true";
+            }
+          } else {
+            @new = @{$conditions[$i]};
+            if ($conditions[$i]->[2] eq '<shown>') {
+              $new[2] = "true";
+            }
+          }
+          $conditions[$i] = \@new;
+        }
+        $tests->{"ATK"} = \@conditions;
+      }
+      $step->{test} = $tests;
+
+    } elsif ($asserts->{type} eq "attribute") {
+      $step->{type} = "attribute";
+      $step->{element} = $asserts->{"element"};
+      $step->{attribute} = $asserts->{"attribute"};
+      $step->{value} = $asserts->{value};
+    } else {
+      print STDERR "Invalid step type: " . $asserts->{type} . "\n";
+      next;
+    }
+    push(@{$testDef->{steps}}, $step);
+  }
+
+
+  # populate the rest of the test definition
 
   if (scalar(keys(%$attrs))) {
     while (my $key = each(%$attrs)) {
-      print "Copying $key \n";
+      # print "Copying $key \n";
       $testDef->{$key} = $attrs->{$key};
     }
   }
@@ -438,7 +526,7 @@ sub build_test() {
     print $file "\n";
     close $file;
   } else {
-    print qq(Failed to create file "$dir/$fileName" $!\n);
+    print STDERR qq(Failed to create file "$dir/$fileName" $!\n);
   }
 
   return;
