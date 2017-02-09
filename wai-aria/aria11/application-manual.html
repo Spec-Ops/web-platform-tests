@@ -12,11 +12,84 @@
 
     var theTest = new ATTAcomm(
     {
+   "title" : "application",
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
+         "title" : "step 1",
+         "value" : "\"bob\"",
+         "attribute" : "aria-activedescendant",
+         "type" : "attribute"
+      },
+      {
+         "type" : "test",
          "test" : {
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_APPLICATION"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_SYSTEM_FOCUSED"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_FOCUSABLE"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_EMBEDDED"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_FOCUSED"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_FOCUSABLE"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:state-change:focused"
+               ],
+               [
+                  "event",
+                  "detail1",
+                  "is",
+                  "0"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -37,26 +110,97 @@
                   "web application"
                ],
                [
+                  "property",
+                  "AXFocused",
+                  "is",
+                  "false"
+               ],
+               [
+                  "result",
+                  "accessibilityIsAttributeSettable()",
+                  "is",
+                  "YES"
+               ],
+               [
                   "result",
                   "array",
                   "isNot",
                   "true"
                ]
             ],
-            "MSAA" : [
+            "UIA" : [
                [
                   "property",
-                  "role",
+                  "Control Type",
                   "is",
-                  "ROLE_SYSTEM_APPLICATION"
+                  "Pane"
+               ],
+               [
+                  "property",
+                  "Localized Control Type",
+                  "is",
+                  "application"
+               ],
+               [
+                  "property",
+                  "IUIAutomationElement.UIA_IsKeyboardFocusablePropertyId",
+                  "is",
+                  "true"
+               ],
+               [
+                  "property",
+                  "IUIAutomationElement.UIA_HasKeyboardFocusPropertyId",
+                  "is",
+                  "false"
+               ]
+            ]
+         },
+         "title" : "step 2",
+         "element" : "test"
+      },
+      {
+         "title" : "step 3",
+         "element" : "bob",
+         "type" : "test",
+         "test" : {
+            "UIA" : [
+               [
+                  "property",
+                  "IUIAutomationElement.UIA_IsKeyboardFocusablePropertyId",
+                  "is",
+                  "true"
+               ],
+               [
+                  "property",
+                  "IUIAutomationElement.UIA_HasKeyboardFocusPropertyId",
+                  "is",
+                  "true"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "UIA_AutomationFocusChangedEventId"
                ]
             ],
-            "ATK" : [
+            "AXAPI" : [
                [
                   "property",
-                  "role",
+                  "AXFocused",
                   "is",
-                  "ROLE_EMBEDDED"
+                  "true"
+               ],
+               [
+                  "result",
+                  "accessibilityIsAttributeSettable()",
+                  "is",
+                  "YES"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "AXFocusedUIElementChanged"
                ]
             ],
             "WAIFAKE" : [
@@ -73,25 +217,55 @@
                   "TableCell"
                ]
             ],
-            "UIA" : [
+            "ATK" : [
                [
                   "property",
-                  "Control Type",
-                  "isNot",
-                  "Pane"
+                  "states",
+                  "contains",
+                  "STATE_FOCUSED"
                ],
                [
                   "property",
-                  "Localized Control Type",
-                  "isNot",
-                  "application"
+                  "states",
+                  "contains",
+                  "STATE_FOCUSABLE"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:state-change:focused"
+               ],
+               [
+                  "event",
+                  "detail1",
+                  "is",
+                  "0"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_FOCUSED"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_FOCUSABLE"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "EVENT_OBJECT_FOCUS"
                ]
             ]
-         },
-         "type" : "test"
+         }
       }
-   ],
-   "title" : "application"
+   ]
 }
 
     ) ;
@@ -99,8 +273,8 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for application.</p>
-     <div id='test' role='application' aria-activedescendant='bob'>
-     <div id='bob' tabindex='0' class='bobber'>Hello world</div>
+     <div id='test' tabindex="0" role='application'>
+     <div id='bob' class='bobber'>Hello world</div>
   </div>
  then role:application, aria-activedescendant: bob
 

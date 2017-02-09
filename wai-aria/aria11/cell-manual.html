@@ -12,31 +12,138 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "cell",
    "steps" : [
       {
-         "type" : "test",
+         "element" : "foo",
          "title" : "step 1",
-         "element" : "test",
          "test" : {
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTable"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "grid"
+               ],
+               [
+                  "property",
+                  "AXARIAColumnCount",
+                  "is",
+                  "8"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
-                  "Control Type",
-                  "isNot",
-                  "TableItem"
+                  "Grid.ColumnCount",
+                  "is",
+                  "8"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "result",
+                  "AccessibleTable.atk_table_get_n_columns()",
+                  "is",
+                  "8"
                ],
                [
                   "property",
-                  "Selection pattern TODO",
-                  "isNot",
-                  ""
+                  "objectAttributes",
+                  "contains",
+                  "colcount:8"
+               ]
+            ]
+         },
+         "type" : "test"
+      },
+      {
+         "element" : "test",
+         "title" : "step 2",
+         "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "result",
+                  "AccessibleTableCell.atk_table_cell_get_position()",
+                  "is",
+                  "4"
                ],
                [
                   "property",
-                  "NOT",
-                  "isNot",
-                  "invoke pattern TODO"
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "colindex:4"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_CELL"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "colindex:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "colcount:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "similarItemsInGroup:8"
+               ],
+               [
+                  "result",
+                  "groupPosition()",
+                  "contains",
+                  "positionInGroup:4"
                ]
             ],
             "WAIFAKE" : [
@@ -53,26 +160,36 @@
                   "TableCell"
                ]
             ],
-            "ATK" : [
+            "UIA" : [
                [
                   "property",
-                  "role",
+                  "Control Type",
                   "is",
-                  "ROLE_TABLE_CELL"
+                  "TableItem"
                ],
                [
                   "property",
                   "interfaces",
                   "contains",
-                  "TableCell"
-               ]
-            ],
-            "MSAA" : [
+                  "GridItem pattern"
+               ],
                [
                   "property",
-                  "role",
+                  "GridItem.Column",
                   "is",
-                  "ROLE_SYSTEM_CELL"
+                  "3"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "selection pattern"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "MUST NOT contain",
+                  "invoke pattern"
                ]
             ],
             "AXAPI" : [
@@ -93,11 +210,19 @@
                   "AXRoleDescription",
                   "is",
                   "cell"
+               ],
+               [
+                  "property",
+                  "AXARIAColumnIndex",
+                  "is",
+                  "3"
                ]
             ]
-         }
+         },
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "cell"
 }
 
     ) ;
@@ -105,9 +230,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for cell.</p>
-    <div role="table">
+    <div id="foo" role="table" aria-colcount="8">
     <div role="row">
-       <span id="test" role="cell" aria-colindex="4" aria-colcount="8">test cell</span>
+       <span id="test" role="cell" aria-colindex="4" >test cell</span>
     </div>
   </div>
  then role: cell, aria-colindex: 4, aria-colcount:8
