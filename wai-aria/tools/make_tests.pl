@@ -503,7 +503,7 @@ sub build_test() {
     $title_reference = "<a href='" . $attrs->{reference} . "'>" . $title_reference . "</a>" ;
   }
 
-  my $testDef_json = to_json($testDef, { pretty => 1, utf8 => 1});
+  my $testDef_json = to_json($testDef, { canonical => 1, pretty => 1, utf8 => 1});
 
   my $fileName = $title;
   $fileName =~ s/\s*$//;
