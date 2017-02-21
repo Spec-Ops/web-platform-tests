@@ -147,6 +147,9 @@ my $skipping = 0;
 our $testNames = {} ;
 
 while (<$io>) {
+  if (m/<!-- END OF TESTS -->/) {
+    last;
+  }
   $lineCounter++;
   # look for state
   if (m/^SpecURL: (.*)$/) {
