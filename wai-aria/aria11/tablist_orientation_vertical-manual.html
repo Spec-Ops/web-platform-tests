@@ -14,9 +14,28 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_PAGE_TAB_LIST"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Selection"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_VERTICAL"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -43,6 +62,28 @@
                   "AXVerticalOrientation"
                ]
             ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "IA2_STATE_VERTICAL set"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "IA2_STATE_HORIZONTAL cleared"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_PAGETABLIST"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -63,48 +104,6 @@
                   "vertical"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_PAGE_TAB_LIST"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Selection"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_VERTICAL"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_PAGETABLIST"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "IA2_STATE_VERTICAL set"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "IA2_STATE_HORIZONTAL cleared"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -120,6 +119,7 @@
                ]
             ]
          },
+         "title" : "step 1",
          "type" : "test"
       }
    ],

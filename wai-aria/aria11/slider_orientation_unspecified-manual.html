@@ -12,58 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "slider orientation unspecified",
    "steps" : [
       {
+         "element" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "IA2_STATE_VERTICAL cleared"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "IA2_STATE_HORIZONTAL set"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Slider"
-               ],
-               [
-                  "property",
-                  "Orientation",
-                  "is",
-                  "horizontal"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Range control pattern"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -82,14 +34,6 @@
                   "states",
                   "contains",
                   "STATE_HORIZONTAL"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_SLIDER"
                ]
             ],
             "AXAPI" : [
@@ -117,13 +61,69 @@
                   "is",
                   "AXHorizontalOrientation"
                ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "IA2_STATE_VERTICAL cleared"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "IA2_STATE_HORIZONTAL set"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_SLIDER"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Slider"
+               ],
+               [
+                  "property",
+                  "Orientation",
+                  "is",
+                  "horizontal"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Range control pattern"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "type" : "test",
          "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "slider orientation unspecified"
 }
 
     ) ;

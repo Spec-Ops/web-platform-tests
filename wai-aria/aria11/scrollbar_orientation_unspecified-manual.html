@@ -12,11 +12,30 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "scrollbar orientation unspecified",
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SCROLL_BAR"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Value"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_VERTICAL"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -57,40 +76,6 @@
                   "IA2_STATE_VERTICAL set"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SCROLL_BAR"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Value"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_VERTICAL"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -118,12 +103,27 @@
                   "contains",
                   "Range control pattern"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
          "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "scrollbar orientation unspecified"
 }
 
     ) ;

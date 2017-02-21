@@ -12,26 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "keyshortcuts one shortcut",
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -44,34 +28,6 @@
                   "objectAttributes",
                   "contains",
                   "keyshortcuts:Shift+Space"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Button"
-               ],
-               [
-                  "property",
-                  "AcceleratorKey",
-                  "is",
-                  "Shift+Space"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_PUSHBUTTON"
-               ],
-               [
-                  "property",
-                  "accKeyboardShortcut",
-                  "is",
-                  "Shift+Space"
                ]
             ],
             "AXAPI" : [
@@ -99,11 +55,55 @@
                   "is",
                   "true"
                ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_PUSHBUTTON"
+               ],
+               [
+                  "property",
+                  "accKeyboardShortcut",
+                  "is",
+                  "Shift+Space"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Button"
+               ],
+               [
+                  "property",
+                  "AcceleratorKey",
+                  "is",
+                  "Shift+Space"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
+         "title" : "step 1",
          "type" : "test"
       }
-   ]
+   ],
+   "title" : "keyshortcuts one shortcut"
 }
 
     ) ;

@@ -15,8 +15,39 @@
    "steps" : [
       {
          "element" : "test",
-         "title" : "step 1",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_PAGE_TAB"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SELECTED"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SELECTABLE"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:3"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:7"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -81,52 +112,6 @@
                   "positionInGroup:3"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_PAGE_TAB"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SELECTED"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SELECTABLE"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:3"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:7"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -172,8 +157,23 @@
                   "isNot",
                   "IsSelected"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
+         "title" : "step 1",
          "type" : "test"
       }
    ],

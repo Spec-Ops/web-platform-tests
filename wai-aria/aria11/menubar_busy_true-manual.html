@@ -14,28 +14,8 @@
     {
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "MenuBar"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "selection pattern"
-               ],
-               [
-                  "result",
-                  "AriaProperties.busy",
-                  "is",
-                  "true"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -68,42 +48,6 @@
                   "STATE_BUSY"
                ]
             ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_MENUBAR"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_BUSY"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:menubar"
-               ]
-            ],
             "AXAPI" : [
                [
                   "property",
@@ -129,10 +73,66 @@
                   "is",
                   "true"
                ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:menubar"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_MENUBAR"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_BUSY"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "MenuBar"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "selection pattern"
+               ],
+               [
+                  "result",
+                  "AriaProperties.busy",
+                  "is",
+                  "true"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
          "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
    ],
    "title" : "menubar busy true"

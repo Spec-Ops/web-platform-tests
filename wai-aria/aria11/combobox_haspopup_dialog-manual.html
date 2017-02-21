@@ -12,12 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "combobox haspopup dialog",
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
-         "type" : "test",
          "test" : {
             "ATK" : [
                [
@@ -44,6 +41,52 @@
                   "contains",
                   "STATE_HASPOPUP"
                ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "haspopup:dialog"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXComboBox"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "<nil>"
+               ],
+               [
+                  "property",
+                  "AXDescription",
+                  "is",
+                  "combo box"
+               ],
+               [
+                  "property",
+                  "AXExpanded",
+                  "is",
+                  "YES"
+               ],
+               [
+                  "property",
+                  "action",
+                  "contains",
+                  "AXShowMenu"
+               ],
+               [
+                  "property",
+                  "action",
+                  "contains",
+                  "AXPress"
+               ]
+            ],
+            "IAccessible2" : [
                [
                   "property",
                   "objectAttributes",
@@ -91,14 +134,6 @@
                   "Expanded"
                ]
             ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "haspopup:dialog"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -111,68 +146,15 @@
                   "interfaces",
                   "contains",
                   "TableCell"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXComboBox"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "combo box"
-               ],
-               [
-                  "property",
-                  "AXExpanded",
-                  "is",
-                  "YES"
-               ],
-               [
-                  "property",
-                  "action",
-                  "contains",
-                  "AXShowMenu"
-               ],
-               [
-                  "property",
-                  "action",
-                  "contains",
-                  "AXPress"
                ]
             ]
-         }
+         },
+         "title" : "step 1",
+         "type" : "test"
       },
       {
-         "title" : "step 2",
          "element" : "owned_dialog",
-         "type" : "test",
          "test" : {
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [],
             "ATK" : [
                [
                   "relation",
@@ -180,10 +162,28 @@
                   "is",
                   "[test]"
                ]
+            ],
+            "UIA" : [],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
-         }
+         },
+         "title" : "step 2",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "combobox haspopup dialog"
 }
 
     ) ;

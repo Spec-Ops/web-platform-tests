@@ -12,9 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "alertdialog modal false",
    "steps" : [
       {
+         "element" : "test",
          "test" : {
             "ATK" : [
                [
@@ -25,15 +25,43 @@
                ],
                [
                   "property",
-                  "interfaces",
-                  "contains",
-                  "Window"
+                  "states",
+                  "doesNotContain",
+                  "STATE_MODAL"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
                ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXApplictionAlertDialog"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "alert dialog"
+               ],
+               [
+                  "result",
+                  "All content of id=\"Test2\" and id=\"Test\" and their subtrees are exposed.",
+                  "is",
+                  "true"
+               ]
+            ],
+            "IAccessible2" : [
                [
                   "property",
                   "states",
                   "doesNotContain",
-                  "STATE_MODAL"
+                  "IA2_STATE_MODAL"
                ]
             ],
             "MSAA" : [
@@ -71,47 +99,13 @@
                   "contains",
                   "TableCell"
                ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "IA2_STATE_MODAL"
-               ]
-            ],
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXApplictionAlertDialog"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "alert dialog"
-               ],
-               [
-                  "result",
-                  "All content of id=\"Test2\" and id=\"Test\" and their subtrees are exposed.",
-                  "is",
-                  "true"
-               ]
             ]
          },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "alertdialog modal false"
 }
 
     ) ;

@@ -14,10 +14,28 @@
     {
    "steps" : [
       {
-         "title" : "step 1",
          "element" : "test",
-         "type" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_MENU_ITEM"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -76,40 +94,6 @@
                   "positionInGroup:4"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_MENU_ITEM"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
@@ -137,8 +121,24 @@
                   "contains",
                   "setsize:8"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
-         }
+         },
+         "title" : "step 1",
+         "type" : "test"
       }
    ],
    "title" : "menuitem posinset and setsize"

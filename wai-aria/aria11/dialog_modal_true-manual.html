@@ -14,43 +14,8 @@
     {
    "steps" : [
       {
+         "element" : "test",
          "test" : {
-            "IAccessible2" : [
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "IA2_STATE_MODAL"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Pane"
-               ],
-               [
-                  "result",
-                  "Window.isModal",
-                  "is",
-                  "true"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -60,23 +25,9 @@
                ],
                [
                   "property",
-                  "interfaces",
-                  "contains",
-                  "Window"
-               ],
-               [
-                  "property",
                   "states",
                   "contains",
                   "STATE_MODAL"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_DIALOG"
                ]
             ],
             "AXAPI" : [
@@ -104,11 +55,54 @@
                   "is",
                   "true"
                ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "IA2_STATE_MODAL"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_DIALOG"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Pane"
+               ],
+               [
+                  "result",
+                  "Window.isModal",
+                  "is",
+                  "true"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "type" : "test",
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "type" : "test"
       }
    ],
    "title" : "dialog modal true"

@@ -12,11 +12,42 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "menuitemcheckbox posinset and setsize",
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_CHECK_MENU_ITEM"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_CHECKABLE"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_CHECKED"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "posinset:4"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "setsize:8"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -93,58 +124,12 @@
                   "positionInGroup:4"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "MSAA" : [
                [
                   "property",
                   "role",
                   "anyOf",
                   "[ROLE_SYSTEM_MENUITEM, ROLE_SYSTEM_CHECKBUTTON]"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_CHECK_MENU_ITEM"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_CHECKABLE"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_CHECKED"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "posinset:4"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "setsize:8"
                ]
             ],
             "UIA" : [
@@ -172,12 +157,27 @@
                   "contains",
                   "setsize:8"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "menuitemcheckbox posinset and setsize"
 }
 
     ) ;

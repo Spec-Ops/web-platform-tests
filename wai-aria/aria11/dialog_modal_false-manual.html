@@ -12,11 +12,24 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "dialog modal false",
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_DIALOG"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_MODAL"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -43,20 +56,6 @@
                   "true"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
@@ -73,26 +72,6 @@
                   "ROLE_SYSTEM_DIALOG"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_DIALOG"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Window"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "STATE_MODAL"
-               ]
-            ],
             "UIA" : [
                [
                   "property",
@@ -106,12 +85,27 @@
                   "is",
                   "false"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "dialog modal false"
 }
 
     ) ;

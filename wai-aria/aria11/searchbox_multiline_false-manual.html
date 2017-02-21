@@ -15,9 +15,27 @@
    "steps" : [
       {
          "element" : "test",
-         "title" : "step 1",
-         "type" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_ENTRY"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SINGLE_LINE"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "EditableText"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -38,46 +56,12 @@
                   "search text field"
                ]
             ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
             "IAccessible2" : [
                [
                   "property",
                   "objectAttributes",
                   "contains",
                   "xml-roles:search"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_ENTRY"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SINGLE_LINE"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "EditableText"
                ]
             ],
             "MSAA" : [
@@ -101,8 +85,24 @@
                   "is",
                   "search box"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
-         }
+         },
+         "title" : "step 1",
+         "type" : "test"
       }
    ],
    "title" : "searchbox multiline false"
@@ -113,7 +113,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for searchbox multiline false.</p>
-    <div id='test' role='searchbox' contenteditable='true' aria-multiline='true'></div>
+    <div id='test' role='searchbox' contenteditable='true' aria-multiline='false'></div>
 
   <div id="manualMode"></div>
   <div id="log"></div>

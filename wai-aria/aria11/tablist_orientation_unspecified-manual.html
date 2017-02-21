@@ -14,7 +14,7 @@
     {
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
             "ATK" : [
                [
@@ -34,62 +34,6 @@
                   "states",
                   "contains",
                   "STATE_HORIZONTAL"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Tab"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "selection pattern"
-               ],
-               [
-                  "property",
-                  "Orientation",
-                  "is",
-                  "horizontal"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_PAGETABLIST"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "IA2_STATE_VERTICAL cleared"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "IA2_STATE_HORIZONTAL set"
                ]
             ],
             "AXAPI" : [
@@ -117,10 +61,66 @@
                   "is",
                   "AXHorizontalOrientation"
                ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "IA2_STATE_VERTICAL cleared"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "IA2_STATE_HORIZONTAL set"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_PAGETABLIST"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Tab"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "selection pattern"
+               ],
+               [
+                  "property",
+                  "Orientation",
+                  "is",
+                  "horizontal"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "element" : "test",
-         "title" : "step 1"
+         "title" : "step 1",
+         "type" : "test"
       }
    ],
    "title" : "tablist orientation unspecified"

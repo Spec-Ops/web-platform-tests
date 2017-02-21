@@ -12,39 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "status (HAS QUESTION)",
    "steps" : [
       {
          "element" : "test",
-         "title" : "step 1",
-         "type" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXGroup"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXApplicationStatus"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "status"
-               ],
-               [
-                  "property",
-                  "AXExpanded",
-                  "is",
-                  "YES"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -81,6 +52,52 @@
                   "states",
                   "doesNotContain",
                   "STATE_EXPANDED"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXApplicationStatus"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "status"
+               ],
+               [
+                  "property",
+                  "AXExpanded",
+                  "is",
+                  "YES"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "live:polite"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "container-live-role:status"
                ]
             ],
             "MSAA" : [
@@ -123,26 +140,6 @@
                   "ExpandCollapseState:expanded"
                ]
             ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "container-live:polite"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "live:polite"
-               ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "container-live-role:status"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -157,9 +154,12 @@
                   "TableCell"
                ]
             ]
-         }
+         },
+         "title" : "step 1",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "status (HAS QUESTION)"
 }
 
     ) ;

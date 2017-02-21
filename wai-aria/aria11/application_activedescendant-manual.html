@@ -14,15 +14,47 @@
     {
    "steps" : [
       {
-         "value" : "\"bob\"",
-         "type" : "attribute",
          "attribute" : "aria-activedescendant",
+         "element" : "test",
          "title" : "step 1",
-         "element" : "test"
+         "type" : "attribute",
+         "value" : "\"bob\""
       },
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_EMBEDDED"
+               ],
+               [
+                  "property",
+                  "states",
+                  "doesNotContain",
+                  "STATE_FOCUSED"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_FOCUSABLE"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "object:state-change:focused"
+               ],
+               [
+                  "event",
+                  "detail1",
+                  "is",
+                  "0"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -59,52 +91,6 @@
                   "array",
                   "isNot",
                   "true"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_EMBEDDED"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "STATE_FOCUSED"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_FOCUSABLE"
-               ],
-               [
-                  "event",
-                  "type",
-                  "is",
-                  "object:state-change:focused"
-               ],
-               [
-                  "event",
-                  "detail1",
-                  "is",
-                  "0"
                ]
             ],
             "MSAA" : [
@@ -152,32 +138,6 @@
                   "is",
                   "false"
                ]
-            ]
-         },
-         "title" : "step 2",
-         "element" : "test"
-      },
-      {
-         "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXFocused",
-                  "is",
-                  "true"
-               ],
-               [
-                  "result",
-                  "accessibilityIsAttributeSettable()",
-                  "is",
-                  "YES"
-               ],
-               [
-                  "event",
-                  "type",
-                  "is",
-                  "AXFocusedUIElementChanged"
-               ]
             ],
             "WAIFAKE" : [
                [
@@ -192,7 +152,14 @@
                   "contains",
                   "TableCell"
                ]
-            ],
+            ]
+         },
+         "title" : "step 2",
+         "type" : "test"
+      },
+      {
+         "element" : "bob",
+         "test" : {
             "ATK" : [
                [
                   "property",
@@ -219,24 +186,24 @@
                   "0"
                ]
             ],
-            "UIA" : [
+            "AXAPI" : [
                [
                   "property",
-                  "IUIAutomationElement.UIA_IsKeyboardFocusablePropertyId",
+                  "AXFocused",
                   "is",
                   "true"
                ],
                [
-                  "property",
-                  "IUIAutomationElement.UIA_HasKeyboardFocusPropertyId",
+                  "result",
+                  "accessibilityIsAttributeSettable()",
                   "is",
-                  "true"
+                  "YES"
                ],
                [
                   "event",
                   "type",
                   "is",
-                  "UIA_AutomationFocusChangedEventId"
+                  "AXFocusedUIElementChanged"
                ]
             ],
             "MSAA" : [
@@ -258,11 +225,44 @@
                   "is",
                   "EVENT_OBJECT_FOCUS"
                ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "IUIAutomationElement.UIA_IsKeyboardFocusablePropertyId",
+                  "is",
+                  "true"
+               ],
+               [
+                  "property",
+                  "IUIAutomationElement.UIA_HasKeyboardFocusPropertyId",
+                  "is",
+                  "true"
+               ],
+               [
+                  "event",
+                  "type",
+                  "is",
+                  "UIA_AutomationFocusChangedEventId"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "type" : "test",
          "title" : "step 3",
-         "element" : "bob"
+         "type" : "test"
       }
    ],
    "title" : "application activedescendant"

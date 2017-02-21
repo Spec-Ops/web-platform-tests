@@ -12,10 +12,9 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "combobox haspopup unspecified",
    "steps" : [
       {
-         "type" : "test",
+         "element" : "test",
          "test" : {
             "ATK" : [
                [
@@ -42,68 +41,6 @@
                   "contains",
                   "STATE_HASPOPUP"
                ],
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "haspopup:listbox"
-               ]
-            ],
-            "UIA" : [
-               [
-                  "property",
-                  "Control Type",
-                  "is",
-                  "Combobox"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "ExpandCollapse pattern"
-               ],
-               [
-                  "property",
-                  "ExpandCollapse.ExpandCollapseState",
-                  "is",
-                  "Expanded"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_COMBOBOX"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_HASPOPUP"
-               ],
-               [
-                  "property",
-                  "states",
-                  "contains",
-                  "STATE_SYSTEM_EXPANDED"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "IAccessible2" : [
                [
                   "property",
                   "objectAttributes",
@@ -148,14 +85,55 @@
                   "contains",
                   "AXPress"
                ]
-            ]
-         },
-         "title" : "step 1",
-         "element" : "test"
-      },
-      {
-         "type" : "test",
-         "test" : {
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "haspopup:listbox"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_COMBOBOX"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_HASPOPUP"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_SYSTEM_EXPANDED"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Combobox"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "ExpandCollapse pattern"
+               ],
+               [
+                  "property",
+                  "ExpandCollapse.ExpandCollapseState",
+                  "is",
+                  "Expanded"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -169,7 +147,14 @@
                   "contains",
                   "TableCell"
                ]
-            ],
+            ]
+         },
+         "title" : "step 1",
+         "type" : "test"
+      },
+      {
+         "element" : "owned_listbox",
+         "test" : {
             "ATK" : [
                [
                   "relation",
@@ -178,12 +163,27 @@
                   "[test]"
                ]
             ],
-            "UIA" : []
+            "UIA" : [],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ]
          },
-         "element" : "owned_listbox",
-         "title" : "step 2"
+         "title" : "step 2",
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "combobox haspopup unspecified"
 }
 
     ) ;

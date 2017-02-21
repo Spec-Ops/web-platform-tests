@@ -15,9 +15,27 @@
    "steps" : [
       {
          "element" : "test",
-         "title" : "step 1",
-         "type" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "rowcount:3"
+               ],
+               [
+                  "result",
+                  "Table.get_n_rows()",
+                  "is",
+                  "2"
+               ]
+            ],
             "AXAPI" : [
                [
                   "property",
@@ -38,13 +56,7 @@
                   "grid"
                ]
             ],
-            "ATK" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE"
-               ],
+            "IAccessible2" : [
                [
                   "property",
                   "objectAttributes",
@@ -55,7 +67,15 @@
                   "property",
                   "interfaces",
                   "contains",
-                  "Table"
+                  "IAccessibleTable2"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
                ]
             ],
             "UIA" : [
@@ -78,28 +98,6 @@
                   ""
                ]
             ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TABLE"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:table"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "doesNotContain",
-                  "IAccessibleTable2"
-               ]
-            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -114,7 +112,9 @@
                   "TableCell"
                ]
             ]
-         }
+         },
+         "title" : "step 1",
+         "type" : "test"
       }
    ],
    "title" : "table rowcount 3"

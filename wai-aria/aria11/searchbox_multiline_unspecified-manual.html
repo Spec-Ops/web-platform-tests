@@ -12,60 +12,10 @@
 
     var theTest = new ATTAcomm(
     {
-   "title" : "searchbox multiline unspecified",
    "steps" : [
       {
+         "element" : "test",
          "test" : {
-            "AXAPI" : [
-               [
-                  "property",
-                  "AXRole",
-                  "is",
-                  "AXTextField"
-               ],
-               [
-                  "property",
-                  "AXSubrole",
-                  "is",
-                  "AXSearchField"
-               ],
-               [
-                  "property",
-                  "AXRoleDescription",
-                  "is",
-                  "search text field"
-               ]
-            ],
-            "WAIFAKE" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_TABLE_CELL"
-               ],
-               [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "TableCell"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "objectAttributes",
-                  "contains",
-                  "xml-roles:search"
-               ]
-            ],
-            "MSAA" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_TEXT"
-               ]
-            ],
             "ATK" : [
                [
                   "property",
@@ -86,6 +36,42 @@
                   "EditableText"
                ]
             ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXTextField"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXSearchField"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "search text field"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:search"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TEXT"
+               ]
+            ],
             "UIA" : [
                [
                   "property",
@@ -99,13 +85,27 @@
                   "is",
                   "search box"
                ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
             ]
          },
-         "type" : "test",
          "title" : "step 1",
-         "element" : "test"
+         "type" : "test"
       }
-   ]
+   ],
+   "title" : "searchbox multiline unspecified"
 }
 
     ) ;
