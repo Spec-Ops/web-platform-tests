@@ -516,6 +516,8 @@ sub build_test() {
     $fileName .= "_$count";
   }
 
+  $fileName = lc($fileName);
+
   $testNames->{$fileName} = 1;
 
   $fileName .= $theSuffix;
