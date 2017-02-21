@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <title>grid colcount 8</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
+
+    var theTest = new ATTAcomm(
+    {
+   "steps" : [
+      {
+         "title" : "step 1",
+         "element" : "test",
+         "type" : "test",
+         "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "colcount",
+                  "is",
+                  "8"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_CELL"
+               ],
+               [
+                  "property",
+                  "colcount",
+                  "is",
+                  "8"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "DataItem"
+               ],
+               [
+                  "property",
+                  "DataItem.ColumnCount",
+                  "is",
+                  "8"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_CELL"
+               ],
+               [
+                  "property",
+                  "colcount",
+                  "is",
+                  "8"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "AXCell"
+               ],
+               [
+                  "property",
+                  "TBD",
+                  "TBD",
+                  "TBD"
+               ]
+            ]
+         }
+      }
+   ],
+   "title" : "grid colcount 8"
+}
+
+    ) ;
+    </script>
+  </head>
+  <body>
+  <p>This test examines the ARIA properties for grid colcount 8.</p>
+    <div role="grid">
+    <div role="row">
+       <div id="test" role="gridcell" aria-colindex="4" aria-colcount="8">test cell</div>
+    </div>
+  </div>
+
+  <div id="manualMode"></div>
+  <div id="log"></div>
+  <div id="ATTAmessages"></div>
+  </body>
+</html>
+

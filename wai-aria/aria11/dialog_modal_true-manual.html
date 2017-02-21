@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <title>dialog modal true</title>
+    <link rel="stylesheet" href="/resources/testharness.css">
+    <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <script src="/wai-aria/scripts/ATTAcomm.js"></script>
+    <script>
+    setup({explicit_timeout: true, explicit_done: true });
+
+    var theTest = new ATTAcomm(
+    {
+   "steps" : [
+      {
+         "test" : {
+            "IAccessible2" : [
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "IA2_STATE_MODAL"
+               ]
+            ],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "Control Type",
+                  "is",
+                  "Pane"
+               ],
+               [
+                  "result",
+                  "Window.isModal",
+                  "is",
+                  "true"
+               ]
+            ],
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_DIALOG"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "Window"
+               ],
+               [
+                  "property",
+                  "states",
+                  "contains",
+                  "STATE_MODAL"
+               ]
+            ],
+            "MSAA" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_DIALOG"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXGroup"
+               ],
+               [
+                  "property",
+                  "AXSubrole",
+                  "is",
+                  "AXApplicationDialog"
+               ],
+               [
+                  "property",
+                  "AXRoleDescription",
+                  "is",
+                  "dialog"
+               ],
+               [
+                  "result",
+                  "The element with role=\"dialog\" and id=\"test\", has a parent with childcount=1, exposes aria-modal=\"true\", and has a childcount=1",
+                  "is",
+                  "true"
+               ]
+            ]
+         },
+         "type" : "test",
+         "element" : "test",
+         "title" : "step 1"
+      }
+   ],
+   "title" : "dialog modal true"
+}
+
+    ) ;
+    </script>
+  </head>
+  <body>
+  <p>This test examines the ARIA properties for dialog modal true.</p>
+    <body>
+     <h1 id="Test2">Modal Dialog Box Test</h1>
+     <div role="dialog" aria-modal="true" id="test">
+       <input type="button" value="ok"/>
+     </div>
+  </body>
+
+  <div id="manualMode"></div>
+  <div id="log"></div>
+  <div id="ATTAmessages"></div>
+  </body>
+</html>
+
