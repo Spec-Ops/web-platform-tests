@@ -142,6 +142,7 @@ my $theType = "";
 my $theName = "";
 my $theRef = "";
 my $lineCounter = 0;
+my $skipping = 0;
 
 our $testNames = {} ;
 
@@ -166,9 +167,13 @@ while (<$io>) {
     $theName = "";
   } elsif (m/^=== +(.*[^ ]) +===/) {
     if ($state != 0) {
-      # we were in an item; dump it
-      build_test($current, $theAttributes, $theCode, \@steps, $theSpecFragment) ;
-      # print "Finished $current\n";
+      if ($skipping) {
+        print STDERR "Flag on assertion $current; skipping\n";
+      } else {
+        # we were in an item; dump it
+        build_test($current, $theAttributes, $theCode, \@steps, $theSpecFragment) ;
+        # print "Finished $current\n";
+      }
     }
     $state = 1;
     $current = $1;
@@ -177,6 +182,12 @@ while (<$io>) {
     $theCode = "";
     $theAsserts = undef;
     $theName = "";
+    if ($current =~ m/\(/) {
+      # there is a paren in the name -skip it
+      $skipping = 1;
+    } else {
+      $skipping = 0;
+    }
   }
 
   if ($state == 1) {
