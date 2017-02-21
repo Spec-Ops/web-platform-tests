@@ -161,6 +161,7 @@ while (<$io>) {
     # print "Finished $current and new subblock $1\n";
     $state = 1;
     $theAttributes = {} ;
+    $theAPI = "";
     @steps = ();
     $theCode = "";
     $theAsserts = undef;
@@ -181,6 +182,7 @@ while (<$io>) {
     @steps = ();
     $theCode = "";
     $theAsserts = undef;
+    $theAPI = "";
     $theName = "";
     if ($current =~ m/\(/) {
       # there is a paren in the name -skip it
