@@ -3,7 +3,7 @@ if (this.document === undefined) {
   importScripts("../resources/utils.js");
 }
 
-var referrerOrigin = "http://{{host}}:{{ports[http][0]}}/";
+var referrerOrigin = (new URL("/", location.href)).href;
 var fetchedUrl = RESOURCES_DIR + "inspect-headers.py?headers=referer";
 
 promise_test(function(test) {
@@ -16,7 +16,11 @@ promise_test(function(test) {
 
 promise_test(function(test) {
   var referrerUrl = "http://{{domains[www]}}:{{ports[http][0]}}/";
-  return promise_rejects(test, new TypeError(), fetch(fetchedUrl, { "referrer":  referrerUrl}));
-}, "Throw a TypeError referrer is not same-origin with origin");
+  return fetch(fetchedUrl, { "referrer": referrerUrl }).then(function(resp) {
+    assert_equals(resp.status, 200, "HTTP status is 200");
+    assert_equals(resp.type , "basic", "Response's type is basic");
+    assert_equals(resp.headers.get("x-request-referer"), referrerOrigin, "request's referrer is " + referrerOrigin);
+  });
+}, "Cross-origin referrer is overridden by client origin");
 
 done();
