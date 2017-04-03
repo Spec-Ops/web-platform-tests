@@ -212,6 +212,13 @@ ATTAcomm.prototype = {
               // execute the script
               this.runScript(testCount, subtest);
             }.bind(this));
+          } else if (theType === "attribute") {
+            Promise.all(pending).then(function() {
+              pending = [];
+              // raise the event
+              this.handleAttribute(testCount, subtest);
+            }.bind(this));
+          // } else {
           } else if (theType === "event") {
             Promise.all(pending).then(function() {
               pending = [];
@@ -269,10 +276,18 @@ ATTAcomm.prototype = {
         if (type === "test") {
           // it is a test; dump the assertions
           theTable += "<td>" + this.buildAssertionTable(subtest.test) + "</td>";
+        } else if (type === "attribute" ) {
+          if (subtest.hasOwnProperty("attribute") && subtest.hasOwnProperty("value") && subtest.hasOwnProperty("element")) {
+            if (subtest.value === "none") {
+              theTable += "<td>Remove attribute <code>" + subtest.attribute + "</code> from the element with ID <code>" + subtest.element + "</code></td>";
+            } else {
+              theTable += "<td>Set attribute <code>" + subtest.attribute + "</code> on the element with ID <code>" + subtest.element + "</code> to the value <code>" + subtest.value + "</code></td>";
+            }
+          }
         } else if (type === "event" ) {
           // it is some events
           if (subtest.hasOwnProperty("event") && subtest.hasOwnProperty("element")) {
-            theTable += "<td>Send event " + subtest.event + " to the element with ID " + subtest.element + "</td>";
+            theTable += "<td>Send event <code>" + subtest.event + "</code> to the element with ID <code>" + subtest.element + "</code></td>";
           }
         } else if (type === "script" ) {
           // it is a script fragment
@@ -350,6 +365,58 @@ ATTAcomm.prototype = {
 
     return Object.keys(eventHash);
   },
+
+  // handleAttribute - set or clear an attribute
+  /**
+   * @param {integer} testNum - The subtest number
+   * @param {object} subtest - attribute information to set
+   */
+  handleAttribute: function(testNum, subtest) {
+    "use strict";
+    if (subtest) {
+      if (subtest.hasOwnProperty("attribute") && subtest.hasOwnProperty("element") && subtest.hasOwnProperty("value")) {
+        // update an attribute
+        try {
+          var node = document.getElementById(subtest.element);
+          if (node) {
+            if (subtest.value === "none") {
+              // remove this attribute
+              node.removeAttribute(subtest.attribute);
+            } else if (subtest.value === '""') {
+              node.setAttribute(subtest.attribute, "");
+            } else if (subtest.value.match(/^"/) ) {
+              var v = subtest.value;
+              v = v.replace(/^"/, '');
+              v = v.replace(/"$/, '');
+              node.setAttribute(subtest.attribute, v);
+            } else {
+              node.setAttribute(subtest.attribute, subtest.value);
+            }
+          }
+        }
+        catch (e) {
+          test(function() {
+            assert_true(false, "Subtest attribute failed to update: " +e);
+          }, "Attribute subtest " + testNum);
+        }
+      } else {
+        test(function() {
+          var err = "";
+          if (!subtest.hasOwnProperty("attribute")) {
+            err += "Attribute subtest has no attribute property; ";
+          } else if (!subtest.hasOwnProperty("value")) {
+            err += "Attribute subtest has no value property; ";
+          } else if (!subtest.hasOwnProperty("element")) {
+            err += "Attribute subtest has no element property; ";
+          }
+          assert_true(false, err);
+        }, "Attribute subtest " + testNum );
+      }
+    }
+    return;
+  },
+
+
 
   // raiseEvent - throw an event at an item
   /**
