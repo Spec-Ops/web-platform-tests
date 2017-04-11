@@ -117,22 +117,22 @@ ATTAcomm.prototype = {
       // start was successful - iterate over steps
       var API = res.body.API;
 
-      var subtestsForAPI = true;
+      var subtestsForAPI = false;
 
       // check main and potentially nested lists of tests for
       // tests with this API.  If any step is missing this API
       // mapping, then we need to be manual
       this.Tests.forEach(function(subtest) {
         if (subtest.hasOwnProperty("test") &&
-            !subtest.test.hasOwnProperty(API)) {
-          // this item doesn't have anything for this API
-          // and this is a test that needs to be looked at by an atta
-          subtestsForAPI = false;
+            subtest.test.hasOwnProperty(API)) {
+          // there is at least one subtest for this API so
+          // this is a test that needs to be looked at by an atta
+          subtestsForAPI = true;
         } else if (Array.isArray(subtest)) {
           subtest.forEach(function(st) {
             if (st.hasOwnProperty("test") &&
-                !st.test.hasOwnProperty(API)) {
-              subtestsForAPI = false;
+                st.test.hasOwnProperty(API)) {
+              subtestsForAPI = true;
             }
           });
         }
@@ -518,71 +518,90 @@ ATTAcomm.prototype = {
 
     return new Promise(function(resolve) {
       var ANNO = this;
-      promise_test(function() {
-        // force a resolve of the promise regardless
-        this.add_cleanup(function() { resolve(true); });
-        return ANNO.sendTest(data)
-          .then(function(res) {
-            if (typeof res.body === "object" && res.body.hasOwnProperty("status")) {
-              // we got some sort of response
-              if (res.body.status === "OK") {
-                // the test ran - yay!
-                var messages = "";
-                var thisResult = null;
-                var theLog = "";
-                var assertionCount = 0;
-                res.body.results.forEach( function (a) {
-                  if (typeof a === "object") {
-                    // we have a result for this assertion
-                    // first, what is the assertion?
-                    var aRef = data.data[assertionCount];
-                    var assertionText = '"' + aRef.join(" ") +'"';
+      if (subtest.test[API]) {
+        // we actually have a test to run
+        promise_test(function() {
+          // force a resolve of the promise regardless
+          this.add_cleanup(function() { resolve(true); });
+          return ANNO.sendTest(data)
+            .then(function(res) {
+              if (typeof res.body === "object" && res.body.hasOwnProperty("status")) {
+                // we got some sort of response
+                if (res.body.status === "OK") {
+                  // the test ran - yay!
+                  var messages = "";
+                  var thisResult = null;
+                  var theLog = "";
+                  var assertionCount = 0;
+                  res.body.results.forEach( function (a) {
+                    if (typeof a === "object") {
+                      // we have a result for this assertion
+                      // first, what is the assertion?
+                      var aRef = data.data[assertionCount];
+                      var assertionText = '"' + aRef.join(" ") +'"';
 
-                    if (a.hasOwnProperty("log") && a.log !== null && a.log !== '' ) {
-                      // there is log data - save it
-                      theLog += "\n--- Assertion " + assertionCount + " ---";
-                      theLog += "\nAssertion: " + assertionText + "\nLog data: "+a.log ;
-                    }
+                      if (a.hasOwnProperty("log") && a.log !== null && a.log !== '' ) {
+                        // there is log data - save it
+                        theLog += "\n--- Assertion " + assertionCount + " ---";
+                        theLog += "\nAssertion: " + assertionText + "\nLog data: "+a.log ;
+                      }
 
-                    // is there a message?
-                    var theMessage = "";
-                    if (a.hasOwnProperty("message")) {
-                      theMessage = a.message;
+                      // is there a message?
+                      var theMessage = "";
+                      if (a.hasOwnProperty("message")) {
+                        theMessage = a.message;
+                      }
+                      if (!a.hasOwnProperty("result")) {
+                        messages += "ATTA did not report a result " + theMessage + "; ";
+                      } else if (a.result === "ERROR") {
+                        messages += "ATTA reported ERROR with message: " + theMessage + "; ";
+                      } else if (a.result === "FAIL") {
+                        thisResult = false;
+                        messages += assertionText + " failed " + theMessage + "; ";
+                      } else if (a.result === "PASS" && thisResult === null) {
+                        // if we got a pass and there was no other result thus far
+                        // then we are passing
+                        thisResult = true;
+                      }
                     }
-                    if (!a.hasOwnProperty("result")) {
-                      messages += "ATTA did not report a result " + theMessage + "; ";
-                    } else if (a.result === "ERROR") {
-                      messages += "ATTA reported ERROR with message: " + theMessage + "; ";
-                    } else if (a.result === "FAIL") {
-                      thisResult = false;
-                      messages += assertionText + " failed " + theMessage + "; ";
-                    } else if (a.result === "PASS" && thisResult === null) {
-                      // if we got a pass and there was no other result thus far
-                      // then we are passing
-                      thisResult = true;
-                    }
+                    assertionCount++;
+                  });
+                  if (theLog !== "") {
+                    ANNO.saveLog("runTest", theLog, subtest);
                   }
-                  assertionCount++;
-                });
-                if (theLog !== "") {
-                  ANNO.saveLog("runTest", theLog, subtest);
-                }
-                if (thisResult !== null) {
-                  assert_true(thisResult, messages);
+                  if (thisResult !== null) {
+                    assert_true(thisResult, messages);
+                  } else {
+                    assert_true(false, "ERROR: No results reported from ATTA; " + messages);
+                  }
+                } else if (res.body.status === "ERROR") {
+                  assert_true(false, "ATTA returned ERROR with message: " + res.body.statusText);
                 } else {
-                  assert_true(false, "ERROR: No results reported from ATTA; " + messages);
+                  assert_true(false, "ATTA returned unknown status " + res.body.status + " with message: " + res.body.statusText);
                 }
-              } else if (res.body.status === "ERROR") {
-                assert_true(false, "ATTA returned ERROR with message: " + res.body.statusText);
               } else {
-                assert_true(false, "ATTA returned unknown status " + res.body.status + " with message: " + res.body.statusText);
+                // the return wasn't an object!
+                assert_true(false, "ATTA failed to return a result object: returned: "+JSON.stringify(res));
               }
-            } else {
-              // the return wasn't an object!
-              assert_true(false, "ATTA failed to return a result object: returned: "+JSON.stringify(res));
+            });
+        }, subtest.name );
+      } else {
+        // there are no test steps for this API.  fake a subtest result
+        promise_test(function() {
+          // force a resolve of the promise regardless
+          this.add_cleanup(function() { resolve(true); });
+          return new Promise(function(innerResolve) {
+            innerResolve(true);
+          })
+          .then(function(res) {
+            var theLog = "\nSUBTEST SKIPPED: No assertions for API " + API + "\n";
+            if (theLog !== "") {
+              ANNO.saveLog("runTest", theLog, subtest);
             }
+            assert_false(true, "SKIPPED: No assertion for API " + API);
           });
-      }, subtest.name );
+        }, subtest.name );
+      }
     }.bind(this));
   },
 
@@ -782,25 +801,27 @@ ATTAcomm.prototype = {
 
     var ret = [] ;
 
-    data.forEach(function(assert) {
-      var normal = [] ;
-      // ensure if there is a value list it is compressed
-      if (Array.isArray(assert)) {
-        // we have an array
-        normal[0] = assert[0];
-        normal[1] = assert[1];
-        normal[2] = assert[2];
-        if ("string" === typeof assert[3] && assert[3].match(/^\[.*\]$/)) {
-          // it is a string and matches the valuelist pattern
-          normal[3] = assert[3].replace(/, +/, ',');
+    if (data) {
+      data.forEach(function(assert) {
+        var normal = [] ;
+        // ensure if there is a value list it is compressed
+        if (Array.isArray(assert)) {
+          // we have an array
+          normal[0] = assert[0];
+          normal[1] = assert[1];
+          normal[2] = assert[2];
+          if ("string" === typeof assert[3] && assert[3].match(/^\[.*\]$/)) {
+            // it is a string and matches the valuelist pattern
+            normal[3] = assert[3].replace(/, +/, ',');
+          } else {
+            normal[3] = assert[3];
+          }
+          ret.push(normal);
         } else {
-          normal[3] = assert[3];
+          ret.push(assert);
         }
-        ret.push(normal);
-      } else {
-        ret.push(assert);
-      }
-    });
+      });
+    }
     return ret;
   },
 
