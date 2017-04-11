@@ -295,6 +295,9 @@ while (<$io>) {
       my $theString = $2;
       $theString =~ s/ +$//;
       $theString =~ s/^ +//;
+      if ($theString eq "IA2") {
+        $theString = "IAccessible2" ;
+      }
       if (grep { $_ eq $theString } @apiNames) {
         # we found an API name - were we already processing assertions?
         if (!$theAsserts) {
