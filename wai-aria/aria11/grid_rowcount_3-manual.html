@@ -21,7 +21,7 @@
                   "property",
                   "role",
                   "is",
-                  "ROLE_TABLE"
+                  "ROLE_SYSTEM_TABLE"
                ],
                [
                   "property",
@@ -31,43 +31,49 @@
                ],
                [
                   "property",
-                  "interfaces",
+                  "objectAttributes",
                   "contains",
-                  "Table"
+                  "rowcount:3"
                ],
                [
-                  "property",
-                  "interfaces",
-                  "contains",
-                  "Selection"
+                  "result",
+                  "atk_table_get_n_columns()",
+                  "is",
+                  "3"
                ]
             ],
             "AXAPI" : [
                [
                   "property",
-                  "AXRole",
+                  "role",
                   "is",
                   "AXTable"
                ],
                [
                   "property",
-                  "AXSubrole",
+                  "AXARIARowCount",
                   "is",
-                  "<nil>"
-               ],
-               [
-                  "property",
-                  "AXDescription",
-                  "is",
-                  "grid"
+                  "3"
                ]
             ],
             "IAccessible2" : [
                [
                   "property",
-                  "interfaces",
-                  "doesNotContain",
-                  "IAccessibleTable2"
+                  "role",
+                  "is",
+                  "ROLE_SYSTEM_TABLE"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:grid"
+               ],
+               [
+                  "property",
+                  "rowcount",
+                  "is",
+                  "3"
                ]
             ],
             "MSAA" : [
@@ -76,20 +82,32 @@
                   "role",
                   "is",
                   "ROLE_SYSTEM_TABLE"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:grid"
+               ],
+               [
+                  "property",
+                  "rowcount",
+                  "is",
+                  "3"
                ]
             ],
             "UIA" : [
                [
                   "property",
-                  "DataGrid",
-                  "isNot",
-                  ""
+                  "Control Type",
+                  "is",
+                  "DataGrid"
                ],
                [
                   "property",
-                  "Selection pattern TODO",
-                  "isNot",
-                  ""
+                  "DataGrid.RowCount",
+                  "is",
+                  "3"
                ]
             ],
             "WAIFAKE" : [

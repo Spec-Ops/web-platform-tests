@@ -66,14 +66,14 @@
                [
                   "property",
                   "states",
-                  "doesNotContain",
-                  "IA2_STATE_VERTICAL set"
+                  "contains",
+                  "IA2_STATE_VERTICAL"
                ],
                [
                   "property",
                   "states",
                   "doesNotContain",
-                  "IA2_STATE_HORIZONTAL cleared"
+                  "IA2_STATE_HORIZONTAL"
                ]
             ],
             "MSAA" : [
@@ -134,7 +134,7 @@
     <div role="tablist" aria-orientation="vertical" id="test">
       <div role="tab" tabindex="0">Tab1</div><div role="tab" tabindex="-1">Tab2</div>
   </div>
-  <div role="tabpanel">
+  <div role="tabpanel"></div>
   </div>
 
   <div id="manualMode"></div>

@@ -91,9 +91,9 @@
                ],
                [
                   "property",
-                  "Toggle",
-                  "contains",
-                  "ToggleState:Off"
+                  "Toggle.ToggleState",
+                  "is",
+                  "Off"
                ]
             ],
             "WAIFAKE" : [
@@ -123,7 +123,7 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for switch checked false.</p>
-    <div id='test' role='switch' aria-checked='false' class='switch'>power</div>
+   <div id='test' role='switch' aria-checked='false' tabindex='0' class='switch'>power</div>
 
   <div id="manualMode"></div>
   <div id="log"></div>
