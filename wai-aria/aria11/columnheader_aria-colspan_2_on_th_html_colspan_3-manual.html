@@ -26,26 +26,26 @@
                [
                   "property",
                   "objectAttributes",
-                  "contains",
-                  "colspan:3"
+                  "doesNotContain",
+                  "colspan:2"
                ],
                [
                   "result",
                   "atk_table_cell_get_row_column_span()",
-                  "is",
-                  "3"
+                  "contains",
+                  "column_span=3"
                ]
             ],
             "AXAPI" : [
                [
                   "property",
-                  "role",
+                  "AXRole",
                   "is",
                   "AXCell"
                ],
                [
                   "property",
-                  "AXColumnIndexRange.len",
+                  "AXColumnIndexRange.length",
                   "is",
                   "3"
                ]
@@ -120,9 +120,9 @@
   <body>
   <p>This test examines the ARIA properties for columnheader aria-colspan 2 on th html colspan 3.</p>
     <table>
-    <row>
-      <th id="test" role="columnheader" colspan="3" aria-colspan="2">test cell</td>
-    </row>
+    <tr>
+      <th id="test" role="columnheader" colspan="3" aria-colspan="2">test cell</th>
+    </tr>
   </table>
 
   <div id="manualMode"></div>

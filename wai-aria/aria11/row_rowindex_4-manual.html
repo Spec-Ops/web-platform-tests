@@ -28,26 +28,14 @@
                   "objectAttributes",
                   "contains",
                   "rowindex:4"
-               ],
-               [
-                  "result",
-                  "atk_table_cell_get_position()",
-                  "is",
-                  "4"
                ]
             ],
             "AXAPI" : [
                [
                   "property",
-                  "role",
+                  "AXRole",
                   "is",
                   "AXRow"
-               ],
-               [
-                  "property",
-                  "AXARIARowIndex",
-                  "is",
-                  "3"
                ]
             ],
             "IAccessible2" : [
@@ -109,6 +97,56 @@
          },
          "title" : "step 1",
          "type" : "test"
+      },
+      {
+         "element" : "cell",
+         "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "result",
+                  "atk_table_cell_get_position()",
+                  "contains",
+                  "row=3"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXRole",
+                  "is",
+                  "AXCell"
+               ],
+               [
+                  "property",
+                  "AXARIARowIndex",
+                  "is",
+                  "4"
+               ]
+            ],
+            "UIA" : [],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ]
+         },
+         "title" : "step 2",
+         "type" : "test"
       }
    ],
    "title" : "row rowindex 4"
@@ -121,6 +159,8 @@
   <p>This test examines the ARIA properties for row rowindex 4.</p>
     <div role="table">
     <div id="test" role="row" aria-rowindex="4">
+      <div id="cell" role="cell">test cell</div>
+    </div>
   </div>
 
   <div id="manualMode"></div>

@@ -47,13 +47,7 @@
                   "property",
                   "AXRoleDescription",
                   "is",
-                  "dialog"
-               ],
-               [
-                  "result",
-                  "All content of id=\"Test2\" and id=\"Test\" and their subtrees are exposed.",
-                  "is",
-                  "true"
+                  "web dialog"
                ]
             ],
             "IAccessible2" : [
@@ -102,6 +96,36 @@
             ]
          },
          "title" : "step 1",
+         "type" : "test"
+      },
+      {
+         "element" : "Test2",
+         "test" : {
+            "AXAPI" : [
+               [
+                  "property",
+                  "accessible",
+                  "is",
+                  "true"
+               ]
+            ],
+            "UIA" : [],
+            "WAIFAKE" : [
+               [
+                  "property",
+                  "role",
+                  "is",
+                  "ROLE_TABLE_CELL"
+               ],
+               [
+                  "property",
+                  "interfaces",
+                  "contains",
+                  "TableCell"
+               ]
+            ]
+         },
+         "title" : "step 2",
          "type" : "test"
       }
    ],

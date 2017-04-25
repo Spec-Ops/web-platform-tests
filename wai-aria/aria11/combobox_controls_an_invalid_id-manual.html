@@ -14,8 +14,40 @@
     {
    "steps" : [
       {
-         "element" : "'test'",
+         "element" : "test",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "relations",
+                  "doesNotContain",
+                  "RELATION_CONTROLLER_FOR"
+               ]
+            ],
+            "AXAPI" : [
+               [
+                  "property",
+                  "AXLinkedUIElements",
+                  "doesNotContain",
+                  "myID"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "relations",
+                  "doesNotContain",
+                  "IA2_RELATION_CONTROLLER_FOR"
+               ]
+            ],
+            "UIA" : [
+               [
+                  "property",
+                  "IUIAutomation.ControllerFor",
+                  "doesNotContain",
+                  "myID"
+               ]
+            ],
             "WAIFAKE" : [
                [
                   "property",
@@ -35,8 +67,25 @@
          "type" : "test"
       },
       {
-         "element" : "'myID'",
+         "element" : "myID",
          "test" : {
+            "ATK" : [
+               [
+                  "property",
+                  "relations",
+                  "doesNotContain",
+                  "RELATION_CONTROLLED_BY"
+               ]
+            ],
+            "IAccessible2" : [
+               [
+                  "property",
+                  "relations",
+                  "doesNotContain",
+                  "IA2_RELATION_CONTROLLED_BY"
+               ]
+            ],
+            "UIA" : [],
             "WAIFAKE" : [
                [
                   "property",

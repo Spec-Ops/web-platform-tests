@@ -26,26 +26,26 @@
                [
                   "property",
                   "objectAttributes",
-                  "contains",
-                  "rowspan:3"
+                  "doesNotContain",
+                  "rowspan:2"
                ],
                [
                   "result",
                   "atk_table_cell_get_row_column_span()",
-                  "is",
-                  "3"
+                  "contains",
+                  "row_span=3"
                ]
             ],
             "AXAPI" : [
                [
                   "property",
-                  "role",
+                  "AXRole",
                   "is",
                   "AXCell"
                ],
                [
                   "property",
-                  "AXRowIndexRange.len",
+                  "AXRowIndexRange.length",
                   "is",
                   "3"
                ]
@@ -120,9 +120,9 @@
   <body>
   <p>This test examines the ARIA properties for cell aria-rowspan 2 on td html rowspan 3.</p>
     <table>
-    <row>
+    <tr>
       <td id="test" role="cell" rowspan="3" aria-rowspan="2">test cell</td>
-    </row>
+    </tr>
   </table>
 
   <div id="manualMode"></div>

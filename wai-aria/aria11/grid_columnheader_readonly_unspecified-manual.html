@@ -33,29 +33,15 @@
             "AXAPI" : [
                [
                   "property",
-                  "role",
+                  "AXRole",
                   "is",
                   "AXCell"
                ],
                [
                   "result",
-                  "accessibilityIsAttributeSettable()",
+                  "AXUIElementIsAttributeSettable(AXValue)",
                   "is",
-                  "YES"
-               ]
-            ],
-            "IAccessible2" : [
-               [
-                  "property",
-                  "role",
-                  "is",
-                  "ROLE_SYSTEM_COLUMNHEADER"
-               ],
-               [
-                  "property",
-                  "states",
-                  "doesNotContain",
-                  "STATE_SYSTEM_READONLY"
+                  "true"
                ]
             ],
             "MSAA" : [
@@ -81,7 +67,7 @@
                ],
                [
                   "property",
-                  "IsReadOnly",
+                  "Value.IsReadOnly",
                   "is",
                   "false"
                ]

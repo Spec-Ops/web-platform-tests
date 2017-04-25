@@ -32,20 +32,20 @@
                [
                   "result",
                   "atk_table_cell_get_row_column_span()",
-                  "is",
-                  "2"
+                  "contains",
+                  "row_span=2"
                ]
             ],
             "AXAPI" : [
                [
                   "property",
-                  "role",
+                  "AXRole",
                   "is",
                   "AXCell"
                ],
                [
                   "property",
-                  "AXRowIndexRange.len",
+                  "AXRowIndexRange.length",
                   "is",
                   "2"
                ]
@@ -120,9 +120,9 @@
   <body>
   <p>This test examines the ARIA properties for cell aria-rowspan 2 on td with html rowspan not specified.</p>
     <table>
-    <row>
+    <tr>
       <td id="test" role="cell" aria-rowspan="2">test cell</td>
-    </row>
+    </tr>
   </table>
 
   <div id="manualMode"></div>

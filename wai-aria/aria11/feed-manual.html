@@ -35,7 +35,7 @@
                   "property",
                   "AXRole",
                   "is",
-                  "AXGrop"
+                  "AXGroup"
                ],
                [
                   "property",
@@ -45,7 +45,7 @@
                ],
                [
                   "property",
-                  "AXDescription",
+                  "AXRoleDescription",
                   "is",
                   "group"
                ]
@@ -107,9 +107,10 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for feed.</p>
-  
+    <section role="feed" id="test">
     <article>This is article 1</article>
     <div role="article">This is article 2</div>
+  </section>
 
   <div id="manualMode"></div>
   <div id="log"></div>

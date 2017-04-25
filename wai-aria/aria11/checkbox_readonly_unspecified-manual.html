@@ -26,14 +26,8 @@
                [
                   "property",
                   "states",
-                  "contains",
-                  "STATE_CHECKABLE"
-               ],
-               [
-                  "property",
-                  "states",
                   "doesNotContain",
-                  "STATE_EDITABLE"
+                  "STATE_READ_ONLY"
                ]
             ],
             "AXAPI" : [
@@ -47,19 +41,19 @@
                   "property",
                   "AXSubrole",
                   "is",
-                  "AXCheckBox"
+                  "<nil>"
                ],
                [
                   "property",
                   "AXRoleDescription",
                   "is",
-                  "check box"
+                  "checkbox"
                ],
                [
                   "result",
-                  "AXValue:accessibilityIsAttributeSettable()",
+                  "AXUIElementIsAttributeSettable(AXValue)",
                   "is",
-                  "YES"
+                  "true"
                ]
             ],
             "IAccessible2" : [

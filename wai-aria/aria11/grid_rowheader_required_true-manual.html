@@ -33,7 +33,7 @@
             "AXAPI" : [
                [
                   "property",
-                  "role",
+                  "AXRole",
                   "is",
                   "AXCell"
                ],
@@ -41,7 +41,7 @@
                   "property",
                   "AXRequired",
                   "is",
-                  "YES"
+                  "true"
                ]
             ],
             "IAccessible2" : [
@@ -113,9 +113,9 @@
   </head>
   <body>
   <p>This test examines the ARIA properties for grid rowheader required true.</p>
-    <div role="grid" aria-required="true">
+    <div role="grid">
     <div role="row">
-       <div id="test" role="rowheader">test cell</div>
+       <div id="test" role="rowheader" aria-required="true">test cell</div>
     </div>
   </div>
 
