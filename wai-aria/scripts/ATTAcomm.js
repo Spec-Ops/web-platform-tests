@@ -584,7 +584,7 @@ ATTAcomm.prototype = {
                     assert_true(false, "ERROR: No results reported from ATTA; " + messages);
                   }
                 } else if (res.body.status === "ERROR") {
-                  assert_true(false, "ATTA returned ERROR with message: " + res.body.statusText);
+                  assert_true(false, "ATTA returned ERROR with message: " + res.body.message);
                 } else {
                   assert_true(false, "ATTA returned unknown status " + res.body.status + " with message: " + res.body.statusText);
                 }
